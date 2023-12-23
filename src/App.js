@@ -2,13 +2,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home/Home';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
     <BrowserRouter>
-       <Routes>
-          <Route path='/'  element={<Home />}/>
-       </Routes>
+      <Header />
+        <Routes>
+            <Route path='/'  element={<Home />}/>
+        </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
