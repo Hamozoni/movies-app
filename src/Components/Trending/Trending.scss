@@ -1,0 +1,40 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.trending {
+    .trending-container {
+        padding: $padding;
+        .trend-header {
+            @include flex-box;
+            padding: $padding 0;
+            .trend-title {
+                text-transform: capitalize;
+                color: $text-dark-color;
+                font-size: $f-size;
+            }
+            .trend-nav {
+               ul {
+                @include flex-box;
+                gap: 0;
+                border-radius: $border-r-l;
+                border: 1px solid $logo-color;
+                li {
+                    cursor: pointer;
+                    font-weight: 500;
+                    padding: $padding-5 $padding;
+                    color: $text-dark-color;
+                    border-radius: $border-r-l;
+                    &.active{
+                        background-color: $text-dark-color;
+                        color: $text-light-color;
+                    }
+                }
+               }
+            }
+        }
+        .movies {
+           @include flex-box(flex-start);
+           overflow-x: auto;
+        }
+    }
+}

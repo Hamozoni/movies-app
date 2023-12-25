@@ -12,6 +12,9 @@ export  const languages = {
         search: 'search',
         welcome: 'welcome',
         millionsOf: 'Millions of movies, TV shows and people to discover. Explore now.',
+        today: 'today',
+        thisWeek: 'this week',
+        trending: 'trending'
     },
     ar: {
         movies: 'أفلام',
@@ -24,5 +27,8 @@ export  const languages = {
         search: 'ابحث',
         welcome: 'مرحبا',
         millionsOf:'ملايين الأفلام والمسلسلات والأشخاص جاهزين للاستكشاف. استكشف الآن.',
+        today: 'today',
+        thisWeek: 'this week',
+        trending: 'رائج'
     }
 }

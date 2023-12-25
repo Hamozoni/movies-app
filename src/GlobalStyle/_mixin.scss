@@ -1,5 +1,5 @@
 
-@mixin flex-box ($alIt,$jusFy,$gap : 0) {
+@mixin flex-box ($alIt: center,$jusFy:flex-start,$gap : 20px) {
     display: flex;
     align-items: $alIt;
     justify-content: $jusFy ;
