@@ -1,0 +1,38 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.search-bar {
+    background-image: url('../../Images/b-g-img.jpg');
+    background-size: cover;
+    background-position: center ;
+    padding: $padding;
+    .search-bar-container {
+        color: $text-light-color;
+        font-size: $main-f-size;
+        text-transform: capitalize;
+        .welcome {
+            font-size: $main-f-size + 10;
+        }
+        .search-form {
+            width: 100%;
+            background-color: $text-light-color;
+            border-radius: $border-r-l;
+            margin-top: $margin + $margin;
+            @include flex-box(center,space-between,$gap-l);
+            overflow: hidden;
+            input {
+                flex: 1;
+                padding: $padding - 5;
+            }
+            button {
+                background-color: $logo-color;
+                height: 100%;
+                color: $text-light-color;
+                font-size: $f-size-s;
+                text-transform: capitalize;
+                padding: $padding - 6;
+                border-radius: $border-r-l;
+            }
+        }
+    }
+}
