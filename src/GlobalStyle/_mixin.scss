@@ -5,3 +5,12 @@
     justify-content: $jusFy ;
     gap: $gap
 }
+
+@mixin postion-absolute ($width: 100%,$height: 100%,$top: 0,$left: 0,$z: 999){
+    position: absolute;
+    width: $width;
+    height: $height;
+    top: $top;
+    left: $left;
+    z-index: $z;
+}

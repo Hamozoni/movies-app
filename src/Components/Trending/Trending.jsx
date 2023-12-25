@@ -5,7 +5,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieCard from "../MovieCard/MovieCard";
 import "./Trending.scss";
 
-const Trending = ()=> {
+const Trending = ({type})=> {
 
     const {lang} = useContext(globalContext);
 
@@ -13,7 +13,7 @@ const Trending = ()=> {
     const [filter,setFilter] = useState('day');
 
     useEffect(()=>{
-        fetchData(`trending/movie/${filter}?language=${lang}&page=1`)
+        fetchData(`trending/${type}/${filter}?language=${lang}&page=1`)
         .then((data)=>{
             setMovies(data?.results)
             console.log(data?.results);
@@ -21,11 +21,13 @@ const Trending = ()=> {
     },[lang,filter]);
 
     return (
-        <section className="trending">
+        <section className={`${type} trending`}>
             <div className="trending-container">
                 <header className="trend-header">
                     <h3 className="trend-title">
-                        {languages[lang].trending}
+                        {languages[lang].trending + " "}
+                        
+                        {type === 'movie' ? languages[lang].movies : languages[lang].tvShows}
                     </h3>
                     <nav className="trend-nav">
                         <ul>
@@ -47,7 +49,7 @@ const Trending = ()=> {
                 <div className="movies">
                      {
                         movies?.map((movie)=>(
-                            <MovieCard movie={movie} />
+                            <MovieCard movie={movie} type={type} />
                         ))
                      }
                 </div>

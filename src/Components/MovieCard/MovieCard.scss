@@ -1,0 +1,46 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.movie-card {
+    .image-container {
+        position: relative;
+        .poster {
+            width: 150px;
+            border-radius: $border-r;
+        }
+        .consensus, .more-btn  {
+
+            @include flex-box(center,center);
+            border-radius: $circle;
+            color: $text-light-color;
+
+        }
+        .consensus {
+            @include postion-absolute(34px,34px,calc(100% - 20px),10px);
+            background-color: $text-dark-color;
+            font-size: $f-size-xs;
+        }
+        .more-btn {
+            @include postion-absolute(28px,28px,10px,112px);
+            cursor: pointer;
+            border: 1px solid $logo-color;
+            svg {
+                font-size: $f-size;
+            }
+            &:hover {
+                background-color: $logo-color;
+            }
+        }
+    }
+    .content {
+        margin-top: $margin;
+        .title {
+            font-size: $f-size-s;
+            color: $text-dark-color;
+        }
+        .time {
+            font-size: $text-dark-color;
+            font-size: $f-size-xs;
+        }
+    }
+}

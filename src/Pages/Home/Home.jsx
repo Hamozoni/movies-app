@@ -7,7 +7,9 @@ const Home = ()=> {
         <main className="home">
             <div className="home-container">
                 <SearchBar />
-                <Trending />
+                <Trending type='movie' />
+                <Trending type='tv'/>
+                {/* <Trending type='person'/> */}
             </div>
         </main>
     );
