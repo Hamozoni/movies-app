@@ -25,9 +25,8 @@ const Trending = ({type})=> {
             <div className="trending-container">
                 <header className="trend-header">
                     <h3 className="trend-title">
-                        {languages[lang].trending + " "}
-                        
-                        {type === 'movie' ? languages[lang].movies : languages[lang].tvShows}
+                        {languages[lang].trending + " "}  
+                        {type === 'movie' ? languages[lang].movies : type === 'tv'  ? languages[lang].tvShows :languages[lang].people }
                     </h3>
                     <nav className="trend-nav">
                         <ul>

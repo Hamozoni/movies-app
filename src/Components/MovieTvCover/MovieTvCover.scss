@@ -1,0 +1,16 @@
+@import '../../GlobalStyle/variables';
+@import '../../GlobalStyle/mixin';
+
+.cover {
+    height: calc(100vh - 80px);
+    background-size: cover;
+    background-position: center;
+    padding: $padding;
+    .cover-container {
+        .cover-image {
+            img {
+                border-radius: $border-r;
+            }
+        }
+    }
+}

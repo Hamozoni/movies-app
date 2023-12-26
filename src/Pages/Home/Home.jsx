@@ -9,7 +9,7 @@ const Home = ()=> {
                 <SearchBar />
                 <Trending type='movie' />
                 <Trending type='tv'/>
-                {/* <Trending type='person'/> */}
+                <Trending type='person'/>
             </div>
         </main>
     );

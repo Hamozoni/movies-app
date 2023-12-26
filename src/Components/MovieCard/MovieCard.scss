@@ -2,6 +2,7 @@
 @import "../../GlobalStyle/mixin";
 
 .movie-card {
+    cursor: pointer;
     .image-container {
         position: relative;
         .poster {
