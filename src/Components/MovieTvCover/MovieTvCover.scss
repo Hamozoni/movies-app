@@ -6,7 +6,9 @@
     background-size: cover;
     background-position: center;
     padding: $padding;
+    @include flex-box(center);
     .cover-container {
+        @include flex-box(center,center);
         .cover-image {
             img {
                 border-radius: $border-r;

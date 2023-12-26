@@ -14,7 +14,9 @@ export  const languages = {
         millionsOf: 'Millions of movies, TV shows and people to discover. Explore now.',
         today: 'today',
         thisWeek: 'this week',
-        trending: 'trending'
+        trending: 'trending',
+        playTrailer: 'play trailer',
+        overview: 'overview'
     },
     ar: {
         movies: 'أفلام',
@@ -29,6 +31,8 @@ export  const languages = {
         millionsOf:'ملايين الأفلام والمسلسلات والأشخاص جاهزين للاستكشاف. استكشف الآن.',
         today: 'today',
         thisWeek: 'this week',
-        trending: 'رائج'
+        trending: 'رائج',
+        playTrailer: 'تشغيل',
+        overview: 'نظرة عامة'
     }
 }
