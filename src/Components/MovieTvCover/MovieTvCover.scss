@@ -6,13 +6,54 @@
     background-size: cover;
     background-position: center;
     padding: $padding;
-    @include flex-box(center);
+    .flex-box {
+      @include flex-box;
+    }
     .cover-container {
         @include flex-box(center,center);
         .cover-image {
             img {
                 border-radius: $border-r;
             }
+        }
+        .cover-content {
+            .titles {
+                margin-bottom: $margin;
+                .name {
+                    font-size: $main-f-size;
+                    color: $text-light-color;
+                }
+                .details {
+                    span {
+                        color: $text-light-color-2;
+                    }
+                }
+            }
+        }
+
+        .links {
+            .user-score  {
+                background-color: $logo-color;
+                color: $text-light-color;
+                padding: $padding;
+                border-radius: $circle;
+                border: 5px solid $text-dark-color;
+            }
+            .add-to {
+                ul {
+                    li {
+                        background-color: $header-b-ground-c;
+                        color: $text-light-color;
+                        padding: $padding-10;
+                        border-radius: $circle;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .crews {
+            
+            flex-wrap: wrap;
         }
     }
 }

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 
 import "./Move.scss";
-import { useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieTvCover from "../../Components/MovieTvCover/MovieTvCover";
@@ -27,7 +27,9 @@ const Movie = ()=> {
     return (
         <main className="movie">
             <div className="movie-container">
+            <Suspense fallback={<p>loading... </p>} >
                 <MovieTvCover details={movieDetails} />
+            </Suspense>
             </div>
         </main>
     )
