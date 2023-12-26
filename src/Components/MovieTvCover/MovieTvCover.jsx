@@ -13,8 +13,6 @@ import fetchData from "../../Utilities/fetchData";
 const MovieTvCover = ({details})=> {
 
     const {lang} = useContext(globalContext);
-
-    const [credits,setCredits] = useState({});
     const [crews,setCrews] = useState([]);
 
     const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
@@ -23,7 +21,7 @@ const MovieTvCover = ({details})=> {
     useEffect(()=>{
         fetchData(`movie/${details?.id}/credits?language=${lang}`)
         .then((data)=>{
-            setCredits(data);
+            console.log(data.cast);
             let unique = []
             data?.crew?.forEach((p)=>{
                 
@@ -105,8 +103,9 @@ const MovieTvCover = ({details})=> {
                         <div className="crews flex-box">
                             {
                             
-                            crews?.map((crew)=>(
-                                    <div className="crew">
+                            crews?.map((crew,i)=>(
+                                   i < 6 &&
+                                    <div key={crew?.id} className="crew">
                                         <h4>{crew?.name}</h4>
                                         <aside>{crew?.job}</aside>
                                     </div>

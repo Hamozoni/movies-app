@@ -10,15 +10,17 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import "./Header.scss";
 import { useContext } from "react";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = ()=> {
 
-    const {theme, setTheme,lang, setLang} = useContext(globalContext);
+    const {theme,lang} = useContext(globalContext);
+    const navigate = useNavigate()
 
     return (
         <header className="main-header">
             <div className="header-container">
-                <section className="logo">
+                <section onClick={()=> navigate(`/`)} className="logo">
                     <h1>myh movies</h1>
                 </section>
                 <nav className="nav-links">

@@ -1,0 +1,24 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.person-card {
+    border-radius: $border-r;
+    overflow: hidden;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    box-shadow: 0px 0px 9px -4px #8b8b8b;
+    height: 100%;
+    cursor: pointer;
+    .person-image {
+       min-height: 225px;
+       @include flex-box(center,center);
+       background-color: rgba(0, 0, 0, 0.24);
+        img {
+            max-width: 150px;
+        }
+   }
+   .person-content {
+    padding: $padding-10;
+   }
+}

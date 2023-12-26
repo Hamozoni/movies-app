@@ -12,6 +12,7 @@
         @include flex-box(center,flex-start,20px);
         .logo {
             min-width: fit-content;
+            cursor: pointer;
             h1 {
                 text-transform: uppercase;
                 color: $logo-color;

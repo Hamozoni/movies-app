@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom"
 
-import "./Move.scss";
+import "./Movie.scss";
 import { Suspense, useContext, useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieTvCover from "../../Components/MovieTvCover/MovieTvCover";
+import TopBilledCast from "../../Components/TopBilledCast/TopBilledCast";
 
 const Movie = ()=> {
     const {id} = useParams();
@@ -29,6 +30,7 @@ const Movie = ()=> {
             <div className="movie-container">
             <Suspense fallback={<p>loading... </p>} >
                 <MovieTvCover details={movieDetails} />
+                <TopBilledCast id={id}/>
             </Suspense>
             </div>
         </main>

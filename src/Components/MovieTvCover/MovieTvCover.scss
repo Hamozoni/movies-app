@@ -18,7 +18,6 @@
         }
         .cover-content {
             .titles {
-                margin-bottom: $margin;
                 .name {
                     font-size: $main-f-size;
                     color: $text-light-color;
@@ -32,6 +31,7 @@
         }
 
         .links {
+            margin: $margin - 5 0;
             .user-score  {
                 background-color: $logo-color;
                 color: $text-light-color;
@@ -50,10 +50,46 @@
                     }
                 }
             }
+            .play-trailer {
+                gap: 5px;
+                
+              
+                button, svg{
+                    cursor: pointer;
+                    color: $logo-color;
+                }
+            }
+        }
+        .overview {
+            margin-bottom: $margin - 5;
+            p {
+                color: $text-light-color-2;
+                font-style: italic;
+            }
+            h5 {
+                font-size: $f-size;
+                color: $text-light-color;
+                margin:  $margin - 5 0;
+            }
+            aside {
+                color: $text-light-color-2;
+                font-size: $f-size-xs;
+            }
         }
         .crews {
-            
             flex-wrap: wrap;
+            .crew {
+               h4 {
+                color: $text-light-color;
+                font-size: $f-size-s;
+                cursor: pointer;
+               }
+               aside {
+                color: $text-light-color-2;
+                font-size: $f-size-xs;
+               }
+
+            }
         }
     }
 }
