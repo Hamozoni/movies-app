@@ -6,6 +6,7 @@ import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieTvCover from "../../Components/MovieTvCover/MovieTvCover";
 import TopBilledCast from "../../Components/TopBilledCast/TopBilledCast";
+import MovieSocial from "../../Components/MovieSocial/MovieSocial";
 
 const Movie = ()=> {
     const {id} = useParams();
@@ -31,6 +32,7 @@ const Movie = ()=> {
             <Suspense fallback={<p>loading... </p>} >
                 <MovieTvCover details={movieDetails} />
                 <TopBilledCast id={id}/>
+                <MovieSocial id={id} />
             </Suspense>
             </div>
         </main>

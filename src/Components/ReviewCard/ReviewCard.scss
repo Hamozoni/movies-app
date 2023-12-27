@@ -1,0 +1,26 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.review-card {
+    border:  1px solid #0909;
+    padding: $padding;
+    border-radius: $border-r;
+    .review-header {
+        @include flex-box;
+        margin-bottom: $margin;
+        .img {
+            max-width: 40px;
+            border-radius: $circle;
+            overflow: hidden;
+        }
+        .rev-titles {
+            
+            .date-rate{
+                @include flex-box;
+
+            }
+        }
+        
+    }
+    
+}

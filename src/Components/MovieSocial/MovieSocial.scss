@@ -1,0 +1,14 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.Movie-social {
+    padding: $padding;
+    .social-header {
+        @include flex-box;
+        margin: $margin 0;;
+        .social-nav {
+        @include flex-box;
+
+        }
+    }
+}
