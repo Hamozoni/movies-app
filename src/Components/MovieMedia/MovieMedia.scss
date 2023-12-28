@@ -1,0 +1,25 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.movie-media {
+    padding: $padding;
+    .movie-media-header {
+        @include flex-box(center,space-between,0);
+        padding: $padding-10 0;
+        .media-nav {
+             @include flex-box;
+        }
+
+    }
+    .media-content {
+        @include flex-box(flex-start,center,0);
+        overflow-x:  auto;
+        .img-container {
+            min-width: 500px;
+            max-height: 330px;
+        }
+        .poster {
+            min-width: 280px;
+        }
+    }
+}

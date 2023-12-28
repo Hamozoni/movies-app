@@ -26,6 +26,7 @@ input, button , input:focus{
   outline-color: transparent;
   border-color: transparent;
   background-color: transparent;
+  cursor: pointer;
 }
 
 img, picture {
