@@ -22,6 +22,7 @@ const MovieSocial = ({id})=> {
 
   return (
     <section className="Movie-social">
+        <hr />
         <header className="social-header">
             <h4 className="social-title">
                 social
@@ -37,6 +38,7 @@ const MovieSocial = ({id})=> {
         <Link className="read-review">
               read all reviews
         </Link>
+        <hr />
     </section>
   )
 }
