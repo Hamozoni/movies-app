@@ -8,6 +8,7 @@ import MovieTvCover from "../../Components/MovieTvCover/MovieTvCover";
 import TopBilledCast from "../../Components/TopBilledCast/TopBilledCast";
 import MovieSocial from "../../Components/MovieSocial/MovieSocial";
 import MovieMedia from "../../Components/MovieMedia/MovieMedia";
+import MovieStitistics from "../../Components/MovieStitistics/MovieStitistics";
 
 const Movie = ()=> {
     const {id} = useParams();
@@ -32,9 +33,18 @@ const Movie = ()=> {
             <div className="movie-container">
             <Suspense fallback={<p>loading... </p>} >
                 <MovieTvCover details={movieDetails} />
-                <TopBilledCast id={id}/>
-                <MovieSocial id={id} section='reviews' />
-                <MovieMedia id={id} />
+                <section className="movie-content">
+                    <div className="left-content">
+                        <TopBilledCast id={id}/>
+                        <MovieSocial id={id} section='reviews' />
+                        <MovieMedia id={id} />
+
+                    </div>
+                    <div className="right-content">
+                        <MovieStitistics keywords={movieDetails?.keywords} />
+                    </div>
+
+                </section>
             </Suspense>
             </div>
         </main>

@@ -16,10 +16,11 @@
         overflow-x:  auto;
         .img-container {
             min-width: 500px;
-            max-height: 330px;
+            max-height: 300;
         }
         .poster {
-            min-width: 280px;
+            max-width: 200px;
+            min-width: 200px;
         }
     }
 }
