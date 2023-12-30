@@ -1,4 +1,4 @@
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+// import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import { useEffect, useState } from 'react';
 import fetchData from '../../Utilities/fetchData';
 
@@ -7,12 +7,13 @@ const MovieStitistics = ({id,details}) => {
   const [keywords,setKeywords] = useState();
 
   useEffect(()=>{
-    fetchData(`https://api.themoviedb.org/3/movie/${id}/keywords`)
+    fetchData(`movie/${id}/keywords`)
     .then((data)=>{
       setKeywords(data?.keywords);
+      console.log(data)
     })
 
-  }),[id];
+  },[id]);
 
   return (
     <section className="movie-stits">
@@ -31,7 +32,7 @@ const MovieStitistics = ({id,details}) => {
               </div>
               <div className="stat">
                   <h4>budget</h4>
-                  <h5>{details?.budget?.toLocalString()}</h5>
+                  <h5>{details?.budget}</h5>
               </div>
               <div className="stat">
                   <h4>revenue</h4>

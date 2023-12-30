@@ -38,7 +38,6 @@ const Movie = ()=> {
                         <TopBilledCast id={id}/>
                         <MovieSocial id={id} section='reviews' />
                         <MovieMedia id={id} />
-
                     </div>
                     <div className="right-content">
                         <MovieStitistics id={id} details={movieDetails} />
