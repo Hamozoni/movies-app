@@ -41,7 +41,7 @@ const Movie = ()=> {
 
                     </div>
                     <div className="right-content">
-                        <MovieStitistics keywords={movieDetails?.keywords} />
+                        <MovieStitistics id={id} details={movieDetails} />
                     </div>
 
                 </section>

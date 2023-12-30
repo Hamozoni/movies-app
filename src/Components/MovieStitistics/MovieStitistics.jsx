@@ -1,6 +1,19 @@
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import { useEffect, useState } from 'react';
+import fetchData from '../../Utilities/fetchData';
 
-const MovieStitistics = ({details}) => {
+const MovieStitistics = ({id,details}) => {
+     
+  const [keywords,setKeywords] = useState();
+
+  useEffect(()=>{
+    fetchData(`https://api.themoviedb.org/3/movie/${id}/keywords`)
+    .then((data)=>{
+      setKeywords(data?.keywords);
+    })
+
+  }),[id];
+
   return (
     <section className="movie-stits">
         <div className="stits-container">
@@ -29,15 +42,15 @@ const MovieStitistics = ({details}) => {
             <section className="keywords">
               <h4>keywords</h4>
             
-              {/* <ul className="keywords-ul">
+              <ul className="keywords-ul">
                  {
                   keywords?.map((key)=>(
-                    <li key={key} className="key">
-                        {key}
+                    <li key={key?.id} className="key">
+                        {key?.name}
                     </li>
                   ))
                  }
-              </ul> */}
+              </ul>
 
             </section>
             <section className="score"></section>
