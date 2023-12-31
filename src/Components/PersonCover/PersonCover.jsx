@@ -4,7 +4,7 @@ import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 
-const PersonCover = ({id}) => {
+const PersonCover = ({details,id}) => {
 
     const {lang} = useContext(globalContext);
     const [knownFor,setKnownFor] = useState([]);
