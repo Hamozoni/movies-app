@@ -1,9 +1,12 @@
+import { useParams } from "react-router-dom";
 import PersonCover from "../../Components/PersonCover/PersonCover";
 
 const Person = ()=> {
+
+    const {id} = useParams()
     return (
         <div className="person">
-           <PersonCover />
+           <PersonCover id={id}/>
         </div>
     );
 };

@@ -1,7 +1,22 @@
+import { useContext, useEffect, useState } from "react";
 import "./PersonCover.scss";
+import fetchData from "../../Utilities/fetchData";
+import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 
-const PersonCover = () => {
+const PersonCover = ({id}) => {
+
+    const {lang} = useContext(globalContext);
+    const [knownFor,setKnownFor] = useState([]);
+
+    useEffect(()=>{
+        fetchData(`person/${id}/combined_credits?language=${lang}`)
+        .then(data=> {
+            console.log(data);
+            setKnownFor(data);
+        })
+    },[id]);
+
   return (
     <section className="person-cover">
         <div className="per-cover-container">
@@ -33,4 +48,4 @@ const PersonCover = () => {
   )
 }
 
-export default PersonCover
+export default PersonCover;
