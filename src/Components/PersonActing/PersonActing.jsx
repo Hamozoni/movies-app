@@ -1,4 +1,5 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Link } from 'react-router-dom';
 
 const PersonActing = ({knownFor}) => {
 
@@ -17,20 +18,24 @@ const PersonActing = ({knownFor}) => {
         <table className="acting-content">
             <tbody>
                 {
-                    knownFor?.cast?.map((movie)=>{
+                    knownFor?.cast?.map((movie)=>(
+    
                         <tr key={movie?.id} className="part">
                             <td className='year'>
-                                {movie?.release_date}
+                                {  movie?.release_date || movie?.first_air_date}
                             </td>
                             <td>
                                 <span className='cercle'></span>
                             </td>
-                            <td>
-                                {movie?.title}
+                            <td>    
+                                <Link to={''}>
+                                    { movie?.title || movie?.name}
+                                </Link>
+                                <span>as {movie?.character}</span>
                             </td>
 
                         </tr>
-                    })
+                    ))
                 }
             </tbody>
         </table>
