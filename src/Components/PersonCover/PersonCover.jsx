@@ -4,6 +4,7 @@ import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieCard from "../MovieCard/MovieCard";
 import PersonStitistics from "../PersonStitistics/PersonStitistics";
+import PersonActing from "../PersonActing/PersonActing";
 
 
 const PersonCover = ({details,id}) => {
@@ -53,6 +54,7 @@ const PersonCover = ({details,id}) => {
                     </div>
 
                 </section>
+                <PersonActing knownFor={knownFor} />
             </div>
         </div>
     </section>
