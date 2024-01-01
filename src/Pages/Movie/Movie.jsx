@@ -36,10 +36,10 @@ const Movie = ()=> {
                 <MovieTvCover details={movieDetails} />
                 <section className="movie-content">
                     <div className="left-content">
-                        <TopBilledCast id={id}/>
-                        <MovieSocial id={id} section='reviews' />
-                        <MovieMedia id={id} />
-                        <Recommendations id={id} />
+                        <TopBilledCast type='movie' id={id} title='Series Top Billed Cast'/>
+                        <MovieSocial id={id} section='reviews' mediaType='movie'/>
+                        <MovieMedia id={id} mediaType='movie' />
+                        <Recommendations id={id} mediaType='movie'/>
                     </div>
                     <div className="right-content">
                         <MovieStitistics id={id} details={movieDetails} />

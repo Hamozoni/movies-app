@@ -49,7 +49,7 @@ const MovieTvCover = ({details})=> {
                     <div className="cover-content">
                         <div className="titles">
                             <h3 className="name">
-                                {details?.title + `(${new Date(details?.release_date  || details?.first_air_date)?.getFullYear()})`}
+                                {details?.title || details?.name + `(${new Date(details?.release_date  || details?.first_air_date)?.getFullYear()})`}
                             </h3>
                             <div className="details">
                                 <span>

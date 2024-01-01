@@ -5,21 +5,22 @@ import PersonCard from "../PersonCard/PersonCard";
 
 import "./TopBilledCast.scss";
 
-const TopBilledCast = ({id})=> {
+const TopBilledCast = ({type,id,title})=> {
 
     const {lang} = useContext(globalContext);
 
     const [cast,setCast] = useState([]);
 
     useEffect(()=>{
-       fetchData(`movie/${id}/credits?language=${lang}`)
+       fetchData(`${type}/${id}/credits?language=${lang}`)
        .then((data)=>{
             setCast(data?.cast);
        })
     },[id,lang]);
+
   return (
     <section className="top-billed">
-        <h4 className="title">top billed cast</h4>
+        <h4 className="title">{title}</h4>
         <div className="persons">
             {
                 cast?.map((person)=>(

@@ -4,12 +4,13 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext"
 
 import "./Recommendations.scss";
 
-function Recommendations({id}) {
+function Recommendations({id,mediaType}) {
+
     const {lang} = useContext(globalContext);
     const [recomData,setRecomData] = useState([])
 
     useEffect(()=>{
-        fetchData(`movie/${id}/recommendations?language=${lang}&page=1`)
+        fetchData(`${mediaType}/${id}/recommendations?language=${lang}&page=1`)
         .then((data)=> {
             setRecomData(data);
            console.log(data)
@@ -24,14 +25,14 @@ function Recommendations({id}) {
                 recomData?.results?.map((media)=>(
                     <div className="media-card">
                         <div className="image">
-                            <img src={process.env.REACT_APP_BASE_URL + "original" + media?.poster_path} alt="" />
+                            <img src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} alt="" />
                         </div>
                         <div className="media-content">
                             <h4 className="name">
                                 {media?.name || media?.title}
                             </h4>
                             <span>
-                                {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}
+                                {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}%
                             </span>
                         </div>
                     </div>

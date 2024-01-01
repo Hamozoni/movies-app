@@ -5,24 +5,16 @@ import fetchData from "../../Utilities/fetchData";
 import "./MovieMedia.scss";
 
 
-const MovieMedia = ({id})=> {
+const MovieMedia = ({id,mediaType})=> {
 
-    const [changes,sethanges] = useState({});
     const [mediaVed,setMediaVed] = useState([]);
-    const [videos,setVideos] = useState({});
     const [selection,setSelecion] = useState('posters');
 
     const {lang} = useContext(globalContext);
 
     useEffect(()=>{
-        fetchData(`movie/${id}/changes?language=${lang}&page=1`)
-        .then((data)=>{
-            sethanges(data?.changes);
-            setVideos(data?.changes.find( video => video.key === 'videos'))
-            console.log(data?.changes)
-        })
 
-        fetchData(`movie/${id}/images`)
+        fetchData(`${mediaType}/${id}/images`)
         .then((data)=>{
             setMediaVed(data);
             console.log(data)

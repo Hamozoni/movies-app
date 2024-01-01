@@ -6,14 +6,14 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./MovieSocial.scss";
 
-const MovieSocial = ({id,section})=> {
+const MovieSocial = ({id,section,mediaType})=> {
 
     const [reviews,setReviews] = useState([]);
 
     const {lang} = useContext(globalContext);
 
     useEffect(()=>{
-        fetchData(`movie/${id}/${section}?language=${lang}&page=1`)
+        fetchData(`${mediaType}/${id}/${section}?language=${lang}&page=1`)
         .then((data)=>{
             setReviews(data?.results);
             console.log(data)
