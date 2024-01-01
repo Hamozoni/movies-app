@@ -1,0 +1,25 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.person-cover {
+    max-width: 100%;
+    .per-cover-container {
+        @include flex-box(flex-start);
+        padding: $padding;
+        .person-img {
+            img {
+                min-width: 300px;
+                border-radius: $border-r;
+            }
+        }
+        .person-cov-conrent {
+            .known-for {
+                max-width: 100%;
+                .kn-for-container {
+                    @include flex-box(flex-start);
+                    overflow-x: auto;
+                }
+            }
+        }
+    } 
+}

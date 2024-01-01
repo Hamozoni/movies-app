@@ -3,6 +3,7 @@ import "./PersonCover.scss";
 import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieCard from "../MovieCard/MovieCard";
+import PersonStitistics from "../PersonStitistics/PersonStitistics";
 
 
 const PersonCover = ({details,id}) => {
@@ -22,7 +23,11 @@ const PersonCover = ({details,id}) => {
     <section className="person-cover">
         <div className="per-cover-container">
             <div className="person-img">
-                <img src={process.env.REACT_APP_BASE_URL + 'original' + details?.profile_path} alt={details?.name} />
+                <img 
+                    src={process.env.REACT_APP_BASE_URL + 'w300' + details?.profile_path} 
+                    alt={details?.name} 
+                    />
+                    <PersonStitistics details={details}/>
             </div>
             <div className="person-cov-conrent">
                 <div className="person-name">
@@ -40,7 +45,8 @@ const PersonCover = ({details,id}) => {
                     </h4>
                     <div className="kn-for-container">
                         {
-                            knownFor?.cast?.map((movie)=>(
+                            knownFor?.cast?.map((movie,i)=>(
+                                i < 6 &&
                                 <MovieCard movie={movie}  type='movie'/>
                             ))
                         }
