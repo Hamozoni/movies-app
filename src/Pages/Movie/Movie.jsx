@@ -9,6 +9,7 @@ import TopBilledCast from "../../Components/TopBilledCast/TopBilledCast";
 import MovieSocial from "../../Components/MovieSocial/MovieSocial";
 import MovieMedia from "../../Components/MovieMedia/MovieMedia";
 import MovieStitistics from "../../Components/MovieStitistics/MovieStitistics";
+import Recommendations from "../../Components/Recommendations/Recommendations";
 
 const Movie = ()=> {
     const {id} = useParams();
@@ -38,6 +39,7 @@ const Movie = ()=> {
                         <TopBilledCast id={id}/>
                         <MovieSocial id={id} section='reviews' />
                         <MovieMedia id={id} />
+                        <Recommendations id={id} />
                     </div>
                     <div className="right-content">
                         <MovieStitistics id={id} details={movieDetails} />
