@@ -16,10 +16,24 @@
             min-width: 250px;
             .image {
                 cursor: pointer;
+                position: relative;
+                border-radius: $border-r;
+                overflow: hidden;
                 img {
                     min-width: 250px;
                     max-height: 141px; 
-                    border-radius: $border-r;
+                }
+                .overlay-content {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    padding: $padding-5;
+                    background-color: $text-light-color;
+                    @include flex-box(center,space-between);
+                    .over-date, .add-to {
+                        @include flex-box()
+                    }
                 }
             }
             .media-content {

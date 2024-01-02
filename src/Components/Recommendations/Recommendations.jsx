@@ -5,6 +5,11 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext"
 import "./Recommendations.scss";
 import fitLongString from "../../Utilities/fitLongString";
 
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import TheatersIcon from '@mui/icons-material/Theaters';
+import StarRateIcon from '@mui/icons-material/StarRate';
+
 function Recommendations({id,mediaType}) {
 
     const {lang} = useContext(globalContext);
@@ -18,15 +23,18 @@ function Recommendations({id,mediaType}) {
         })
     },[id,lang]);
 
-    const OnHoherOverlay = ()=> {
+    const OnHoherOverlay = ({recomData})=> {
         return (
             <div className="overlay-content">
-                <div className="add-to">
-
-                </div>
                 <div className="over-date">
-
+                    <EventNoteIcon />
+                    <span>{recomData?.first_air_date || recomData?.release_date}</span>
                 </div>
+                <ul className="add-to">
+                    <li><FavoriteIcon /></li>
+                    <li><TheatersIcon /></li>
+                    <li><StarRateIcon /></li>
+                </ul>
             </div>
         )
     }
@@ -41,7 +49,7 @@ function Recommendations({id,mediaType}) {
                     <div className="media-card">
                         <div className="image">
                             <img src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} alt="" />
-                            <OnHoherOverlay />
+                            <OnHoherOverlay recomData={recomData}/>
                         </div>
                         <div className="media-content">
                             <p className="name">
