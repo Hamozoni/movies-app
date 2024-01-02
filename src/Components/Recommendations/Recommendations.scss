@@ -2,7 +2,31 @@
 @import "../../GlobalStyle/mixin";
 
 .recommendations {
+    padding: $padding;
     .recom-t {
         font-size: $main-f-size;
+        color: $text-dark-color;
+        margin-bottom: $margin
+    }
+    .recom-content {
+          @include flex-box(flex-start);
+          padding-bottom: $padding;
+          overflow-x: auto;
+          .media-card {
+            min-width: 250px;
+            .image {
+                cursor: pointer;
+                img {
+                    min-width: 250px;
+                    max-height: 141px; 
+                    border-radius: $border-r;
+                }
+            }
+            .media-content {
+                @include flex-box(center,space-between);
+                font-size: $f-size-xs;
+                color: $text-dark-color;
+            }
+          }
     }
 }

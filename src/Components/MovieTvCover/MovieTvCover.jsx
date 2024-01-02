@@ -34,7 +34,13 @@ const MovieTvCover = ({details})=> {
             setCrews(unique)
             console.log(unique);
         })
-    },[details?.id])
+    },[details?.id]);
+
+    const getMovieRuntime = (time)=>{
+        const runTime = (time / 60)?.toString()?.split('.');
+        return `${runTime[0]}h ${runTime[1]}m`
+        
+    }
 
 
     return (
@@ -53,13 +59,14 @@ const MovieTvCover = ({details})=> {
                             </h3>
                             <div className="details">
                                 <span>
-                                    {details?.release_date && details?.release_date + `(${details?.production_companies[0]?.origin_country}) . `}
+                                    {details?.release_date && details?.release_date + `(${details?.original_language}) . `}
                                 </span>
                                     {details?.genres?.map((genre)=>(
                                         <span>
                                             {genre?.name},  
                                         </span>
                                     ))}
+                                    <span>{getMovieRuntime(details?.runtime)}</span>
                             </div>
 
                         </div>

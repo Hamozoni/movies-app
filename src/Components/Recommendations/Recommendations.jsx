@@ -3,6 +3,7 @@ import fetchData from "../../Utilities/fetchData"
 import { globalContext } from "../../GlobalStateContext/GlobalContext"
 
 import "./Recommendations.scss";
+import fitLongString from "../../Utilities/fitLongString";
 
 function Recommendations({id,mediaType}) {
 
@@ -15,7 +16,8 @@ function Recommendations({id,mediaType}) {
             setRecomData(data);
            console.log(data)
         })
-    },[id,lang])
+    },[id,lang]);
+
 
   return (
     <section className="recommendations">
@@ -28,12 +30,12 @@ function Recommendations({id,mediaType}) {
                             <img src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} alt="" />
                         </div>
                         <div className="media-content">
-                            <h4 className="name">
-                                {media?.name || media?.title}
-                            </h4>
-                            <span>
+                            <p className="name">
+                                {fitLongString(media?.name,38) || fitLongString(media?.title,38) }
+                            </p>
+                            <h4>
                                 {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}%
-                            </span>
+                            </h4>
                         </div>
                     </div>
                 ))

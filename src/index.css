@@ -32,4 +32,5 @@ input, button , input:focus{
 img, picture {
   max-width: 100%;
   object-fit: cover;
+  object-position: center;
 }
