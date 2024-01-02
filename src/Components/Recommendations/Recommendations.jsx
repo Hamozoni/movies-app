@@ -23,12 +23,12 @@ function Recommendations({id,mediaType}) {
         })
     },[id,lang]);
 
-    const OnHoherOverlay = ({recomData})=> {
+    const OnHoherOverlay = ({media})=> {
         return (
             <div className="overlay-content">
                 <div className="over-date">
                     <EventNoteIcon />
-                    <span>{recomData?.first_air_date || recomData?.release_date}</span>
+                    <span>{media?.release_date || media?.first_air_date}</span>
                 </div>
                 <ul className="add-to">
                     <li><FavoriteIcon /></li>
@@ -49,7 +49,7 @@ function Recommendations({id,mediaType}) {
                     <div className="media-card">
                         <div className="image">
                             <img src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} alt="" />
-                            <OnHoherOverlay recomData={recomData}/>
+                            <OnHoherOverlay media={media}/>
                         </div>
                         <div className="media-content">
                             <p className="name">

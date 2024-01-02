@@ -26,14 +26,24 @@
                 .overlay-content {
                     position: absolute;
                     left: 0;
-                    bottom: 0;
+                    bottom: -100%;
                     width: 100%;
                     padding: $padding-5;
                     background-color: $text-light-color;
+                    display: none;
                     @include flex-box(center,space-between);
+                    transition: all .5s;
                     .over-date, .add-to {
-                        @include flex-box()
+                        @include flex-box(center,center,5px);
+                        color: $text-dark-color;
+                        svg {
+                            font-size: $f-size-s
+                        }
                     }
+                }
+                &:hover .overlay-content  {
+                    
+                    bottom: 0;
                 }
             }
             .media-content {
