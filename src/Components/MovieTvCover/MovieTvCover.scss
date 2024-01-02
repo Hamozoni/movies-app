@@ -11,7 +11,9 @@
     }
     .cover-container {
         @include flex-box(center,center);
+        // flex-wrap: wrap;
         .cover-image {
+            min-width: 300px;
             img {
                 border-radius: $border-r;
             }

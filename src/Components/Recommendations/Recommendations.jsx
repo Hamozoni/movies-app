@@ -9,6 +9,7 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import { useNavigate } from "react-router-dom";
 
 function Recommendations({id,mediaType}) {
 
@@ -37,6 +38,12 @@ function Recommendations({id,mediaType}) {
                 </ul>
             </div>
         )
+    };
+
+    const navigate = useNavigate()
+
+    const handleNavigate = (mediaType,id)=> {
+        navigate(`/${mediaType}/${id}`)
     }
 
 
@@ -48,11 +55,14 @@ function Recommendations({id,mediaType}) {
                 recomData?.results?.map((media)=>(
                     <div className="media-card">
                         <div className="image">
-                            <img src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} alt="" />
+                            <img 
+                                onClick={()=> handleNavigate(media?.media_type,media?.id)}
+                                src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} 
+                                alt="" />
                             <OnHoherOverlay media={media}/>
                         </div>
                         <div className="media-content">
-                            <p className="name">
+                            <p className="name" onClick={()=> handleNavigate(media?.media_type,media?.id)}>
                                 {fitLongString(media?.name,38) || fitLongString(media?.title,38) }
                             </p>
                             <h4>

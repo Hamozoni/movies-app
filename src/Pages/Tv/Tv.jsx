@@ -20,7 +20,8 @@ const Tv = () => {
             setDetails(data);
             console.log(data)
         })
-    },[id.lang])
+        window.scrollTo({top: 0,left: 0 ,behavior: "smooth"})
+    },[id,lang])
 
   return (
     <main className="tv">

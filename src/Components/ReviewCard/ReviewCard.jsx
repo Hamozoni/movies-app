@@ -1,6 +1,7 @@
 
 import "./ReviewCard.scss";
 import autherImg from "../../Images/person.png";
+import fitLongString from "../../Utilities/fitLongString";
 
 const ReviewCard = ({review})=> {
   return (
@@ -27,14 +28,14 @@ const ReviewCard = ({review})=> {
                          wrettin by {review?.author}
                       </p>
                       <span className="date">
-                        {/* on {new Date(review?.updated_at)} */}
+                        on {review?.updated_at}
                       </span>
                  </div>
              </div>
         </header>
         <div className="review-content">
             <aside className="review">
-                {review?.content}
+                {fitLongString(review?.content,400) }
             </aside>
         </div>
 
