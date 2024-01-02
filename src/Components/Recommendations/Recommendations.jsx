@@ -18,6 +18,19 @@ function Recommendations({id,mediaType}) {
         })
     },[id,lang]);
 
+    const OnHoherOverlay = ()=> {
+        return (
+            <div className="overlay-content">
+                <div className="add-to">
+
+                </div>
+                <div className="over-date">
+
+                </div>
+            </div>
+        )
+    }
+
 
   return (
     <section className="recommendations">
@@ -28,6 +41,7 @@ function Recommendations({id,mediaType}) {
                     <div className="media-card">
                         <div className="image">
                             <img src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} alt="" />
+                            <OnHoherOverlay />
                         </div>
                         <div className="media-content">
                             <p className="name">
