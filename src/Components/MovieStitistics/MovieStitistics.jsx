@@ -8,6 +8,8 @@ import imdb_id from '../../Images/imbd.png';
 import instagram_id from '../../Images/insta.jpg';
 import twitter_id from '../../Images/twiter.webp';
 
+import "./MovieStitistics.scss"
+
 const images = {
   facebook_id,
   wikidata_id,
@@ -44,7 +46,11 @@ const MovieStitistics = ({id,details}) => {
                 externalIds &&
                 Object?.entries(externalIds)?.map((ids)=> (
                   ids[0] !== 'id' && 
-                  <a href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} target='_blank'>
+                  <a 
+                    className='social-links'
+                    href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} 
+                    target='_blank'
+                    >
                      <img src={images[ids[0]]} alt="" />
                   </a>
                 ))
@@ -61,16 +67,16 @@ const MovieStitistics = ({id,details}) => {
               </div>
               <div className="stat">
                   <h4>budget</h4>
-                  <h5>{details?.budget}</h5>
+                  <h5>${ new Intl.NumberFormat().format(details?.budget)}</h5>
               </div>
               <div className="stat">
                   <h4>revenue</h4>
-                  <h5>{details?.revenue}</h5>
+                  <h5>${new Intl.NumberFormat().format(details?.revenue)}</h5>
               </div>
 
             </div>
             <section className="keywords">
-              <h4>keywords</h4>
+              <h4 className='key-t'>keywords</h4>
             
               <ul className="keywords-ul">
                  {

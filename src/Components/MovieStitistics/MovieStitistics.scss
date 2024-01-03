@@ -1,0 +1,44 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.movie-stits {
+    .stits-container {
+        .stits-nav {
+            @include flex-box(center,center,5px);
+            padding: $padding 0;
+            .social-links {
+                height: 45px;
+            }
+
+        }
+        .status {
+            .stat {
+                padding: $padding-10 0;
+                h4 {
+                    color: $text-dark-color;
+                    margin-bottom: 5px;
+                }
+                h5 {
+                    font-weight: 400;
+                    color: $text-dark-color;
+                }
+            }
+        }
+        .keywords {
+            .key-t {
+                margin: 10px 0;
+            }
+            .keywords-ul {
+                @include flex-box(center,flex-start,5px);
+                flex-wrap: wrap;
+                li {
+                    padding: $padding-5 $padding-10;
+                    border-radius: $border-r;
+                    background-color: $text-light-color;
+                    cursor: pointer;
+                    font-size: $f-size-s;
+                }
+            }
+        }
+    }
+}
