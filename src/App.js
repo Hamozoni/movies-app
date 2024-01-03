@@ -6,6 +6,7 @@ import Footer from './Components/Footer/Footer';
 import Movie from './Pages/Movie/Movie';
 import Person from './Pages/Person/Person';
 import Tv from './Pages/Tv/Tv';
+import Keywords from './Pages/Keywords/Keywords';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path='/movie/:id'  element={<Movie />}/>
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/person/:id'  element={<Person />}/>
+            <Route path='/keywords/:id'  element={<Keywords />}/>
         </Routes>
       <Footer />
     </BrowserRouter>

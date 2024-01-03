@@ -9,6 +9,7 @@ import instagram_id from '../../Images/insta.jpg';
 import twitter_id from '../../Images/twiter.webp';
 
 import "./MovieStitistics.scss"
+import { useNavigate } from 'react-router-dom';
 
 const images = {
   facebook_id,
@@ -37,6 +38,8 @@ const MovieStitistics = ({id,details}) => {
     })
    
   },[id]);
+
+  const navigate = useNavigate();
 
   return (
     <section className="movie-stits">
@@ -81,7 +84,11 @@ const MovieStitistics = ({id,details}) => {
               <ul className="keywords-ul">
                  {
                   keywords?.map((key)=>(
-                    <li key={key?.id} className="key">
+                    <li 
+                      onClick={()=> navigate(`/keywords/${key?.id}`)}
+                      key={key?.id} 
+                      className="key"
+                      >
                         {key?.name}
                     </li>
                   ))
