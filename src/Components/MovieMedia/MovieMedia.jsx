@@ -53,13 +53,21 @@ const MovieMedia = ({id,mediaType})=> {
                       selection === 'backdrops' ?
                       mediaVed?.backdrops?.map((media)=>(
                         <div className="img-container" key={media?.file_path}>
-                                <img src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} alt="" />
+                                <img 
+                                    loading="lazy"
+                                    src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
+                                    alt={media?.file_path}
+                                   />
                         </div>
                       )) : selection === 'posters' ?
 
                       mediaVed?.posters?.map((media)=>(
                         <div className="img-container poster" key={media?.file_path}>
-                                <img src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} alt="" />
+                                <img 
+                                    loading="lazy"
+                                    src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
+                                    alt={media?.file_path} 
+                                    />
                         </div>
                       )) 
                       :

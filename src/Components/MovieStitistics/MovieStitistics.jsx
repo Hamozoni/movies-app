@@ -2,9 +2,13 @@
 import { useEffect, useState } from 'react';
 import fetchData from '../../Utilities/fetchData';
 
+import facebook_id from '../../Images/insta.jpg';
+
+
 const MovieStitistics = ({id,details}) => {
      
   const [keywords,setKeywords] = useState();
+  const [externalIds,setExternalIds] = useState();
 
   useEffect(()=>{
     fetchData(`movie/${id}/keywords`)
@@ -12,13 +16,28 @@ const MovieStitistics = ({id,details}) => {
       setKeywords(data?.keywords);
       console.log(data)
     })
-
+    fetchData(`movie/${id}/external_ids`)
+    .then((data)=>{
+      setExternalIds(data);
+      console.log(data)
+    })
+   
   },[id]);
 
   return (
     <section className="movie-stits">
         <div className="stits-container">
             <nav className="stits-nav">
+              {
+                externalIds?.length &&
+                Object?.entries(externalIds)?.map((ids)=> (
+                  ids[0] !== 'id' && 
+                  <a href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} target='_blank'>
+                     <img src={facebook_id} alt="" />
+                  </a>
+                ))
+              }
+              {/* <a href={}></a> */}
 
             </nav>
             <div className="status">
