@@ -48,6 +48,7 @@ const MovieMedia = ({id,mediaType})=> {
                 </button> 
             </header>
             <div className="media-content">
+                <div className="media-content-container">
                     {  
                       selection === 'backdrops' ?
                       mediaVed?.backdrops?.map((media)=>(
@@ -65,6 +66,8 @@ const MovieMedia = ({id,mediaType})=> {
 
                       ''
                     }
+
+                </div>
 
             </div>
             <hr />

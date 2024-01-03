@@ -33,7 +33,6 @@ const Tv = () => {
                     <MovieSocial id={id} section='reviews' mediaType='tv'/>
                     <MovieMedia id={id} mediaType='tv' />
                     <Recommendations id={id} mediaType='tv'/>
-
                  </section>
             </section>
 

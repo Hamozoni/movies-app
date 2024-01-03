@@ -12,15 +12,21 @@
 
     }
     .media-content {
-        @include flex-box(flex-start,center,0);
+        max-width: 100%;
         overflow-x:  auto;
-        .img-container {
-            min-width: 500px;
-            max-height: 300;
-        }
-        .poster {
-            max-width: 200px;
-            min-width: 200px;
+        .media-content-container {
+            min-width: fit-content;
+            @include flex-box(flex-start,center,0);
+            .img-container {
+                min-width: 500px;
+                max-height: 300;
+            }
+            .poster , .poster img{
+                max-width: 200px;
+                min-width: 200px;
+                min-height: 300px;
+            }
+
         }
     }
 }

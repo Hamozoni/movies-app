@@ -57,7 +57,7 @@ function Recommendations({id,mediaType}) {
                         <div className="image">
                             <img 
                                 onClick={()=> handleNavigate(media?.media_type,media?.id)}
-                                src={process.env.REACT_APP_BASE_URL + "w300" + media?.poster_path} 
+                                src={process.env.REACT_APP_BASE_URL + "w300" + media?.backdrop_path} 
                                 alt="" />
                             <OnHoherOverlay media={media}/>
                         </div>
