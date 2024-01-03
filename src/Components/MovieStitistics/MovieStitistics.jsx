@@ -2,7 +2,19 @@
 import { useEffect, useState } from 'react';
 import fetchData from '../../Utilities/fetchData';
 
-import facebook_id from '../../Images/insta.jpg';
+import facebook_id from '../../Images/facebook.jpg';
+import wikidata_id from '../../Images/home.png';
+import imdb_id from '../../Images/imbd.png';
+import instagram_id from '../../Images/insta.jpg';
+import twitter_id from '../../Images/twiter.webp';
+
+const images = {
+  facebook_id,
+  wikidata_id,
+  imdb_id,
+  instagram_id,
+  twitter_id
+}
 
 
 const MovieStitistics = ({id,details}) => {
@@ -29,16 +41,14 @@ const MovieStitistics = ({id,details}) => {
         <div className="stits-container">
             <nav className="stits-nav">
               {
-                externalIds?.length &&
+                externalIds &&
                 Object?.entries(externalIds)?.map((ids)=> (
                   ids[0] !== 'id' && 
                   <a href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} target='_blank'>
-                     <img src={facebook_id} alt="" />
+                     <img src={images[ids[0]]} alt="" />
                   </a>
                 ))
               }
-              {/* <a href={}></a> */}
-
             </nav>
             <div className="status">
               <div className="stat">
