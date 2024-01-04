@@ -36,7 +36,7 @@ const TvShowSeasons = () => {
                     <div className="tv-image">
                         <img 
                             loading="lazy"
-                            src={process.env.REACT_APP_BASE_URL + 'w200' + seasons?.backdrop_path}
+                            src={process.env.REACT_APP_BASE_URL + 'w200' + seasons?.poster_path}
                             alt="" 
                             />
 

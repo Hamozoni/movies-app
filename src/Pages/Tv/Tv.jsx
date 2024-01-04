@@ -31,7 +31,10 @@ const Tv = () => {
             <section className='tv-content'>
                  <section className='cast'>
                     <TopBilledCast type='tv' id={id} title='Series Cast'/>
-                    <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.leng - 1]}/>
+                    {
+                        details?.seasons?.length &&
+                       <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.length - 1]}/>
+                    }
                     <MovieSocial id={id} section='reviews' mediaType='tv'/>
                     <MovieMedia id={id} mediaType='tv' />
                     <Recommendations id={id} mediaType='tv'/>

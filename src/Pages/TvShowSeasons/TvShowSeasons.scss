@@ -10,11 +10,16 @@ main.tv-seasons {
             .tv-details{
                 @include flex-box();
                 .tv-image {
-                    max-width: 150px;
+                    max-width: 70px;
+                    overflow: hidden;
+                    border-radius: $border-r;
                 }
 
             }
 
+        }
+        .tv-seasons-content {
+            padding: $padding;;
         }
     }
 }

@@ -2,10 +2,13 @@
 @import "../../GlobalStyle/mixin";
 
 .season-card {
-    @include flex-box();
+    @include flex-box(flex-start);
+    margin-bottom: $margin;
+    padding: $padding 0;
+    border-bottom: 1px solid #b1adad ;
     .season-image {
-        max-width: 150px;
-        min-width: 150px;
+        max-width: 100px;
+        min-width: 100px;
         img {
             border-radius: $border-r;
         }
