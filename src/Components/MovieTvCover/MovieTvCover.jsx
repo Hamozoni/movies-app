@@ -50,7 +50,11 @@ const MovieTvCover = ({details})=> {
                 style={{backgroundImage: `${linearGrad},url(${imageUrl})`}}>
                 <div className="cover-container">
                     <div className="cover-image">
-                        <img src={process.env.REACT_APP_BASE_URL + 'w300' + details?.poster_path} alt="" />
+                        <img 
+                            loading="lazy"
+                            src={process.env.REACT_APP_BASE_URL + 'w300' + details?.poster_path} 
+                            alt="" 
+                            />
                     </div>
                     <div className="cover-content">
                         <div className="titles">

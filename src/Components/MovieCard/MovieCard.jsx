@@ -16,6 +16,7 @@ const MovieCard = ({movie, type})=> {
         <div className="movie-card">
             <div className="image-container">
                  <img 
+                    loading="lazy"
                     onClick={handleNavigation}
                     className='poster'
                     src={process.env.REACT_APP_BASE_URL + 'w200' + imgUrl} 
