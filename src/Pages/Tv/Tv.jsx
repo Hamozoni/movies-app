@@ -7,6 +7,7 @@ import TopBilledCast from '../../Components/TopBilledCast/TopBilledCast';
 import MovieSocial from '../../Components/MovieSocial/MovieSocial';
 import MovieMedia from '../../Components/MovieMedia/MovieMedia';
 import Recommendations from '../../Components/Recommendations/Recommendations';
+import TvSeasonCard from '../../Components/TvSeasonCard/TvSeasonCard';
 
 const Tv = () => {
     const {id} = useParams();
@@ -30,6 +31,7 @@ const Tv = () => {
             <section className='tv-content'>
                  <section className='cast'>
                     <TopBilledCast type='tv' id={id} title='Series Cast'/>
+                    <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.leng - 1]}/>
                     <MovieSocial id={id} section='reviews' mediaType='tv'/>
                     <MovieMedia id={id} mediaType='tv' />
                     <Recommendations id={id} mediaType='tv'/>

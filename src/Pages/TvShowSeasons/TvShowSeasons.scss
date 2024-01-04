@@ -1,0 +1,20 @@
+
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+main.tv-seasons {
+    .tv-s-container {
+        .seasons-header {
+            padding: $padding;
+            background-color: $logo-color;
+            .tv-details{
+                @include flex-box();
+                .tv-image {
+                    max-width: 150px;
+                }
+
+            }
+
+        }
+    }
+}

@@ -1,0 +1,13 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.season-card {
+    @include flex-box();
+    .season-image {
+        max-width: 150px;
+        min-width: 150px;
+        img {
+            border-radius: $border-r;
+        }
+    }
+}

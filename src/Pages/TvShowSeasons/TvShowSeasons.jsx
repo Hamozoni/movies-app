@@ -6,6 +6,8 @@ import TvSeasonCard from "../../Components/TvSeasonCard/TvSeasonCard";
 
 import WestIcon from '@mui/icons-material/West';
 
+import "./TvShowSeasons.scss";
+
 const TvShowSeasons = () => {
 
     const {id} = useParams();
@@ -15,10 +17,12 @@ const TvShowSeasons = () => {
 
 
     useEffect(()=>{
+       
 
         fetchData(`tv/${id}?language=${lang}`)
         .then((data)=>{
-            setSeasons(data)
+            setSeasons(data);
+            console.log(data)
         })
 
     },[id,lang]);
@@ -37,9 +41,9 @@ const TvShowSeasons = () => {
                             />
 
                     </div>
-                    <div className="tv-details">
+                    <div className="tv-name">
                         <h3 className="name">
-                            {`${seasons?.name} (${new Date(first_air_date)?.getFullYear()})`}
+                            {`${seasons?.name} (${new Date(seasons?.first_air_date)?.getFullYear()})`}
                         </h3>
                         <Link> <WestIcon /> back to main</Link>
                     </div>
@@ -47,9 +51,9 @@ const TvShowSeasons = () => {
             </header>
             <div className="tv-seasons-content">
                 {
-                    seasons?.seasons((tvShow)=>(
-                        <TvSeasonCard key={tvShow?.id} tvShow={tvShow}/>
-                    ))
+                 seasons?.seasons?.map((tvShow)=>(
+                    <TvSeasonCard key={tvShow?.id} tvShow={tvShow}/>
+                 ))
                 }
             </div>
 

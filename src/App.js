@@ -7,6 +7,7 @@ import Movie from './Pages/Movie/Movie';
 import Person from './Pages/Person/Person';
 import Tv from './Pages/Tv/Tv';
 import Keywords from './Pages/Keywords/Keywords';
+import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path='/'  element={<Home />}/>
             <Route path='/movie/:id'  element={<Movie />}/>
             <Route path='/tv/:id'  element={<Tv />}/>
+            <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
         </Routes>

@@ -1,4 +1,5 @@
 
+import "./TvSeasonCard.scss";
 
 const TvSeasonCard = ({tvShow}) => {
 
@@ -21,7 +22,7 @@ const TvSeasonCard = ({tvShow}) => {
                         {tvShow?.vote_average}
                     </span>
                     <span className="year">
-                        {new Date(air_date)?.getFullYear()}.
+                        {new Date(tvShow?.air_date)?.getFullYear()}.
                     </span>
                     <span>
                         {tvShow?.episode_count} episodes
