@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../Utilities/fetchData";
 
@@ -31,7 +31,8 @@ const TvShowSeasons = () => {
 
                     </div>
                     <div className="tv-details">
-                        
+                        <h3 className="name"></h3>
+                        <Link></Link>
                     </div>
                 </div>
             </header>
