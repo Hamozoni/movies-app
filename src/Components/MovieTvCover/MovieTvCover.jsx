@@ -38,7 +38,7 @@ const MovieTvCover = ({details})=> {
 
     const getMovieRuntime = (time)=>{
         const runTime = (time / 60)?.toString()?.split('.');
-        return `${runTime[0]}h ${runTime[1]}m`
+        return `${runTime[0]}h ${time % 60}m`
         
     }
 

@@ -6,7 +6,7 @@
     .keywords-container{
          .key-content {
              .key-card {
-                @include flex-box();
+                @include flex-box(center,flex-start,0);
                 border-radius: $border-r;
                 overflow: hidden;
                 box-shadow: 0px 0px 9px -4px #8b8b8b;
@@ -18,6 +18,7 @@
                      }
                  }
                  .card-details {
+                    padding: $padding-10 $padding;
                      .key-title {
                         .name {
                             color: $text-dark-color;

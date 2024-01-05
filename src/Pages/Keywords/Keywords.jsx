@@ -16,19 +16,20 @@ const Keywords = () => {
     fetchData(`keyword/${id}/movies?include_adult=false&language=${lang}&page=1`)
     .then((data)=>{
       setKeywords(data);
+      console.log(data);
     })
   },[id,lang]);
 
   const MovieCard = ({movie})=> {
     return (
       <div className="key-card">
-          <div className="key-image">
+          <Link to={`/movie/${movie?.id}`} className="key-image">
               <img 
                   loading="lazy"
                   src={process.env.REACT_APP_BASE_URL + 'w200' + movie?.poster_path}
                   alt="" 
                 />
-          </div>
+          </Link>
         <div className="card-details">
             <div className="key-title">
                 <Link  className="name" to={`/movie/${movie?.id}`} >
