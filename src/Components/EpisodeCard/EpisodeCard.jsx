@@ -1,5 +1,9 @@
 import StarIcon from '@mui/icons-material/Star';
+import "./EpisodeCard.scss";
+
+
 const EpisodeCard = ({episode}) => {
+
   return (
     <div className="episode-card">
         <div className="card">
@@ -19,20 +23,22 @@ const EpisodeCard = ({episode}) => {
                         <h4 className="name">
                             {episode?.name}
                         </h4>
-                        <span className="rating">
-                            <StarIcon />
-                            {episode?.vote_average}
-                        </span>
-                        <span className="date">
-                            {episode?.air_date}
-                        </span>
-                        <span className="runtime">
-                            {episode?.runtime}m
-                        </span>
+                        <div className="rating-date">
+                            <span className="rating">
+                                <StarIcon />
+                                {episode?.vote_average}
+                            </span>
+                            <span className="date">
+                                {episode?.air_date}
+                            </span>
+                            <span className="runtime">
+                                {episode?.runtime}m
+                            </span>
+                        </div>
                     </div>
 
                 </div>
-                <p>{episode?.overview}</p>
+                <p className='overview'>{episode?.overview}</p>
             </div>
         </div>
 

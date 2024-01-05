@@ -1,0 +1,42 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.episode-card {
+    border-radius: $border-r;
+    margin-bottom: $margin;
+    box-shadow: 0px 0px 9px -4px #8b8b8b;
+    overflow: hidden;
+    .card {
+        @include flex-box;
+        .epis-image {
+            min-width: 200px;
+        }
+        .epis-details {
+            .titles {
+               @include flex-box(flex-start,flex-start,5px);
+               .rating-date  {
+                  @include flex-box(center,flex-start,5px);
+                  padding: $padding-5 0;
+                  font-size: $f-size-xs;
+                  font-weight: 500;
+                  color: $text-dark-color
+               }
+               .rating {
+                    @include flex-box(center,flex-start,0);
+                    border-radius: 5px;
+                    background-color: $logo-color;
+                    padding: 2px $padding-5;
+                  svg {
+                    font-size: $f-size-s;
+                  }
+               }
+
+            }
+            .overview {
+                font-size: $f-size-xs;
+                font-weight: 500;
+                color: $text-dark-color
+            }
+        }
+    }
+}
