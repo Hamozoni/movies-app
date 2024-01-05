@@ -8,6 +8,7 @@ import Person from './Pages/Person/Person';
 import Tv from './Pages/Tv/Tv';
 import Keywords from './Pages/Keywords/Keywords';
 import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
+import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/movie/:id'  element={<Movie />}/>
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
+            <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
         </Routes>

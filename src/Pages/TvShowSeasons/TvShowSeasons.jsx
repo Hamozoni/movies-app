@@ -52,7 +52,7 @@ const TvShowSeasons = () => {
             <div className="tv-seasons-content">
                 {
                  seasons?.seasons?.map((tvShow)=>(
-                    <TvSeasonCard key={tvShow?.id} tvShow={tvShow}/>
+                    <TvSeasonCard key={tvShow?.id} tvShow={tvShow} id={id}/>
                  ))
                 }
             </div>

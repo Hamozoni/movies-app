@@ -39,7 +39,7 @@ const Tv = () => {
                         </h4>
                             {
                                 details?.seasons?.length &&
-                            <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.length - 1]}/>
+                            <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.length - 1]} id={id}/>
                             }
                         <Link className='to-seasons' to={`/tv/${id}/seasons`}>
                             view all seasons

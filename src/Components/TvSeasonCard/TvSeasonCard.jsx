@@ -1,11 +1,17 @@
 
+import { useNavigate } from "react-router-dom";
 import "./TvSeasonCard.scss";
 
-const TvSeasonCard = ({tvShow}) => {
+const TvSeasonCard = ({tvShow,id}) => {
+
+    const navigate = useNavigate()
 
   return (
     <div className="season-card">
-        <div className="season-image">
+        <div 
+            onClick={()=> navigate(`/tv/${id}/season/${tvShow?.season_number}`)}
+            className="season-image"
+            >
             <img 
                 loading="lazy" 
                 src={process.env.REACT_APP_BASE_URL + 'w200' + tvShow?.poster_path}
