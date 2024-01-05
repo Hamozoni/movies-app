@@ -3,6 +3,8 @@ import fetchData from "../../Utilities/fetchData"
 import { Link, useParams } from "react-router-dom"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
+import "./Keyword.scss";
+
 const Keywords = () => {
 
   const {id} = useParams();
@@ -20,26 +22,28 @@ const Keywords = () => {
   const MovieCard = ({movie})=> {
     return (
       <div className="key-card">
-        <div className="-key-image">
-          <img 
-            loading="lazy"
-            src={process.env.REACT_APP_BASE_URL + 'w200' + movie?.poster_path}
-            alt="" 
-            />
-        </div>
+          <div className="key-image">
+              <img 
+                  loading="lazy"
+                  src={process.env.REACT_APP_BASE_URL + 'w200' + movie?.poster_path}
+                  alt="" 
+                />
+          </div>
         <div className="card-details">
-          <div className="key-title">
-             <Link to={`/movie/${movie?.id}`} >{movie?.title}</Link>
-             <span className="date-re">
-                 {movie?.release_date}
-             </span>
-          </div>
-          <div className="key-overview">
-            <p>
-               {movie?.overview}
-            </p>
+            <div className="key-title">
+                <Link  className="name" to={`/movie/${movie?.id}`} >
+                    {movie?.title}
+                </Link>
+                <p className="date-re">
+                    {movie?.release_date}
+                </p>
+            </div>
+            <div className="key-overview">
+                <p>
+                  {movie?.overview}
+                </p>
 
-          </div>
+            </div>
         </div>
       </div>
     )
