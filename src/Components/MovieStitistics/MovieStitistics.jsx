@@ -28,7 +28,7 @@ const MovieStitistics = ({id,details,type}) => {
   useEffect(()=>{
     fetchData(`${type}/${id}/keywords`)
     .then((data)=>{
-      setKeywords(data?.keywords);
+      setKeywords(data?.keywords || data?.results );
       console.log(data)
     })
     fetchData(`${type}/${id}/external_ids`)
