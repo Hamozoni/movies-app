@@ -20,7 +20,7 @@
                     color: $text-dark-color;
                 }
                 .back-to {
-                    @include flex-box(center,flex-start,0);
+                    @include flex-box(center,flex-start,5px);
                     color: lighten($color: $text-dark-color, $amount: 10);
                     font-size: $f-size-s;
                     font-weight: 700;

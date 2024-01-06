@@ -45,7 +45,9 @@ const TvShowSeasons = () => {
                         <h3 className="name">
                             {`${seasons?.name} (${new Date(seasons?.first_air_date)?.getFullYear()})`}
                         </h3>
-                        <Link> <WestIcon /> back to main</Link>
+                        <Link to={`/tv/${id}`} className="back-to"> 
+                            <WestIcon /> back to main
+                        </Link>
                     </div>
                 </div>
             </header>

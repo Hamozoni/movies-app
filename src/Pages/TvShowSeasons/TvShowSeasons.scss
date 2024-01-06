@@ -5,7 +5,7 @@
 main.tv-seasons {
     .tv-s-container {
         .seasons-header {
-            padding: $padding;
+            padding: $padding-5 $padding;
             background-color: $logo-color;
             .tv-details{
                 @include flex-box();
@@ -13,6 +13,19 @@ main.tv-seasons {
                     max-width: 70px;
                     overflow: hidden;
                     border-radius: $border-r;
+                }
+                .name {
+                    font-size: $main-f-size;
+                    color: $text-dark-color;
+                }
+                .back-to {
+                    @include flex-box(center,flex-start,5px);
+                    color: lighten($color: $text-dark-color, $amount: 10);
+                    font-size: $f-size-s;
+                    font-weight: 700;
+                    svg {
+                        font-size: $f-size-s;
+                    }
                 }
 
             }
