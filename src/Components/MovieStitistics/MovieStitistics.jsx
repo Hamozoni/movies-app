@@ -20,24 +20,24 @@ const images = {
 }
 
 
-const MovieStitistics = ({id,details}) => {
+const MovieStitistics = ({id,details,type}) => {
      
   const [keywords,setKeywords] = useState();
   const [externalIds,setExternalIds] = useState();
 
   useEffect(()=>{
-    fetchData(`movie/${id}/keywords`)
+    fetchData(`${type}/${id}/keywords`)
     .then((data)=>{
       setKeywords(data?.keywords);
       console.log(data)
     })
-    fetchData(`movie/${id}/external_ids`)
+    fetchData(`${type}/${id}/external_ids`)
     .then((data)=>{
       setExternalIds(data);
       console.log(data)
     })
    
-  },[id]);
+  },[id,type]);
 
   const navigate = useNavigate();
 

@@ -10,6 +10,7 @@ import Recommendations from '../../Components/Recommendations/Recommendations';
 import TvSeasonCard from '../../Components/TvSeasonCard/TvSeasonCard';
 
 import "./Tv.scss";
+import MovieStitistics from '../../Components/MovieStitistics/MovieStitistics';
 
 const Tv = () => {
     const {id} = useParams();
@@ -49,6 +50,9 @@ const Tv = () => {
                     <MovieMedia id={id} mediaType='tv' />
                     <Recommendations id={id} mediaType='tv'/>
                  </section>
+                 <div className="right-content">
+                    <MovieStitistics id={id} details={details} type='tv' />
+                </div>
             </section>
 
         </div>

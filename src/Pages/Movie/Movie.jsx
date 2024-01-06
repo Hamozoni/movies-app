@@ -42,7 +42,7 @@ const Movie = ()=> {
                         <Recommendations id={id} mediaType='movie'/>
                     </div>
                     <div className="right-content">
-                        <MovieStitistics id={id} details={movieDetails} />
+                        <MovieStitistics id={id} details={movieDetails}  type='movie' />
                     </div>
 
                 </section>
