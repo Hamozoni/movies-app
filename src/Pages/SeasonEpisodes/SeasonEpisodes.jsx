@@ -7,6 +7,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import WestIcon from '@mui/icons-material/West';
 import EpisodeCard from "../../Components/EpisodeCard/EpisodeCard";
+import "./SeasonEpisodes.scss";
 
 const SeasonEpisodes = () => {
 
@@ -38,9 +39,9 @@ const SeasonEpisodes = () => {
                 </div>
                 <div className="sea-titles">
                     <h4 className="name">
-                       {episodes?.name}
+                       {`${episodes?.name}(${new Date(episodes?.air_date)?.getFullYear() })`}
                     </h4>
-                    <Link >
+                    <Link to={`/tv/${id}/seasons`} className="back-to">
                        <WestIcon />
                         back to season list
                     </Link>

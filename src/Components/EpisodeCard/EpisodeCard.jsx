@@ -26,7 +26,7 @@ const EpisodeCard = ({episode}) => {
                         <div className="rating-date">
                             <span className="rating">
                                 <StarIcon />
-                                {episode?.vote_average}
+                                {episode?.vote_average?.toFixed(1)}
                             </span>
                             <span className="date">
                                 {episode?.air_date}
