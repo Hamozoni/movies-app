@@ -54,7 +54,6 @@ const PersonCover = ({details,id}) => {
                     </div>
 
                 </section>
-                <PersonActing knownFor={knownFor} />
             </div>
         </div>
     </section>
