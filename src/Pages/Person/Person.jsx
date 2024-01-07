@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../Utilities/fetchData";
 
+import "./person.scss";
+
 const Person = ()=> {
 
     const {id} = useParams();
