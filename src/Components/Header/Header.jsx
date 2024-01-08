@@ -6,16 +6,20 @@ import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 
 import "./Header.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
+import { SearchForm } from "../HomeSearchBar/SearchBar";
 
 const Header = ()=> {
 
     const {theme,lang} = useContext(globalContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const [isSearch,setisSearch] = useState(false);
 
     return (
         <header className="main-header">
@@ -47,12 +51,24 @@ const Header = ()=> {
                         <div className="acount">
                             <PersonAddOutlinedIcon />
                         </div>
-                        <div className="search-icon">
-                             <SearchOutlinedIcon />
+                        <div className="search-icon" 
+                             onClick={()=> setisSearch(!isSearch)}
+                             >
+                                {
+                                    isSearch ? 
+                                     <div  className="cancel-icon">
+                                         <CloseIcon /> 
+
+                                     </div>
+                                    :<SearchOutlinedIcon />
+                                }
                         </div>
 
                     </div>
                 </nav>
+                {
+                    isSearch && <SearchForm />
+                }
             </div>
         </header>
     );

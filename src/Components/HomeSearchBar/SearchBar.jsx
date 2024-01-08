@@ -5,21 +5,38 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import "./SearchBar.scss";
 import { useNavigate } from "react-router-dom";
 
-const SearchBar = ()=> {
+export const SearchForm = ()=> {
+    const { lang } = useContext(globalContext);
 
-   const { lang, theme} = useContext(globalContext);
+    const [query,setQuery] = useState('');
+    const navigate = useNavigate()
 
-   const [query,setQuery] = useState('');
-   const navigate = useNavigate()
-
-   const handleSearch = (e)=> {
+    const handleSearch = (e)=> {
         e.preventDefault();
         if(query?.length > 1){
             navigate(`/search/movie?query=${query}`)
         }
 
    };
+    return (
+        <form className="search-form">
+        <input 
+            value={query}
+            onChange={(e)=> setQuery(e.target.value)}
+            type="search" 
+            placeholder="Search for a movie,tv shows, person...." />
+        <button 
+            onClick={(e)=> handleSearch(e)}
+            className="search-btn">
+            {languages[lang].search}
+        </button>
+     </form>
+    )
+};
 
+const SearchBar = ()=> {
+
+   const { lang, theme} = useContext(globalContext);
 
 
 
@@ -32,18 +49,7 @@ const SearchBar = ()=> {
                  <h4>
                     {languages[lang].millionsOf}
                  </h4>
-                 <form className="search-form">
-                    <input 
-                        value={query}
-                        onChange={(e)=> setQuery(e.target.value)}
-                        type="search" 
-                        placeholder="Search for a movie,tv shows, person...." />
-                    <button 
-                        onClick={(e)=> handleSearch(e)}
-                        className="search-btn">
-                        {languages[lang].search}
-                    </button>
-                 </form>
+                 <SearchForm />
             </section>
         </div>
     );

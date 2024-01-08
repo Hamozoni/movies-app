@@ -13,26 +13,26 @@
         .welcome {
             font-size: $main-f-size + 10;
         }
-        .search-form {
-            width: 100%;
-            background-color: $text-light-color;
-            border-radius: $border-r-l;
-            margin-top: $margin + $margin;
-            @include flex-box(center,space-between,$gap-l);
-            overflow: hidden;
-            input {
-                flex: 1;
-                padding: $padding - 5;
-            }
-            button {
-                background-color: $logo-color;
-                height: 100%;
-                color: $text-light-color;
-                font-size: $f-size-s;
-                text-transform: capitalize;
-                padding: $padding - 6;
-                border-radius: $border-r-l;
-            }
-        }
+    }
+}
+.search-form {
+    width: 100%;
+    background-color: $text-light-color;
+    border-radius: $border-r-l;
+    margin-top: $margin + $margin;
+    @include flex-box(center,space-between,$gap-l);
+    overflow: hidden;
+    input {
+        flex: 1;
+        padding: $padding - 5;
+    }
+    button {
+        background-color: $logo-color;
+        height: 100%;
+        color: $text-light-color;
+        font-size: $f-size-s;
+        text-transform: capitalize;
+        padding: $padding - 6;
+        border-radius: $border-r-l;
     }
 }
