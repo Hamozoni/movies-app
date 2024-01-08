@@ -5,6 +5,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { MovieCard } from "../Keywords/Keywords";
 
 import "./search.scss";
+import PersonCard from "../../Components/PersonCard/PersonCard";
 
 const Search = ()=> {
     
@@ -29,6 +30,12 @@ const Search = ()=> {
 
     const navigate = useNavigate();
 
+    const handleFilter = (type)=> {
+
+        navigate(`/search/${type}${query?.search}`)
+        setPage(1)
+    }
+
     return (
         <main className="search">
             <div className="search-container">
@@ -38,52 +45,89 @@ const Search = ()=> {
                     </header>
                     <ul className="fliters-ul">
                         <li 
-                            onClick={()=> navigate(`/search/movie${query?.search}`)}
+                            onClick={()=> handleFilter('movie')}
                             className={type === 'movie' && 'active'}
                             >
                                 movie 
-                                <span>{new Intl.NumberFormat().format(searchData?.total_results)}</span>
+                                {
+                                    type === 'movie' &&
+                                    <span>
+                                        {new Intl.NumberFormat().format(searchData?.total_results)}
+                                     </span>
+                                }
                             </li>
                         <li 
-                           onClick={()=> navigate(`/search/tv${query?.search}`)}
+                           onClick={()=> handleFilter('tv')}
                            className={type === 'tv' && 'active'}
                            >
                               tv shows
+                              {
+                                    type === 'tv' &&
+                                    <span>
+                                        {new Intl.NumberFormat().format(searchData?.total_results)}
+                                        </span>
+                                }
                             </li>
                         <li 
-                           onClick={()=> navigate(`/search/people${query?.search}`)}
-                           className={type === 'people' && 'active'}
+                           onClick={()=> handleFilter('person')}
+                           className={type === 'person' && 'active'}
                            >
                             people
+                            {
+                                type === 'person' &&
+                                <span>
+                                    {new Intl.NumberFormat().format(searchData?.total_results)}
+                                    </span>
+                            }
                         </li>
                         <li 
-                           onClick={()=> navigate(`/search/collections${query?.search}`)}
-                           className={type === 'collections' && 'active'}
+                           onClick={()=> handleFilter('collection')}
+                           className={type === 'collection' && 'active'}
                            >
                             collections
+                            {
+                                type === 'collection' &&
+                                <span>
+                                    {new Intl.NumberFormat().format(searchData?.total_results)}
+                                </span>
+                            }
                         </li>
                         <li 
-                           onClick={()=> navigate(`/search/keywords${query?.search}`)}
-                           className={type === 'keywords' && 'active'}>keywords</li>
+                           onClick={()=> handleFilter('keyword')}
+                           className={type === 'keyword' && 'active'}>
+                            keywords
+                            {
+                                type === 'keyword' &&
+                                <span>
+                                    {new Intl.NumberFormat().format(searchData?.total_results)}
+                                    </span>
+                            }
+                            </li>
                         <li
-                           onClick={()=> navigate(`/search/companies${query?.search}`)}
-                           className={type === 'companies' && 'active'}
+                           onClick={()=> handleFilter('company')}
+                           className={type === 'company' && 'active'}
                            >
                             companies
-                        </li>
-                        <li 
-                           onClick={()=> navigate(`/search/networks${query?.search}`)}
-                           className={type === 'networks' && 'active'}
-                           >
-                            networks
+                            {
+                                type === 'company' &&
+                                <span>
+                                    {new Intl.NumberFormat().format(searchData?.total_results)}
+                                    </span>
+                            }
                         </li>
                     </ul>
 
                 </section>
                 <section className="search-resulte">
                     {
+
+                        
                         searchData?.results?.map((media)=> (
-                            <MovieCard movie={media} />
+                            type === 'person' ? 
+
+                            <PersonCard key={media?.id} person={media} />
+                            :
+                            <MovieCard key={media?.id} movie={media} />
                         ))
                     }
 
@@ -95,7 +139,7 @@ const Search = ()=> {
                             }
                                <li className="active" onClick={()=> setPage(page)}>{page}</li>
                             {
-                                searchData?.total_pages > 6 &&
+                               (page + 5) < searchData?.total_pages &&
                                 <>
                                     <li 
                                         onClick={()=> setPage(page + 1)}
