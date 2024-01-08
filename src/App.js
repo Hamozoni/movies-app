@@ -9,6 +9,7 @@ import Tv from './Pages/Tv/Tv';
 import Keywords from './Pages/Keywords/Keywords';
 import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
 import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
+import Search from './Pages/Search/Search';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
+            <Route path='/search/:type'  element={<Search />}/>
         </Routes>
       <Footer />
     </BrowserRouter>

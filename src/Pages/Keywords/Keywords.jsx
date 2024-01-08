@@ -5,6 +5,36 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./Keyword.scss";
 
+export const MovieCard = ({movie})=> {
+  return (
+    <div className="key-card">
+        <Link to={`/movie/${movie?.id}`} className="key-image">
+            <img 
+                loading="lazy"
+                src={process.env.REACT_APP_BASE_URL + 'w200' + movie?.poster_path}
+                alt="" 
+              />
+        </Link>
+      <div className="card-details">
+          <div className="key-title">
+              <Link  className="name" to={`/movie/${movie?.id}`} >
+                  {movie?.title || movie?.name}
+              </Link>
+              <p className="date-re">
+                  {movie?.release_date || movie?.first_air_date}
+              </p>
+          </div>
+          <div className="key-overview">
+              <p>
+                {movie?.overview}
+              </p>
+
+          </div>
+      </div>
+    </div>
+  )
+}
+
 const Keywords = () => {
 
   const {id} = useParams();
@@ -19,36 +49,6 @@ const Keywords = () => {
       console.log(data);
     })
   },[id,lang]);
-
-  const MovieCard = ({movie})=> {
-    return (
-      <div className="key-card">
-          <Link to={`/movie/${movie?.id}`} className="key-image">
-              <img 
-                  loading="lazy"
-                  src={process.env.REACT_APP_BASE_URL + 'w200' + movie?.poster_path}
-                  alt="" 
-                />
-          </Link>
-        <div className="card-details">
-            <div className="key-title">
-                <Link  className="name" to={`/movie/${movie?.id}`} >
-                    {movie?.title}
-                </Link>
-                <p className="date-re">
-                    {movie?.release_date}
-                </p>
-            </div>
-            <div className="key-overview">
-                <p>
-                  {movie?.overview}
-                </p>
-
-            </div>
-        </div>
-      </div>
-    )
-  }
 
 
   return (
