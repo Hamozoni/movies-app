@@ -1,0 +1,52 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+main.search {
+    padding: $padding;
+    .search-container {
+        @include flex-box(flex-start);
+        .search-flters {
+            min-width: 200px;
+            border-radius: $border-r;
+            overflow: hidden;
+            border: 1px solid #e6e3e3;
+            .filter-header {
+                background-color: $logo-color;
+                padding: $padding;
+            }
+            .fliters-ul {
+                li {
+                    padding: $padding-10 $padding;
+                    cursor: pointer;
+                    color: $text-dark-color;
+                    @include flex-box(center,space-between);
+                    span {
+                        background-color: #f0ebeb;
+                        padding: $padding-5 $padding-10;
+                        border-radius: 5px;
+                        font-size: $f-size-xs;
+                    }
+                    &.active, &:hover {
+                        background-color: #d3d0d0;
+                    }
+                }
+            }
+        }
+        .next-page {
+            ul.next {
+                @include flex-box;
+                max-width: fit-content;
+                margin: $margin auto;
+                li {
+                    cursor: pointer;
+                    padding: $padding-5;
+                    border-radius: $border-r;
+                    border: 1px solid transparent;
+                    &.active {
+                        border-color: #9e9a9a;
+                    }
+                }
+            }
+        }
+    }
+}
