@@ -21,6 +21,11 @@ const Header = ()=> {
 
     const [isSearch,setisSearch] = useState(false);
 
+    const handleNavigate = (filter)=>{
+        navigate(`/movies/${filter}`)
+
+    };
+
     return (
         <header className="main-header">
             <div className="header-container">
@@ -29,7 +34,15 @@ const Header = ()=> {
                 </section>
                 <nav className="nav-links">
                     <div className="part-one">
-                        <h4>{languages[lang].movies}</h4>
+                        <h4>
+                            {languages[lang].movies} 
+                            <ul className="fiter">
+                                <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
+                                <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].nowPlaying}</li>
+                                <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].upComing}</li>
+                                <li onClick={()=> handleNavigate('top_rated')}>{languages[lang].topRated}</li>
+                            </ul>
+                        </h4>
                         <h4>{languages[lang].tvShows}</h4>
                         <h4>{languages[lang].people}</h4>
                     </div>
