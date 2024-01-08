@@ -8,7 +8,9 @@ import "./Keyword.scss";
 export const MovieCard = ({movie})=> {
   return (
     <div className="key-card">
-        <Link to={`/movie/${movie?.id}`} className="key-image">
+        <Link 
+            to={movie?.title ? `/movie/${movie?.id}` : `/tv/${movie?.id}`} 
+            className="key-image">
             <img 
                 loading="lazy"
                 src={process.env.REACT_APP_BASE_URL + 'w200' + movie?.poster_path}
@@ -17,7 +19,10 @@ export const MovieCard = ({movie})=> {
         </Link>
       <div className="card-details">
           <div className="key-title">
-              <Link  className="name" to={`/movie/${movie?.id}`} >
+              <Link 
+                  className="name" 
+                  to={movie?.title ? `/movie/${movie?.id}` : `/tv/${movie?.id}`} 
+                  >
                   {movie?.title || movie?.name}
               </Link>
               <p className="date-re">

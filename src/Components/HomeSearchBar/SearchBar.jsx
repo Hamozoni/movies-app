@@ -1,12 +1,28 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { languages } from "../../Utilities/languages"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./SearchBar.scss";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = ()=> {
 
    const { lang, theme} = useContext(globalContext);
+
+   const [query,setQuery] = useState('');
+   const navigate = useNavigate()
+
+   const handleSearch = (e)=> {
+        e.preventDefault();
+        if(query?.length > 1){
+            navigate(`/search/movie?query=${query}`)
+        }
+
+   };
+
+
+
+
     return (
         <div className="search-bar" >
             <section className={`${theme} search-bar-container`}>
@@ -17,8 +33,14 @@ const SearchBar = ()=> {
                     {languages[lang].millionsOf}
                  </h4>
                  <form className="search-form">
-                    <input type="search" placeholder="Search for a movie,tv shows, person...." />
-                    <button className="search-btn">
+                    <input 
+                        value={query}
+                        onChange={(e)=> setQuery(e.target.value)}
+                        type="search" 
+                        placeholder="Search for a movie,tv shows, person...." />
+                    <button 
+                        onClick={(e)=> handleSearch(e)}
+                        className="search-btn">
                         {languages[lang].search}
                     </button>
                  </form>
