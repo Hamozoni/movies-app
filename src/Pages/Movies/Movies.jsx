@@ -18,6 +18,8 @@ const Movies = () => {
     const [genres,setGenres] = useState([]);
     const [languages,setLanguages] = useState([]);
 
+    const [userScore,setUserScore] = useState({minRate: 0, maxRate: 10});
+
     const {filter}= useParams()
 
     useEffect(()=>{
@@ -176,6 +178,28 @@ const Movies = () => {
                                 </ul>
                             </div>
                         </div>
+                     </section>
+                     <section className="user-score">
+                        <h5 className="us-score">
+                            user score
+                        </h5>
+                        <div className="rang">
+                            <span  
+                                style={{left: `${userScore?.minRate * 10}%`}}
+                                className="left"
+                                >
+                                </span>
+                            <span 
+                                style={{left: `${userScore?.maxRate* 10}%`}}
+                                className="right"
+                                onMouseDown={(e)=> console.log(e)}
+                                ></span>
+                            <div 
+                                style={{width: `${userScore?.maxRate* 10}%`,left: `${userScore?.minRate* 10}%`}}
+                                className="reng-fill">
+                            </div>
+                        </div>
+
                      </section>
                 </section>
 

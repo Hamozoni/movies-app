@@ -13,4 +13,27 @@
             flex-wrap: wrap;
         }
     }
+    .rang {
+        min-width: 200px;
+        max-width: 200px;
+        background-color: antiquewhite;
+        height: 6px;
+        position: relative;
+        margin: $margin 0;
+        .reng-fill {
+            height: 6px;
+        }
+        .reng-fill, .left, .right {
+            position: absolute;
+            top:0;
+            background-color: aqua;
+
+        }
+        .left, .right {
+            width: 20px;
+            height: 20px;
+            border-radius: $circle;
+            translate: 0 calc(-50% + 3px);
+        }
+    }
 }
