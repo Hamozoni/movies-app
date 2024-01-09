@@ -38,8 +38,11 @@ const MovieCard = ({movie, type})=> {
                     
             </div>
             <div className="content">
-                <h3 className="title" onClick={handleNavigation}>
-                    {type === 'movie' ? movie?.title : movie?.name}
+                <h3 
+                   className="title" 
+                   onClick={handleNavigation}
+                   >
+                    {movie?.title || movie?.name}
                 </h3>
                 {
                     type === 'movie' && 

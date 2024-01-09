@@ -1,2 +1,16 @@
 @import "../../GlobalStyle/variables";
 @import "../../GlobalStyle/mixin";
+
+.movies {
+    padding: $padding;
+    .movies-container {
+        @include flex-box(flex-start);
+        .filters {
+            min-width: fit-content;
+        }
+        .movies-content {
+            @include flex-box(flex-start,center);
+            flex-wrap: wrap;
+        }
+    }
+}

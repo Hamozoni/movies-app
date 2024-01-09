@@ -24,10 +24,13 @@ const Movies = () => {
   return (
     <main className="movies">
         <div className="movies-container">
-            <div className="filters">
+            <section className="filters">
+                <h4 className="filt-title">
+                    {filter?.replace('_',' ')} Movies
+                </h4>
 
-            </div>
-            <div className="content">
+            </section>
+            <div className="movies-content">
                 {
                     movies?.results?.map((movie)=> (
                         <MovieCard key={movie?.id} movie={movie} type='movie'/>
