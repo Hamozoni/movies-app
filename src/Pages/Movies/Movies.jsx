@@ -105,15 +105,32 @@ const Movies = () => {
                      </h5>
                      <div className="show-me">
                         <h5>show me</h5>
-                        <label htmlFor="everything">Everything</label>
-                        <input type="radio" name="show-me" id="everything" />
+                        <div className="show-content">
+                            <label htmlFor="everything">Everything</label>
+                            <input type="radio" name="show-me" id="everything" />
 
-                        <label htmlFor="haven't">Movies I Haven't Seen</label>
-                        <input type="radio" name="show-me" id="haven't" />
+                            <label htmlFor="haven't">Movies I Haven't Seen</label>
+                            <input type="radio" name="show-me" id="haven't" />
 
-                        <label htmlFor="have">Movies I Have Seen</label>
-                        <input type="radio" name="show-me" id="have" />
+                            <label htmlFor="have">Movies I Have Seen</label>
+                            <input type="radio" name="show-me" id="have" />
+
+                        </div>
                      </div>
+                     <section className="release-date">
+                        <h5>Release Dates</h5>
+                        <div className="release-cont">
+                            <div className="from-d">
+                                <label htmlFor="from-date"> from</label>
+                                <input type="date" name="from-date" id="from-date" />
+
+                            </div>
+                            <div className="to-d">
+                               <label htmlFor="to-date"> to</label>
+                                <input type="date" name="to-date" id="to-date" />
+                            </div>
+                        </div>
+                     </section>
                 </section>
 
             </section>
