@@ -34,9 +34,9 @@ const Header = ()=> {
                 </section>
                 <nav className="nav-links">
                     <div className="part-one">
-                        <h4>
+                        <h4 >
                             {languages[lang].movies} 
-                            <ul popover className="fiter">
+                            <ul className="fiter">
                                 <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
                                 <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].nowPlaying}</li>
                                 <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].upComing}</li>

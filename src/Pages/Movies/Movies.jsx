@@ -131,6 +131,16 @@ const Movies = () => {
                             </div>
                         </div>
                      </section>
+                     <section className="genres">
+                        <h5 className="gen-ti">
+                            genres
+                        </h5>
+                        <nav className="gen-nav">
+                            <ul className="genr-ul">
+                                
+                            </ul>
+                        </nav>
+                     </section>
                 </section>
 
             </section>

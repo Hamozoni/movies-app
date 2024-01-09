@@ -31,19 +31,19 @@
                     text-transform: capitalize;
                     color: $text-light-color;
                     cursor: pointer;
-                    // .fiter {
-                    //     position: absolute;
-                    //     left: 0;
-                    //     top: 200%;
-                    //     background-color: #fff;
-                    //     padding: $padding-10;
-                    //     min-width: fit-content;
-                    //     border-radius: 5px;
-                    //     z-index: 9999;
-                    //     li {
-                    //         cursor: pointer;
-                    //     }
-                    // }
+                    .fiter {
+                        position: absolute;
+                        left: 0;
+                        top: 200%;
+                        background-color: #fff;
+                        padding: $padding-10;
+                        min-width: fit-content;
+                        border-radius: 5px;
+                        z-index: 9999;
+                        li {
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
             .part-two {
