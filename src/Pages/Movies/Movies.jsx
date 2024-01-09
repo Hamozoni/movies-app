@@ -15,6 +15,8 @@ const Movies = () => {
 
     const [countries,setCountries] = useState([]);
     const [providers,setProviders] = useState([]);
+    const [genres,setGenres] = useState([]);
+    const [languages,setLanguages] = useState([]);
 
     const {filter}= useParams()
 
@@ -32,8 +34,16 @@ const Movies = () => {
         .then((data)=> {
             setProviders(data?.results);
         })
+        fetchData(`genre/movie/list?language=en`)
+        .then((data)=>{
+            setGenres(data?.genres);
+        })
+        fetchData(`configuration/languages `)
+        .then((data)=>{
+            setLanguages(data);
+        })
 
-       
+        
     },[lang,filter]);
 
   return (
@@ -137,9 +147,35 @@ const Movies = () => {
                         </h5>
                         <nav className="gen-nav">
                             <ul className="genr-ul">
-                                
+                                {
+                                    genres?.map((gen)=>(
+                                        <li key={gen?.id}>{gen?.name}</li>
+                                    ))
+                                }
                             </ul>
                         </nav>
+                     </section>
+                     <section className="lang">
+                        <h5 className="lang-ti">
+                            language
+                        </h5>
+                        <div className="lang-box">
+                            <header className="lang-header">
+                                <input 
+                                    type="search" 
+                                    placeholder="Filter items based on their original language."
+                                    />
+                            </header>
+                            <div className="lang">
+                                <ul>
+                                    {
+                                        languages?.map((lang)=>(
+                                            <li key={lang?.iso_639_1}>{lang?.english_name}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </div>
                      </section>
                 </section>
 
