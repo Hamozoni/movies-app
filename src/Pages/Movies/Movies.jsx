@@ -49,7 +49,7 @@ const Movies = () => {
                      </h4>
                      <div className="sort-content">
                         <h5 className="c-ti">
-                           Sort Results By
+                           Sort Results By 
                         </h5>
                         <select name="" id="">
                             <option value="popularty.desc">popularty descending</option>
@@ -63,7 +63,7 @@ const Movies = () => {
                 </section>
                 <section className="watch">
                      <h5 className="w-ti">
-                         Where To Watch
+                         Where To Watch <ChevronRightIcon />
                      </h5>
                      <div className="watch-content">
                         <section className="country">
@@ -100,7 +100,20 @@ const Movies = () => {
                      </div>
                 </section>
                 <section className="filter">
+                     <h5 className="fil-ti">
+                        filters <ChevronRightIcon />
+                     </h5>
+                     <div className="show-me">
+                        <h5>show me</h5>
+                        <label htmlFor="everything">Everything</label>
+                        <input type="radio" name="show-me" id="everything" />
 
+                        <label htmlFor="haven't">Movies I Haven't Seen</label>
+                        <input type="radio" name="show-me" id="haven't" />
+
+                        <label htmlFor="have">Movies I Have Seen</label>
+                        <input type="radio" name="show-me" id="have" />
+                     </div>
                 </section>
 
             </section>
