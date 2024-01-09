@@ -36,7 +36,7 @@ const Header = ()=> {
                     <div className="part-one">
                         <h4>
                             {languages[lang].movies} 
-                            <ul className="fiter">
+                            <ul popover className="fiter">
                                 <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
                                 <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].nowPlaying}</li>
                                 <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].upComing}</li>
