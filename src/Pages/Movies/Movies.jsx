@@ -190,17 +190,18 @@ const Movies = () => {
                                 >
                                 </span>
                             <span 
-                                style={{left: `${userScore?.maxRate* 10}%`}}
+                                style={{left: `${userScore?.maxRate * 10}%`}}
                                 className="right"
                                 onDrag={(e)=> setUserScore(prev=> {
+                                    console.log(e)
                                     return {
                                         ...prev,
-                                        maxRate : ((e.clientX - 30) / 20).toFixed(0)
+                                        maxRate : e.clientX !== 0 && e.clientX < 229 &&  e.clientX > 29  ?  ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
                                     }
                                 })}
                                 ></span>
                             <div 
-                                style={{width: `${userScore?.maxRate* 10}%`,left: `${userScore?.minRate* 10}%`}}
+                                style={{width: `${userScore?.maxRate * 10}%`,left: `${userScore?.minRate * 10}%`}}
                                 className="reng-fill">
                             </div>
                         </div>
