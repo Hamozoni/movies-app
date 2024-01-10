@@ -192,7 +192,12 @@ const Movies = () => {
                             <span 
                                 style={{left: `${userScore?.maxRate* 10}%`}}
                                 className="right"
-                                onMouseDown={(e)=> console.log(e)}
+                                onDrag={(e)=> setUserScore(prev=> {
+                                    return {
+                                        ...prev,
+                                        maxRate : ((e.clientX - 30) / 20).toFixed(0)
+                                    }
+                                })}
                                 ></span>
                             <div 
                                 style={{width: `${userScore?.maxRate* 10}%`,left: `${userScore?.minRate* 10}%`}}
