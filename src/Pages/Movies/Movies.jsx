@@ -185,6 +185,14 @@ const Movies = () => {
                         </h5>
                         <div className="rang">
                             <span  
+                                onDrag={(e)=> setUserScore(prev=> {
+                                    console.log(e);
+                                    const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+                                    return {
+                                        ...prev,
+                                        minRate : isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
+                                    }
+                                })}
                                 style={{left: `${userScore?.minRate * 10}%`}}
                                 className="left"
                                 >
@@ -193,15 +201,31 @@ const Movies = () => {
                                 style={{left: `${userScore?.maxRate * 10}%`}}
                                 className="right"
                                 onDrag={(e)=> setUserScore(prev=> {
+
+                                    const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+                                    
                                     console.log(e)
                                     return {
                                         ...prev,
-                                        maxRate : e.clientX !== 0 && e.clientX < 229 &&  e.clientX > 29  ?  ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
+                                        maxRate : isFalidArea ? ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
                                     }
                                 })}
                                 ></span>
                             <div 
-                                style={{width: `${userScore?.maxRate * 10}%`,left: `${userScore?.minRate * 10}%`}}
+                                onClick={(e)=> setUserScore(prev=> {
+                                    
+                                    const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+
+                                    if(isFalidArea) {
+
+                                    }
+
+                                    return {
+                                        ...prev
+
+                                    }
+                                })}
+                                style={{width: `${(userScore?.maxRate - userScore?.minRate) * 10}%`,left: `${userScore?.minRate * 10}%`}}
                                 className="reng-fill">
                             </div>
                         </div>

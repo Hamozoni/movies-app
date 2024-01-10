@@ -27,10 +27,10 @@
             position: absolute;
             top:0;
             background-color: aqua;
-            cursor: move;
-
+            cursor: pointer;
         }
         .left, .right {
+            cursor:grabbing;
             width: 20px;
             height: 20px;
             border-radius: $circle;
