@@ -213,17 +213,23 @@ const Movies = () => {
                                 ></span>
                             <div 
                                 onClick={(e)=> setUserScore(prev=> {
-                                    
+
                                     const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
 
-                                    if(isFalidArea) {
+                                        if(e.clientX < 119 && prev.maxRate > 5) {
+                                            return {
+                                                ...prev,
+                                                minRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
+        
+                                            }
+                                        }else if(e.clientX > 119 && prev.minRate < 5) {
+                                            return {
+                                                ...prev,
+                                                maxRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
+        
+                                            }
+                                        }
 
-                                    }
-
-                                    return {
-                                        ...prev
-
-                                    }
                                 })}
                                 style={{width: `${(userScore?.maxRate - userScore?.minRate) * 10}%`,left: `${userScore?.minRate * 10}%`}}
                                 className="reng-fill">
