@@ -16,7 +16,7 @@
     .rang {
         min-width: 200px;
         max-width: 200px;
-        background-color: antiquewhite;
+        background-color: rgb(134, 129, 122);
         height: 6px;
         position: relative;
         margin: $margin 0;
@@ -24,11 +24,32 @@
         .reng-fill {
             height: 6px;
         }
-        .reng-fill, .left, .right, .shows-rate-panel {
+        .reng-fill, .left, .right, .shows-rate-panel ,.gage{
             position: absolute;
             top:0;
             background-color: aqua;
             cursor: pointer;
+        }
+        .gage {
+            background-color: unset;
+            width: 100%;
+            transform: translateY(-100%);
+            @include flex-box(center,center,0);
+            li {
+                width: calc(100% / 11);
+                @include flex-box(flex-end,center,0);
+                span {
+                    width: 1px;
+                    height: 5px;
+                    background-color: rgb(123, 125, 128);
+                    display: flex;
+                    cursor: pointer;
+                    &:hover {
+                        width: 2px;
+                        height: 6px;
+                    }
+                }
+            }
         }
         .shows-rate-panel {
            transform: translate(-50%,-140% );
@@ -42,7 +63,7 @@
             width: 20px;
             height: 20px;
             border-radius: $circle;
-            translate: 0 calc(-50% + 3px);
+            transform: translate(-50%,-7px);
             &:hover {
                 width: 25px;
                 height: 25px;

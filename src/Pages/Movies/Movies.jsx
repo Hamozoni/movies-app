@@ -52,21 +52,23 @@ const Movies = () => {
 
     const handleRatingRang = (e)=> {
 
+        console.log(e)
+
         setIsRatedPanel(true);
          setUserScore(prev=> {
 
-            const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+            const isFalidArea =  e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;;
 
                 if(e.clientX < 119 && prev?.maxRate > 5) {
                     return {
                         ...prev,
-                        minRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
+                        minRate: isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev.minRate
 
                     }
                 }else if(e.clientX > 119 && prev.minRate < 5) {
                     return {
                         ...prev,
-                        maxRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
+                        maxRate: isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev.maxRate
 
                     }
                 }
@@ -83,12 +85,12 @@ const Movies = () => {
             if(dir === 'left'){
                 return {
                     ...prev,
-                    minRate : isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
+                    minRate : isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev.minRate
                 }
             }else if (dir === 'right') {
                 return {
                     ...prev,
-                    maxRate : isFalidArea ? ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
+                    maxRate : isFalidArea ? ((e.clientX - 20) / 20).toFixed(0) : prev.maxRate
                 }
             }
         })
@@ -234,6 +236,21 @@ const Movies = () => {
                             onClick={(e)=> handleRatingRang(e)} 
                             className="rang"
                             >
+                             <ul 
+                                onClick={(e)=> handleRatingRang(e)}
+                                className="gage">
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                                <li><span></span></li>
+                            </ul>
                             <div  
                                 onDrag={(e)=> handleDragingRate(e,'left') }
                                 style={{left: `${userScore?.minRate * 10}%`}}
