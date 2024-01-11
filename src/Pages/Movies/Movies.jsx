@@ -49,6 +49,51 @@ const Movies = () => {
         
     },[lang,filter]);
 
+
+    const handleRatingRang = (e)=> {
+
+        setIsRatedPanel(true);
+         setUserScore(prev=> {
+
+            const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+
+                if(e.clientX < 119 && prev?.maxRate > 5) {
+                    return {
+                        ...prev,
+                        minRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
+
+                    }
+                }else if(e.clientX > 119 && prev.minRate < 5) {
+                    return {
+                        ...prev,
+                        maxRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
+
+                    }
+                }
+
+        });
+    };
+
+    const handleDragingRate = (e,dir)=> {
+        setUserScore(prev=> {
+            setIsRatedPanel(true)
+            console.log(e);
+            const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+
+            if(dir === 'left'){
+                return {
+                    ...prev,
+                    minRate : isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
+                }
+            }else if (dir === 'right') {
+                return {
+                    ...prev,
+                    maxRate : isFalidArea ? ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
+                }
+            }
+        })
+    };
+
   return (
     <main className="movies">
         <div className="movies-container">
@@ -184,67 +229,31 @@ const Movies = () => {
                         <h5 className="us-score">
                             user score
                         </h5>
-                        <div className="rang">
+                        <div   
+                            onMouseLeave={()=> setIsRatedPanel(false)}  
+                            onClick={(e)=> handleRatingRang(e)} 
+                            className="rang"
+                            >
                             <div  
-                                onMouseLeave={()=> setIsRatedPanel(false)}
-                                onDrag={(e)=> setUserScore(prev=> {
-                                    setIsRatedPanel(true)
-                                    console.log(e);
-                                    const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
-                                    return {
-                                        ...prev,
-                                        minRate : isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
-                                    }
-                                })}
+                                onDrag={(e)=> handleDragingRate(e,'left') }
                                 style={{left: `${userScore?.minRate * 10}%`}}
                                 className="left"
                                 >
                             </div>
                             <div 
-                                onMouseLeave={()=> setIsRatedPanel(false)}
                                 style={{left: `${userScore?.maxRate * 10}%`}}
                                 className="right"
-                                onDrag={(e)=> setUserScore(prev=> {
-                                    setIsRatedPanel(true)
-                                    const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
-                                    
-                                    console.log(e)
-                                    return {
-                                        ...prev,
-                                        maxRate : isFalidArea ? ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
-                                    }
-                                })}
+                                onDrag={(e)=> handleDragingRate(e,'right')}
                                 >
                             </div>
                             {
                                 isRatedPanel &&
-                                <div 
-                                    style={{left: `${(userScore.maxRate - userScore.minRate) * 5}%`}}
-                                    className="shows-rate-panel"
-                                    >
+                                <div className="shows-rate-panel" >
                                     {`rated ${userScore?.minRate} - ${userScore?.maxRate}`}
                                 </div>
                             }
                             <div 
-                                onClick={(e)=> setUserScore(prev=> {
-
-                                    const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
-
-                                        if(e.clientX < 119 && prev?.maxRate > 5) {
-                                            return {
-                                                ...prev,
-                                                minRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
-        
-                                            }
-                                        }else if(e.clientX > 119 && prev.minRate < 5) {
-                                            return {
-                                                ...prev,
-                                                maxRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
-        
-                                            }
-                                        }
-
-                                })}
+                                onClick={(e)=> handleRatingRang(e)}
                                 style={{width: `${(userScore?.maxRate - userScore?.minRate) * 10}%`,left: `${userScore?.minRate * 10}%`}}
                                 className="reng-fill">
                             </div>
