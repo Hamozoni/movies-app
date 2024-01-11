@@ -23,11 +23,15 @@
         .reng-fill {
             height: 6px;
         }
-        .reng-fill, .left, .right {
+        .reng-fill, .left, .right, .shows-rate-panel {
             position: absolute;
             top:0;
             background-color: aqua;
             cursor: pointer;
+        }
+        .shows-rate-panel {
+           transform: translate(-50%,-100%);
+
         }
         .left, .right {
             cursor:grabbing;
@@ -35,6 +39,11 @@
             height: 20px;
             border-radius: $circle;
             translate: 0 calc(-50% + 3px);
+            &:hover {
+                width: 25px;
+                height: 25px;
+                z-index: 9999;
+            }
         }
     }
 }

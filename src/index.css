@@ -12,6 +12,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   text-transform: capitalize;
+  transition: all .3s;
 }
 
 a {

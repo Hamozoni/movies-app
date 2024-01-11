@@ -17,6 +17,7 @@ const Movies = () => {
     const [providers,setProviders] = useState([]);
     const [genres,setGenres] = useState([]);
     const [languages,setLanguages] = useState([]);
+    const [isRatedPanel,setIsRatedPanel] = useState(false);
 
     const [userScore,setUserScore] = useState({minRate: 0, maxRate: 10});
 
@@ -185,7 +186,9 @@ const Movies = () => {
                         </h5>
                         <div className="rang">
                             <div  
+                                onMouseLeave={()=> setIsRatedPanel(false)}
                                 onDrag={(e)=> setUserScore(prev=> {
+                                    setIsRatedPanel(true)
                                     console.log(e);
                                     const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
                                     return {
@@ -198,10 +201,11 @@ const Movies = () => {
                                 >
                             </div>
                             <div 
+                                onMouseLeave={()=> setIsRatedPanel(false)}
                                 style={{left: `${userScore?.maxRate * 10}%`}}
                                 className="right"
                                 onDrag={(e)=> setUserScore(prev=> {
-
+                                    setIsRatedPanel(true)
                                     const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
                                     
                                     console.log(e)
@@ -212,9 +216,15 @@ const Movies = () => {
                                 })}
                                 >
                             </div>
-                            <div className="shows-rate-panel">
-                                {`rated ${userScore?.minRate} - ${userScore?.maxRate}`}
-                            </div>
+                            {
+                                isRatedPanel &&
+                                <div 
+                                    style={{left: `${(userScore.maxRate - userScore.minRate) * 5}%`}}
+                                    className="shows-rate-panel"
+                                    >
+                                    {`rated ${userScore?.minRate} - ${userScore?.maxRate}`}
+                                </div>
+                            }
                             <div 
                                 onClick={(e)=> setUserScore(prev=> {
 
