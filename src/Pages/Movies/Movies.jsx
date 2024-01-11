@@ -5,6 +5,7 @@ import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import MovieCard from "../../Components/MovieCard/MovieCard";
+import MovieTvFilter from "../../Components/MovieTvFilter/MovieTvFilter";
 
 
 const Movies = () => {
@@ -26,6 +27,7 @@ const Movies = () => {
   return (
     <main className="movies">
         <div className="movies-container">
+             <MovieTvFilter />
 
             <div className="movies-content">
                 {
