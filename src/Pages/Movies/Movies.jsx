@@ -184,7 +184,7 @@ const Movies = () => {
                             user score
                         </h5>
                         <div className="rang">
-                            <span  
+                            <div  
                                 onDrag={(e)=> setUserScore(prev=> {
                                     console.log(e);
                                     const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
@@ -196,8 +196,8 @@ const Movies = () => {
                                 style={{left: `${userScore?.minRate * 10}%`}}
                                 className="left"
                                 >
-                                </span>
-                            <span 
+                            </div>
+                            <div 
                                 style={{left: `${userScore?.maxRate * 10}%`}}
                                 className="right"
                                 onDrag={(e)=> setUserScore(prev=> {
@@ -210,13 +210,17 @@ const Movies = () => {
                                         maxRate : isFalidArea ? ((e.clientX - 30) / 20).toFixed(0) : prev.maxRate
                                     }
                                 })}
-                                ></span>
+                                >
+                            </div>
+                            <div className="shows-rate-panel">
+                                {`rated ${userScore?.minRate} - ${userScore?.maxRate}`}
+                            </div>
                             <div 
                                 onClick={(e)=> setUserScore(prev=> {
 
                                     const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
 
-                                        if(e.clientX < 119 && prev.maxRate > 5) {
+                                        if(e.clientX < 119 && prev?.maxRate > 5) {
                                             return {
                                                 ...prev,
                                                 minRate: isFalidArea ?  ((e.clientX - 30) / 20).toFixed(0) : prev.minRate
