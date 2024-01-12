@@ -6,6 +6,7 @@ import { MovieCard } from "../Keywords/Keywords";
 
 import "./search.scss";
 import PersonCard from "../../Components/PersonCard/PersonCard";
+import PageNumber from "../../Components/PageNumber/PageNumber";
 
 const Search = ()=> {
     
@@ -33,8 +34,8 @@ const Search = ()=> {
     const handleFilter = (type)=> {
 
         navigate(`/search/${type}${query?.search}`)
-        setPage(1)
-    }
+        setPage(1);
+    };
 
     return (
         <main className="search">
@@ -130,36 +131,7 @@ const Search = ()=> {
                             <MovieCard key={media?.id} movie={media} />
                         ))
                     }
-
-                    <div className="next-page">
-                        <ul className="next">
-                            {
-                                page > 1 &&
-                                <li onClick={()=> setPage(page - 1)}>prev</li>
-                            }
-                               <li className="active" onClick={()=> setPage(page)}>{page}</li>
-                            {
-                               (page + 5) < searchData?.total_pages &&
-                                <>
-                                    <li 
-                                        onClick={()=> setPage(page + 1)}
-                                        >
-                                            {page + 1}
-                                        </li>
-                                    <li onClick={()=> setPage(page + 2)}>{page + 2}</li>
-                                    <li onClick={()=> setPage(page + 3)}>{page + 3}</li>
-                                    <li onClick={()=> setPage(page + 4)}>{page + 4}</li>
-                                    <li onClick={()=> setPage(page + 5)}>{page + 5}</li>
-                                </>
-                            }
-                            <li onClick={()=> setPage(searchData?.total_pages)}>{searchData?.total_pages}</li>
-                            {
-                                page < searchData?.total_pages &&
-                                <li onClick={()=> setPage(page + 1)}>next</li>
-                            }
-                        </ul>
-                    </div>
-
+                    <PageNumber page={page} setPage={setPage} totalPages={searchData?.total_pages}/>
                 </section>
 
             </div>

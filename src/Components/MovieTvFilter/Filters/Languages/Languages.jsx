@@ -35,6 +35,11 @@ const Languages = () => {
         const  newLang = languages.filter((el)=> el.english_name.toLowerCase().indexOf(valuelower) === 0);
 
         setFilterdLanguages(newLang);
+    };
+
+    const selectLang = (lang)=> {
+        setSelectedLanguage(lang);
+        setShowLangList(false)
     }
 
   return (
@@ -64,14 +69,14 @@ const Languages = () => {
                 </header>
                 <div className="lang">
                     <ul className="lang-ul">
-                                <li onClick={()=> setSelectedLanguage('none selected')}
+                                <li onClick={()=> selectLang('none selected')}
                                     className={`${selectedLanguage === 'none selected' && "active"} lang-li`}
                                     >
                                       none selected
                                 </li>
                         {
                             filterdLanguages?.map((lang)=>(
-                                <li onClick={()=> setSelectedLanguage(lang?.english_name)}
+                                <li onClick={()=> selectLang(lang?.english_name)}
                                     className={`${selectedLanguage === lang.english_name && "active"} lang-li`}
                                     key={lang?.iso_639_1}
                                     >

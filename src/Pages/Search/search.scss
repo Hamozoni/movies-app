@@ -32,23 +32,5 @@ main.search {
                 }
             }
         }
-        .next-page {
-            ul.next {
-                @include flex-box;
-                max-width: fit-content;
-                margin: $margin auto;
-                li {
-                    cursor: pointer;
-                    border-radius: $border-r;
-                    border: 1px solid transparent;
-                    font-size: $f-size-xs;
-                    font-weight: 900;
-                    &.active {
-                        border-color: #9e9a9a;
-                        padding: $padding-5;
-                    }
-                }
-            }
-        }
     }
 }

@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 
 const MovieTvFilter = () => {
 
-    const {filter} = useParams()
+    const {filter} = useParams();
 
 
   return (
