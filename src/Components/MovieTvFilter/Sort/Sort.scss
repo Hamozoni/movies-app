@@ -17,6 +17,8 @@
       }
     .sort-content {
         padding: $padding-10;
+        border: solid 1px;
+        border-color: #8b8b8b49 transparent;
         .c-ti {
             color: lighten($color: $text-dark-color, $amount: 10);
             font-size: $f-size-s;

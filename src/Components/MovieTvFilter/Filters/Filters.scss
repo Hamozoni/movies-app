@@ -1,0 +1,12 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.sort-content {
+    .show-content {
+        .option {
+            label {
+                padding: $padding-5;
+            }
+        }
+    }
+}
