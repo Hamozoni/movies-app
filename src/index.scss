@@ -40,10 +40,4 @@ img, picture {
   object-position: center;
 }
 
-.filter-t {
-  @include flex-box(center,space-between);
-  font-size: $f-size;
-  color: $text-dark-color;
-  border-bottom: 1px solid #c2c1c1c0;
-  padding: $padding-10;
-}
+

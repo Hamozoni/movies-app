@@ -5,12 +5,11 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import SortingGauge from "./SortingGauge/SortingGauge";
 import Sort from "./Sort/Sort";
+import WhereToWatch from "./WhereToWatch/WhereToWatch";
 
 
 const MovieTvFilter = () => {
 
-    const [countries,setCountries] = useState([]);
-    const [providers,setProviders] = useState([]);
     const [genres,setGenres] = useState([]);
     const [languages,setLanguages] = useState([]);
 
@@ -19,14 +18,7 @@ const MovieTvFilter = () => {
     const {filter} = useParams();
 
     useEffect(()=>{
-        fetchData(`configuration/countries?language=${lang}`)
-        .then((data)=> {
-            setCountries(data)
-        })
-        fetchData(`watch/providers/movie?language=${lang}&watch_region=SA`)
-        .then((data)=> {
-            setProviders(data?.results);
-        })
+
         fetchData(`genre/movie/list?language=en`)
         .then((data)=>{
             setGenres(data?.genres);
@@ -48,6 +40,7 @@ const MovieTvFilter = () => {
             {filter?.replace('_',' ')} Movies
         </h4>
         <Sort />
+        <WhereToWatch />
         <section className="filter">
             <h5 className="fil-ti">
                 filters <ChevronRightIcon />

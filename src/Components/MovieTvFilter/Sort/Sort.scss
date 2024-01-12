@@ -7,6 +7,14 @@
     border-radius: $border-r;
     border: 1px solid #e2e1e1;
     box-shadow: 0 0 10px 1px #8b8b8b49;
+    margin-top: $margin;
+    .filter-t {
+        @include flex-box(center,space-between);
+        font-size: $f-size;
+        color: $text-dark-color;
+        border-bottom: 1px solid #c2c1c1c0;
+        padding: $padding-10;
+      }
     .sort-content {
         padding: $padding-10;
         .c-ti {
@@ -16,7 +24,8 @@
             padding-bottom: $padding-10;
         }
         .selecteions {
-            min-width: 100%;
+            width: 100%;
+            max-width: 100%;
             padding: $padding-10;
             background-color: #d3d3d3;
             border-radius: $border-r;

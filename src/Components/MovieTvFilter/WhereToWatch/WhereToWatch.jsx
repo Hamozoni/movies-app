@@ -1,17 +1,46 @@
 
+import { useContext, useEffect, useState } from "react";
 import "./WhereToWatch.scss";
+import fetchData from "../../../Utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { useParams } from "react-router-dom";
+
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+import "../Sort/Sort.scss";
+
 const WhereToWatch = () => {
+
+    const [countries,setCountries] = useState([]);
+    const [providers,setProviders] = useState([]);
+
+    const {lang} = useContext(globalContext);
+
+    const {filter} = useParams();
+
+    useEffect(()=>{
+        fetchData(`configuration/countries?language=${lang}`)
+        .then((data)=> {
+            setCountries(data)
+        })
+        fetchData(`watch/providers/movie?language=${lang}&watch_region=SA`)
+        .then((data)=> {
+            setProviders(data?.results);
+        })
+          
+    },[lang,filter]);
+
   return (
-    <section className="watch">
+    <section className="sort">
         <h5 className="filter-t">
             Where To Watch <ChevronRightIcon />
         </h5>
-        <div className="watch-content">
+        <div className="sort-content">
             <section className="country">
                 <h5 className="c-ti">
                     country
                 </h5>
-                <select name="" id="">
+                <select className="selecteions">
                     {
                         countries?.map((country)=>(
                             <option 

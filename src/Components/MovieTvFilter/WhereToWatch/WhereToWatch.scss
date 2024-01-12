@@ -1,3 +1,17 @@
 @import "../../../GlobalStyle/variables";
 @import "../../../GlobalStyle/mixin";
 
+.movie-providers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 47px);
+    margin-top: $margin;
+    gap: 10px;
+    .provider-image {
+        width: calc(px / 4);
+        img {
+            cursor: pointer;
+            border-radius: $border-r;
+        }
+    }
+
+}
