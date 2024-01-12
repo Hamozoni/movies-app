@@ -21,7 +21,7 @@ const Sort = () => {
             <select 
                 onChange={(e)=> handleSelection(e)}
                 ref={selection} 
-                className='selecteions'
+                className='selections'
                 id='selecteions'
                 >
                 <option value="popularty.desc">popularty descending</option>

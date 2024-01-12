@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const SortingGauge = () => {
+const SortingGauge = ({title}) => {
 
     const [userScore,setUserScore] = useState({minRate: 0, maxRate: 10});
     const [isRatedPanel,setIsRatedPanel] = useState(false);
@@ -55,7 +55,7 @@ const SortingGauge = () => {
   return (
     <section className="user-score">
         <h5 className="us-score">
-            user score
+           { title}
         </h5>
         <div   
             onMouseLeave={()=> setIsRatedPanel(false)}  

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import SortingGauge from "../SortingGauge/SortingGauge"
+import SortingGauge from "./SortingGauge/SortingGauge"
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import fetchData from "../../../Utilities/fetchData";
@@ -7,11 +7,12 @@ import fetchData from "../../../Utilities/fetchData";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Filters.scss";
+import Languages from "./Languages/Languages";
 
 const Filters = () => {
 
     const [genres,setGenres] = useState([]);
-    const [languages,setLanguages] = useState([]);
+
 
     const {lang} = useContext(globalContext);
 
@@ -23,12 +24,7 @@ const Filters = () => {
         .then((data)=>{
             setGenres(data?.genres);
         })
-        fetchData(`configuration/languages `)
-        .then((data)=>{
-            setLanguages(data);
-        })
-
-        
+   
     },[lang,filter]);
 
   return (
@@ -58,19 +54,19 @@ const Filters = () => {
             <section className="sort-content">
                 <h5 className="c-ti">Release Dates</h5>
                 <div className="release-cont">
-                    <div className="from-d">
-                        <label htmlFor="from-date"> from</label>
+                    <div className="release-date">
+                        <label className="c-ti" htmlFor="from-date"> from</label>
                         <input type="date" name="from-date" id="from-date" />
 
                     </div>
-                    <div className="to-d">
-                    <label htmlFor="to-date"> to</label>
-                        <input type="date" name="to-date" id="to-date" />
+                    <div className="release-date">
+                        <label className="c-ti" htmlFor="to-date"> to</label>
+                        <input type="date" value={new Date()} name="to-date" id="to-date" />
                     </div>
                 </div>
             </section>
             <section className="sort-content">
-                <h5 className="gen-ti">
+                <h5 className="c-ti">
                     genres
                 </h5>
                 <nav className="gen-nav">
@@ -84,31 +80,17 @@ const Filters = () => {
                 </nav>
             </section>
             <section className="sort-content">
-                <h5 className="lang-ti">
-                    language
-                </h5>
-                <div className="lang-box">
-                    <header className="lang-header">
-                        <input 
-                            type="search" 
-                            placeholder="Filter items based on their original language."
-                            />
-                    </header>
-                    <div className="lang">
-                        <ul>
-                            {
-                                languages?.map((lang)=>(
-                                    <li key={lang?.iso_639_1}>{lang?.english_name}</li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                </div>
+                <Languages />
             </section>
-            <div className="sort-content">
+            <section className="sort-content">
+               <SortingGauge  title="Minimum User Votes"/>
+            </section>
+            <section className="sort-content">
                <SortingGauge />
-
-            </div>
+            </section>
+            <section className="sort-content">
+               <SortingGauge title="runtime"/>
+            </section>
         </div>
     </section>
   )

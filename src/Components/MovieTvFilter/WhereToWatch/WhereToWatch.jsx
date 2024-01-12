@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import "../Sort/Sort.scss";
+import "../Filters/Sort/Sort.scss";
 
 const WhereToWatch = () => {
 
@@ -40,7 +40,7 @@ const WhereToWatch = () => {
                 <h5 className="c-ti">
                     country
                 </h5>
-                <select className="selecteions">
+                <select className="selections">
                     {
                         countries?.map((country)=>(
                             <option 

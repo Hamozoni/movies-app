@@ -1,6 +1,6 @@
 
-@import "../../../GlobalStyle/variables.scss";
-@import "../../../GlobalStyle/mixin.scss";
+@import "../../../../GlobalStyle/variables.scss";
+@import "../../../../GlobalStyle/mixin.scss";
 
 .sort {
     width: 240px;
@@ -12,20 +12,21 @@
         @include flex-box(center,space-between);
         font-size: $f-size;
         color: $text-dark-color;
-        border-bottom: 1px solid #c2c1c1c0;
+        border-bottom: 1px solid #dddadaab;
         padding: $padding-10;
       }
     .sort-content {
         padding: $padding-10;
-        border: solid 1px;
-        border-color: #8b8b8b49 transparent;
+        border-bottom:1px solid  #dddadaab ;
         .c-ti {
             color: lighten($color: $text-dark-color, $amount: 10);
             font-size: $f-size-s;
             font-weight: 200;
             padding-bottom: $padding-10;
         }
-        .selecteions {
+        .selections {
+            cursor: pointer;
+            @include flex-box(center,space-between);
             width: 100%;
             max-width: 100%;
             padding: $padding-10;

@@ -9,4 +9,28 @@
             }
         }
     }
+    .release-cont {
+        .release-date {
+            @include flex-box(center,space-between);
+            input {
+                border: 1px solid #dddadaab;
+                padding: $padding-5;
+                border-radius: $border-r;
+                color: lighten($color: $text-dark-color, $amount: 10);
+            }
+        }
+    }
+    .gen-nav {
+        .genr-ul {
+            @include flex-box(center,flex-start,5px);
+            flex-wrap: wrap;
+            li {
+                border: 1px solid #dddadaab;
+                padding: $padding-5 $padding-10;
+                border-radius: $border-r-l;
+                cursor: pointer;
+                font-size: $f-size-xs + 3;
+            }
+        }
+    }
 }

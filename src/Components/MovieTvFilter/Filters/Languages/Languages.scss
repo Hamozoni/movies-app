@@ -1,0 +1,43 @@
+@import "../../../../GlobalStyle/variables";
+@import "../../../../GlobalStyle/mixin";
+
+.lang-container {
+
+    .lang-box {
+        padding: $padding-10 0;
+        box-shadow: 0 0 10px 1px #8b8b8b49;
+        margin-top: $margin;
+        .lang-header {
+            padding: $padding-10;
+            .search-input {
+                @include flex-box(center,space-between,0);
+                 border-radius: $border-r;
+                 border: 1px solid #9b9898cc;
+                 padding: $padding-5;
+                 width: 100%;
+                 span {
+                    svg {
+                        font-size: $f-size-s;
+                    }
+                 }
+
+            }
+        }
+        .lang {
+            max-height: 200px;
+            overflow-y: auto;
+            .lang-ul {
+                .lang-li {
+                    padding: $padding-5 $padding-10;
+                    cursor: pointer;
+                    font-size: $f-size-s;
+                    color: lighten($color: $text-dark-color, $amount: 5);
+                    &:hover {
+                        background-color: #e0dede;
+                    }
+                }
+
+            }
+        }
+    }
+}
