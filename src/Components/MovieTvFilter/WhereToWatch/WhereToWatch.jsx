@@ -1,9 +1,9 @@
 
-
+import "./WhereToWatch.scss";
 const WhereToWatch = () => {
   return (
     <section className="watch">
-        <h5 className="w-ti">
+        <h5 className="filter-t">
             Where To Watch <ChevronRightIcon />
         </h5>
         <div className="watch-content">
