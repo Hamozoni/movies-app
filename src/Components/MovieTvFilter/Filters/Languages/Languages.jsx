@@ -12,7 +12,9 @@ import "./Languages.scss";
 const Languages = () => {
 
     const [languages,setLanguages] = useState([]);
+    const [filterdLanguages,setFilterdLanguages] = useState([]);
     const [showLangList,setShowLangList] = useState(false);
+    const [selectedLanguage,setSelectedLanguage] = useState('none seleted');
 
     const {lang} = useContext(globalContext);
 
@@ -22,9 +24,18 @@ const Languages = () => {
         fetchData(`configuration/languages `)
         .then((data)=>{
             setLanguages(data);
+            setFilterdLanguages(data)
         })
         
     },[lang,filter]);
+
+    const handleFiltering = (e)=> {
+
+        const valuelower = e.target.value.toLowerCase();
+        const  newLang = languages.filter((el)=> el.english_name.toLowerCase().indexOf(valuelower) === 0);
+
+        setFilterdLanguages(newLang);
+    }
 
   return (
     <div className="lang-container">
@@ -32,7 +43,7 @@ const Languages = () => {
             language
         </h5>
         <div className="selections" onClick={()=> setShowLangList(!showLangList)}>
-            <span>none seleted</span> 
+            <span>{selectedLanguage}</span> 
             <span><ArrowDropDownIcon /></span> 
             
         </div>
@@ -42,6 +53,7 @@ const Languages = () => {
                 <header className="lang-header">
                     <div className="search-input">
                         <input 
+                            onKeyUp={(e)=> handleFiltering(e)}
                             className="search-in"
                             type="search" 
                             />
@@ -52,9 +64,19 @@ const Languages = () => {
                 </header>
                 <div className="lang">
                     <ul className="lang-ul">
+                                <li onClick={()=> setSelectedLanguage('none selected')}
+                                    className={`${selectedLanguage === 'none selected' && "active"} lang-li`}
+                                    >
+                                      none selected
+                                </li>
                         {
-                            languages?.map((lang)=>(
-                                <li className="lang-li " key={lang?.iso_639_1}>{lang?.english_name}</li>
+                            filterdLanguages?.map((lang)=>(
+                                <li onClick={()=> setSelectedLanguage(lang?.english_name)}
+                                    className={`${selectedLanguage === lang.english_name && "active"} lang-li`}
+                                    key={lang?.iso_639_1}
+                                    >
+                                        {lang?.english_name}
+                                </li>
                             ))
                         }
                     </ul>

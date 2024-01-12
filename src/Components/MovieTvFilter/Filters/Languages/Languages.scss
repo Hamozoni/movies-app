@@ -2,11 +2,16 @@
 @import "../../../../GlobalStyle/mixin";
 
 .lang-container {
-
+     position: relative;
     .lang-box {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        width: 100%;
         padding: $padding-10 0;
         box-shadow: 0 0 10px 1px #8b8b8b49;
-        margin-top: $margin;
+        z-index: 9999999;
+        background-color: #ffffff;
         .lang-header {
             padding: $padding-10;
             .search-input {
@@ -24,7 +29,7 @@
             }
         }
         .lang {
-            max-height: 200px;
+            max-height: 150px;
             overflow-y: auto;
             .lang-ul {
                 .lang-li {
@@ -32,7 +37,7 @@
                     cursor: pointer;
                     font-size: $f-size-s;
                     color: lighten($color: $text-dark-color, $amount: 5);
-                    &:hover {
+                    &:hover, &.active {
                         background-color: #e0dede;
                     }
                 }
