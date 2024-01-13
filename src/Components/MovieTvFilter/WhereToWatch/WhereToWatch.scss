@@ -28,6 +28,23 @@
             svg {
                 font-size: $main-f-size;
             }
+            &.name {
+                display: none;
+                width: 200px;
+                max-width: fit-content;
+                transform: translateY(-110%);
+                height: unset;
+                max-height: fit-content;
+                padding: $padding-5;
+                background-color: $text-dark-color;
+                span {
+                    min-width: fit-content;
+                   word-break: keep-all;
+                }
+            }
+        }
+        &:hover .overlay.name{
+            display: flex;
         }
     }
 

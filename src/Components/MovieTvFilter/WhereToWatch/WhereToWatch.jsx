@@ -85,6 +85,9 @@ const WhereToWatch = () => {
                                     src={process.env.REACT_APP_BASE_URL + "original" + provider?.logo_path}
                                     alt="" 
                                 />
+                                <div className="overlay name">
+                                    <span>{provider.provider_name}</span>
+                                </div>
                                 {
                                     moviesFilter.with_watch_providers?.includes(provider.provider_name) &&
                                     <div className="overlay">

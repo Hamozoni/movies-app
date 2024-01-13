@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const SortingGauge = ({title}) => {
+const SortingGauge = ({title,min,max,renderedFrom}) => {
 
     const [userScore,setUserScore] = useState({minRate: 0, maxRate: 10});
     const [isRatedPanel,setIsRatedPanel] = useState(false);
