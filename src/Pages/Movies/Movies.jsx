@@ -13,10 +13,21 @@ export const movieFilter = createContext();
 
 const Movies = () => {
 
+    const intialFilter = {
+        sort_by: [],
+        'release_date.gte': [],
+        'release_date.lte': [],
+        without_genres: [],
+        with_original_language: ['none seleted'],
+        with_watch_providers: [],
+        'vote_average.gte': 0,
+        'vote_average.lte' : 10
+    }
+
     const {lang} = useContext(globalContext);
 
     const [movies,setMovies] = useState([]);
-    const [moviesFilter,setMoviesFilter] = useState([]);
+    const [moviesFilter,setMoviesFilter] = useState(intialFilter);
     const [page,setPage] = useState(1);
 
     const {filter}= useParams()
@@ -28,6 +39,10 @@ const Movies = () => {
             console.log(data);
         })   
     },[lang,filter,page]);
+
+    useEffect(()=>{
+         console.log(moviesFilter)
+    },[moviesFilter])
 
     const discoverMovies = (filter)=> {
         fetchData(`discover/movie?include_adult=false`)

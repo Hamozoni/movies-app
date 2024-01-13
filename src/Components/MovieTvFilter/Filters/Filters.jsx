@@ -8,8 +8,11 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Filters.scss";
 import Languages from "./Languages/Languages";
+import { movieFilter } from "../../../Pages/Movies/Movies";
 
 const Filters = () => {
+
+    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
 
     const [genres,setGenres] = useState([]);
 
@@ -56,12 +59,16 @@ const Filters = () => {
                 <div className="release-cont">
                     <div className="release-date">
                         <label className="c-ti" htmlFor="from-date"> from</label>
-                        <input type="date" name="from-date" id="from-date" />
+                        <input 
+                            onBlur={(e)=> setMoviesFilter(prev=> {return {...prev,'release_date.gte': [e.target.value]}})} 
+                            type="date" id="from-date" />
 
                     </div>
                     <div className="release-date">
                         <label className="c-ti" htmlFor="to-date"> to</label>
-                        <input type="date" value={new Date()} name="to-date" id="to-date" />
+                        <input
+                            onBlur={(e)=> setMoviesFilter(prev=> {return {...prev,'release_date.lte': [e.target.value]}})} 
+                            type="date" name="to-date" id="to-date" />
                     </div>
                 </div>
             </section>
@@ -73,7 +80,20 @@ const Filters = () => {
                     <ul className="genr-ul">
                         {
                             genres?.map((gen)=>(
-                                <li key={gen?.id}>{gen?.name}</li>
+                                <li 
+                                    className={moviesFilter.without_genres?.includes(gen.name) && 'active'}
+                                    onClick={()=> setMoviesFilter(prev=> {
+                                        return {
+                                            ...prev,
+                                            without_genres : prev?.without_genres?.includes(gen.name) ? 
+                                                prev?.without_genres.filter((el)=> el !== gen.name) :
+                                                [...prev?.without_genres,gen.name] 
+                                        }
+                                    })}
+                                    key={gen?.id}
+                                    >
+                                        {gen?.name}
+                               </li>
                             ))
                         }
                     </ul>

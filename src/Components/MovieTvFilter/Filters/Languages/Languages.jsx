@@ -8,8 +8,11 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 
 import "./Languages.scss";
+import { movieFilter } from "../../../../Pages/Movies/Movies";
 
 const Languages = () => {
+
+    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
 
     const [languages,setLanguages] = useState([]);
     const [filterdLanguages,setFilterdLanguages] = useState([]);
@@ -37,9 +40,15 @@ const Languages = () => {
         setFilterdLanguages(newLang);
     };
 
-    const selectLang = (lang)=> {
-        setSelectedLanguage(lang);
-        setShowLangList(false)
+    const selectLang = (langName,lang)=> {
+        setMoviesFilter(prev=> {
+            return {
+                ...prev,
+                with_original_language: [langName]
+            }
+        });
+        setShowLangList(false);
+        setSelectedLanguage(lang)
     }
 
   return (
@@ -69,14 +78,14 @@ const Languages = () => {
                 </header>
                 <div className="lang">
                     <ul className="lang-ul">
-                                <li onClick={()=> selectLang('none selected')}
+                                <li onClick={()=> selectLang('none selected','none selected')}
                                     className={`${selectedLanguage === 'none selected' && "active"} lang-li`}
                                     >
                                       none selected
                                 </li>
                         {
                             filterdLanguages?.map((lang)=>(
-                                <li onClick={()=> selectLang(lang?.english_name)}
+                                <li onClick={()=> selectLang(lang?.iso_639_1,lang?.english_name)}
                                     className={`${selectedLanguage === lang.english_name && "active"} lang-li`}
                                     key={lang?.iso_639_1}
                                     >

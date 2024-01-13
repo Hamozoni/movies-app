@@ -6,10 +6,15 @@ import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CheckIcon from '@mui/icons-material/Check';
 
 import "../Filters/Sort/Sort.scss";
+import { movieFilter } from "../../../Pages/Movies/Movies";
+
 
 const WhereToWatch = () => {
+
+    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
 
     const [countries,setCountries] = useState([]);
     const [providers,setProviders] = useState([]);
@@ -26,6 +31,7 @@ const WhereToWatch = () => {
         fetchData(`watch/providers/movie?language=${lang}&watch_region=SA`)
         .then((data)=> {
             setProviders(data?.results);
+            console.log(data?.results);
         })
           
     },[lang,filter]);
@@ -40,7 +46,14 @@ const WhereToWatch = () => {
                 <h5 className="c-ti">
                     country
                 </h5>
-                <select className="selections">
+                <select 
+                    onClick={(e)=> setMoviesFilter(prev=> {
+                        return {
+                            ...prev,
+                            watch_region: [e.target.value]
+                        }
+                    })}
+                    className="selections">
                     {
                         countries?.map((country)=>(
                             <option 
@@ -55,13 +68,29 @@ const WhereToWatch = () => {
                 <div className="movie-providers">
                     {
                         providers?.map((provider)=> (
-                            <div key={provider?.provider_id} className="provider-image">
+                            <div 
+                                onClick={()=> setMoviesFilter(prev=> {
+                                    return {
+                                        ...prev,
+                                        with_watch_providers: prev.with_watch_providers?.includes(provider.provider_name) ? 
+                                            prev.with_watch_providers.filter(el=> el !== provider.provider_name ) :
+                                            [...prev.with_watch_providers,provider.provider_name]
+                                    }
+                                })}
+                                key={provider?.provider_id} 
+                                className="provider-image"
+                                >
                                 <img 
-                                loading="lazy" 
-                                src={process.env.REACT_APP_BASE_URL + "original" + provider?.logo_path}
-                                alt="" 
+                                    loading="lazy" 
+                                    src={process.env.REACT_APP_BASE_URL + "original" + provider?.logo_path}
+                                    alt="" 
                                 />
-
+                                {
+                                    moviesFilter.with_watch_providers?.includes(provider.provider_name) &&
+                                    <div className="overlay">
+                                        <CheckIcon />
+                                    </div>
+                                }
                             </div>
                         ))
                     }

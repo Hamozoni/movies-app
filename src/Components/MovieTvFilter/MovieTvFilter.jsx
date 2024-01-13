@@ -1,9 +1,4 @@
-// import { useContext, useEffect, useState } from "react";
-// import fetchData from "../../Utilities/fetchData";
 
-// import { globalContext } from "../../GlobalStateContext/GlobalContext";
-// import { useParams } from "react-router-dom";
-// import SortingGauge from "./SortingGauge/SortingGauge";
 import Sort from "./Filters/Sort/Sort";
 import WhereToWatch from "./WhereToWatch/WhereToWatch";
 import Filters from "./Filters/Filters";

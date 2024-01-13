@@ -30,6 +30,16 @@
                 border-radius: $border-r-l;
                 cursor: pointer;
                 font-size: $f-size-xs + 3;
+                color: $text-dark-color;
+                &:hover {
+                    background-color: lighten($color: $text-dark-color, $amount: 10);
+                    border-color: $text-dark-color; 
+                    color: $text-light-color;
+                }
+                &.active {
+                    background-color: $text-dark-color;
+                    color: $text-light-color;
+                }
             }
         }
     }

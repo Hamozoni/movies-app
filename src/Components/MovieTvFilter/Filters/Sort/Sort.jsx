@@ -1,14 +1,21 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Sort.scss";
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { movieFilter } from '../../../../Pages/Movies/Movies';
 const Sort = () => {
 
-    const selection = useRef();
+    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
 
     const handleSelection = (e)=> {
-          console.log(e.target.value,selection.current.value)
-    }
+        setMoviesFilter( prev=> {
+            return {
+                ...prev,
+                sort_by: [e.target.value]
+            }
+        })
+    };
+
   return (
     <section className="sort">
         <h4 className="filter-t">
@@ -20,7 +27,6 @@ const Sort = () => {
             </h5>
             <select 
                 onChange={(e)=> handleSelection(e)}
-                ref={selection} 
                 className='selections'
                 id='selecteions'
                 >
