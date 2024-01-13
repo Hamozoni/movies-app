@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./Keyword.scss";
+import PageNumber from "../../Components/PageNumber/PageNumber";
 
 export const MovieCard = ({movie})=> {
   return (
@@ -45,15 +46,16 @@ const Keywords = () => {
   const {id} = useParams();
   const {lang} = useContext(globalContext);
 
-  const [Keywords,setKeywords] = useState()
+  const [Keywords,setKeywords] = useState();
+  const [page,setPage] = useState(1);
 
   useEffect(()=>{
-    fetchData(`keyword/${id}/movies?include_adult=false&language=${lang}&page=1`)
+    fetchData(`keyword/${id}/movies?include_adult=false&language=${lang}&page=${page}`)
     .then((data)=>{
       setKeywords(data);
       console.log(data);
     })
-  },[id,lang]);
+  },[id,lang,page]);
 
 
   return (
@@ -67,6 +69,7 @@ const Keywords = () => {
              }
 
           </div>
+          <PageNumber page={page} setPage={setPage} totalPages={Keywords?.total_pages}/>
         </div>
      </main>
   )
