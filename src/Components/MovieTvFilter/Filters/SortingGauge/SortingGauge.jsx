@@ -1,31 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { movieFilter } from "../../../../Pages/Movies/Movies";
 
 
-const SortingGauge = ({title,min,max,renderedFrom}) => {
+const SortingGauge = ({title}) => {
 
-    const [userScore,setUserScore] = useState({minRate: 0, maxRate: 10});
+
     const [isRatedPanel,setIsRatedPanel] = useState(false);
+    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
 
     const handleRatingRang = (e)=> {
 
         console.log(e)
 
         setIsRatedPanel(true);
-         setUserScore(prev=> {
+         setMoviesFilter(prev=> {
 
             const isFalidArea =  e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;;
 
                 if(e.clientX < 119 ) {
                     return {
                         ...prev,
-                        minRate: isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev.minRate
-
+                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.gte']
                     }
                 }else if(e.clientX > 119 ) {
                     return {
                         ...prev,
-                        maxRate: isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev.maxRate
-
+                        'vote_average.lte': isFalidArea ? ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.lte']
                     }
                 }
 
@@ -33,20 +33,21 @@ const SortingGauge = ({title,min,max,renderedFrom}) => {
     };
 
     const handleDragingRate = (e,dir)=> {
-        setUserScore(prev=> {
-            setIsRatedPanel(true)
+        setMoviesFilter(prev=> {
+            setIsRatedPanel(true);
+
             console.log(e);
             const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
 
             if(dir === 'left'){
                 return {
                     ...prev,
-                    minRate : isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev.minRate
+                    'vote_average.gte' : isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.gte']
                 }
             }else if (dir === 'right') {
                 return {
                     ...prev,
-                    maxRate : isFalidArea ? ((e.clientX - 20) / 20).toFixed(0) : prev.maxRate
+                    'vote_average.lte': isFalidArea ? ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.lte']
                 }
             }
         })
@@ -78,12 +79,12 @@ const SortingGauge = ({title,min,max,renderedFrom}) => {
             </ul>
             <div  
                 onDrag={(e)=> handleDragingRate(e,'left') }
-                style={{left: `${userScore?.minRate * 10}%`}}
+                style={{left: `${moviesFilter['vote_average.gte']  * 10}%`}}
                 className="left"
                 >
             </div>
             <div 
-                style={{left: `${userScore?.maxRate * 10}%`}}
+                style={{left: `${moviesFilter['vote_average.lte'] * 10}%`}}
                 className="right"
                 onDrag={(e)=> handleDragingRate(e,'right')}
                 >
@@ -91,12 +92,12 @@ const SortingGauge = ({title,min,max,renderedFrom}) => {
             {
                 isRatedPanel &&
                 <div className="shows-rate-panel" >
-                    {`rated ${userScore?.minRate} - ${userScore?.maxRate}`}
+                    {`rated ${moviesFilter['vote_average.gte'] } - ${moviesFilter['vote_average.lte']}`}
                 </div>
             }
             <div 
                 onClick={(e)=> handleRatingRang(e)}
-                style={{width: `${(userScore?.maxRate - userScore?.minRate) * 10}%`,left: `${userScore?.minRate * 10}%`}}
+                style={{width: `${(moviesFilter['vote_average.lte'] - moviesFilter['vote_average.gte'] ) * 10}%`,left: `${moviesFilter['vote_average.gte']  * 10}%`}}
                 className="reng-fill">
             </div>
         </div>
