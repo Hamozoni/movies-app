@@ -15,17 +15,17 @@ const SortingGauge = ({title}) => {
         setIsRatedPanel(true);
          setMoviesFilter(prev=> {
 
-            const isFalidArea =  e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;;
+            const isFalidArea =  e.clientX !== 0 && e.clientX < 230 &&  e.clientX > 27;
 
                 if(e.clientX < 119 ) {
                     return {
                         ...prev,
-                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.gte']
+                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.gte']
                     }
                 }else if(e.clientX > 119 ) {
                     return {
                         ...prev,
-                        'vote_average.lte': isFalidArea ? ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.lte']
+                        'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.lte']
                     }
                 }
 
@@ -37,7 +37,7 @@ const SortingGauge = ({title}) => {
             setIsRatedPanel(true);
 
             console.log(e);
-            const isFalidArea = e.clientX !== 0 && e.clientX < 225 &&  e.clientX > 29;
+            const isFalidArea = e.clientX !== 0 && e.clientX < 230 &&  e.clientX > 27;
 
             if(dir === 'left'){
                 return {
