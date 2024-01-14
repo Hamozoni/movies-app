@@ -120,12 +120,15 @@ const SortingGauge = ({title,renderFrom}) => {
             {
                 isRatedPanel &&
                 <div className="shows-rate-panel" >
-                    {`rated ${renderFrom === 'rating' ? moviesFilter['vote_average.gte'] : moviesFilter['with_runtime.gte'] } - ${renderFrom === 'rating' ? moviesFilter['vote_average.lte'] : moviesFilter['with_runtime.lte']}`}
+                    {`${renderFrom === 'rating' ? 'rated' + moviesFilter['vote_average.gte'] :  moviesFilter['with_runtime.gte'] + 'm' } - ${renderFrom === 'rating' ? moviesFilter['vote_average.lte'] : moviesFilter['with_runtime.lte'] + 'm'}`}
                 </div>
             }
             <div 
                 onClick={(e)=> handleRatingRang(e)}
-                style={{width: `${(moviesFilter['vote_average.lte'] - moviesFilter['vote_average.gte'] ) * 10}%`,left: `${moviesFilter['vote_average.gte']  * 10}%`}}
+                style={{
+                        width:
+                         `${renderFrom === 'rating' ? (moviesFilter['vote_average.lte'] - moviesFilter['vote_average.gte'] ) * 10 :(moviesFilter['with_runtime.lte'] - moviesFilter['with_runtime.gte'] ) / 4 }%`,
+                        left: `${renderFrom === 'rating' ?  moviesFilter['vote_average.gte']  * 10 :moviesFilter['with_runtime.gte'] / 4 }%`}}
                 className="reng-fill">
             </div>
         </div>
