@@ -103,13 +103,13 @@ const Filters = () => {
                 <Languages />
             </section>
             <section className="sort-content">
-               <SortingGauge  title="Minimum User Votes"/>
+               <SortingGauge  title="Minimum User Votes" renderFrom='rating'/>
             </section>
-            <section className="sort-content">
+            {/* <section className="sort-content">
                <SortingGauge />
-            </section>
+            </section> */}
             <section className="sort-content">
-               <SortingGauge title="runtime"/>
+               <SortingGauge title="runtime" renderFrom='runtime'/>
             </section>
         </div>
     </section>

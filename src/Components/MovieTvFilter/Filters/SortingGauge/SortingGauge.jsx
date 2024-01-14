@@ -18,14 +18,28 @@ const SortingGauge = ({title,renderFrom}) => {
             const isFalidArea =  e.clientX !== 0 && e.clientX < 230 &&  e.clientX > 27;
 
                 if(e.clientX < 119 ) {
-                    return {
-                        ...prev,
-                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.gte']
+                    if(renderFrom === 'rating'){
+                        return {
+                            ...prev,
+                            'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.gte']
+                        }
+                    }else if (renderFrom === 'runtime') {
+                        return {
+                            ...prev,
+                            'with_runtime.gte' : isFalidArea ?  ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.gte']
+                        }
                     }
                 }else if(e.clientX > 119 ) {
-                    return {
-                        ...prev,
-                        'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.lte']
+                    if(renderFrom === 'rating') {
+                        return {
+                            ...prev,
+                            'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.lte']
+                        }
+                    }else if(renderFrom === 'runtime'){
+                        return {
+                            ...prev,
+                            'with_runtime.lte': isFalidArea ? ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.lte']
+                        }
                     }
                 }
 
@@ -40,14 +54,28 @@ const SortingGauge = ({title,renderFrom}) => {
             const isFalidArea = e.clientX !== 0 && e.clientX < 230 &&  e.clientX > 27;
 
             if(dir === 'left'){
-                return {
-                    ...prev,
-                    'vote_average.gte' : isFalidArea ?  ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.gte']
+                if(renderFrom === 'rating'){
+                    return {
+                        ...prev,
+                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.gte']
+                    }
+                }else if (renderFrom === 'runtime') {
+                    return {
+                        ...prev,
+                        'with_runtime.gte' : isFalidArea ?  ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.gte']
+                    }
                 }
             }else if (dir === 'right') {
-                return {
-                    ...prev,
-                    'vote_average.lte': isFalidArea ? ((e.clientX - 20) / 20).toFixed(0) : prev['vote_average.lte']
+                if(renderFrom === 'rating') {
+                    return {
+                        ...prev,
+                        'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.lte']
+                    }
+                }else if(renderFrom === 'runtime'){
+                    return {
+                        ...prev,
+                        'with_runtime.lte': isFalidArea ? ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.lte']
+                    }
                 }
             }
         })
@@ -79,12 +107,12 @@ const SortingGauge = ({title,renderFrom}) => {
             </ul>
             <div  
                 onDrag={(e)=> handleDragingRate(e,'left') }
-                style={{left: `${moviesFilter['vote_average.gte']  * 10}%`}}
+                style={{left: `${renderFrom === 'rating' ? moviesFilter['vote_average.gte']  * 10 : moviesFilter['with_runtime.gte']  / 4}%`}}
                 className="left"
                 >
             </div>
             <div 
-                style={{left: `${moviesFilter['vote_average.lte'] * 10}%`}}
+                style={{left: `${renderFrom === 'rating' ? moviesFilter['vote_average.lte'] * 10 : moviesFilter['with_runtime.lte']  / 4}%`}}
                 className="right"
                 onDrag={(e)=> handleDragingRate(e,'right')}
                 >
@@ -92,7 +120,7 @@ const SortingGauge = ({title,renderFrom}) => {
             {
                 isRatedPanel &&
                 <div className="shows-rate-panel" >
-                    {`rated ${moviesFilter['vote_average.gte'] } - ${moviesFilter['vote_average.lte']}`}
+                    {`rated ${renderFrom === 'rating' ? moviesFilter['vote_average.gte'] : moviesFilter['with_runtime.gte'] } - ${renderFrom === 'rating' ? moviesFilter['vote_average.lte'] : moviesFilter['with_runtime.lte']}`}
                 </div>
             }
             <div 
