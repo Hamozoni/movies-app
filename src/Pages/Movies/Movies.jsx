@@ -21,7 +21,9 @@ const Movies = () => {
         with_original_language: ['none seleted'],
         with_watch_providers: [],
         'vote_average.gte': 0,
-        'vote_average.lte' : 10
+        'vote_average.lte' : 10,
+        'with_runtime.gte': 0,
+        'with_runtime.lte': 400
     }
 
     const {lang} = useContext(globalContext);

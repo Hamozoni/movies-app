@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { movieFilter } from "../../../../Pages/Movies/Movies";
 
 
-const SortingGauge = ({title}) => {
+const SortingGauge = ({title,renderFrom}) => {
 
 
     const [isRatedPanel,setIsRatedPanel] = useState(false);
