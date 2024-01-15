@@ -37,23 +37,9 @@
                 }
             }
             &.active{
-                position: relative;
-                &::before {
-                    content: '0';
-                    position: absolute;
-                    top: 120%;
-                    left: 0;
-                    transform: translateX(-50%);
-                    font-size: 16px;
-                }
 
                 span {
                     height: 10px;
-                }
-            }
-            &.active {
-                &::before {
-                    content: '5';
                 }
             }
             &:last-of-type {
