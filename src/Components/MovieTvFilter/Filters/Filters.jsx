@@ -81,13 +81,13 @@ const Filters = () => {
                         {
                             genres?.map((gen)=>(
                                 <li 
-                                    className={moviesFilter.without_genres?.includes(gen.name) && 'active'}
+                                    className={moviesFilter.with_genres?.includes(gen.name) && 'active'}
                                     onClick={()=> setMoviesFilter(prev=> {
                                         return {
                                             ...prev,
-                                            without_genres : prev?.without_genres?.includes(gen.name) ? 
-                                                prev?.without_genres.filter((el)=> el !== gen.name) :
-                                                [...prev?.without_genres,gen.name] 
+                                            with_genres : prev?.with_genres?.includes(gen.name) ? 
+                                                prev?.with_genres.filter((el)=> el !== gen.name) :
+                                                [...prev?.with_genres,gen.name] 
                                         }
                                     })}
                                     key={gen?.id}

@@ -17,13 +17,14 @@ const Movies = () => {
         sort_by: [],
         'release_date.gte': [],
         'release_date.lte': [],
-        without_genres: [],
+        with_genres: [],
         with_original_language: ['none seleted'],
         with_watch_providers: [],
         'vote_average.gte': 0,
         'vote_average.lte' : 10,
         'with_runtime.gte': 0,
-        'with_runtime.lte': 400
+        'with_runtime.lte': 400,
+        watch_region: ['SA'],
     }
 
     const {lang} = useContext(globalContext);
