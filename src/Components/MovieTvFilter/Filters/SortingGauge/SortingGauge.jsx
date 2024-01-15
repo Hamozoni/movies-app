@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { movieFilter } from "../../../../Pages/Movies/Movies";
 
+import "./SortingGauge.scss";
+
 
 const SortingGauge = ({title,renderFrom}) => {
 
@@ -81,6 +83,35 @@ const SortingGauge = ({title,renderFrom}) => {
         })
     };
 
+    const GaugeCol = ()=> {
+        const spa = [];
+        const maxRate = renderFrom === 'rating' ? 10 : 28;
+        for(let i = 0; i < maxRate; i++ ){
+            spa.push(i);
+        }
+        return (
+            <ul
+                onClick={(e)=> handleRatingRang(e)}
+                className="gage"
+                 >
+                {
+                    spa?.map( s =>(
+                        <li className={s === 0 || s === 5 || s === 5 * 2 || s === 5 * 3 || s === 5 * 4 ? 'active' : ''}> 
+                            <span >
+                            </span>
+                            {
+                                s === spa?.length - 1 && 
+                                <span></span>
+                            }
+                        </li>
+                    ))
+                }
+            </ul>
+        )
+
+
+    }
+
   return (
     <section className="user-score">
         <h5 className="us-score">
@@ -91,20 +122,8 @@ const SortingGauge = ({title,renderFrom}) => {
             onClick={(e)=> handleRatingRang(e)} 
             className="rang"
             >
-            <ul 
-                onClick={(e)=> handleRatingRang(e)}
-                className="gage">
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span><span></span></li>
-            </ul>
+                <GaugeCol />
+
             <div  
                 onDrag={(e)=> handleDragingRate(e,'left') }
                 style={{left: `${renderFrom === 'rating' ? moviesFilter['vote_average.gte']  * 10 : moviesFilter['with_runtime.gte']  / 4}%`}}

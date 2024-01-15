@@ -46,19 +46,20 @@ const WhereToWatch = () => {
                 <h5 className="c-ti">
                     country
                 </h5>
-                <select 
+                <select
+                    onChange={(e)=> setMoviesFilter(prev=> {
+                        return {
+                            ...prev,
+                            watch_region: [e.target.value]
+                        }
+                    })} 
+                    value={moviesFilter.watch_region}
                     className="selections">
                     {
                         countries?.map((country)=>(
                             <option 
                                 key={country?.native_name} 
                                 value={country?.iso_3166_1}
-                                onClick={(e)=> setMoviesFilter(prev=> {
-                                    return {
-                                        ...prev,
-                                        watch_region: [e.target.value]
-                                    }
-                                })}
                                 >
                                     {country?.native_name} 
                                 </option>
