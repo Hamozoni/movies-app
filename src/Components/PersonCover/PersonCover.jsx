@@ -5,6 +5,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieCard from "../MovieCard/MovieCard";
 import PersonStitistics from "../PersonStitistics/PersonStitistics";
 import PersonActing from "../PersonActing/PersonActing";
+import fitLongString from "../../Utilities/fitLongString";
 
 
 const PersonCover = ({details,id}) => {
@@ -38,7 +39,7 @@ const PersonCover = ({details,id}) => {
                     <h4 className="pi-ti">
                          Biography
                      </h4>
-                    <aside> {details?.biography} </aside>
+                    <aside> {fitLongString(details?.biography,1000) } </aside>
                 </div>
                 <section className="known-for">
                     <h4 className="kn-for">
