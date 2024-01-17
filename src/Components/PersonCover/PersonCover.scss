@@ -15,9 +15,9 @@
         .person-cov-conrent {
             .known-for {
                 max-width: 100%;
+                overflow-x: auto;
                 .kn-for-container {
                     @include flex-box(flex-start);
-                    overflow-x: auto;
                 }
             }
         }
