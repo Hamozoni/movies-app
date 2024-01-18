@@ -25,6 +25,7 @@ const Movies = () => {
         'with_runtime.gte': 0,
         'with_runtime.lte': 400,
         watch_region: ['SA'],
+        with_keywords: []
     }
 
     const {lang} = useContext(globalContext);

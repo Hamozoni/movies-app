@@ -9,6 +9,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import "./Filters.scss";
 import Languages from "./Languages/Languages";
 import { movieFilter } from "../../../Pages/Movies/Movies";
+import Keywords from "./Keywords/Keywords";
 
 const Filters = () => {
 
@@ -110,6 +111,9 @@ const Filters = () => {
             </section> */}
             <section className="sort-content">
                <SortingGauge title="runtime" renderFrom='runtime'/>
+            </section>
+            <section className="sort-content">
+                <Keywords />
             </section>
         </div>
     </section>
