@@ -60,7 +60,12 @@ const Movies = () => {
     <movieFilter.Provider value={[moviesFilter,setMoviesFilter]}>
         <main className="movies">
             <div className="movies-container">
-                <MovieTvFilter />
+                <div className="filters-box">
+                    <MovieTvFilter />
+                    <button className="filter-btn">
+                        serach
+                    </button>
+                </div>
 
                 <div className="movies-box">
                     <div className="movies-content">
