@@ -22,8 +22,7 @@ const Header = ()=> {
     const [isSearch,setisSearch] = useState(false);
 
     const handleNavigate = (filter)=>{
-        navigate(`/movies/${filter}`)
-
+        navigate(`/movies/${filter}`);
     };
 
     return (
@@ -36,14 +35,22 @@ const Header = ()=> {
                     <div className="part-one">
                         <h4 >
                             {languages[lang].movies} 
-                            {/* <ul className="fiter">
+                            <ul className="fiter">
                                 <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
                                 <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].nowPlaying}</li>
                                 <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].upComing}</li>
                                 <li onClick={()=> handleNavigate('top_rated')}>{languages[lang].topRated}</li>
-                            </ul> */}
+                            </ul>
                         </h4>
-                        <h4>{languages[lang].tvShows}</h4>
+                        <h4>
+                            {languages[lang].tvShows}
+                            <ul className="fiter">
+                                <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
+                                <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].airingToday}</li>
+                                <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].onTv}</li>
+                                <li onClick={()=> handleNavigate('top_rated')}>{languages[lang].topRated}</li>
+                            </ul>
+                        </h4>
                         <h4>{languages[lang].people}</h4>
                     </div>
                     <div className="part-two">

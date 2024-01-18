@@ -52,7 +52,11 @@ const Keywords = () => {
                 type="search" 
                 onChange={(e)=> fetchKeysData(e.target.value)} 
                 onFocus={()=> setIsAutoCompList(true)}
-                onBlur={()=> setTimeout(()=> setIsAutoCompList(false),500)}
+                onBlur={(e)=> {setTimeout(()=> {
+                    setIsAutoCompList(false);
+                    e.target.value = '';
+                    setKeys([])
+                },500)}}
                 placeholder="filter by keywords"
                 />
         </div>

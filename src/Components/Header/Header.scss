@@ -32,16 +32,29 @@
                     color: $text-light-color;
                     cursor: pointer;
                     .fiter {
+                        display: none;
                         position: absolute;
                         left: 0;
-                        top: 200%;
+                        top: 100%;
                         background-color: #fff;
-                        padding: $padding-10;
-                        min-width: fit-content;
+                        padding: $padding-10 0;
+                        min-width: 150px;
                         border-radius: 5px;
+                        border: 1px solid #ecebeb;
                         z-index: 9999;
                         li {
                             cursor: pointer;
+                            color: $text-dark-color;
+                            font-size: $f-size-xs;
+                            padding: $padding-5 $padding;
+                            &:hover {
+                                background-color: #ebe8e8
+                            }
+                        }
+                    }
+                    &:hover {
+                        .fiter {
+                            display: block;
                         }
                     }
                 }
