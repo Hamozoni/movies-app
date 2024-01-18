@@ -23,24 +23,24 @@ const SortingGauge = ({title,renderFrom}) => {
                     if(renderFrom === 'rating'){
                         return {
                             ...prev,
-                            'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.gte']
+                            'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : Number(prev['vote_average.gte'])
                         }
                     }else if (renderFrom === 'runtime') {
                         return {
                             ...prev,
-                            'with_runtime.gte' : isFalidArea ?  ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.gte']
+                            'with_runtime.gte' : isFalidArea ?  ((e.clientX - 27) * 2).toFixed(0) : Number(prev['with_runtime.gte'])
                         }
                     }
                 }else if(e.clientX > 119 ) {
                     if(renderFrom === 'rating') {
                         return {
                             ...prev,
-                            'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.lte']
+                            'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : Number(prev['vote_average.lte'])
                         }
                     }else if(renderFrom === 'runtime'){
                         return {
                             ...prev,
-                            'with_runtime.lte': isFalidArea ? ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.lte']
+                            'with_runtime.lte': isFalidArea ? ((e.clientX - 27) * 2).toFixed(0) : Number(prev['with_runtime.lte'])
                         }
                     }
                 }
@@ -59,24 +59,24 @@ const SortingGauge = ({title,renderFrom}) => {
                 if(renderFrom === 'rating'){
                     return {
                         ...prev,
-                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.gte']
+                        'vote_average.gte' : isFalidArea ?  ((e.clientX - 27) / 20).toFixed(0) : Number(prev['vote_average.gte'])
                     }
                 }else if (renderFrom === 'runtime') {
                     return {
                         ...prev,
-                        'with_runtime.gte' : isFalidArea ?  ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.gte']
+                        'with_runtime.gte' : isFalidArea ?  ((e.clientX - 27) * 2).toFixed(0) : Number(prev['with_runtime.gte'])
                     }
                 }
             }else if (dir === 'right') {
                 if(renderFrom === 'rating') {
                     return {
                         ...prev,
-                        'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : prev['vote_average.lte']
+                        'vote_average.lte': isFalidArea ? ((e.clientX - 27) / 20).toFixed(0) : Number(prev['vote_average.lte'])
                     }
                 }else if(renderFrom === 'runtime'){
                     return {
                         ...prev,
-                        'with_runtime.lte': isFalidArea ? ((e.clientX - 27) * 2).toFixed(0) : prev['with_runtime.lte']
+                        'with_runtime.lte': isFalidArea ? ((e.clientX - 27) * 2).toFixed(0) : Number(prev['with_runtime.lte'])
                     }
                 }
             }
@@ -96,7 +96,7 @@ const SortingGauge = ({title,renderFrom}) => {
                  >
                 {
                     spa?.map( s =>(
-                        <li className={s === 0 || s === 5 || s === 5 * 2 || s === 5 * 3 || s === 5 * 4 ? 'active' : ''}> 
+                        <li className={s === 0 || s % 5 === 0 ? 'active' : ''}> 
                             <span >
                             </span>
                             {

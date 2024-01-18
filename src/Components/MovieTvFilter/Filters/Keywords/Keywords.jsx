@@ -10,6 +10,7 @@ const Keywords = () => {
 
     const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
     const [keys,setKeys] = useState([]);
+    const [isAutoCompList,setIsAutoCompList] = useState(false);
 
     const fetchKeysData = (query) => {
         if(query.length > 1){
@@ -26,7 +27,8 @@ const Keywords = () => {
                 ...prev,
                 with_keywords: prev.with_keywords?.includes(key) ? prev.with_keywords.filter(el=> el !== key) : [...prev.with_keywords,key]
             }
-        })
+        });
+        setIsAutoCompList(false);
     }
 
   return (
@@ -34,7 +36,7 @@ const Keywords = () => {
         <h5 className="c-ti">
            Keywords
         </h5>
-        <div className="key-box">
+        <div className={`${isAutoCompList} key-box`}>
             <ul className="keys">
                 {
                     moviesFilter?.with_keywords?.map((key)=>(
@@ -49,21 +51,30 @@ const Keywords = () => {
                 className="keys-input"
                 type="search" 
                 onChange={(e)=> fetchKeysData(e.target.value)} 
+                onFocus={()=> setIsAutoCompList(true)}
+                onBlur={()=> setTimeout(()=> setIsAutoCompList(false),500)}
                 placeholder="filter by keywords"
                 />
         </div>
-        <div className="auto-fill">
-            <ul className="keys-ul">
-                 {
-                    keys?.map((key)=>(
-                        <li key={key?.id} onClick={()=> handleKeysContext(key?.name)}>
-                            {key?.name}
-                        </li>
-                    ))
-                 }
+        {
+            isAutoCompList &&
+            <div className="auto-fill">
+                <ul className="keys-ul">
+                    {
+                        keys?.map((key)=>(
+                            <li 
+                                className={moviesFilter?.with_keywords?.includes(key?.name) && "active"}
+                                key={key?.id} 
+                                onClick={()=> handleKeysContext(key?.name)}
+                                >
+                                {key?.name}
+                            </li>
+                        ))
+                    }
 
-            </ul>
+                </ul>
             </div>
+        }
     </div>
   )
 }

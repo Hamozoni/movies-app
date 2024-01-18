@@ -5,11 +5,11 @@
     position: relative;
     .key-box {
         padding: $padding-5;
-        border: 1px solid transparent;
+        border: 1px solid rgb(185, 184, 184);
         border-radius: $border-r;
-        border-color: rgb(185, 184, 184);
-        // &.active {
-        // }
+        &.true {
+            border-color: #5a3333 ;
+        }
         .keys {
             @include flex-box(center,flex-start,5px);
             flex-wrap: wrap;
@@ -24,9 +24,6 @@
                 font-size: $f-size-xs;
               }
             }
-        }
-        .keys-input {
-
         }
     }
     .auto-fill {
@@ -43,8 +40,12 @@
                  padding: $padding-5 $padding;
                  font-size: $f-size-xs;
                  color: $text-dark-color;
-                 &:hover , &.active {
+                 &:hover  {
                     background-color: rgb(219, 219, 219);
+                 }
+                 &.active {
+                    background-color: brown;
+                    color: #fff;
                  }
             }
 

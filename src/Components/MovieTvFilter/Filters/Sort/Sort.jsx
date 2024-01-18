@@ -3,9 +3,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import "./Sort.scss";
 import { useContext} from 'react';
 import { movieFilter } from '../../../../Pages/Movies/Movies';
+
 const Sort = () => {
 
-    const [setMoviesFilter] = useContext(movieFilter);
+    const [moviesFilter, setMoviesFilter] = useContext(movieFilter);
 
     const handleSelection = (e)=> {
         setMoviesFilter( prev=> {
