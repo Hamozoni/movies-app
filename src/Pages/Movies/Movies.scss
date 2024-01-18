@@ -5,8 +5,19 @@
     padding: $padding;
     .movies-container {
         @include flex-box(flex-start);
-        .filters {
+        .filters-box {
             min-width: fit-content;
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+                margin-top: $margin;
+                padding: $padding-10;
+                border-radius: $border-r-l;
+                background-color: rgb(218, 218, 219);
+                color: lighten($color: $text-dark-color, $amount: 10);
+                font-weight: 700;
+                font-size: $f-size-s
+            }
         }
         .movies-content {
             @include flex-box(flex-start,center);

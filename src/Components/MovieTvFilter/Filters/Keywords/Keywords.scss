@@ -1,6 +1,53 @@
 @import "../../../../GlobalStyle/variables";
 @import "../../../../GlobalStyle/mixin";
 
-// .keywords-filter {
+.keywords-filter {
+    position: relative;
+    .key-box {
+        padding: $padding-5;
+        border: 1px solid transparent;
+        border-radius: $border-r;
+        border-color: rgb(185, 184, 184);
+        // &.active {
+        // }
+        .keys {
+            @include flex-box(center,flex-start,5px);
+            flex-wrap: wrap;
+            li {
+              @include flex-box(center,space-between,5px);
+              border-radius: $border-r;
+              background-color:rgb(243, 241, 241) ;
+              color: $text-dark-color;
+              font-size: $f-size-xs;
+              padding: $padding-5;
+              svg {
+                font-size: $f-size-xs;
+              }
+            }
+        }
+        .keys-input {
 
-// }
+        }
+    }
+    .auto-fill {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        background-color: rgb(245, 244, 243);
+        padding: $padding-10 0;
+        .keys-ul {
+            max-height: 150px;
+            overflow-y: auto;
+            li {
+                 padding: $padding-5 $padding;
+                 font-size: $f-size-xs;
+                 color: $text-dark-color;
+                 &:hover , &.active {
+                    background-color: rgb(219, 219, 219);
+                 }
+            }
+
+        }
+    }
+}

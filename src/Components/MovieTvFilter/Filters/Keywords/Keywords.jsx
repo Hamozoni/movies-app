@@ -2,6 +2,10 @@ import { useContext, useState } from "react"
 import { movieFilter } from "../../../../Pages/Movies/Movies";
 import fetchData from "../../../../Utilities/fetchData";
 
+import ClearIcon from '@mui/icons-material/Clear';
+
+import "./Keywords.scss";
+
 const Keywords = () => {
 
     const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
@@ -27,25 +31,29 @@ const Keywords = () => {
 
   return (
     <div className="keywords-filter">
-        <h4 className="">
+        <h5 className="c-ti">
            Keywords
-        </h4>
+        </h5>
         <div className="key-box">
             <ul className="keys">
                 {
                     moviesFilter?.with_keywords?.map((key)=>(
                         <li key={key} >
                             {key}
+                            <ClearIcon onClick={()=> handleKeysContext(key)}  />
                         </li>
                     ))
                 }
             </ul>
             <input 
+                className="keys-input"
                 type="search" 
                 onChange={(e)=> fetchKeysData(e.target.value)} 
                 placeholder="filter by keywords"
                 />
-            <ul className="auto-fill">
+        </div>
+        <div className="auto-fill">
+            <ul className="keys-ul">
                  {
                     keys?.map((key)=>(
                         <li key={key?.id} onClick={()=> handleKeysContext(key?.name)}>
@@ -53,8 +61,9 @@ const Keywords = () => {
                         </li>
                     ))
                  }
+
             </ul>
-        </div>
+            </div>
     </div>
   )
 }
