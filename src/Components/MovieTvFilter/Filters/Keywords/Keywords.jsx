@@ -26,7 +26,7 @@ const Keywords = () => {
     }
 
   return (
-    <section className="keywords-filter">
+    <div className="keywords-filter">
         <h4 className="">
            Keywords
         </h4>
@@ -55,7 +55,7 @@ const Keywords = () => {
                  }
             </ul>
         </div>
-    </section>
+    </div>
   )
 }
 
