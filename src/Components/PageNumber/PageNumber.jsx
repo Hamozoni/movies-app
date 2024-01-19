@@ -9,6 +9,14 @@ const PageNumber = ({page,setPage,totalPages}) => {
                 page > 1 &&
                 <li onClick={()=> setPage(page - 1)}>prev</li>
             }
+            {
+                page > 2 &&
+                <li  onClick={()=> setPage(page - 2)}>{page - 2}</li>
+            }
+            {
+                page > 2 &&
+                <li  onClick={()=> setPage(page - 1)}>{page - 1}</li>
+            }
             <li className="active" onClick={()=> setPage(page)}>{page}</li>
             {
             (page + 5) < totalPages &&
