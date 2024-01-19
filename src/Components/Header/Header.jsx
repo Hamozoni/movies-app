@@ -51,7 +51,12 @@ const Header = ()=> {
                                 <li onClick={()=> handleNavigate('top_rated')}>{languages[lang].topRated}</li>
                             </ul>
                         </h4>
-                        <h4>{languages[lang].people}</h4>
+                        <h4>
+                            {languages[lang].people}
+                            <ul className="fiter">
+                                <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular} people</li>
+                            </ul>
+                        </h4>
                     </div>
                     <div className="part-two">
                         <div className="theme">
