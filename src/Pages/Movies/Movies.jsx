@@ -6,7 +6,6 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import MovieTvFilter from "../../Components/MovieTvFilter/MovieTvFilter";
-import PageNumber from "../../Components/PageNumber/PageNumber";
 
 export const movieFilter = createContext();
 
@@ -42,27 +41,45 @@ const Movies = () => {
             setMovies(data);
             console.log(data);
         })   
-    },[lang,filter,page]);
+    },[lang,filter]);
 
     useEffect(()=>{
          console.log(moviesFilter)
     },[moviesFilter])
 
-    const discoverMovies = (filter)=> {
+    const discoverMovies = ()=> {
+        setPage(1);
          const a = []
 
         for (let [key, value] of Object.entries(moviesFilter)) {
             if(value.length || typeof value === 'number') {
-                a.push(`&${key}=${typeof value === "object" ? value.toString() : value}`)
+                a.push(`&${key}=${typeof value === "object" ? value.toString().replaceAll(',','_') : value}`)
                 
             }
         }
         console.log(a);
-        fetchData(`discover/movie?include_adult=false${a.map((e)=> e)}`)
+        fetchData(`discover/movie?include_adult=false&page=${page}${a.toString().replaceAll(',','')}`)
         .then((data)=> {
             setMovies(data);
-            console.log(data,`discover/movie?include_adult=false${a.map((e)=> e)}`);
+            console.log(data,`discover/movie?include_adult=false${a.toString().replaceAll(',','')}`);
         })
+    };
+
+    const loadMore = (is)=> {
+
+        if(is === true){
+            fetchData(`movie/${filter}?language=${lang}&page=${page + 1}`)
+            .then((data)=> {
+                setMovies(prev=> {
+                    return {
+                        ...prev,
+                        results: [...movies.results,...data.results]
+                    }
+                });
+                console.log(data);
+            })   
+        }
+        setPage(prev=> prev + 1);
     }
 
   return (
@@ -85,7 +102,10 @@ const Movies = () => {
                         }
 
                     </div>
-                    <PageNumber page={page} setPage={setPage} totalPages={movies?.total_pages}/>
+                    {/* <PageNumber page={page} setPage={setPage} totalPages={movies?.total_pages}/> */}
+                    <button className="filter-btn" onClick={()=> loadMore(true)}>
+                        laod more
+                    </button>
                 </div>
 
             </div>
