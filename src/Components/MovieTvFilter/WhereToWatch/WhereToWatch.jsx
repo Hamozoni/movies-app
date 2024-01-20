@@ -14,7 +14,7 @@ import { movieFilter } from "../../../Pages/Movies/Movies";
 
 const WhereToWatch = () => {
 
-    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
+    const{moviesFilter,setMoviesFilter} = useContext(movieFilter);
 
     const [countries,setCountries] = useState([]);
     const [providers,setProviders] = useState([]);
@@ -28,7 +28,7 @@ const WhereToWatch = () => {
         .then((data)=> {
             setCountries(data)
         })
-        fetchData(`watch/providers/movie?language=${lang}&watch_region=${moviesFilter.watch_region[0]}`)
+        fetchData(`watch/providers/movie?language=${lang}&watch_region=${moviesFilter.watch_region}`)
         .then((data)=> {
             setProviders(data?.results);
             console.log(data?.results);
@@ -50,7 +50,7 @@ const WhereToWatch = () => {
                     onChange={(e)=> setMoviesFilter(prev=> {
                         return {
                             ...prev,
-                            watch_region: [e.target.value]
+                            watch_region: e.target.value
                         }
                     })} 
                     value={moviesFilter.watch_region}

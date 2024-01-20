@@ -14,17 +14,17 @@ export const movieFilter = createContext();
 const Movies = () => {
 
     const intialFilter = {
-        sort_by: [],
-        'release_date.gte': [],
-        'release_date.lte': [],
+        // sort_by: '',
+        // 'release_date.gte': '',
+        // 'release_date.lte': '',
         with_genres: [],
-        with_original_language: ['none seleted'],
+        // with_original_language: 'none seleted',
         with_watch_providers: [],
         'vote_average.gte': 0,
         'vote_average.lte' : 10,
         'with_runtime.gte': 0,
         'with_runtime.lte': 400,
-        watch_region: ['SA'],
+        watch_region: 'SA',
         with_keywords: []
     }
 
@@ -49,6 +49,10 @@ const Movies = () => {
     },[moviesFilter])
 
     const discoverMovies = (filter)=> {
+
+        for (let [key, value] of Object.entries(moviesFilter)) {
+            console.log(key, value);
+        }
         fetchData(`discover/movie?include_adult=false`)
         .then((data)=> {
             setMovies(data);
@@ -57,12 +61,12 @@ const Movies = () => {
     }
 
   return (
-    <movieFilter.Provider value={[moviesFilter,setMoviesFilter]}>
+    <movieFilter.Provider value={{moviesFilter,setMoviesFilter}}>
         <main className="movies">
             <div className="movies-container">
                 <div className="filters-box">
                     <MovieTvFilter />
-                    <button className="filter-btn">
+                    <button className="filter-btn" onClick={discoverMovies}>
                         serach
                     </button>
                 </div>

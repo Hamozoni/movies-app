@@ -8,7 +8,7 @@ import "./Keywords.scss";
 
 const Keywords = () => {
 
-    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
+    const {moviesFilter,setMoviesFilter} = useContext(movieFilter);
     const [keys,setKeys] = useState([]);
     const [isAutoCompList,setIsAutoCompList] = useState(false);
 

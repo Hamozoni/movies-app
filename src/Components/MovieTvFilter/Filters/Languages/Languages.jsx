@@ -12,7 +12,7 @@ import { movieFilter } from "../../../../Pages/Movies/Movies";
 
 const Languages = () => {
 
-    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
+    const {setMoviesFilter} = useContext(movieFilter);
 
     const [languages,setLanguages] = useState([]);
     const [filterdLanguages,setFilterdLanguages] = useState([]);
@@ -44,7 +44,7 @@ const Languages = () => {
         setMoviesFilter(prev=> {
             return {
                 ...prev,
-                with_original_language: [langName]
+                with_original_language: langName
             }
         });
         setShowLangList(false);

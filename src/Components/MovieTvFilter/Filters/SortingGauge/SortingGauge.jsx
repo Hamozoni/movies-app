@@ -8,7 +8,7 @@ const SortingGauge = ({title,renderFrom}) => {
 
 
     const [isRatedPanel,setIsRatedPanel] = useState(false);
-    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
+    const {moviesFilter,setMoviesFilter} = useContext(movieFilter);
 
     const handleRatingRang = (e)=> {
 

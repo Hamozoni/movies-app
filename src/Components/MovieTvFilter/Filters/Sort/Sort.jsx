@@ -6,13 +6,13 @@ import { movieFilter } from '../../../../Pages/Movies/Movies';
 
 const Sort = () => {
 
-    const [moviesFilter, setMoviesFilter] = useContext(movieFilter);
+    const {setMoviesFilter} = useContext(movieFilter);
 
     const handleSelection = (e)=> {
         setMoviesFilter( prev=> {
             return {
                 ...prev,
-                sort_by: [e.target.value]
+                sort_by: e.target.value
             }
         })
     };

@@ -13,7 +13,7 @@ import Keywords from "./Keywords/Keywords";
 
 const Filters = () => {
 
-    const [moviesFilter,setMoviesFilter] = useContext(movieFilter);
+    const {moviesFilter,setMoviesFilter} = useContext(movieFilter);
 
     const [genres,setGenres] = useState([]);
 
