@@ -32,6 +32,7 @@ const Movies = () => {
     const [movies,setMovies] = useState([]);
     const [moviesFilter,setMoviesFilter] = useState(intialFilter);
     const [page,setPage] = useState(1);
+    const [isLoadingMore,setIsLoadingMore] = useState(false);
 
     const {filter}= useParams()
 
@@ -66,7 +67,7 @@ const Movies = () => {
     };
 
     const loadMore = (is)=> {
-
+        setIsLoadingMore(true)
         if(is === true){
             fetchData(`movie/${filter}?language=${lang}&page=${page + 1}`)
             .then((data)=> {
@@ -76,6 +77,7 @@ const Movies = () => {
                         results: [...movies.results,...data.results]
                     }
                 });
+                setIsLoadingMore(false)
                 console.log(data);
             })   
         }
@@ -103,8 +105,12 @@ const Movies = () => {
 
                     </div>
                     {/* <PageNumber page={page} setPage={setPage} totalPages={movies?.total_pages}/> */}
-                    <button className="filter-btn" onClick={()=> loadMore(true)}>
-                        laod more
+                    <button 
+                        disabled={isLoadingMore}
+                        className={`${isLoadingMore && 'active'} filter-btn`} 
+                        onClick={()=> loadMore(true)}
+                        >
+                        { isLoadingMore ? 'loading...' :'laod more'}
                     </button>
                 </div>
 
