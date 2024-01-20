@@ -77,8 +77,7 @@ const Movies = () => {
                         results: [...movies.results,...data.results]
                     }
                 });
-                setIsLoadingMore(false)
-                console.log(data);
+            setIsLoadingMore(false)
             })   
         }
         setPage(prev=> prev + 1);
@@ -110,7 +109,7 @@ const Movies = () => {
                         className={`${isLoadingMore && 'active'} filter-btn`} 
                         onClick={()=> loadMore(true)}
                         >
-                        { isLoadingMore ? 'loading...' :'laod more'}
+                        { isLoadingMore ? <span>loading... </span>:'laod more'}
                     </button>
                 </div>
 

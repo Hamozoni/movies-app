@@ -23,18 +23,27 @@
         color: lighten($color: $text-dark-color, $amount: 10);
         font-weight: 700;
         font-size: $f-size-s;
+        &:hover {
+            transform: scale(1.01);
+            box-shadow: 0 -3px 7px 0px #736e6eb5;
+            background-color: rgb(201, 201, 202);
+        }
         &.active {
             position: relative;
             overflow: hidden;
+            z-index: 0;
             &::before {
                 content: '';
                 position: absolute;
                 left: 0;
                 top: 0;
                 height: 100%;
-                background-color: $logo-color;
+                background-image:linear-gradient(to right, $logo-color,$text-dark-color);
                 animation: loading .3s  infinite forwards ;
             }
+        }
+        span {
+            z-index: 9999;
         }
         &:disabled{
             cursor:wait;
