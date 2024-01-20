@@ -49,14 +49,19 @@ const Movies = () => {
     },[moviesFilter])
 
     const discoverMovies = (filter)=> {
+         const a = []
 
         for (let [key, value] of Object.entries(moviesFilter)) {
-            console.log(key, value);
+            if(value.length || typeof value === 'number') {
+                a.push(`&${key}=${typeof value === "object" ? value.toString() : value}`)
+                
+            }
         }
-        fetchData(`discover/movie?include_adult=false`)
+        console.log(a);
+        fetchData(`discover/movie?include_adult=false${a.map((e)=> e)}`)
         .then((data)=> {
             setMovies(data);
-            console.log(data);
+            console.log(data,`discover/movie?include_adult=false${a.map((e)=> e)}`);
         })
     }
 
