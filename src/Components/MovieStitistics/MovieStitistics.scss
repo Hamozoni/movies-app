@@ -25,6 +25,7 @@
             }
         }
         .keywords {
+            padding-bottom: $padding;
             .key-t {
                 margin: 10px 0;
             }
@@ -36,8 +37,22 @@
                     border-radius: $border-r;
                     background-color: $text-light-color;
                     cursor: pointer;
-                    font-size: $f-size-s;
+                    font-size: $f-size-xs;
                 }
+            }
+        }
+        .score {
+            padding-top: $padding;
+            .sc-t {
+
+            }
+            .sc-box {
+              .sc-per {
+
+              }
+              p {
+
+              }
             }
         }
     }

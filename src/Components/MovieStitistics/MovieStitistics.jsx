@@ -96,7 +96,13 @@ const MovieStitistics = ({id,details,type}) => {
               </ul>
 
             </section>
-            <section className="score"></section>
+            <section className="score">
+               <h5 className='sc-t'>content score</h5>
+               <div className="sc-box">
+                   <h5 className='sc-per'>100</h5>
+                   <p>Yes! Looking good!</p>
+               </div>
+            </section>
             <section className="top-contrib"></section>
 
             <footer className="stitis-footer">
