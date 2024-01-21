@@ -44,6 +44,7 @@
         .score {
             padding-top: $padding;
             border-top: 1px solid #cac7c7;
+            max-width: 250px;
             .sc-t {
                color: $text-dark-color;
                font-size: $f-size-s;
