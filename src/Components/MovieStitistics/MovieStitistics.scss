@@ -43,15 +43,23 @@
         }
         .score {
             padding-top: $padding;
+            border-top: 1px solid #cac7c7;
             .sc-t {
-
+               color: $text-dark-color;
+               font-size: $f-size-s;
             }
             .sc-box {
+                border-radius: $border-r;
+                overflow: hidden;
               .sc-per {
-
+                background-color: $text-dark-color;
+                color: $text-light-color;
+                padding: $padding-10;
               }
               p {
-
+                background-color: #c9c6c6;
+                color: $text-dark-color;
+                padding: $padding-10;
               }
             }
         }
