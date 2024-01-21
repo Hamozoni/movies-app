@@ -38,7 +38,7 @@
                 left: 0;
                 top: 0;
                 height: 100%;
-                background-image:linear-gradient(to right, $logo-color,$text-dark-color);
+                background-image:linear-gradient(to right,$text-dark-color, $logo-color);
                 animation: loading .3s  infinite forwards ;
             }
         }

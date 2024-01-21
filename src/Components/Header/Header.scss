@@ -42,7 +42,7 @@
                         min-width: 150px;
                         border-radius: 5px;
                         border: 1px solid #ecebeb;
-                        z-index: 9999;
+                        z-index: 9999999;
                         li {
                             cursor: pointer;
                             color: $text-dark-color;
@@ -92,6 +92,7 @@
             left: 0;
             z-index: 999;
             border-radius: 0;
+            z-index: 99999;
         }
     }
 }
