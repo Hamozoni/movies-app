@@ -35,7 +35,7 @@ const MovieSocial = ({id,section,mediaType})=> {
         <div className="social-content">
             <ReviewCard review={reviews[0]} />
         </div>
-        <Link className="read-review">
+        <Link to={`/movie/${id}/reviews`} className="read-review">
               read all reviews
         </Link>
         <hr />

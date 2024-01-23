@@ -11,6 +11,7 @@ import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
 import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
 import Search from './Pages/Search/Search';
 import Movies from './Pages/Movies/Movies';
+import Reviews from './Pages/Reviews/Reviews';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='/'  element={<Home />}/>
             <Route path='/movies/:filter'  element={<Movies />}/>
             <Route path='/movie/:id'  element={<Movie />}/>
+            <Route path='/movie/:id/reviews'  element={<Reviews />}/>
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
             <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
