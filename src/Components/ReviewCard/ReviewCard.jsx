@@ -28,7 +28,7 @@ const ReviewCard = ({review})=> {
                          wrettin by {review?.author}
                       </p>
                       <span className="date">
-                        on {review?.updated_at && new Date(review.updated_at)?.getFullYear()}
+                        on {review?.updated_at && new Date(review.updated_at)?.toDateString()}
                       </span>
                  </div>
              </div>
