@@ -21,14 +21,14 @@ const ReviewCard = ({review})=> {
                    a review by  {review?.author_details?.name}
                  </h4>
                  <div className="date-rate">
-                     <div className="rate">
+                     {/* <div className="rate">
                         {review?.author_details?.rating}
-                     </div>
+                     </div> */}
                       <p className="wrettin">
                          wrettin by {review?.author}
                       </p>
                       <span className="date">
-                        on {review?.updated_at}
+                        on {review?.updated_at && new Date(review.updated_at)?.getFullYear()}
                       </span>
                  </div>
              </div>
