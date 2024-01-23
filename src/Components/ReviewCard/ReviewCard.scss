@@ -17,9 +17,14 @@
             border-radius: $circle;
         }
         .rev-titles {
-            
+            h4 {
+                font-size: $f-size;
+                color: $text-dark-color;
+            }
             .date-rate{
-                @include flex-box;
+                @include flex-box(center,flex-start,5px);
+                font-size: $f-size-xs;
+                color: lighten($color: $text-dark-color, $amount: 10);
 
             }
         }
@@ -27,8 +32,8 @@
     }
     .review-content {
         .review {
-            font-size: $f-size-s;
-            color: $text-dark-color;
+            font-size: $f-size-xs;
+            color: lighten($color: $text-dark-color, $amount: 10);
         }
     }
     
