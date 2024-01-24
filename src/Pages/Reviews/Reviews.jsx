@@ -10,12 +10,18 @@ const Reviews = () => {
 
     const {id} = useParams();
     const [reviews,setReviews] = useState([]);
+    const [details,setDetails] = useState({});
 
     useEffect(()=>{
         fetchData(`movie/${id}/reviews?language=en-US&page=1`)
         .then(data => {
             setReviews(data?.results);
             console.log(data.results)
+        })
+        fetchData(`movie/${id}?language=en-US`)
+        .then(data => {
+            setDetails(data);
+            console.log(data)
         })
     },[id]);
 
@@ -25,11 +31,11 @@ const Reviews = () => {
         <header className="rev-header">
              <div className="head-container">
                 <div className="image-box">
-                    <img src="" alt="" />
+                    <img src={process.env.REACT_APP_BASE_URL + 'original' + details?.poster_path} alt="" />
                 </div>
                 <div className="titles">
                     <h4 className="mov-name">
-
+                        {details?.title}
                     </h4>
                     <Link>
                        <span><WestIcon /></span>
