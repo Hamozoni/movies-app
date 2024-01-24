@@ -29,22 +29,24 @@ const SeasonEpisodes = () => {
   return (
     <main className="season-episode">
         <div className="sea-episode">
-            <header className="episode-header">
-                <div className="epi-image">
-                    <img 
-                        loading="lazy"
-                        src={process.env.REACT_APP_BASE_URL + 'w200' + episodes?.poster_path } 
-                        alt="" 
-                        />
-                </div>
-                <div className="sea-titles">
-                    <h4 className="name">
-                       {`${episodes?.name}(${new Date(episodes?.air_date)?.getFullYear() })`}
-                    </h4>
-                    <Link to={`/tv/${id}/seasons`} className="back-to">
-                       <WestIcon />
-                        back to season list
-                    </Link>
+            <header className="main-t-header">
+                <div className="media-details">
+                    <div className="media-image">
+                        <img 
+                            loading="lazy"
+                            src={process.env.REACT_APP_BASE_URL + 'w200' + episodes?.poster_path } 
+                            alt="" 
+                            />
+                    </div>
+                    <div className="media-name">
+                        <h4 className="name">
+                        {`${episodes?.name}(${new Date(episodes?.air_date)?.getFullYear() })`}
+                        </h4>
+                        <Link to={`/tv/${id}/seasons`} className="media-back-to">
+                            <WestIcon />
+                            back to season list
+                        </Link>
+                    </div>
                 </div>
             </header>
             <div className="back-forword">

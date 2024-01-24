@@ -3,33 +3,6 @@
 
 .season-episode {
     .sea-episode {
-        .episode-header {
-            padding: $padding-10 $padding ;
-            @include flex-box;
-            background-color: $logo-color;
-            margin-bottom: $margin;
-            .epi-image {
-                max-width: 60px;
-                img {
-                    border-radius: $border-r;
-                }
-            }
-            .sea-titles {
-                .name {
-                    font-size: $main-f-size;
-                    color: $text-dark-color;
-                }
-                .back-to {
-                    @include flex-box(center,flex-start,5px);
-                    color: lighten($color: $text-dark-color, $amount: 10);
-                    font-size: $f-size-s;
-                    font-weight: 700;
-                    svg {
-                        font-size: $f-size-s;
-                    }
-                }
-            }
-        }
         .episodes {
             padding: $padding;
         }
