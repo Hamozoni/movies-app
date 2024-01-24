@@ -28,17 +28,17 @@ const Reviews = () => {
 
   return (
     <section className="reviews">
-        <header className="rev-header">
-             <div className="head-container">
-                <div className="image-box">
+        <header className="main-t-header">
+             <div className="media-details">
+                <div className="media-image">
                     <img src={process.env.REACT_APP_BASE_URL + 'original' + details?.poster_path} alt="" />
                 </div>
-                <div className="titles">
-                    <h4 className="mov-name">
+                <div className="media-name ">
+                    <h4 className="name">
                         {details?.title}
                     </h4>
-                    <Link>
-                       <span><WestIcon /></span>
+                    <Link className="media-back-to">
+                       <WestIcon />
                        back to main
                    </Link>
                 </div>
