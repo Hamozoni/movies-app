@@ -18,7 +18,7 @@ const ReviewCard = ({review})=> {
              </div>
              <div className="rev-titles">
                  <h4 className="name">
-                   a review by  {review?.author_details?.name}
+                   a review by  {review?.author}
                  </h4>
                  <div className="date-rate">
                      {/* <div className="rate">
