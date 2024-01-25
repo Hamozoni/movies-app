@@ -4,13 +4,14 @@
 .media-header {
     background-color: aliceblue;
     .media-nav {
-        @include flex-box(center,center);
+        @include flex-box(center,center,10px);
         .med-title {
             @include flex-box(center,center,0);
             cursor: pointer;
             color: rgb(131, 129, 129);
             font-weight: normal;
             padding:$padding-10;
+            font-size: $f-size-s;
 
         }
     }

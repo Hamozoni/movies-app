@@ -6,22 +6,26 @@ const MainMediaNav = () => {
   return (
     <header className='media-header'>
         <nav className='media-nav'>
-             <h4 className='med-title'>
-                overview
-                <ArrowDropDownIcon />
-             </h4>
-             <h4 className='med-title'>
-                media
-                <ArrowDropDownIcon />
-             </h4>
-             <h4 className='med-title'>
-                fandom
-                <ArrowDropDownIcon />
-             </h4>
-             <h4 className='med-title'>
-                share
-                <ArrowDropDownIcon />
-             </h4>
+             <div className='med-title'>
+                 <span>overview</span>
+                 <span><ArrowDropDownIcon /></span>
+             </div>
+             <div className='med-title'>
+                 <span>media</span>
+                 <span><ArrowDropDownIcon /></span>
+             </div>
+             <div className='med-title'>
+                 <span> fandom</span>
+                 <span><ArrowDropDownIcon /></span>
+             </div>
+             <div className='med-title'>
+                 <span> share</span>
+                 <span><ArrowDropDownIcon /></span>
+             </div>
+             <div className='med-title'>
+                 <span>overview</span>
+                 <span><ArrowDropDownIcon /></span>
+             </div>
         </nav>
     </header>
   )
