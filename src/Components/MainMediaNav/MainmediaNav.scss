@@ -6,12 +6,38 @@
     .media-nav {
         @include flex-box(center,center,10px);
         .med-title {
+            position: relative;
             @include flex-box(center,center,0);
             cursor: pointer;
             color: rgb(131, 129, 129);
             font-weight: normal;
             padding:$padding-10;
             font-size: $f-size-s;
+            .links-list {
+                display: none;
+                position: absolute;
+                top: 38px;
+                left: 0;
+                padding:10px 0;
+                width: 150px;
+                background-color: aliceblue;
+                border-radius: 5px;
+                box-shadow: 0 0 10px 0px #8d8b8bb0;
+                li {
+                    padding: $padding-5 $padding-10;
+                    a {
+                        color: $text-dark-color;
+                    }
+                    &:hover {
+                        background-color: #8d8b8bb0;
+                    }
+                }
+            }
+            &:hover {
+                .links-list {
+                    display: block;
+                }
+            }
 
         }
     }

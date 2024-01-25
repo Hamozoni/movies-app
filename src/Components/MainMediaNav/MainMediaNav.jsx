@@ -1,6 +1,7 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import "./MainmediaNav.scss";
+import { Link } from 'react-router-dom';
 
 const MainMediaNav = () => {
   return (
@@ -9,6 +10,26 @@ const MainMediaNav = () => {
              <div className='med-title'>
                  <span>overview</span>
                  <span><ArrowDropDownIcon /></span>
+                 <ul className='links-list'>
+                    <li>
+                        <Link>main</Link>
+                    </li>
+                    <li>
+                        <Link>alternative tiltes</Link>
+                    </li>
+                    <li>
+                        <Link>cast & crew</Link>
+                    </li>
+                    <li>
+                        <Link>release dates</Link>
+                    </li>
+                    <li>
+                        <Link>translations</Link>
+                    </li>
+                    <li>
+                        <Link>changes</Link>
+                    </li>
+                 </ul>
              </div>
              <div className='med-title'>
                  <span>media</span>
