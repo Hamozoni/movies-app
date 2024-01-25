@@ -10,6 +10,7 @@ import MovieSocial from "../../Components/MovieSocial/MovieSocial";
 import MovieMedia from "../../Components/MovieMedia/MovieMedia";
 import MovieStitistics from "../../Components/MovieStitistics/MovieStitistics";
 import Recommendations from "../../Components/Recommendations/Recommendations";
+import MainMediaNav from "../../Components/MainMediaNav/MainMediaNav";
 
 const Movie = ()=> {
     const {id} = useParams();
@@ -33,6 +34,7 @@ const Movie = ()=> {
         <main className="movie">
             <div className="movie-container">
             <Suspense fallback={<p>loading... </p>} >
+                <MainMediaNav />
                 <MovieTvCover details={movieDetails} />
                 <section className="movie-content">
                     <div className="left-content">
