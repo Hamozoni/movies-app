@@ -11,6 +11,7 @@ import TvSeasonCard from '../../Components/TvSeasonCard/TvSeasonCard';
 
 import "./Tv.scss";
 import MovieStitistics from '../../Components/MovieStitistics/MovieStitistics';
+import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav';
 
 const Tv = () => {
     const {id} = useParams();
@@ -30,6 +31,7 @@ const Tv = () => {
   return (
     <main className="tv">
         <div className="tv-container">
+            <MainMediaNav />
             <MovieTvCover details={details}/>
             <section className='tv-content'>
                  <section className='cast'>
