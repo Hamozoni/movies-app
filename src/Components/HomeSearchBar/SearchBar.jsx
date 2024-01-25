@@ -42,7 +42,10 @@ const SearchBar = ()=> {
 
     return (
         <div className="search-bar" >
-            <section className={`${theme} search-bar-container`}>
+            <section 
+                style={{backgroundImage: `${process.env.REACT_APP_BA}`}}
+                className={`${theme} search-bar-container`}
+                >
                  <h3 className="welcome">
                     {languages[lang].welcome}
                  </h3>
