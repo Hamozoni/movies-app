@@ -37,7 +37,7 @@ const Reviews = () => {
                     <h4 className="name">
                         {details?.title}
                     </h4>
-                    <Link className="media-back-to">
+                    <Link to={`/movie/${id}`} className="media-back-to">
                        <WestIcon />
                        back to main
                    </Link>
