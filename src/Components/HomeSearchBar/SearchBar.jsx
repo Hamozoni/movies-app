@@ -1,9 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { languages } from "../../Utilities/languages"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./SearchBar.scss";
 import { useNavigate } from "react-router-dom";
+import fetchData from "../../Utilities/fetchData";
 
 export const SearchForm = ()=> {
     const { lang } = useContext(globalContext);
@@ -37,13 +38,27 @@ export const SearchForm = ()=> {
 const SearchBar = ()=> {
 
    const { lang, theme} = useContext(globalContext);
+   const [images,setImages] = useState([]);
+   const [imgIdex,setImgIdex] = useState(0);
 
+   useEffect(()=>{
+       fetchData(`trending/movie/week?language=${lang}&page=1`)
+       .then((data)=>{
+           setImages(data?.results)
+           console.log(data?.results);
+       });
+   },[lang]);
+
+   useEffect(()=>{
+     
+   });
 
 
     return (
-        <div className="search-bar" >
-            <section 
-                style={{backgroundImage: `${process.env.REACT_APP_BA}`}}
+        <div 
+        style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${images[imgIdex]?.backdrop_path})`}}
+            className="search-bar" >
+            <section
                 className={`${theme} search-bar-container`}
                 >
                  <h3 className="welcome">
