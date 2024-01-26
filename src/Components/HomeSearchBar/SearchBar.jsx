@@ -49,9 +49,8 @@ const SearchBar = ()=> {
        });
    },[lang]);
 
- const intF =  useRef()
    useEffect(()=>{
-      intF.current =  setInterval(()=>{
+     const intF =  setInterval(()=>{
           setImgIdex(prev=> {
             if(prev < images?.length - 1){
                 return prev + 1;
