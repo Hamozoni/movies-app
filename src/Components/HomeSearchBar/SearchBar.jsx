@@ -50,8 +50,16 @@ const SearchBar = ()=> {
    },[lang]);
 
    useEffect(()=>{
-     
-   });
+     setInterval(()=>{
+          setImgIdex(prev=> {
+            if(prev < 21){
+                return prev + 1;
+            }else {
+                return 0
+            }
+          })
+     },5000)
+   },[]);
 
 
     return (
