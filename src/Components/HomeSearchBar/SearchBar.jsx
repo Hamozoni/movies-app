@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { languages } from "../../Utilities/languages"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
@@ -49,17 +49,19 @@ const SearchBar = ()=> {
        });
    },[lang]);
 
+ const intF =  useRef()
    useEffect(()=>{
-     setInterval(()=>{
+      intF.current =  setInterval(()=>{
           setImgIdex(prev=> {
-            if(prev < 21){
+            if(prev < images?.length - 1){
                 return prev + 1;
             }else {
                 return 0
             }
           })
-     },5000)
-   },[]);
+     },5000);
+     clearInterval(intF);
+   },[imgIdex]);
 
 
     return (
