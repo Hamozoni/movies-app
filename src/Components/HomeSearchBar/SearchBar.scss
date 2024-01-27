@@ -2,14 +2,14 @@
 @import "../../GlobalStyle/mixin";
 
 .search-bar {
-    background-color: #0a638b7a;
     background-size: cover;
     background-position: center ;
-    padding: $padding;
     .search-bar-container {
+        padding: $padding;
         color: $text-light-color;
         font-size: $main-f-size;
         text-transform: capitalize;
+        background-color: #064a53d4;
         .welcome {
             font-size: $main-f-size + 10;
         }

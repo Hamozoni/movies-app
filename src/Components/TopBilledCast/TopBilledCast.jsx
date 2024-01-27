@@ -4,6 +4,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import PersonCard from "../PersonCard/PersonCard";
 
 import "./TopBilledCast.scss";
+import { Link } from "react-router-dom";
 
 const TopBilledCast = ({type,id,title})=> {
 
@@ -28,7 +29,7 @@ const TopBilledCast = ({type,id,title})=> {
                 ))
             }
         </div>
-        <h5 className="full-cast">full cast & crew</h5>
+        <Link to={`/movie/${id}/cast`} className="full-cast">full cast & crew</Link>
     </section>
   )
 }

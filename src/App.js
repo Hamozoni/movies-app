@@ -12,6 +12,7 @@ import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
 import Search from './Pages/Search/Search';
 import Movies from './Pages/Movies/Movies';
 import Reviews from './Pages/Reviews/Reviews';
+import Cast from './Pages/Cast/Cast';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/movies/:filter'  element={<Movies />}/>
             <Route path='/movie/:id'  element={<Movie />}/>
             <Route path='/movie/:id/reviews'  element={<Reviews />}/>
+            <Route path='/movie/:id/cast'  element={<Cast />}/>
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
             <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
