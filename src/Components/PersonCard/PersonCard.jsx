@@ -3,6 +3,7 @@ import "./PersonCard.scss";
 
 import persinImg from '../../Images/person.png'
 import { useNavigate } from "react-router-dom";
+import fitLongString from "../../Utilities/fitLongString";
 
 const PersonCard = ({person})=> {
 
@@ -18,8 +19,8 @@ const PersonCard = ({person})=> {
                 alt={person?.name}/>
         </div>
         <div className="person-content">
-            <h4>{person?.name?.length > 13 ? person?.name?.slice(0,13) + '...' : person?.name}</h4>
-            <h5>{person?.character?.length > 15 ? person?.character?.slice(0,15) + "..." : person?.character}</h5>
+            <h4>{fitLongString(person?.name,13)}</h4>
+            <h5>{fitLongString( person?.character,15) || fitLongString( person?.job,15)}</h5>
         </div>
     </div>
   )
