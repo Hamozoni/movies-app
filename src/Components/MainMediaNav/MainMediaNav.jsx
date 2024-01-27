@@ -1,9 +1,10 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import "./MainmediaNav.scss";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const MainMediaNav = () => {
+    const {id} = useParams();
   return (
     <header className='media-header'>
         <nav className='media-nav'>
@@ -13,7 +14,7 @@ const MainMediaNav = () => {
                  <ul className='links-list'>
                     <li><Link>main</Link></li>
                     <li><Link>alternative tiltes</Link></li>
-                    <li><Link>cast & crew</Link></li>
+                    <li><Link to={`/movie/${id}/cast`}>cast & crew</Link></li>
                     <li><Link>release dates</Link></li>
                     <li><Link>translations</Link></li>
                     <li><Link>changes</Link></li>
@@ -34,7 +35,7 @@ const MainMediaNav = () => {
                  <span><ArrowDropDownIcon /></span>
                  <ul className='links-list'>
                     <li><Link>discussions</Link></li>
-                    <li><Link to='reviews'>reviews</Link></li>
+                    <li><Link to={`/movie/${id}/reviews`}>reviews</Link></li>
                  </ul>
              </div>
              <div className='med-title'>
