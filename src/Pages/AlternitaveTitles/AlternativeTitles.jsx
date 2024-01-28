@@ -9,6 +9,7 @@ const AlternativeTitles = () => {
     const {id} = useParams();
     const [countries,setCountries] = useState([]);
     const [titles,setTiltes] = useState([]);
+    const [titlesCount,setTiltesCount] = useState(0);
 
     useEffect(()=>{
 
@@ -17,6 +18,7 @@ const AlternativeTitles = () => {
             setTiltes(Object.groupBy(title.titles,ti => {
                 return ti.iso_3166_1
             }));
+            setTiltesCount(title?.titles?.length)
            
             fetchData(`configuration/countries?language=en-US`)
             .then(data=> {
@@ -45,7 +47,7 @@ const AlternativeTitles = () => {
             <section className='alt-cout-list'>
                 <header className='cout-header'>
                      <h3>Alternative Titles</h3>
-                     <p>{titles?.length}</p>
+                     <p>{titlesCount}</p>
                 </header>
                 <ul className="cout-list">     
                     {
@@ -53,7 +55,7 @@ const AlternativeTitles = () => {
                             
                                 
                             <li>
-                                <span>{cout?.native_name}</span>
+                                <h4>{cout?.native_name}</h4>
                                 <span>{titles[cout?.iso_3166_1]?.length}</span>
                             </li>
 
@@ -63,17 +65,20 @@ const AlternativeTitles = () => {
                            
                 </ul>
             </section>
-            <section className='alt-t'>
+            <section className='alt-t-tabels'>
                 {
                     Object.entries(titles)?.sort()?.map((title)=>(
-                        <tabel key={title?.title} className="titles-card" style={{display: 'block'}}>
-                           <thead>
+                        <tabel key={title?.title} className="titles-card">
+                           <thead className='t-h'>
                               <tr>
                                  
                                     {
                                         countries?.map((cout)=>(
                                             cout?.iso_3166_1 === title[0] && 
-                                            <h3>{cout?.native_name}</h3>
+                                            <h3> 
+                                                <img src={`https://flagsapi.com/${cout?.iso_3166_1 }/shiny/64.png`}></img>
+                                                {cout?.native_name}
+                                            </h3>
                                         ))
                                     }
                                 
