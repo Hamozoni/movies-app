@@ -3,6 +3,8 @@ import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav'
 import fetchData from '../../Utilities/fetchData';
 import { useParams } from 'react-router-dom';
 
+import "./AlternativeTitles.scss";
+
 const AlternativeTitles = () => {
     const {id} = useParams();
     const [countries,setCountries] = useState([]);
@@ -34,7 +36,6 @@ const AlternativeTitles = () => {
         })
     },[id]);
 
-    console.log(Object.entries(titles));
   return (
     <main className="alt-titles">
         <header className="alt-header">
@@ -53,7 +54,7 @@ const AlternativeTitles = () => {
                                 
                             <li>
                                 <span>{cout?.native_name}</span>
-                                <span>1</span>
+                                <span>{titles[cout?.iso_3166_1]?.length}</span>
                             </li>
 
                             
@@ -64,7 +65,7 @@ const AlternativeTitles = () => {
             </section>
             <section className='alt-t'>
                 {
-                    Object.entries(titles)?.map((title)=>(
+                    Object.entries(titles)?.sort()?.map((title)=>(
                         <tabel key={title?.title} className="titles-card" style={{display: 'block'}}>
                            <thead>
                               <tr>
