@@ -84,14 +84,14 @@ const AlternativeTitles = () => {
                                 
                               </tr>
                            </thead>
-                           <tbody>
-                               <tr>
+                           <tbody className='tbody'>
+                               <tr className='tr tr-b-b'>
                                   <td>title</td>
                                   <td>type</td>
                                </tr>
                                {
                                   title[1]?.map((t)=>(
-                                    <tr key={t?.title}>
+                                    <tr key={t?.title} className='tr'>
                                         <td>{t?.title}</td>
                                         <td >{t?.type}</td>
                                     </tr>
