@@ -55,6 +55,40 @@ const ReleaseDates = () => {
                     }
                 </ul>
             </section>
+            <section className='alt-t-tabels'>
+                {
+                    dates.map((date)=>(
+                        <tabel key={date?.iso_3166_1} className="titles-card">
+                           <thead className='t-h'>
+                              <tr>
+
+                                <h3> 
+                                    <img src={`https://flagsapi.com/${date?.iso_3166_1 }/shiny/64.png`}></img>
+                                    {countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}
+                                </h3>
+
+                                
+                              </tr>
+                           </thead>
+                           {/* <tbody className='tbody'>
+                               <tr className='tr tr'>
+                                  <td>title</td>
+                                  <td>type</td>
+                               </tr>
+                               {
+                                  title[1]?.map((t)=>(
+                                    <tr key={t?.title} className='tr'>
+                                        <td>{t?.title}</td>
+                                        <td >{t?.type}</td>
+                                    </tr>
+
+                                  ))
+                               }
+                           </tbody> */}
+                        </tabel>
+                    ))
+                }
+            </section>
         </div>
     </main>
   )
