@@ -12,10 +12,10 @@ const MainMediaNav = () => {
                  <span>overview</span>
                  <span><ArrowDropDownIcon /></span>
                  <ul className='links-list'>
-                    <li><Link>main</Link></li>
+                    <li><Link to={`/movie/${id}`}>main</Link></li>
                     <li><Link to={`/movie/${id}/titles`}>alternative tiltes</Link></li>
                     <li><Link to={`/movie/${id}/cast`}>cast & crew</Link></li>
-                    <li><Link>release dates</Link></li>
+                    <li><Link to={`/movie/${id}/releases`}>release dates</Link></li>
                     <li><Link>translations</Link></li>
                     <li><Link>changes</Link></li>
                  </ul>
