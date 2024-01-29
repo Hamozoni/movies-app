@@ -5,34 +5,6 @@
     .alt-content {
         padding: $padding;
         @include flex-box(flex-start,flex-start);
-        .alt-cout-list {
-            border-radius: $border-r;
-            box-shadow: 0 0 10px 0 #c9c7c7;
-            overflow: hidden;
-            min-width: 200px;
-            .cout-header {
-                padding: $padding;
-                background-color: $logo-color;
-                @include flex-box(center,space-between);
-            }
-            .cout-list { 
-                li {
-                    @include flex-box(center,space-between);
-                    padding: $padding-10   $padding;
-                    span {
-                        background-color: #c9c7c7;
-                        padding: $padding-5  $padding-10;
-                        border-radius: $circle;
-                    }
-                    &:hover {
-                        background-color: #c9c7c7;
-                        span {
-                            background-color: aliceblue;
-                        }
-                    }
-                }
-            }
-        }
         .alt-t-tabels {
             min-width: calc(100% - 240px);
             .titles-card {

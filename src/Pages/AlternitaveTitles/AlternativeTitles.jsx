@@ -54,7 +54,7 @@ const AlternativeTitles = () => {
                         countries?.map((cout)=>(
                             
                                 
-                            <li>
+                            <li key={cout?.cout?.iso_3166_1}>
                                 <h4>{cout?.native_name}</h4>
                                 <span>{titles[cout?.iso_3166_1]?.length}</span>
                             </li>
@@ -85,7 +85,7 @@ const AlternativeTitles = () => {
                               </tr>
                            </thead>
                            <tbody className='tbody'>
-                               <tr className='tr tr-b-b'>
+                               <tr className='tr tr'>
                                   <td>title</td>
                                   <td>type</td>
                                </tr>
