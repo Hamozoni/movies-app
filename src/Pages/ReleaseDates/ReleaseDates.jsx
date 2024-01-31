@@ -36,7 +36,7 @@ const ReleaseDates = () => {
         <header className="release-head">
             <MainMediaNav />
         </header>
-        <div className="release-content">
+        <div className="alt-content">
             <section className='alt-cout-list'>
                 <header className="cout-header">
                     <h3 >

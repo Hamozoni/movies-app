@@ -71,29 +71,71 @@ img, picture {
   }
 
 }
-.alt-cout-list {
-  border-radius: $border-r;
-  box-shadow: 0 0 10px 0 #c9c7c7;
-  overflow: hidden;
-  min-width: 200px;
-  .cout-header {
-      padding: $padding;
-      background-color: $logo-color;
-      @include flex-box(center,space-between);
+
+.alt-content {
+  padding: $padding;
+  @include flex-box(flex-start,flex-start);
+  .alt-cout-list {
+    border-radius: $border-r;
+    box-shadow: 0 0 10px 0 #c9c7c7;
+    overflow: hidden;
+    min-width: 200px;
+    .cout-header {
+        padding: $padding;
+        background-color: $logo-color;
+        @include flex-box(center,space-between);
+    }
+    .cout-list { 
+        li {
+            @include flex-box(center,space-between);
+            padding: $padding-10   $padding;
+            span {
+                background-color: #c9c7c7;
+                padding: $padding-5  $padding-10;
+                border-radius: $circle;
+            }
+            &:hover {
+                background-color: #c9c7c7;
+                span {
+                    background-color: aliceblue;
+                }
+            }
+        }
+    }
   }
-  .cout-list { 
-      li {
-          @include flex-box(center,space-between);
-          padding: $padding-10   $padding;
-          span {
+  .alt-t-tabels {
+      min-width: calc(100% - 240px);
+      .titles-card {
+          box-shadow: 0 0 10px 0 #c9c7c7;
+          margin-bottom: $margin;
+          min-width: 100%;
+          display: inline-table;
+          border-radius: $border-r;
+          overflow: hidden;
+          .t-h {
+              display: table;
+              padding: $padding-10;
               background-color: #c9c7c7;
-              padding: $padding-5  $padding-10;
-              border-radius: $circle;
+              min-width: 200%;
+              h3 {
+
+                  @include flex-box(center,flex-start,10px);
+                  img {
+                      max-width: 30px;
+                  }
+              }
           }
-          &:hover {
-              background-color: #c9c7c7;
-              span {
-                  background-color: aliceblue;
+          .tbody {
+              .tr {
+                 @include flex-box(center,flex-start,0);
+                 padding: $padding-10;
+                 &.tr-b-b {
+                     border-bottom: 1px solid #dbd8d8;
+                 }
+                  td {
+                      display: flex;
+                      width: 50%;
+                  }
               }
           }
       }
