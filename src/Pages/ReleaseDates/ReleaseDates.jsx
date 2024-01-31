@@ -72,10 +72,10 @@ const ReleaseDates = () => {
                            </thead>
                            <tbody className='tbody'>
                                <tr className='tr tr'>
-                                  <td>title</td>
+                                  <td>Date</td>
+                                  <td>Certification</td>
                                   <td>type</td>
-                                  <td>type</td>
-                                  <td>type</td>
+                                  <td>Language</td>
                                </tr>
                                {
                                   date?.release_dates?.map((relDate)=>(
