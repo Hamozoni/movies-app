@@ -74,12 +74,17 @@ const ReleaseDates = () => {
                                <tr className='tr tr'>
                                   <td>title</td>
                                   <td>type</td>
+                                  <td>type</td>
+                                  <td>type</td>
                                </tr>
                                {
-                                  title[1]?.map((t)=>(
-                                    <tr key={t?.title} className='tr'>
-                                        <td>{t?.title}</td>
-                                        <td >{t?.type}</td>
+                                  date?.release_dates?.map((relDate)=>(
+                                    
+                                    <tr key={relDate?.release_date} className='tr'>
+                                        <td>{relDate?.release_date}</td>
+                                        <td >{relDate?.certification}</td>
+                                        <td >{relDate?.type}</td>
+                                        <td >{relDate?.iso_639_1}</td>
                                     </tr>
 
                                   ))
