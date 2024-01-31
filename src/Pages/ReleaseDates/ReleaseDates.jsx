@@ -81,7 +81,7 @@ const ReleaseDates = () => {
                                   date?.release_dates?.map((relDate)=>(
                                     
                                     <tr key={relDate?.release_date} className='tr'>
-                                        <td>{relDate?.release_date}</td>
+                                        <td>{new Date(relDate?.release_date)?.toLocaleDateString()}</td>
                                         <td >{relDate?.certification}</td>
                                         <td >{relDate?.type}</td>
                                         <td >{relDate?.iso_639_1}</td>
