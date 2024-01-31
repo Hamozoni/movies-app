@@ -70,7 +70,7 @@ const ReleaseDates = () => {
                                 
                               </tr>
                            </thead>
-                           {/* <tbody className='tbody'>
+                           <tbody className='tbody'>
                                <tr className='tr tr'>
                                   <td>title</td>
                                   <td>type</td>
@@ -84,7 +84,7 @@ const ReleaseDates = () => {
 
                                   ))
                                }
-                           </tbody> */}
+                           </tbody>
                         </tabel>
                     ))
                 }
