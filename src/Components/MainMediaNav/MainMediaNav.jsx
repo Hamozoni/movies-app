@@ -16,7 +16,7 @@ const MainMediaNav = () => {
                     <li><Link to={`/movie/${id}/titles`}>alternative tiltes</Link></li>
                     <li><Link to={`/movie/${id}/cast`}>cast & crew</Link></li>
                     <li><Link to={`/movie/${id}/releases`}>release dates</Link></li>
-                    <li><Link>translations</Link></li>
+                    <li><Link to={`/movie/${id}/translations`}>translations</Link></li>
                     <li><Link>changes</Link></li>
                  </ul>
              </div>
