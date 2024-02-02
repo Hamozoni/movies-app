@@ -40,8 +40,19 @@ const Transaction = () => {
                     }
                 </ul>
             </section>
-            <section className="trans-titles"> 
-
+            <section className="trans-titles">
+               {
+                  translations?.map((trans)=> (
+                    <div key={trans?.iso_3166_1} className="trans-content-card">
+                         <header className="trans-cont-head">
+                               <h4 className="en-name">
+                                   {trans?.english_name}
+                               </h4>
+                               <span>({trans?.iso_639_1}-{trans?.iso_3166_1})</span>
+                         </header>
+                    </div>
+                  ))
+               } 
             </section>
         </div>
     </main>
