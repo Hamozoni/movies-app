@@ -3,6 +3,8 @@ import MainMediaNav from "../../Components/MainMediaNav/MainMediaNav"
 import { useParams } from "react-router-dom";
 import fetchData from "../../Utilities/fetchData";
 
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+
 const Transaction = () => {
 
   const {id} = useParams();
@@ -50,6 +52,31 @@ const Transaction = () => {
                                </h4>
                                <span>({trans?.iso_639_1}-{trans?.iso_3166_1})</span>
                          </header>
+                         <div className="">
+                             <div className="">
+                                 <h5>title</h5>
+                                 <span>{trans?.data?.title}</span>
+                                 <span><LockOpenIcon /></span>
+                             </div>
+                             <div className="">
+                               <h5>Taglines</h5>
+                               <span>{trans?.data?.tagline}</span>
+                                <span><LockOpenIcon /></span>
+                             </div>
+                             <div className="">
+                                <h5>Overview</h5>
+                                <span>{trans?.data?.overview}</span>
+                                <span><LockOpenIcon /></span>
+                             </div>
+                             <div className="">
+                                <h5>{trans?.data?.runtime}</h5>
+                                <span><LockOpenIcon /></span>
+                                <a href={trans?.data?.homepage} target="_blank">
+                                   {trans?.data?.homepage}
+                                </a>
+                                <span><LockOpenIcon /></span>
+                             </div>
+                         </div>
                     </div>
                   ))
                } 
