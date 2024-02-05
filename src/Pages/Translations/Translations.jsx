@@ -5,6 +5,8 @@ import fetchData from "../../Utilities/fetchData";
 
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
+import "./Translations.scss";
+
 const Transaction = () => {
 
   const {id} = useParams();

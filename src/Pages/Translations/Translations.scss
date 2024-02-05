@@ -1,0 +1,15 @@
+@import '.../../../../GlobalStyle/variables';
+@import '.../../../../GlobalStyle/mixin';
+
+.mov-transation {
+    .alt-content {
+        .trans-titles {
+            .trans-content-card {
+               border-radius: $border-r-l; 
+               box-shadow: 0 0 20px 0px #5d5b5b3d;;
+               padding: $padding-10;
+               margin-top: $margin
+            }
+        }
+    }
+}
