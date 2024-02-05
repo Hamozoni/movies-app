@@ -10,9 +10,12 @@
                box-shadow: 0 0 20px 0px #5d5b5b3d;
                margin-bottom: $margin;
                .trans-cont-head {
-                   padding: $padding-10;
+                  padding: $padding-10;
                   background-color: lightgray;
                   @include flex-box(center,flex-start,10px)
+               }
+               .tr-ca-body {
+                 @include flex-box(center,flex-start,0px);
                }
             }
         }

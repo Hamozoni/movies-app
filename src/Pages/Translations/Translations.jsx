@@ -54,7 +54,7 @@ const Transaction = () => {
                                </h4>
                                <span>({trans?.iso_639_1}-{trans?.iso_3166_1})</span>
                          </header>
-                         <div className="">
+                         <div className="tr-ca-body">
                              <div className="">
                                  <h5>title</h5>
                                  <span>{trans?.data?.title}</span>
