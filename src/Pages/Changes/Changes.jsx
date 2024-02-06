@@ -1,8 +1,13 @@
 import React from 'react'
+import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav'
 
 const Changes = () => {
   return (
-    <div>Changes</div>
+    <section>
+        <header>
+            <MainMediaNav/>
+        </header>
+    </section>
   )
 }
 
