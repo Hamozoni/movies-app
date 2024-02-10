@@ -16,6 +16,7 @@ import Cast from './Pages/Cast/Cast';
 import AlternativeTitles from './Pages/AlternitaveTitles/AlternativeTitles';
 import ReleaseDates from './Pages/ReleaseDates/ReleaseDates';
 import Translations from './Pages/Translations/Translations';
+import Changes from './Pages/Changes/Changes';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path='/movie/:id/titles'  element={<AlternativeTitles />}/>
             <Route path='/movie/:id/releases'  element={<ReleaseDates />}/>
             <Route path='/movie/:id/translations'  element={<Translations/>}/>
+            <Route path='/movie/:id/changes'  element={<Changes/>}/>
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
             <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>

@@ -7,6 +7,9 @@ const Changes = () => {
         <header>
             <MainMediaNav/>
         </header>
+        <div className="chanes-box">
+            
+        </div>
     </section>
   )
 }
