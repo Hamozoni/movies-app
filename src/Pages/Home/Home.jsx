@@ -1,3 +1,4 @@
+import FreeToWatch from "../../Components/FreeToWatch/FreeToWatch";
 import SearchBar from "../../Components/HomeSearchBar/SearchBar";
 import Trending from "../../Components/Trending/Trending";
 
@@ -8,6 +9,7 @@ const Home = ()=> {
             <div className="home-container">
                 <SearchBar />
                 <Trending type='movie' />
+                <FreeToWatch />
                 <Trending type='tv'/>
                 <Trending type='person'/>
             </div>

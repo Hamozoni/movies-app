@@ -1,34 +1,50 @@
+import { useContext, useEffect, useState } from "react";
+import fetchData from "../../Utilities/fetchData";
+import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import MovieCard from "../MovieCard/MovieCard";
+import { languages } from "../../Utilities/languages";
+
 const FreeToWatch = ()=> {
+
+    const {lang} = useContext(globalContext);
+    const [mediaType,setMediaType] = useState('movie');
+    const [media,setMedia] = useState([]);
+    useEffect(()=>{
+        fetchData(`discover/${mediaType}?language=${lang}&page=1&with_watch_monetization_types=free`)
+        .then((data)=> {
+            setMedia(data?.results);
+        })
+    },[mediaType]);
+
     return (
         <div className="free-to-watch">
-            <section className={`${type} free-to-watch trending`}>
+            <section className={`free-to-watch trending`}>
                 <div className="trending-container">
                     <header className="trend-header">
                         <h3 className="trend-title">
-                            {languages[lang].trending + " "}  
-                            {type === 'movie' ? languages[lang].movies : type === 'tv'  ? languages[lang].tvShows :languages[lang].people }
+                            {languages[lang].freeToWatch}
                         </h3>
                         <nav className="trend-nav">
                             <ul>
                                 <li 
-                                    className={filter === 'day' && 'active'}
-                                    onClick={()=> setFilter('day')}
+                                    className={mediaType === 'movie' && 'active'}
+                                    onClick={()=> setMediaType('movie')}
                                     >
-                                    {languages[lang].today}
+                                    {languages[lang].movies}
                             </li>
                                 <li 
-                                    className={filter === 'week' && 'active'}
-                                    onClick={()=> setFilter('week')}
+                                    className={mediaType === 'tv' && 'active'}
+                                    onClick={()=> setMediaType('tv')}
                                     >
-                                    {languages[lang].thisWeek}
+                                    {languages[lang].tvShows}
                                 </li>
                             </ul>
                         </nav>
                     </header>
                     <div className="movies">
                         {
-                            movies?.map((movie)=>(
-                                <MovieCard movie={movie} type={type} />
+                            media?.map((movie)=>(
+                                <MovieCard movie={movie} type={mediaType} />
                             ))
                         }
                     </div>

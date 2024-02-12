@@ -18,7 +18,8 @@ export  const languages = {
         thisWeek: 'this week',
         trending: 'trending',
         playTrailer: 'play trailer',
-        overview: 'overview'
+        overview: 'overview',
+        freeToWatch: 'free To Watch'
     },
     ar: {
         movies: 'أفلام',
@@ -37,6 +38,7 @@ export  const languages = {
         thisWeek: 'this week',
         trending: 'رائج',
         playTrailer: 'تشغيل',
-        overview: 'نظرة عامة'
+        overview: 'نظرة عامة',
+        freeToWatch: 'مشاهده مجانا'
     }
 }
