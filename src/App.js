@@ -25,17 +25,17 @@ function App() {
         <Routes>
             <Route path='/'  element={<Home />}/>
             <Route path='/movies/:filter'  element={<Movies />}/>
-            <Route path='/movie/:id'  element={<Movie />}/>
-            <Route path='/movie/:id/reviews'  element={<Reviews />}/>
-            <Route path='/movie/:id/cast'  element={<Cast />}/>
-            <Route path='/movie/:id/titles'  element={<AlternativeTitles />}/>
-            <Route path='/movie/:id/releases'  element={<ReleaseDates />}/>
-            <Route path='/movie/:id/translations'  element={<Translations/>}/>
-            <Route path='/movie/:id/changes'  element={<Changes/>}/>
-            <Route path='/tv/:id'  element={<Tv />}/>
-            <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
-            <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
-            <Route path='/person/:id'  element={<Person />}/>
+            <Route path='/movie'  element={<Movie />}/>
+            <Route path='/movie/reviews'  element={<Reviews />}/>
+            <Route path='/movie/cast'  element={<Cast />}/>
+            <Route path='/movie/titles'  element={<AlternativeTitles />}/>
+            <Route path='/movie/releases'  element={<ReleaseDates />}/>
+            <Route path='/movie/translations'  element={<Translations/>}/>
+            <Route path='/movie/changes'  element={<Changes/>}/>
+            <Route path='/tv'  element={<Tv />}/>
+            <Route path='/tv/seasons'  element={<TvShowSeasons />}/>
+            <Route path='/tv/season/:seasonNumber'  element={<SeasonEpisodes />}/>
+            <Route path='/person'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
             <Route path='/search/:type'  element={<Search />}/>
         </Routes>

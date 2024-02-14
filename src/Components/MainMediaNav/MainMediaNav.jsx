@@ -1,10 +1,10 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import "./MainmediaNav.scss";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 const MainMediaNav = () => {
-    const {id} = useParams();
+    const id = useLocation().search.split('=')[1];
   return (
     <header className='media-header'>
         <nav className='media-nav'>
@@ -12,11 +12,11 @@ const MainMediaNav = () => {
                  <span>overview</span>
                  <span><ArrowDropDownIcon /></span>
                  <ul className='links-list'>
-                    <li><Link to={`/movie/${id}`}>main</Link></li>
-                    <li><Link to={`/movie/${id}/titles`}>alternative tiltes</Link></li>
-                    <li><Link to={`/movie/${id}/cast`}>cast & crew</Link></li>
-                    <li><Link to={`/movie/${id}/releases`}>release dates</Link></li>
-                    <li><Link to={`/movie/${id}/translations`}>translations</Link></li>
+                    <li><Link to={`/movie?id=${id}`}>main</Link></li>
+                    <li><Link to={`/movie?id=${id}/titles`}>alternative tiltes</Link></li>
+                    <li><Link to={`/movie?id=${id}/cast`}>cast & crew</Link></li>
+                    <li><Link to={`/movie?id=${id}/releases`}>release dates</Link></li>
+                    <li><Link to={`/movie?id=${id}/translations`}>translations</Link></li>
                     <li><Link>changes</Link></li>
                  </ul>
              </div>

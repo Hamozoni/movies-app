@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 
 import "./Movie.scss";
 import { Suspense, useContext, useEffect, useState } from "react";
@@ -13,7 +13,9 @@ import Recommendations from "../../Components/Recommendations/Recommendations";
 import MainMediaNav from "../../Components/MainMediaNav/MainMediaNav";
 
 const Movie = ()=> {
-    const {id} = useParams();
+    const  id = useLocation().search.split('=')[1];
+    console.log(useLocation().search.split('=')[1]
+    )
     const {lang} = useContext(globalContext);
     
     const [movieDetails,setMovieDetails] = useState({})
