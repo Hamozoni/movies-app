@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { movieFilter } from "../../../../Pages/Movies/Movies";
+import { meidaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
 
 import "./SortingGauge.scss";
 
@@ -8,7 +8,7 @@ const SortingGauge = ({title,renderFrom}) => {
 
 
     const [isRatedPanel,setIsRatedPanel] = useState(false);
-    const {moviesFilter,setMoviesFilter} = useContext(movieFilter);
+    const {moviesFilter,setMoviesFilter} = useContext(meidaFilter);
 
     const handleRatingRang = (e)=> {
 

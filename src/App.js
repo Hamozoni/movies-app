@@ -10,13 +10,13 @@ import Keywords from './Pages/Keywords/Keywords';
 import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
 import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
 import Search from './Pages/Search/Search';
-import Movies from './Pages/Movies/Movies';
 import Reviews from './Pages/Reviews/Reviews';
 import Cast from './Pages/Cast/Cast';
 import AlternativeTitles from './Pages/AlternitaveTitles/AlternativeTitles';
 import ReleaseDates from './Pages/ReleaseDates/ReleaseDates';
 import Translations from './Pages/Translations/Translations';
 import Changes from './Pages/Changes/Changes';
+import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList';
 
 function App() {
   return (
@@ -24,7 +24,8 @@ function App() {
       <Header />
         <Routes>
             <Route path='/'  element={<Home />}/>
-            <Route path='/movies/:filter'  element={<Movies />}/>
+            <Route path='list/movie/:filter'  element={<FilteredMediaList mediaType='movie' />}/>
+            <Route path='list/tv/:filter'  element={<FilteredMediaList mediaType='tv'  />}/>
             <Route path='/movie/:id'  element={<Movie />}/>
             <Route path='/movie/:id/reviews'  element={<Reviews />}/>
             <Route path='/movie/:id/cast'  element={<Cast />}/>

@@ -9,12 +9,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CheckIcon from '@mui/icons-material/Check';
 
 import "../Filters/Sort/Sort.scss";
-import { movieFilter } from "../../../Pages/Movies/Movies";
+import { meidaFilter } from "../../../Pages/FilteredMediaList/FilteredMediaList";
 
 
 const WhereToWatch = () => {
 
-    const{moviesFilter,setMoviesFilter} = useContext(movieFilter);
+    const{moviesFilter,setMoviesFilter} = useContext(meidaFilter);
 
     const [countries,setCountries] = useState([]);
     const [providers,setProviders] = useState([]);

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { movieFilter } from "../../../../Pages/Movies/Movies";
+import { meidaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
 import fetchData from "../../../../Utilities/fetchData";
 
 import ClearIcon from '@mui/icons-material/Clear';
@@ -8,7 +8,7 @@ import "./Keywords.scss";
 
 const Keywords = () => {
 
-    const {moviesFilter,setMoviesFilter} = useContext(movieFilter);
+    const {moviesFilter,setMoviesFilter} = useContext(meidaFilter);
     const [keys,setKeys] = useState([]);
     const [isAutoCompList,setIsAutoCompList] = useState(false);
 

@@ -8,12 +8,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Filters.scss";
 import Languages from "./Languages/Languages";
-import { movieFilter } from "../../../Pages/Movies/Movies";
+import { meidaFilter } from "../../../Pages/FilteredMediaList/FilteredMediaList";
 import Keywords from "./Keywords/Keywords";
 
 const Filters = () => {
 
-    const {moviesFilter,setMoviesFilter} = useContext(movieFilter);
+    const {moviesFilter,setMoviesFilter} = useContext(meidaFilter);
 
     const [genres,setGenres] = useState([]);
 

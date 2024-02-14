@@ -21,8 +21,8 @@ const Header = ()=> {
 
     const [isSearch,setisSearch] = useState(false);
 
-    const handleNavigate = (filter)=>{
-        navigate(`/movies/${filter}`);
+    const handleNavigate = (filter,mediaType)=>{
+        navigate(`list/${mediaType}/${filter}`);
     };
 
     return (
@@ -36,19 +36,19 @@ const Header = ()=> {
                         <h4 >
                             {languages[lang].movies} 
                             <ul className="fiter">
-                                <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
-                                <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].nowPlaying}</li>
-                                <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].upComing}</li>
-                                <li onClick={()=> handleNavigate('top_rated')}>{languages[lang].topRated}</li>
+                                <li onClick={()=> handleNavigate('popular','movie')}>{languages[lang].popular}</li>
+                                <li onClick={()=> handleNavigate('now_playing','movie')}>{languages[lang].nowPlaying}</li>
+                                <li onClick={()=> handleNavigate('upcoming','movie')}>{languages[lang].upComing}</li>
+                                <li onClick={()=> handleNavigate('top_rated','movie')}>{languages[lang].topRated}</li>
                             </ul>
                         </h4>
                         <h4>
                             {languages[lang].tvShows}
                             <ul className="fiter">
-                                <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular}</li>
-                                <li onClick={()=> handleNavigate('now_playing')}>{languages[lang].airingToday}</li>
-                                <li onClick={()=> handleNavigate('upcoming')}>{languages[lang].onTv}</li>
-                                <li onClick={()=> handleNavigate('top_rated')}>{languages[lang].topRated}</li>
+                                <li onClick={()=> handleNavigate('popular','tv')}>{languages[lang].popular}</li>
+                                <li onClick={()=> handleNavigate('now_playing','tv')}>{languages[lang].airingToday}</li>
+                                <li onClick={()=> handleNavigate('upcoming','tv')}>{languages[lang].onTv}</li>
+                                <li onClick={()=> handleNavigate('top_rated','tv')}>{languages[lang].topRated}</li>
                             </ul>
                         </h4>
                         <h4>
