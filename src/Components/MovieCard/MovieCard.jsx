@@ -9,7 +9,7 @@ const MovieCard = ({movie, type})=> {
 
     const handleNavigation = ()=> {
 
-        navigate(`/${type}?id=${movie?.id}`);
+        navigate(`/${type}/${movie?.id}`);
     }
 
     return (
