@@ -6,10 +6,10 @@ import { meidaFilter } from '../../../../Pages/FilteredMediaList/FilteredMediaLi
 
 const Sort = () => {
 
-    const {setMoviesFilter} = useContext(meidaFilter);
+    const {setMediaFiltering} = useContext(meidaFilter);
 
     const handleSelection = (e)=> {
-        setMoviesFilter( prev=> {
+        setMediaFiltering( prev=> {
             return {
                 ...prev,
                 sort_by: e.target.value

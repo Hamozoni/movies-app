@@ -13,7 +13,7 @@ import Keywords from "./Keywords/Keywords";
 
 const Filters = () => {
 
-    const {moviesFilter,setMoviesFilter} = useContext(meidaFilter);
+    const {mediaFiltering,setMediaFiltering} = useContext(meidaFilter);
 
     const [genres,setGenres] = useState([]);
 
@@ -61,14 +61,14 @@ const Filters = () => {
                     <div className="release-date">
                         <label className="c-ti" htmlFor="from-date"> from</label>
                         <input 
-                            onBlur={(e)=> setMoviesFilter(prev=> {return {...prev,'release_date.gte': [e.target.value]}})} 
+                            onBlur={(e)=> setMediaFiltering(prev=> {return {...prev,'release_date.gte': [e.target.value]}})} 
                             type="date" id="from-date" />
 
                     </div>
                     <div className="release-date">
                         <label className="c-ti" htmlFor="to-date"> to</label>
                         <input
-                            onBlur={(e)=> setMoviesFilter(prev=> {return {...prev,'release_date.lte': [e.target.value]}})} 
+                            onBlur={(e)=> setMediaFiltering(prev=> {return {...prev,'release_date.lte': [e.target.value]}})} 
                             type="date" name="to-date" id="to-date" />
                     </div>
                 </div>
@@ -82,8 +82,8 @@ const Filters = () => {
                         {
                             genres?.map((gen)=>(
                                 <li 
-                                    className={moviesFilter.with_genres?.includes(gen.name) && 'active'}
-                                    onClick={()=> setMoviesFilter(prev=> {
+                                    className={mediaFiltering.with_genres?.includes(gen.name) && 'active'}
+                                    onClick={()=> setMediaFiltering(prev=> {
                                         return {
                                             ...prev,
                                             with_genres : prev?.with_genres?.includes(gen.name) ? 

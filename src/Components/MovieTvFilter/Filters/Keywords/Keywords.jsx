@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { meidaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
+import { movieFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
 import fetchData from "../../../../Utilities/fetchData";
 
 import ClearIcon from '@mui/icons-material/Clear';
@@ -8,7 +8,7 @@ import "./Keywords.scss";
 
 const Keywords = () => {
 
-    const {moviesFilter,setMoviesFilter} = useContext(meidaFilter);
+    const {mediaFiltering,setMediaFiltering} = useContext(movieFilter);
     const [keys,setKeys] = useState([]);
     const [isAutoCompList,setIsAutoCompList] = useState(false);
 
@@ -22,7 +22,7 @@ const Keywords = () => {
     };
 
     const handleKeysContext = (key)=> {
-        setMoviesFilter(prev=> {
+        setMediaFiltering(prev=> {
             return {
                 ...prev,
                 with_keywords: prev.with_keywords?.includes(key) ? prev.with_keywords.filter(el=> el !== key) : [...prev.with_keywords,key]
@@ -39,7 +39,7 @@ const Keywords = () => {
         <div className={`${isAutoCompList} key-box`}>
             <ul className="keys">
                 {
-                    moviesFilter?.with_keywords?.map((key)=>(
+                    mediaFiltering?.with_keywords?.map((key)=>(
                         <li key={key} >
                             {key}
                             <ClearIcon onClick={()=> handleKeysContext(key)}  />
@@ -67,7 +67,7 @@ const Keywords = () => {
                     {
                         keys?.map((key)=>(
                             <li 
-                                className={moviesFilter?.with_keywords?.includes(key?.name) && "active"}
+                                className={mediaFiltering?.with_keywords?.includes(key?.name) && "active"}
                                 key={key?.id} 
                                 onClick={()=> handleKeysContext(key?.name)}
                                 >

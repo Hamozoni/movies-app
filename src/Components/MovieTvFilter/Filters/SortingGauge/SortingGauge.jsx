@@ -8,14 +8,14 @@ const SortingGauge = ({title,renderFrom}) => {
 
 
     const [isRatedPanel,setIsRatedPanel] = useState(false);
-    const {moviesFilter,setMoviesFilter} = useContext(meidaFilter);
+    const {mediaFiltering,setMediaFiltering} = useContext(meidaFilter);
 
     const handleRatingRang = (e)=> {
 
         console.log(e)
 
         setIsRatedPanel(true);
-         setMoviesFilter(prev=> {
+         setMediaFiltering(prev=> {
 
             const isFalidArea =  e.clientX !== 0 && e.clientX < 230 &&  e.clientX > 27;
 
@@ -49,7 +49,7 @@ const SortingGauge = ({title,renderFrom}) => {
     };
 
     const handleDragingRate = (e,dir)=> {
-        setMoviesFilter(prev=> {
+        setMediaFiltering(prev=> {
             setIsRatedPanel(true);
 
             console.log(e);
@@ -126,12 +126,12 @@ const SortingGauge = ({title,renderFrom}) => {
 
             <div  
                 onDrag={(e)=> handleDragingRate(e,'left') }
-                style={{left: `${renderFrom === 'rating' ? moviesFilter['vote_average.gte']  * 10 : moviesFilter['with_runtime.gte']  / 4}%`}}
+                style={{left: `${renderFrom === 'rating' ? mediaFiltering['vote_average.gte']  * 10 : mediaFiltering['with_runtime.gte']  / 4}%`}}
                 className="left"
                 >
             </div>
             <div 
-                style={{left: `${renderFrom === 'rating' ? moviesFilter['vote_average.lte'] * 10 : moviesFilter['with_runtime.lte']  / 4}%`}}
+                style={{left: `${renderFrom === 'rating' ? mediaFiltering['vote_average.lte'] * 10 : mediaFiltering['with_runtime.lte']  / 4}%`}}
                 className="right"
                 onDrag={(e)=> handleDragingRate(e,'right')}
                 >
@@ -139,15 +139,15 @@ const SortingGauge = ({title,renderFrom}) => {
             {
                 isRatedPanel &&
                 <div className="shows-rate-panel" >
-                    {`${renderFrom === 'rating' ? 'rated' + moviesFilter['vote_average.gte'] :  moviesFilter['with_runtime.gte'] + 'm' } - ${renderFrom === 'rating' ? moviesFilter['vote_average.lte'] : moviesFilter['with_runtime.lte'] + 'm'}`}
+                    {`${renderFrom === 'rating' ? 'rated' + mediaFiltering['vote_average.gte'] :  mediaFiltering['with_runtime.gte'] + 'm' } - ${renderFrom === 'rating' ? mediaFiltering['vote_average.lte'] : mediaFiltering['with_runtime.lte'] + 'm'}`}
                 </div>
             }
             <div 
                 onClick={(e)=> handleRatingRang(e)}
                 style={{
                         width:
-                         `${renderFrom === 'rating' ? (moviesFilter['vote_average.lte'] - moviesFilter['vote_average.gte'] ) * 10 :(moviesFilter['with_runtime.lte'] - moviesFilter['with_runtime.gte'] ) / 4 }%`,
-                        left: `${renderFrom === 'rating' ?  moviesFilter['vote_average.gte']  * 10 :moviesFilter['with_runtime.gte'] / 4 }%`}}
+                         `${renderFrom === 'rating' ? (mediaFiltering['vote_average.lte'] - mediaFiltering['vote_average.gte'] ) * 10 :(mediaFiltering['with_runtime.lte'] - mediaFiltering['with_runtime.gte'] ) / 4 }%`,
+                        left: `${renderFrom === 'rating' ?  mediaFiltering['vote_average.gte']  * 10 :mediaFiltering['with_runtime.gte'] / 4 }%`}}
                 className="reng-fill">
             </div>
         </div>

@@ -14,7 +14,7 @@ import { meidaFilter } from "../../../Pages/FilteredMediaList/FilteredMediaList"
 
 const WhereToWatch = () => {
 
-    const{moviesFilter,setMoviesFilter} = useContext(meidaFilter);
+    const{mediaFiltering,setMediaFiltering} = useContext(meidaFilter);
 
     const [countries,setCountries] = useState([]);
     const [providers,setProviders] = useState([]);
@@ -26,15 +26,16 @@ const WhereToWatch = () => {
     useEffect(()=>{
         fetchData(`configuration/countries?language=${lang}`)
         .then((data)=> {
-            setCountries(data)
+            setCountries(data);
+            console.log(data)
         })
-        fetchData(`watch/providers/movie?language=${lang}&watch_region=${moviesFilter.watch_region}`)
+        fetchData(`watch/providers/movie?language=${lang}&watch_region=${mediaFiltering.watch_region}`)
         .then((data)=> {
             setProviders(data?.results);
             console.log(data?.results);
         })
           
-    },[lang,filter,moviesFilter.watch_region]);
+    },[lang,filter,mediaFiltering.watch_region]);
 
   return (
     <section className="sort">
@@ -47,13 +48,13 @@ const WhereToWatch = () => {
                     country
                 </h5>
                 <select
-                    onChange={(e)=> setMoviesFilter(prev=> {
+                    onChange={(e)=> setMediaFiltering(prev=> {
                         return {
                             ...prev,
                             watch_region: e.target.value
                         }
                     })} 
-                    value={moviesFilter.watch_region}
+                    value={mediaFiltering.watch_region}
                     className="selections">
                     {
                         countries?.map((country)=>(
@@ -61,7 +62,14 @@ const WhereToWatch = () => {
                                 key={country?.native_name} 
                                 value={country?.iso_3166_1}
                                 >
-                                    {country?.native_name} 
+                                     <div>
+                                        <img src={`https://flagsapi.com/${country?.iso_3166_1 }/shiny/64.png`}></img>
+                                        <span>
+                                            {country?.native_name} 
+
+                                        </span>
+
+                                     </div>
                                 </option>
                         ))
                     }
@@ -70,7 +78,7 @@ const WhereToWatch = () => {
                     {
                         providers?.map((provider)=> (
                             <div 
-                                onClick={()=> setMoviesFilter(prev=> {
+                                onClick={()=> setMediaFiltering(prev=> {
                                     return {
                                         ...prev,
                                         with_watch_providers: prev.with_watch_providers?.includes(provider.provider_name) ? 
@@ -90,7 +98,7 @@ const WhereToWatch = () => {
                                     <span>{provider.provider_name}</span>
                                 </div>
                                 {
-                                    moviesFilter.with_watch_providers?.includes(provider.provider_name) &&
+                                    mediaFiltering.with_watch_providers?.includes(provider.provider_name) &&
                                     <div className="overlay">
                                         <CheckIcon />
                                     </div>

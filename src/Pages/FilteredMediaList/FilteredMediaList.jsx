@@ -32,6 +32,7 @@ const FilteredMediaList = ({mediaType}) => {
     const [meida,setMedia] = useState([]);
     const [mediaFiltering,setMediaFiltering] = useState(intialFilter);
     const [page,setPage] = useState(1);
+    const [totalPage,setTotalPage] = useState(1);
     const [isLoadingMore,setIsLoadingMore] = useState(false);
 
     const {filter}= useParams()
@@ -40,9 +41,10 @@ const FilteredMediaList = ({mediaType}) => {
         fetchData(`${mediaType}/${filter}?language=${lang}&page=${page}`)
         .then((data)=> {
             setMedia(data);
+            setTotalPage(data?.total_pages)
             console.log(data);
         })   
-    },[lang,filter]);
+    },[lang,filter,mediaType]);
 
     useEffect(()=>{
          console.log(mediaFiltering)
@@ -62,29 +64,33 @@ const FilteredMediaList = ({mediaType}) => {
         fetchData(`discover/${mediaType}?include_adult=false&page=${page}${a.toString().replaceAll(',','')}`)
         .then((data)=> {
             setMedia(data);
+            setTotalPage(data?.total_pages)
             console.log(data,`discover/${mediaType}?include_adult=false${a.toString().replaceAll(',','')}`);
         })
     };
 
     const loadMore = (is)=> {
-        setIsLoadingMore(true)
-        if(is === true){
-            fetchData(`${mediaType}/${filter}?language=${lang}&page=${page + 1}`)
-            .then((data)=> {
-                setMedia(prev=> {
-                    return {
-                        ...prev,
-                        results: [...meida.results,...data.results]
-                    }
-                });
-            setIsLoadingMore(false)
-            })   
+        if(page + 1 < totalPage) {
+            setIsLoadingMore(true)
+            if(is === true){
+                fetchData(`${mediaType}/${filter}?language=${lang}&page=${page + 1}`)
+                .then((data)=> {
+                    setMedia(prev=> {
+                        return {
+                            ...prev,
+                            results: [...meida.results,...data.results]
+                        }
+                    });
+                setIsLoadingMore(false)
+                })   
+            }
+            setPage(prev=> prev + 1);
+
         }
-        setPage(prev=> prev + 1);
     }
 
   return (
-    <meidaFilter.Provider value={{moviesFilter: mediaFiltering,setMoviesFilter: setMediaFiltering}}>
+    <meidaFilter.Provider value={{mediaFiltering,setMediaFiltering}}>
         <main className="movies">
             <div className="movies-container">
                 <div className="filters-box">
@@ -103,14 +109,16 @@ const FilteredMediaList = ({mediaType}) => {
                         }
 
                     </div>
-                    {/* <PageNumber page={page} setPage={setPage} totalPages={movies?.total_pages}/> */}
-                    <button 
-                        disabled={isLoadingMore}
-                        className={`${isLoadingMore && 'active'} filter-btn`} 
-                        onClick={()=> loadMore(true)}
-                        >
-                        { isLoadingMore ? <span>loading... </span>:'laod more'}
-                    </button>
+                    {
+                        page + 1 < totalPage && 
+                        <button 
+                            disabled={isLoadingMore}
+                            className={`${isLoadingMore && 'active'} filter-btn`} 
+                            onClick={()=> loadMore(true)}
+                            >
+                            { isLoadingMore ? <span>loading... </span>:'laod more'}
+                        </button>
+                    }
                 </div>
 
             </div>

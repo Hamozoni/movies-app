@@ -12,7 +12,7 @@ import { meidaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaLi
 
 const Languages = () => {
 
-    const {setMoviesFilter} = useContext(meidaFilter);
+    const {setMediaFiltering} = useContext(meidaFilter);
 
     const [languages,setLanguages] = useState([]);
     const [filterdLanguages,setFilterdLanguages] = useState([]);
@@ -41,7 +41,7 @@ const Languages = () => {
     };
 
     const selectLang = (langName,lang)=> {
-        setMoviesFilter(prev=> {
+        setMediaFiltering(prev=> {
             return {
                 ...prev,
                 with_original_language: langName
