@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import MovieTvFilter from "../../Components/MovieTvFilter/MovieTvFilter";
 
-export const meidaFilter = createContext();
+export const mediaFilter = createContext();
 
 
 const FilteredMediaList = ({mediaType}) => {
@@ -90,7 +90,7 @@ const FilteredMediaList = ({mediaType}) => {
     }
 
   return (
-    <meidaFilter.Provider value={{mediaFiltering,setMediaFiltering}}>
+    <mediaFilter.Provider value={{mediaFiltering,setMediaFiltering}}>
         <main className="movies">
             <div className="movies-container">
                 <div className="filters-box">
@@ -123,7 +123,7 @@ const FilteredMediaList = ({mediaType}) => {
 
             </div>
         </main>
-    </meidaFilter.Provider>
+    </mediaFilter.Provider>
   )
 }
 

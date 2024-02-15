@@ -2,11 +2,11 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Sort.scss";
 import { useContext} from 'react';
-import { meidaFilter } from '../../../../Pages/FilteredMediaList/FilteredMediaList';
+import { mediaFilter } from '../../../../Pages/FilteredMediaList/FilteredMediaList';
 
 const Sort = () => {
 
-    const {setMediaFiltering} = useContext(meidaFilter);
+    const {setMediaFiltering} = useContext(mediaFilter);
 
     const handleSelection = (e)=> {
         setMediaFiltering( prev=> {

@@ -8,11 +8,11 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 
 import "./Languages.scss";
-import { meidaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
+import { mediaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
 
 const Languages = () => {
 
-    const {setMediaFiltering} = useContext(meidaFilter);
+    const {setMediaFiltering} = useContext(mediaFilter);
 
     const [languages,setLanguages] = useState([]);
     const [filterdLanguages,setFilterdLanguages] = useState([]);
