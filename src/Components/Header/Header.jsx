@@ -54,7 +54,7 @@ const Header = ()=> {
                         <h4>
                             {languages[lang].people}
                             <ul className="fiter">
-                                <li onClick={()=> handleNavigate('popular')}>{languages[lang].popular} people</li>
+                                <li onClick={()=> handleNavigate('popular','person')}>{languages[lang].popular} people</li>
                             </ul>
                         </h4>
                     </div>

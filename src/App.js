@@ -17,6 +17,7 @@ import ReleaseDates from './Pages/ReleaseDates/ReleaseDates';
 import Translations from './Pages/Translations/Translations';
 import Changes from './Pages/Changes/Changes';
 import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList';
+import PopularPresons from './Pages/PopularPersons/PopularPresons';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/'  element={<Home />}/>
             <Route path='list/movie/:filter'  element={<FilteredMediaList mediaType='movie' />}/>
             <Route path='list/tv/:filter'  element={<FilteredMediaList mediaType='tv'  />}/>
+            <Route path='list/person/:filter'  element={<PopularPresons />}/>
             <Route path='/movie/:id'  element={<Movie />}/>
             <Route path='/movie/:id/reviews'  element={<Reviews />}/>
             <Route path='/movie/:id/cast'  element={<Cast />}/>
