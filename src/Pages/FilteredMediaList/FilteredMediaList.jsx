@@ -94,7 +94,7 @@ const FilteredMediaList = ({mediaType}) => {
         <main className="movies">
             <div className="movies-container">
                 <div className="filters-box">
-                    <MovieTvFilter />
+                    <MovieTvFilter mediaType={mediaType === 'movie' ? 'movies' : 'tv shows'} />
                     <button className="filter-btn" onClick={discoverMovies}>
                         serach
                     </button>

@@ -5,7 +5,7 @@ import Filters from "./Filters/Filters";
 import { useParams } from "react-router-dom";
 
 
-const MovieTvFilter = () => {
+const MovieTvFilter = ({mediaType}) => {
 
     const {filter} = useParams();
 
@@ -13,7 +13,7 @@ const MovieTvFilter = () => {
   return (
     <section className="filters">
         <h4 className="filt-title">
-            {filter?.replace('_',' ')} Movies
+            {filter?.replace('_',' ')} {mediaType}
         </h4>
         <Sort />
         <WhereToWatch />
