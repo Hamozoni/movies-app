@@ -1,0 +1,26 @@
+@import '../../GlobalStyle/variables';
+@import '../../GlobalStyle/mixin';
+
+.popular-people {
+    padding: $padding;
+    .p-title {
+        font-size: $f-size;
+        color: $text-dark-color;
+        margin-bottom: $margin;
+    }
+    .persons-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+        gap: 20px;
+        flex-wrap: wrap;
+        .person-card {
+            width: unset;
+            max-width: unset;
+            img {
+                max-height: 320px;
+                min-width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import fetchData from "../../Utilities/fetchData";
 import PersonCard from "../../Components/PersonCard/PersonCard";
 
+import './PopularPersons.scss';
 
 const PopularPresons = () => {
 
@@ -18,7 +19,7 @@ const PopularPresons = () => {
 
   return (
     <section className="popular-people">
-        <h4>popular people</h4>
+        <h4 className="p-title">popular people</h4>
         <div className="persons-cards">
 
             {
