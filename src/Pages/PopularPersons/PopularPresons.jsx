@@ -3,6 +3,7 @@ import fetchData from "../../Utilities/fetchData";
 import PersonCard from "../../Components/PersonCard/PersonCard";
 
 import './PopularPersons.scss';
+import PageNumber from "../../Components/PageNumber/PageNumber";
 
 const PopularPresons = () => {
 
@@ -28,6 +29,7 @@ const PopularPresons = () => {
                 ))
             }
         </div>
+        <PageNumber />
     </section>
   )
 }
