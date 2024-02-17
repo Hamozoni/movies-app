@@ -15,8 +15,8 @@ const PopularPresons = () => {
         fetchData(`person/popular?language=en-US&page=${page}`)
         .then((data)=> {
             setPersons(data?.results);
-            setTotalPages(data?.totalPages)
-            console.log(data?.results)
+            setTotalPages(data?.total_pages)
+            console.log(data)
         })
     },[page]);
 
