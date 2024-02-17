@@ -9,11 +9,13 @@ const PopularPresons = () => {
 
     const [page,setPage] = useState(1);
     const [persons,setPersons] = useState([]);
+    const [totalPages,setTotalPages] = useState(1)
 
     useEffect(()=>{
         fetchData(`person/popular?language=en-US&page=${page}`)
         .then((data)=> {
-            setPersons(data?.results)
+            setPersons(data?.results);
+            setTotalPages(data?.totalPages)
             console.log(data?.results)
         })
     },[page]);
@@ -29,7 +31,7 @@ const PopularPresons = () => {
                 ))
             }
         </div>
-        <PageNumber />
+        <PageNumber page={page} setPage={setPage} totalPages={totalPages}/>
     </section>
   )
 }
