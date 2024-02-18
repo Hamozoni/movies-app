@@ -12,7 +12,22 @@
                 border-radius: $border-r;
             }
         }
-        .person-cov-conrent {
+        .person-cov-content {
+            .person-name {
+                padding-bottom: $padding;
+                h3 {
+                    font-size: $main-f-size;
+                    color: $text-dark-color;
+                }
+            }
+            .piagrahpy {
+                padding-bottom: $padding;
+            }
+            .pi-ti {
+                font-size: $f-size;
+                color: $text-dark-color;
+                padding-bottom: $padding-10;
+            }
             .known-for {
                 max-width: 100%;
                 overflow-x: auto;

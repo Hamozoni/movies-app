@@ -16,10 +16,10 @@ const PersonCover = ({details,id}) => {
     useEffect(()=>{
         fetchData(`person/${id}/combined_credits?language=${lang}`)
         .then(data=> {
-            console.log(data);
+            console.log(details);
             setKnownFor(data);
         })
-    },[id]);
+    },[id,lang]);
 
   return (
     <section className="person-cover">
@@ -31,7 +31,7 @@ const PersonCover = ({details,id}) => {
                     />
                     <PersonStitistics details={details}/>
             </div>
-            <div className="person-cov-conrent">
+            <div className="person-cov-content">
                 <div className="person-name">
                     <h3>{details?.name}</h3>
                 </div>
@@ -42,7 +42,7 @@ const PersonCover = ({details,id}) => {
                     <aside> {fitLongString(details?.biography,1000) } </aside>
                 </div>
                 <section className="known-for">
-                    <h4 className="kn-for">
+                    <h4 className="pi-ti">
                         Known For
                     </h4>
                     <div className="kn-for-container">
