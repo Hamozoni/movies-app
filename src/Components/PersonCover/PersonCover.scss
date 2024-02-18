@@ -7,12 +7,14 @@
         @include flex-box(flex-start);
         padding: $padding;
         .person-img {
+            width: 30%;
             img {
-                min-width: 300px;
+                max-width: 100%;
                 border-radius: $border-r;
             }
         }
         .person-cov-content {
+            width: 70%;
             .person-name {
                 padding-bottom: $padding;
                 h3 {
@@ -30,8 +32,8 @@
             }
             .known-for {
                 max-width: 100%;
-                overflow-x: auto;
                 .kn-for-container {
+                    overflow-x: auto;
                     @include flex-box(flex-start);
                 }
             }
