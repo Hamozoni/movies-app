@@ -10,12 +10,15 @@ import StarIcon from '@mui/icons-material/Star';
 const PersonActing = ({knownFor}) => {
 
     const [mediaData,setMediaData] = useState({});
+    const [mediaCardIndex,setMediaCardIndex] = useState(0);
     const [isMediaOpen,setIsMediaOpen] = useState(false);
 
     console.log(knownFor);
 
-    const fetchMedia = (mediaType,id)=> {
-        setIsMediaOpen(true)
+    const fetchMedia = (mediaType,id,i)=> {
+        setIsMediaOpen(true);
+        setMediaData({})
+        setMediaCardIndex(i)
 
         fetchData(`${mediaType}/${id}?language=en-US`)
         .then((data)=> {
@@ -56,6 +59,7 @@ const PersonActing = ({knownFor}) => {
         if(isMediaOpen === true){
             const handleClick = (e)=> {
                 if(!e.target.classList.contains('media')){
+                    
                     setIsMediaOpen(false);
                 }
             };
@@ -80,20 +84,20 @@ const PersonActing = ({knownFor}) => {
             </nav>
         </header>
         <table className="credits-tabel">
-            {
-                isMediaOpen && 
-                <MediaCard />
-            }
             <tbody className='credits-tabel-body'>
                 {
-                    knownFor?.cast?.map((movie)=>(
+                    knownFor?.cast?.map((movie,i)=>(
     
                         <tr key={movie?.id} className="part">
                             <td className='year'>
                                 {new Date(movie?.release_date)?.getFullYear()  || new Date(movie?.first_air_date)?.getFullYear() || '___'}
                             </td>
                             <td className='cercle media'>
-                                <span className='media' onClick={()=> fetchMedia(movie?.media_type,movie?.id)} ></span>
+                                <span className='media' onClick={()=> fetchMedia(movie?.media_type,movie?.id,i)} ></span>
+                                {
+                                    isMediaOpen && i === mediaCardIndex ? 
+                                    <MediaCard /> :''
+                                }
                             </td>
                             <td className='movie-title'> 
                                 <tr>
