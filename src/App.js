@@ -35,7 +35,7 @@ function App() {
             <Route path='/movie/:id/releases'  element={<ReleaseDates />}/>
             <Route path='/movie/:id/translations'  element={<Translations/>}/>
             <Route path='/movie/:id/changes'  element={<Changes/>}/>
-            <Route path='/tv'  element={<Tv />}/>
+            <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
             <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
             <Route path='/person/:id'  element={<Person />}/>
