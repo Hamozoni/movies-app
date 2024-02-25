@@ -2,11 +2,72 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link } from 'react-router-dom';
 
 import "./PersonActing.scss";
+import { useEffect, useState } from 'react';
+import fetchData from '../../Utilities/fetchData';
+import StarIcon from '@mui/icons-material/Star';
 // import { KingBed } from '@mui/icons-material';
 
 const PersonActing = ({knownFor}) => {
 
-    console.log(knownFor)
+    const [mediaData,setMediaData] = useState({});
+    const [isMediaOpen,setIsMediaOpen] = useState(false);
+
+    console.log(knownFor);
+
+    const fetchMedia = (mediaType,id)=> {
+        setIsMediaOpen(true)
+
+        fetchData(`${mediaType}/${id}?language=en-US`)
+        .then((data)=> {
+            setMediaData(data);
+            console.log(data);
+        })
+
+    };
+
+    const MediaCard = ()=> {
+        return (
+            <div className="media-card media">
+                <div className="media-container media">
+                    <div className="image-box media">
+                        <img 
+                            className='media'
+                            loading='lazy' 
+                            src={process.env.REACT_APP_BASE_URL + 'original' + mediaData?.poster_path}
+                            alt={mediaData?.title}
+                            />
+                    </div>
+                    <div className="media-details media">
+                        <nav className='media'>
+                            <h4 className="name media">{mediaData?.title}</h4>
+                            <span className='media'>
+                                <StarIcon className='media' />
+                                {mediaData?.vote_average}
+                            </span>
+                        </nav>
+                        <p className='media'>{mediaData?.overview}</p>
+                    </div>
+                </div>
+            </div>
+        )
+    };
+
+    useEffect(()=>{
+        if(isMediaOpen === true){
+            const handleClick = (e)=> {
+                if(!e.target.classList.contains('media')){
+                    setIsMediaOpen(false);
+                }
+            };
+            const root = document.getElementById('root');
+            
+            root.addEventListener('click',handleClick);
+            
+            return ()=> root.removeEventListener('click',handleClick)
+        };
+    },[]);
+
+
   return (
     <section className="pers-acting">
         <header className="pers-acting-head">
@@ -19,6 +80,10 @@ const PersonActing = ({knownFor}) => {
             </nav>
         </header>
         <table className="credits-tabel">
+            {
+                isMediaOpen && 
+                <MediaCard />
+            }
             <tbody className='credits-tabel-body'>
                 {
                     knownFor?.cast?.map((movie)=>(
@@ -27,8 +92,8 @@ const PersonActing = ({knownFor}) => {
                             <td className='year'>
                                 {new Date(movie?.release_date)?.getFullYear()  || new Date(movie?.first_air_date)?.getFullYear() || '___'}
                             </td>
-                            <td className='cercle'>
-                                <span ></span>
+                            <td className='cercle media'>
+                                <span className='media' onClick={()=> fetchMedia(movie?.media_type,movie?.id)} ></span>
                             </td>
                             <td className='movie-title'> 
                                 <tr>
