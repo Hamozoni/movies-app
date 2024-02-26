@@ -2,11 +2,11 @@
 import { useEffect, useState } from 'react';
 import fetchData from '../../Utilities/fetchData';
 
-import facebook_id from '../../Images/facebook.jpg';
+import facebook_id from '../../Images/facebook.png';
 import wikidata_id from '../../Images/home.png';
-import imdb_id from '../../Images/imbd.png';
-import instagram_id from '../../Images/insta.jpg';
-import twitter_id from '../../Images/twiter.webp';
+import imdb_id from '../../Images/imdb.png';
+import instagram_id from '../../Images/insta.png';
+import twitter_id from '../../Images/twiter.png';
 
 import "./MovieStitistics.scss"
 import { useNavigate } from 'react-router-dom';
@@ -48,7 +48,7 @@ const MovieStitistics = ({id,details,type}) => {
               {
                 externalIds &&
                 Object?.entries(externalIds)?.map((ids)=> (
-                  ids[0] !== 'id' && 
+                  (ids[0] !== 'id' && ids[1] !== null) && 
                   <a 
                     className='social-links'
                     href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} 
