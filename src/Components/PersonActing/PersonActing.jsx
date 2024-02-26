@@ -47,7 +47,7 @@ const PersonActing = ({knownFor}) => {
                                 to={`/${mediaType}/${id}`} 
                                 className="name media"
                                 >
-                                    {fitLongString(mediaData?.title,30)}
+                                    {mediaData?.title ? fitLongString(mediaData?.title,30) :fitLongString(mediaData?.name,30)}
                             </Link>
                             <div className='media vote'>
                                 <StarIcon className='media' />
@@ -113,9 +113,12 @@ const PersonActing = ({knownFor}) => {
                                         { movie?.title || movie?.name}
                                     </Link>
                                 </tr> 
-                                <tr>
-                                     <span>as {movie?.character}</span>
-                                </tr>  
+                                {
+                                    movie?.character &&
+                                    <tr>
+                                        <span>as {movie?.character}</span>
+                                    </tr>  
+                                }
                             </td>
 
                         </tr>
