@@ -2,6 +2,7 @@
 import "./PersonStitistics.scss";
 
 const PersonStitistics = ({details}) => {
+    console.log(details)
   return (
     <section className="person-stitis">
         <nav className="pers-stit-nav">
@@ -23,16 +24,16 @@ const PersonStitistics = ({details}) => {
             </li>
             <li>
                 <h4>Birthday</h4>
-                <h6> {details?.birthday}</h6>
+                <h6> {`${new Date(details?.birthday)?.toDateString()} (${new Date().getFullYear() - new Date(details?.birthday)?.getFullYear()} years old)`}</h6>
             </li>
             <li>
                 <h4>Place of Birth</h4>
-               <h6> {details?.birthday}</h6>
+               <h6> {details?.place_of_birth}</h6>
             </li>
         </ul>
         <section className="kn-for">
-            <h4>known for</h4>
-            <ul>
+            <h4 className="for">also known as</h4>
+            <ul className="kn-for-ul">
                 {
                     details?.also_known_as?.map((key)=>(
                         <li key={key}>{key}</li>
