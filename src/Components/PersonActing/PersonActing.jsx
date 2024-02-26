@@ -5,6 +5,7 @@ import "./PersonActing.scss";
 import { useEffect, useState } from 'react';
 import fetchData from '../../Utilities/fetchData';
 import StarIcon from '@mui/icons-material/Star';
+import fitLongString from '../../Utilities/fitLongString';
 // import { KingBed } from '@mui/icons-material';
 
 const PersonActing = ({knownFor}) => {
@@ -17,7 +18,7 @@ const PersonActing = ({knownFor}) => {
 
     const fetchMedia = (mediaType,id,i)=> {
         setIsMediaOpen(true);
-        setMediaData({})
+        setMediaData({});
         setMediaCardIndex(i)
 
         fetchData(`${mediaType}/${id}?language=en-US`)
@@ -28,27 +29,29 @@ const PersonActing = ({knownFor}) => {
 
     };
 
-    const MediaCard = ()=> {
+    const MediaCard = ({mediaType,id})=> {
         return (
             <div className="media-card media">
                 <div className="media-container media">
-                    <div className="image-box media">
+                    <Link to={`/${mediaType}/${id}`} className="image-box media">
                         <img 
                             className='media'
                             loading='lazy' 
                             src={process.env.REACT_APP_BASE_URL + 'original' + mediaData?.poster_path}
                             alt={mediaData?.title}
                             />
-                    </div>
+                    </Link>
                     <div className="media-details media">
                         <nav className='media'>
-                            <h4 className="name media">{mediaData?.title}</h4>
-                            <span className='media'>
+                            <Link to={`/${mediaType}/${id}`} className="name media">{mediaData?.title}</Link>
+                            <div className='media vote'>
                                 <StarIcon className='media' />
-                                {mediaData?.vote_average}
-                            </span>
+                                <p className='media'>
+                                    {mediaData?.vote_average?.toFixed(1)}
+                                </p>  
+                            </div>
                         </nav>
-                        <p className='media'>{mediaData?.overview}</p>
+                        <p className='media overview'>{fitLongString(mediaData?.overview,380)}</p>
                     </div>
                 </div>
             </div>
@@ -96,7 +99,7 @@ const PersonActing = ({knownFor}) => {
                                 <span className='media' onClick={()=> fetchMedia(movie?.media_type,movie?.id,i)} ></span>
                                 {
                                     isMediaOpen && i === mediaCardIndex ? 
-                                    <MediaCard /> :''
+                                    <MediaCard mediaType={movie?.media_type} id={movie?.id}/> :''
                                 }
                             </td>
                             <td className='movie-title'> 

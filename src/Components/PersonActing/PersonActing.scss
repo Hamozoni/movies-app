@@ -41,8 +41,8 @@
                         height: 170px;
                         background-color: $header-b-ground-c;
                         border-radius: $border-r;
-                        // overflow: hidden;
                         padding: $padding-10;
+                        z-index: 8888;
                         &::before {
                             content: "";
                             position: absolute;
@@ -70,6 +70,33 @@
                             }
                             .media-details {
                                 color: $text-light-color;
+                                nav.media {
+                                    @include flex-box(center,flex-start);
+                                    .name {
+                                        font-size: $f-size;
+                                        font-weight: 900;
+                                        color: $text-light-color-2;
+                                        &:hover {
+                                            color: lighten($color: $text-light-color, $amount: 10);
+                                        }
+                                    }
+                                    .vote {
+                                        background-color: $logo-color;
+                                        border-radius: $border-r;
+                                        @include flex-box(center,flex-start,5px); 
+                                        padding: 0 $padding-5;
+                                        svg {
+                                            font-size: $f-size-s;
+                                        }
+                                        p {
+                                            font-size: $f-size-xs;
+                                        }
+                                    }
+                                }
+                                .overview {
+                                    font-size: $f-size-xs;
+                                    line-height: 1.6;
+                                }
                             }
                         }
                     }
