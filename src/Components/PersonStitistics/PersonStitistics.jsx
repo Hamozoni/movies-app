@@ -1,4 +1,5 @@
 
+import "./PersonStitistics.scss";
 
 const PersonStitistics = ({details}) => {
   return (
@@ -6,29 +7,29 @@ const PersonStitistics = ({details}) => {
         <nav className="pers-stit-nav">
 
         </nav>
-        <h4>personal info</h4>
-        <section className="personal-info">
-            <p>
-                <strong>Known For</strong>
-                {details?.known_for_department}
-            </p>
-            <p>
-                <strong>Known Credits</strong>
-                {details?.popularity}
-            </p>
-            <p>
-                <strong>Gender</strong>
-                {details?.gender === 1 ? "femal" : "male" }
-            </p>
-            <p>
-                <strong>Birthday</strong>
-                {details?.birthday}
-            </p>
-            <p>
-                <strong>Place of Birth</strong>
-                {details?.birthday}
-            </p>
-        </section>
+        <h3>personal info</h3>
+        <ul className="personal-info">
+            <li>
+                <h4>Known For</h4>
+                <h6>{details?.known_for_department}</h6>
+            </li>
+            <li>
+                <h4>Known Credits</h4>
+                <h6> {details?.popularity}</h6>
+            </li>
+            <li>
+                <h4>Gender</h4>
+                <h6>{details?.gender === 1 ? "femal" : "male" }</h6>
+            </li>
+            <li>
+                <h4>Birthday</h4>
+                <h6> {details?.birthday}</h6>
+            </li>
+            <li>
+                <h4>Place of Birth</h4>
+               <h6> {details?.birthday}</h6>
+            </li>
+        </ul>
         <section className="kn-for">
             <h4>known for</h4>
             <ul>

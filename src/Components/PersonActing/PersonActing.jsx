@@ -43,7 +43,12 @@ const PersonActing = ({knownFor}) => {
                     </Link>
                     <div className="media-details media">
                         <nav className='media'>
-                            <Link to={`/${mediaType}/${id}`} className="name media">{mediaData?.title}</Link>
+                            <Link 
+                                to={`/${mediaType}/${id}`} 
+                                className="name media"
+                                >
+                                    {fitLongString(mediaData?.title,30)}
+                            </Link>
                             <div className='media vote'>
                                 <StarIcon className='media' />
                                 <p className='media'>
