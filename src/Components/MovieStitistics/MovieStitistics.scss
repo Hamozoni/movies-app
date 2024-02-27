@@ -2,12 +2,22 @@
 @import "../../GlobalStyle/mixin";
 
 .movie-stits {
+    margin-top: $margin;
     .stits-container {
         .stits-nav {
-            @include flex-box(center,center,5px);
+            @include flex-box(center,flex-start,10px);
             padding: $padding 0;
             .social-links {
-                height: 30px;
+                height: 40px;
+                width: 40px;
+                img {
+                    height: 30px;
+                    width: 30px;
+                    &:hover {
+                        height: 32px;
+                        width: 32px;   
+                    }
+                }
             }
 
         }

@@ -9,9 +9,11 @@
             width: 33px;
             height: 50px;
             img {
+                height: 30px;
                 width: 30px;
                 &:hover {
                     width: 32px;
+                    height: 32px;
                 }
             }
         }
