@@ -4,7 +4,7 @@ import "./PersonStitistics.scss";
 import facebook_id from '../../Images/facebook.png';
 import instagram_id from '../../Images/insta.png';
 import twitter_id from '../../Images/twiter.png';
-import homePage from '../../Images/home.png';
+import tiktok_id from '../../Images/tiktok.png';
 import youtube_id from '../../Images/youtube.png';
 import { useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
@@ -13,7 +13,8 @@ const images = {
     facebook_id,
     instagram_id,
     twitter_id,
-    youtube_id
+    youtube_id,
+    tiktok_id
 }
 
 
@@ -29,7 +30,7 @@ const PersonStitistics = ({details}) => {
         })
     },[details]);
 
-    const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id']
+    const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id','tiktok_id']
 
   return (
     <section className="person-stitis">
@@ -40,7 +41,7 @@ const PersonStitistics = ({details}) => {
                     (externalIds && externalIds[social] !== null && externalIds[social]) &&
                     <a 
                         className='social-links'
-                        href={`https://${social?.replace('_id','.com')}/${externalIds[social]}`} 
+                        href={`https://${social?.replace('_id','.com')}/${social === 'tiktok_id' ? '@' : ''}${externalIds[social]}`} 
                         target='_blank'
                     >
                      <img src={images[social]} />
