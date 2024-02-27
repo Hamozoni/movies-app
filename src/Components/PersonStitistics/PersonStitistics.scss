@@ -2,6 +2,20 @@
 @import "../../GlobalStyle/mixin";
 
 .person-stitis {
+    .pers-stit-nav {
+        @include flex-box(center,center,10px);
+        padding-top: $padding-10;
+        .social-links {
+            width: 35px;
+            height: 50px;
+            img {
+                width: 30px;
+                &:hover {
+                    width: 35px;
+                }
+            }
+        }
+    }
     h3 {
         color: $text-dark-color;
         margin-top: 20px;

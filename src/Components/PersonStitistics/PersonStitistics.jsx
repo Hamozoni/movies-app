@@ -2,21 +2,20 @@
 import "./PersonStitistics.scss";
 
 import facebook_id from '../../Images/facebook.png';
-import wikidata_id from '../../Images/home.png';
-import imdb_id from '../../Images/imdb.png';
 import instagram_id from '../../Images/insta.png';
 import twitter_id from '../../Images/twiter.png';
 import homePage from '../../Images/home.png';
+import youtube_id from '../../Images/youtube.png';
 import { useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
 
 const images = {
     facebook_id,
-    wikidata_id,
-    imdb_id,
     instagram_id,
-    twitter_id
-  }
+    twitter_id,
+    youtube_id
+}
+
 
 const PersonStitistics = ({details}) => {
 
@@ -26,25 +25,28 @@ const PersonStitistics = ({details}) => {
         fetchData(`person/${details?.id}/external_ids`)
         .then((data)=> {
             setExternalIds(data);
+            console.log(data)
         })
     },[details]);
+
+    const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id']
 
   return (
     <section className="person-stitis">
         <nav className="pers-stit-nav">
-        {
-                externalIds &&
-                Object?.entries(externalIds)?.map((ids)=> (
-                  (ids[0] !== 'id' && ids[1] !== null ) && 
-                  <a 
-                    className='social-links'
-                    href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} 
-                    target='_blank'
+
+            {
+                alowedSocialMedia?.map((social)=> (
+                    (externalIds && externalIds[social] !== null && externalIds[social]) &&
+                    <a 
+                        className='social-links'
+                        href={`https://${social?.replace('_id','.com')}/${externalIds[social]}`} 
+                        target='_blank'
                     >
-                     <img src={images[ids[0]]} alt={ids[0]}/>
+                     <img src={images[social]} />
                   </a>
                 ))
-              }
+            }
               {
                 details?.homepage && 
                 <a 
@@ -52,7 +54,7 @@ const PersonStitistics = ({details}) => {
                     href={details?.homepage} 
                     target='_blank'
                     >
-                    <img src={homePage}/>
+                    <img src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-351-link-5f643a86c2515cb06ea08ebc798941824f76bbcea4ed571222a81f271b30c7f3.svg'/>
               </a>
               }
         </nav>
