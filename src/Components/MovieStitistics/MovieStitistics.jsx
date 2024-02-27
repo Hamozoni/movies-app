@@ -29,7 +29,7 @@ const MovieStitistics = ({id,details,type}) => {
     fetchData(`${type}/${id}/keywords`)
     .then((data)=>{
       setKeywords(data?.keywords || data?.results );
-      console.log(data)
+      console.log(details);
     })
     fetchData(`${type}/${id}/external_ids`)
     .then((data)=>{
@@ -41,23 +41,34 @@ const MovieStitistics = ({id,details,type}) => {
 
   const navigate = useNavigate();
 
+  const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id'];
+
   return (
     <section className="movie-stits">
         <div className="stits-container">
             <nav className="stits-nav">
-              {
-                externalIds &&
-                Object?.entries(externalIds)?.map((ids)=> (
-                  (ids[0] !== 'id' && ids[1] !== null) && 
-                  <a 
-                    className='social-links'
-                    href={`https://${ids[0].replace('_id','.com')}/${ids[1]}`} 
-                    target='_blank'
+            {
+                alowedSocialMedia?.map((social)=> (
+                    (externalIds && externalIds[social] !== null && externalIds[social]) &&
+                    <a 
+                        className='social-links'
+                        href={`https://${social?.replace('_id','.com')}/${externalIds[social]}`} 
+                        target='_blank'
                     >
-                     <img src={images[ids[0]]} alt="" />
+                     <img src={images[social]} />
                   </a>
                 ))
-              }
+            }
+            {
+            details?.homepage && 
+              <a 
+                  className='social-links'
+                  href={details?.homepage} 
+                  target='_blank'
+                  >
+                  <img src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-351-link-5f643a86c2515cb06ea08ebc798941824f76bbcea4ed571222a81f271b30c7f3.svg'/>
+              </a>
+            }
             </nav>
             <div className="status">
               <div className="stat">
