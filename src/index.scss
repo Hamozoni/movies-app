@@ -159,11 +159,7 @@ img, picture {
 ::-webkit-scrollbar-thumb:hover{
   background-color: lighten($color: $header-b-ground-c, $amount: 10);
 }
-@supports (scrollbar-color:$header-b-ground-c $logo-color ){
-  *{
-    scrollbar-color: $header-b-ground-c  $logo-color;
-  }
-}
+
 
 
 
