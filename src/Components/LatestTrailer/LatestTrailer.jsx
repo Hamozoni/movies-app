@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
 
 const LatestTrailer = () => {
@@ -7,6 +9,10 @@ const LatestTrailer = () => {
 
     useEffect(()=>{
         fetchData(`movie/popular?language=en-US&page=1`)
+        .then((data)=> {
+            setTrailerData(data?.results);
+            console.log(data.results)
+        })
     },[]);
 
   return (
@@ -25,7 +31,30 @@ const LatestTrailer = () => {
             </nav>
             <div className="trailer-content">
                 <div className="trailer-container">
-
+                    {
+                        trailerData?.map((media)=>(
+                            <div  key={media?.id} className="trailer-media">
+                                <div className="trailer-image">
+                                    <img 
+                                        loading="lazy"
+                                        src={process.env.REACT_APP_BASE_URL + 'original' + media?.poster_path} 
+                                        alt={media?.title} 
+                                        />
+                                    <div className="more-info">
+                                        <span><MoreHorizRoundedIcon /></span>
+                                    </div>
+                                    <span className="pay-trailer">
+                                        <PlayArrowRoundedIcon />
+                                    </span>
+                                </div>
+                                <div className="trailer-titles">
+                                    <h3 className="name">
+                                        {media?.title}
+                                    </h3>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
 
