@@ -1,0 +1,36 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.latest-trailer {
+    padding:  $padding;
+    .trailer-header {
+        @include flex-box(center,flex-start,20px);
+        padding-bottom: $padding;
+        .trailer-nav {
+             .trailer-ul {
+                 @include flex-box(center,flex-start,10px);
+                 border-radius: $border-r-l;
+                 border: 1px solid $logo-color;
+                 li {
+                    padding: 0 $padding-10;
+                    border-radius: $border-r-l;
+                    color: $text-dark-color;
+                    &:hover, &.active{
+                        background-color: $header-b-ground-c;
+                        color: $text-light-color;
+                    }
+                 }
+             }
+        }
+    }
+    .trailer-content {
+        overflow-x: auto;
+        .trailer-container {
+            min-width: fit-content;
+            @include flex-box(center,flex-start,20px);
+            .trailer-media {
+                width: 200px;
+            }
+        }
+    }
+}

@@ -3,9 +3,13 @@ import fetchData from "../../Utilities/fetchData";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
+import "./LatestTrailer.scss";
+
 
 const LatestTrailer = () => {
     const [trailerData,setTrailerData] = useState([]);
+    const [activeSection,setActiveSection] = useState('popular');
+    const [backgroundImageIndex,setBackgroundImageIndex] = useState(0);
 
     useEffect(()=>{
         fetchData(`movie/popular?language=en-US&page=1`)
@@ -15,25 +19,39 @@ const LatestTrailer = () => {
         })
     },[]);
 
-  return (
+    const style = {
+        backgroundImage: `url(${process.env.REACT_APP_BASE_URL + 'original' + trailerData[backgroundImageIndex]?.backdrop_path})`,
+        backgroundPosition: 'center',
+        backgroundSize:'cover'
+    };
     
-    <section className="latest-trailer">
+  return (
+
+    
+    <section 
+        className="latest-trailer" 
+        style={style}
+        >
         <header className="trailer-header">
             <h3>latest trailer</h3>
             <nav className="trailer-nav">
                 <ul className="trailer-ul">
-                    <li>popular</li>
+                    <li className={activeSection === 'popular' && 'active'}>popular</li>
                     <li>streaming</li>
                     <li>on tv</li>
                     <li>for rent</li>
                     <li>in theatres</li>
                 </ul>
             </nav>
+            </header>
             <div className="trailer-content">
                 <div className="trailer-container">
                     {
-                        trailerData?.map((media)=>(
-                            <div  key={media?.id} className="trailer-media">
+                        trailerData?.map((media,i)=>(
+                            <div  
+                                onMouseEnter={()=> setBackgroundImageIndex(i)}
+                                key={media?.id} 
+                                className="trailer-media">
                                 <div className="trailer-image">
                                     <img 
                                         loading="lazy"
@@ -58,7 +76,7 @@ const LatestTrailer = () => {
                 </div>
             </div>
 
-        </header>
+
 
     </section>
   )
