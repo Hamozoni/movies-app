@@ -29,7 +29,21 @@
             min-width: fit-content;
             @include flex-box(center,flex-start,20px);
             .trailer-media {
-                width: 200px;
+                width: 350px;
+                .trailer-image {
+                    position: relative;
+                    img {
+                        width: 350px;
+                        height: 180px;
+                        border-radius: $border-r-l;
+                        object-fit: fill;
+                    }
+                    .pay-trailer {
+                        position: absolute;
+                    }
+
+                }
+
             }
         }
     }

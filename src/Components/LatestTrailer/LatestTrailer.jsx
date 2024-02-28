@@ -24,7 +24,7 @@ const LatestTrailer = () => {
         backgroundPosition: 'center',
         backgroundSize:'cover'
     };
-    
+
   return (
 
     
@@ -55,7 +55,7 @@ const LatestTrailer = () => {
                                 <div className="trailer-image">
                                     <img 
                                         loading="lazy"
-                                        src={process.env.REACT_APP_BASE_URL + 'original' + media?.poster_path} 
+                                        src={process.env.REACT_APP_BASE_URL + 'original' + media?.backdrop_path} 
                                         alt={media?.title} 
                                         />
                                     <div className="more-info">
