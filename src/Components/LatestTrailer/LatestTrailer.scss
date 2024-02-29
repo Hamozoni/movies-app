@@ -2,72 +2,88 @@
 @import "../../GlobalStyle/mixin";
 
 .latest-trailer {
-    padding:  $padding;
-    .trailer-header {
-        @include flex-box(center,flex-start,20px);
-        padding-bottom: $padding;
-        .trailer-nav {
-             .trailer-ul {
-                 @include flex-box(center,flex-start,10px);
-                 border-radius: $border-r-l;
-                 border: 1px solid $logo-color;
-                 li {
-                    padding: 0 $padding-10;
-                    border-radius: $border-r-l;
-                    color: $text-dark-color;
-                    &:hover, &.active{
-                        background-color: $header-b-ground-c;
-                        color: $text-light-color;
-                    }
-                 }
-             }
-        }
-    }
-    .trailer-content {
-        overflow-x: auto;
-        .trailer-container {
-            min-width: fit-content;
+    .trailer-box-cotainer {
+        padding:  $padding;
+        background-color: rgba(11, 76, 119, 0.644);
+        .trailer-header {
             @include flex-box(center,flex-start,20px);
-            .trailer-media {
-                width: 300px;
-                cursor: pointer;
-                .trailer-image {
-                    position: relative;
-                    img {
-                        width: 300px;
-                        height: 180px;
+            h3 {
+                font-weight: 700;
+                color: $text-light-color-2;
+            }
+            .trailer-nav {
+                 .trailer-ul {
+                     @include flex-box(center,flex-start,10px);
+                     border-radius: $border-r-l;
+                     border: 1px solid $logo-color;
+                     li {
+                        padding: $padding-5 $padding-10;
                         border-radius: $border-r-l;
-                        object-fit: fill;
-
-                    }
-                    &:hover img,  &:hover svg{
-                        transform: scale(1.1);
-                    }
-                    .more-info {
-                        position: absolute;
-                        right: 20px;
-                        top:20px;
-                        background-color: #fff;
-                        @include flex-box(center,center,0);
-                        border-radius: 50%;
-                        svg {
-                            font-size: $f-size;
+                        color: $text-dark-color;
+                        font-weight: 700;
+                        color: $text-light-color-2;
+                        &.active{
+                            background-color: $logo-color;
                         }
-                    }
-                    .pay-trailer {
-                        position: absolute;
-                        left: 50%;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
-                        svg {
-                            color: $text-light-color;
-                            font-size: 80px;
-                        }
-                    }
-
-                }
-
+                     }
+                 }
             }
         }
+        .trailer-content {
+            overflow-x: auto;
+            .trailer-container {
+                min-width: fit-content;
+                @include flex-box(flex-start,flex-start,20px);
+                .trailer-media {
+                    width: 300px;
+                    z-index: 99999;
+                    margin-top: $margin;
+                    cursor: pointer;
+                    .trailer-image {
+                        position: relative;
+                        img {
+                            width: 300px;
+                            height: 180px;
+                            border-radius: $border-r-l;
+                            object-fit: fill;
+    
+                        }
+                        &:hover,&:hover svg{
+                            transform: scale(1.05);
+                        }
+                        .more-info {
+                            position: absolute;
+                            right: 20px;
+                            top:20px;
+                            background-color: #fff;
+                            @include flex-box(center,center,0);
+                            border-radius: 50%;
+                            svg {
+                                font-size: $f-size;
+                            }
+                        }
+                        .pay-trailer {
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%,-50%);
+                            svg {
+                                color: $text-light-color;
+                                font-size: 80px;
+                            }
+                        }
+    
+                    }
+
+                    .trailer-titles {
+                        .name {
+                            font-weight: 700;
+                            color: $text-light-color-2;  
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

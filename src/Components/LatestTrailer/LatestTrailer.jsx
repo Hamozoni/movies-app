@@ -32,52 +32,52 @@ const LatestTrailer = () => {
         className="latest-trailer" 
         style={style}
         >
-        <header className="trailer-header">
-            <h3>latest trailer</h3>
-            <nav className="trailer-nav">
-                <ul className="trailer-ul">
-                    <li className={activeSection === 'popular' && 'active'}>popular</li>
-                    <li>streaming</li>
-                    <li>on tv</li>
-                    <li>for rent</li>
-                    <li>in theatres</li>
-                </ul>
-            </nav>
-            </header>
-            <div className="trailer-content">
-                <div className="trailer-container">
-                    {
-                        trailerData?.map((media,i)=>(
-                            <div  
-                                onMouseEnter={()=> setBackgroundImageIndex(i)}
-                                key={media?.id} 
-                                className="trailer-media">
-                                <div className="trailer-image">
-                                    <img 
-                                        loading="lazy"
-                                        src={process.env.REACT_APP_BASE_URL + 'original' + media?.backdrop_path} 
-                                        alt={media?.title} 
-                                        />
-                                    <div className="more-info">
-                                       <MoreHorizRoundedIcon />
+            <div className="trailer-box-cotainer">
+               <header className="trailer-header">
+                <h3>latest trailer</h3>
+                    <nav className="trailer-nav">
+                        <ul className="trailer-ul">
+                            <li className={activeSection === 'popular' && 'active'}>popular</li>
+                            <li>streaming</li>
+                            <li>on tv</li>
+                            <li>for rent</li>
+                            <li>in theatres</li>
+                        </ul>
+                    </nav>
+                </header>
+                <div className="trailer-content">
+                    <div className="trailer-container">
+                        {
+                            trailerData?.map((media,i)=>(
+                                <div  
+                                    onMouseEnter={()=> setBackgroundImageIndex(i)}
+                                    key={media?.id} 
+                                    className="trailer-media">
+                                    <div className="trailer-image">
+                                        <img 
+                                            loading="lazy"
+                                            src={process.env.REACT_APP_BASE_URL + 'original' + media?.backdrop_path} 
+                                            alt={media?.title} 
+                                            />
+                                        <div className="more-info">
+                                        <MoreHorizRoundedIcon />
+                                        </div>
+                                        <span className="pay-trailer">
+                                            <PlayArrowRoundedIcon />
+                                        </span>
                                     </div>
-                                    <span className="pay-trailer">
-                                        <PlayArrowRoundedIcon />
-                                    </span>
+                                    <div className="trailer-titles">
+                                        <h3 className="name">
+                                            {media?.title}
+                                        </h3>
+                                    </div>
                                 </div>
-                                <div className="trailer-titles">
-                                    <h3 className="name">
-                                        {media?.title}
-                                    </h3>
-                                </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
                 </div>
+
             </div>
-
-
-
     </section>
   )
 }
