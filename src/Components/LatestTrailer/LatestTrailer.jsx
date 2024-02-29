@@ -22,7 +22,7 @@ const LatestTrailer = () => {
     const style = {
         backgroundImage: `url(${process.env.REACT_APP_BASE_URL + 'original' + trailerData[backgroundImageIndex]?.backdrop_path})`,
         backgroundPosition: 'center',
-        backgroundSize:'cover'
+        backgroundSize:'cover',
     };
 
   return (
@@ -59,7 +59,7 @@ const LatestTrailer = () => {
                                         alt={media?.title} 
                                         />
                                     <div className="more-info">
-                                        <span><MoreHorizRoundedIcon /></span>
+                                       <MoreHorizRoundedIcon />
                                     </div>
                                     <span className="pay-trailer">
                                         <PlayArrowRoundedIcon />

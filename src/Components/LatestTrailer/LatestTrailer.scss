@@ -29,17 +29,40 @@
             min-width: fit-content;
             @include flex-box(center,flex-start,20px);
             .trailer-media {
-                width: 350px;
+                width: 300px;
+                cursor: pointer;
                 .trailer-image {
                     position: relative;
                     img {
-                        width: 350px;
+                        width: 300px;
                         height: 180px;
                         border-radius: $border-r-l;
                         object-fit: fill;
+
+                    }
+                    &:hover img,  &:hover svg{
+                        transform: scale(1.1);
+                    }
+                    .more-info {
+                        position: absolute;
+                        right: 20px;
+                        top:20px;
+                        background-color: #fff;
+                        @include flex-box(center,center,0);
+                        border-radius: 50%;
+                        svg {
+                            font-size: $f-size;
+                        }
                     }
                     .pay-trailer {
                         position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%,-50%);
+                        svg {
+                            color: $text-light-color;
+                            font-size: 80px;
+                        }
                     }
 
                 }
