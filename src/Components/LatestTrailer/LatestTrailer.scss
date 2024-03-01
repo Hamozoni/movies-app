@@ -4,12 +4,15 @@
 .latest-trailer {
     .trailer-box-cotainer {
         padding:  $padding;
+        padding-bottom: 0;
         background-color: rgba(11, 76, 119, 0.644);
         .trailer-header {
             @include flex-box(center,flex-start,20px);
             h3 {
                 font-weight: 700;
                 color: $text-light-color-2;
+                font-size: $f-size; 
+
             }
             .trailer-nav {
                  .trailer-ul {
@@ -78,7 +81,9 @@
                     .trailer-titles {
                         .name {
                             font-weight: 700;
-                            color: $text-light-color-2;  
+                            color: $text-light-color-2; 
+                            font-size: $f-size-s;
+                            padding-bottom: 10px; 
                         }
                     }
                 }
