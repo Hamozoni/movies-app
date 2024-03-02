@@ -18,11 +18,20 @@ import Translations from './Pages/Translations/Translations';
 import Changes from './Pages/Changes/Changes';
 import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList';
 import PopularPresons from './Pages/PopularPersons/PopularPresons';
+import { useContext } from 'react';
+import { globalContext } from './GlobalStateContext/GlobalContext';
+import TrailerPlayer from './Components/TrailerPlayer/TrailerPlayer';
 
 function App() {
+
+  const {isTrailer} = useContext(globalContext);
+
   return (
     <BrowserRouter>
       <Header />
+      {
+        isTrailer && (<TrailerPlayer />)
+      }
         <Routes>
             <Route path='/'  element={<Home />}/>
             <Route path='list/movie/:filter'  element={<FilteredMediaList mediaType='movie' />}/>

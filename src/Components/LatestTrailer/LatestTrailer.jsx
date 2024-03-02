@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
 import "./LatestTrailer.scss";
+import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 
 const LatestTrailer = () => {
+    const {setIsTralerPlayer,setMediaType,setMediaId} = useContext(globalContext);
+
     const [trailerData,setTrailerData] = useState([]);
     const [activeSection,setActiveSection] = useState('popular');
     const [backgroundImageIndex,setBackgroundImageIndex] = useState(0);
@@ -24,6 +27,14 @@ const LatestTrailer = () => {
         backgroundPosition: 'center',
         backgroundSize:'cover',
     };
+
+    const handleTrailer = (mediaType,mediaId)=>{
+
+        setIsTralerPlayer(true);
+        setMediaType(mediaType);
+        setMediaId(mediaId);
+
+    }
 
   return (
 
@@ -53,7 +64,10 @@ const LatestTrailer = () => {
                                     onMouseEnter={()=> setBackgroundImageIndex(i)}
                                     key={media?.id} 
                                     className="trailer-media">
-                                    <div className="trailer-image">
+                                    <div 
+                                        className="trailer-image" 
+                                        onClick={()=> handleTrailer(media?.media_type,media?.id)}
+                                        >
                                         <img 
                                             loading="lazy"
                                             src={process.env.REACT_APP_BASE_URL + 'original' + media?.backdrop_path} 
