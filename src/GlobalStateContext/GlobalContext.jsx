@@ -8,12 +8,12 @@ const GlobalContext = ({children})=> {
     const [lang,setLang] = useState('en');
     const [isTrailer,setIsTrailer] = useState(false);
     const [mediaType,setMediaType] = useState(null);
-    const [mediaId,setMdiaId] = useState(null);
+    const [mediaId,setMediaId] = useState(null);
 
     
 
     return (
-       <globalContext.Provider value={{theme,setTheme,lang,setLang,isTrailer,setIsTrailer,mediaType,setMediaType,mediaId,setMdiaId}}>
+       <globalContext.Provider value={{theme,setTheme,lang,setLang,isTrailer,setIsTrailer,mediaType,setMediaType,mediaId,setMediaId}}>
            {children}
        </globalContext.Provider>
     );

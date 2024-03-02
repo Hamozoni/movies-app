@@ -8,7 +8,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 
 const LatestTrailer = () => {
-    const {setIsTralerPlayer,setMediaType,setMediaId} = useContext(globalContext);
+    const {setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
 
     const [trailerData,setTrailerData] = useState([]);
     const [activeSection,setActiveSection] = useState('popular');
@@ -18,7 +18,7 @@ const LatestTrailer = () => {
         fetchData(`movie/popular?language=en-US&page=1`)
         .then((data)=> {
             setTrailerData(data?.results);
-            console.log(data.results)
+            console.log(data?.results);
         })
     },[]);
 
@@ -28,11 +28,11 @@ const LatestTrailer = () => {
         backgroundSize:'cover',
     };
 
-    const handleTrailer = (mediaType,mediaId)=>{
+    const handleTrailer = (mediaId)=>{
 
-        setIsTralerPlayer(true);
-        setMediaType(mediaType);
+        setMediaType('movie');
         setMediaId(mediaId);
+        setIsTrailer(true);
 
     }
 
@@ -66,7 +66,7 @@ const LatestTrailer = () => {
                                     className="trailer-media">
                                     <div 
                                         className="trailer-image" 
-                                        onClick={()=> handleTrailer(media?.media_type,media?.id)}
+                                        onClick={()=> handleTrailer(media?.id)}
                                         >
                                         <img 
                                             loading="lazy"

@@ -14,7 +14,7 @@ const TrailerPlayer = () => {
     useEffect(()=>{
         fetchData(`${mediaType}/${mediaId}/videos?language=en-US`)
         .then((data)=>{
-            // setMediaData(data?.results);
+            console.log(data?.results);
             setVideoId(data?.results[0]?.key)
         })
 
@@ -23,6 +23,8 @@ const TrailerPlayer = () => {
 
   return (
     <section className='trailer-player'>
+        {
+            videoId && 
         <div className="trialer-container">
             <header className="tr-header">
                 <h4 className="off-tr">Official Trailer</h4>
@@ -34,6 +36,7 @@ const TrailerPlayer = () => {
                 </div>
             </header>
         </div>
+}
 
     </section>
   )
