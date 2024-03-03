@@ -146,18 +146,18 @@ img, picture {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background-color: $logo-color;
+  background-color: $text-light-color;
   border-radius: $border-r;
   margin-block: 200px;
   margin-inline: 200px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: $header-b-ground-c;
+  background-color: darken($color: $text-dark-color, $amount: 5);
   border-radius: $border-r;
-  border: 2px solid $logo-color;
+  border: 2px solid $text-light-color;
 }
 ::-webkit-scrollbar-thumb:hover{
-  background-color: lighten($color: $header-b-ground-c, $amount: 10);
+  background-color: darken($color: $text-dark-color, $amount: 10);;
 }
 
 
