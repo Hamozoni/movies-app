@@ -12,7 +12,7 @@ import fetchData from "../../Utilities/fetchData";
 
 const MovieTvCover = ({details})=> {
 
-    const {lang} = useContext(globalContext);
+    const {lang,setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
     const [crews,setCrews] = useState([]);
 
     const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
@@ -98,7 +98,11 @@ const MovieTvCover = ({details})=> {
                             </nav>
                             <div className="play-trailer flex-box">
                                 <PlayArrowIcon />
-                                <button>
+                                <button onClick={()=> {
+                                    setMediaId(details?.id);
+                                    setMediaType(details?.title ? 'movie' : 'tv');
+                                    setIsTrailer(true);
+                                }}>
                                     {languages[lang]?.playTrailer}
                                 </button>
                             </div>

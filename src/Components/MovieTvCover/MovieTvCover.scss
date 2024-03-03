@@ -54,8 +54,9 @@
             }
             .play-trailer {
                 gap: 5px;
-                
-              
+                &:hover {
+                   transform: scale(1.05);
+                }
                 button, svg{
                     cursor: pointer;
                     color: $logo-color;
