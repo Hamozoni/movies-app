@@ -34,12 +34,32 @@
 
         .links {
             margin: $margin - 5 0;
+            .user-score-container {
+                @include flex-box(center,space-between,5px);
+                h3 {
+                    max-width: 50px;
+                    font-size: $f-size-s;
+                    color: $text-light-color;
+                }
+            }
             .user-score  {
-                background-color: $logo-color;
+                background-color: #0b316b3d;
                 color: $text-light-color;
-                padding: $padding;
                 border-radius: $circle;
-                border: 5px solid $text-dark-color;
+                @include flex-box(center,center);
+                width: 65px;
+                height: 65px;
+                border: 5px solid ;
+                border-color: $logo-color $logo-color $logo-color transparent;
+                cursor: pointer;
+                &:hover {
+                    transform: scale(1.07);
+                }
+                h4 {
+                    span {
+                        font-size: $f-size-xs;
+                    }
+                }
             }
             .add-to {
                 ul {
@@ -49,6 +69,9 @@
                         padding: $padding-10;
                         border-radius: $circle;
                         cursor: pointer;
+                        &:hover {
+                            transform: scale(1.08);
+                         }
                     }
                 }
             }

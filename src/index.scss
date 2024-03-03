@@ -152,12 +152,12 @@ img, picture {
   margin-inline: 200px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: darken($color: $text-dark-color, $amount: 5);
+  background-color: darken($color: $text-dark-color, $amount: 2);
   border-radius: $border-r;
   border: 2px solid $text-light-color;
 }
 ::-webkit-scrollbar-thumb:hover{
-  background-color: darken($color: $text-dark-color, $amount: 10);;
+  background-color: darken($color: $text-dark-color, $amount: 5);;
 }
 
 

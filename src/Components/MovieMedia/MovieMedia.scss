@@ -14,6 +14,7 @@
     .media-content {
         max-width: 100%;
         overflow-x:  auto;
+        border-radius: $border-r-l;
         .media-content-container {
             min-width: fit-content;
             @include flex-box(flex-start,center,0);

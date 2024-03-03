@@ -75,10 +75,15 @@ const MovieTvCover = ({details})=> {
 
                         </div>
                         <div className="links flex-box">
-                            <div className="user-score flex-box">
-                                <h4>
-                                    {details?.vote_average?.toFixed(1)?.toString()?.replace('.','')}
-                                </h4>
+                            <div className="user-score-container">
+                                <div className="user-score flex-box">
+                                    <h4>
+                                        {details?.vote_average?.toFixed(1)?.toString()?.replace('.','')}
+                                        <span>%</span>
+                                    </h4>
+                                </div>
+                                <h3>user score</h3>
+
                             </div>
                             <nav className="add-to flex-box">
                                 <ul className="flex-box">
