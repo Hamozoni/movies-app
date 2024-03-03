@@ -1,0 +1,35 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.trailer-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh ;
+    background-color: rgba(0, 0, 0, 0.89);
+    z-index: 999999999;
+    @include flex-box(center,center);
+    .trialer-container {
+        background-color: black;
+        padding: $padding;
+        border-radius: $border-r;
+        .tr-header {
+            @include flex-box(center,space-between);
+            padding: $padding-10 0;
+            .off-tr {
+                font-size: $f-size;
+                color: $text-light-color;
+            }
+            .cancel {
+                color: $text-light-color-2;
+                cursor: pointer;
+                svg {
+
+                    font-size: $main-f-size;
+                }
+
+            }
+        }
+    }
+}
