@@ -12,9 +12,20 @@
         overflow-x: auto;
         margin: $margin 0;
     }
-    .full-cast {
-        cursor: pointer;
-        color: $text-dark-color;
+    .cast-link {
+        color: $logo-color;
         font-size: $f-size-s;
+        font-weight: bold;
+        &:hover {
+            color: darken($color: $logo-color, $amount: 10);
+        }
+    }
+    .view-more {
+        min-width: 120px;
+        min-height: 280px;
+        @include flex-box(center,center);
+        a {
+            @include flex-box(center,center,0);
+        }
     }
 }

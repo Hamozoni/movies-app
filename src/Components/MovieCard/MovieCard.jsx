@@ -2,10 +2,12 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import "./MovieCard.scss";
 import { useNavigate } from 'react-router-dom';
 
+import mediaImage from "../../Images/media.jpg"
+
 const MovieCard = ({movie, type})=> {
     const navigate = useNavigate()
 
-    const imgUrl = type === 'person' ? movie?.profile_path : movie?.poster_path ;
+    const imgUrl =  movie?.poster_path ;
 
     const handleNavigation = ()=> {
 
@@ -14,12 +16,12 @@ const MovieCard = ({movie, type})=> {
 
     return (
         <div className="movie-card">
-            <div className="image-container">
+            <div className="image-container"> 
                  <img 
                     loading="lazy"
                     onClick={handleNavigation}
                     className='poster'
-                    src={process.env.REACT_APP_BASE_URL + 'w200' + imgUrl} 
+                    src={imgUrl ? process.env.REACT_APP_BASE_URL + 'w200' + imgUrl : mediaImage} 
                     alt={movie?.title}
                      />
                     {

@@ -13,7 +13,6 @@ const Home = ()=> {
                 <LatestTrailer />
                 <FreeToWatch />
                 <Trending type='tv'/>
-                <Trending type='person'/>
             </div>
         </main>
     );

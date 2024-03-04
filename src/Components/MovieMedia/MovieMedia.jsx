@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 const MediaCard = ({data})=>{
     return (
-        data?.map((media)=>(
+        data?.map((media,i)=>(
+
+            i < 9 &&
             <div className="img-container" key={media?.file_path}>
                     <img 
                         loading="lazy"
@@ -35,7 +37,7 @@ const MovieMedia = ({id,mediaType})=> {
         .then((data)=>{
             setMediaVed(data);
             const allData = data.backdrops.concat(data.posters)
-                const popular = allData.filter((el)=> el.vote_average < 5.7);
+                const popular = allData.filter((el)=> el.vote_average < 5.6);
                 setMostPopular([...popular])
         })
     },[id,lang]);
@@ -86,6 +88,12 @@ const MovieMedia = ({id,mediaType})=> {
                       <MediaCard data={mediaVed?.backdrops}/>
                      : selection === 'posters' &&
                      <MediaCard data={ mediaVed?.posters}/> 
+                    }
+                    {
+                        selection !== 'most popular' &&
+                        <div className="view-more">
+                            <Link to={`/movie/${id}/${selection}`}>view more</Link>
+                        </div>
                     }
 
                 </div>

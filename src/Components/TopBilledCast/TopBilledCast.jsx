@@ -3,6 +3,8 @@ import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import PersonCard from "../PersonCard/PersonCard";
 
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
+
 import "./TopBilledCast.scss";
 import { Link } from "react-router-dom";
 
@@ -24,12 +26,17 @@ const TopBilledCast = ({type,id,title})=> {
         <h4 className="title">{title}</h4>
         <div className="persons">
             {
-                cast?.map((person)=>(
+                cast?.map((person,i)=>(
+                    i < 11 &&
                     <PersonCard key={person?.id} person={person} />
                 ))
             }
+            <div className="view-more">
+                <Link to={`/movie/${id}/cast`} className="cast-link">view more <ArrowRightAltRoundedIcon /></Link>
+                
+            </div>
         </div>
-        <Link to={`/movie/${id}/cast`} className="full-cast">full cast & crew</Link>
+        <Link to={`/movie/${id}/cast`} className="cast-link">full cast & crew</Link>
     </section>
   )
 }

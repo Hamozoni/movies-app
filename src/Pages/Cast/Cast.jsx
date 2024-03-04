@@ -9,7 +9,7 @@ import "./Cast.scss";
 const Cast = () => {
 
     const [cast,setCast] = useState({});
-    const [crew,setCrew] = useState();
+    const [crew,setCrew] = useState([]);
     const {id} = useParams()
 
     useEffect(()=>{
@@ -47,6 +47,7 @@ const Cast = () => {
                 </h5> 
                 <div className="cast-content">
                     {
+                        crew &&
                         
                         Object.entries(crew)?.map((p)=>(
                             <>
