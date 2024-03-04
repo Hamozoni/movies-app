@@ -9,6 +9,7 @@ import { languages } from "../../Utilities/languages";
 import { Suspense, useContext, useEffect, useState } from "react";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../Utilities/fetchData";
+import { Link } from "react-router-dom";
 
 const MovieTvCover = ({details})=> {
 
@@ -126,7 +127,7 @@ const MovieTvCover = ({details})=> {
                             crews?.map((crew,i)=>(
                                    i < 6 &&
                                     <div key={crew?.id} className="crew">
-                                        <h4>{crew?.name}</h4>
+                                        <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
                                         <aside>{crew?.job}</aside>
                                     </div>
                                 ))

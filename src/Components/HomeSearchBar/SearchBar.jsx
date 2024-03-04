@@ -53,7 +53,7 @@ const SearchBar = ()=> {
 
     return (
         <div 
-        style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${images[imgIdex]?.backdrop_path})`}}
+            style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${images[imgIdex]?.backdrop_path})`}}
             className="search-bar" >
             <section
                 className={`${theme} search-bar-container`}

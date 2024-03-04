@@ -5,6 +5,21 @@ import fetchData from "../../Utilities/fetchData";
 import "./MovieMedia.scss";
 import { Link } from "react-router-dom";
 
+const MediaCard = ({data})=>{
+    return (
+        data?.map((media)=>(
+            <div className="img-container" key={media?.file_path}>
+                    <img 
+                        loading="lazy"
+                        src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
+                        alt={media?.file_path}
+                       />
+            </div>
+          ))
+
+    )
+};
+
 
 const MovieMedia = ({id,mediaType})=> {
 
@@ -24,21 +39,6 @@ const MovieMedia = ({id,mediaType})=> {
                 setMostPopular([...popular])
         })
     },[id,lang]);
-
-    const MediaCard = ({data})=>{
-        return (
-            data?.map((media)=>(
-                <div className="img-container" key={media?.file_path}>
-                        <img 
-                            loading="lazy"
-                            src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
-                            alt={media?.file_path}
-                           />
-                </div>
-              ))
-
-        )
-    }
 
     return (
         <section className='movie-media'>

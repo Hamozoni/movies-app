@@ -105,13 +105,16 @@
         .crews {
             flex-wrap: wrap;
             .crew {
-               h4 {
-                color: $text-light-color;
+               a {
+                color: $text-light-color-2;
                 font-size: $f-size-s;
                 cursor: pointer;
+                &:hover {
+                    color: $text-light-color;
+                }
                }
                aside {
-                color: $text-light-color-2;
+                color: $text-light-color;
                 font-size: $f-size-xs;
                }
 
