@@ -4,10 +4,34 @@
 .movie-media {
     padding: $padding;
     .movie-media-header {
-        @include flex-box(center,space-between,0);
+        @include flex-box(center,space-between);
         padding: $padding-10 0;
         .media-nav {
-             @include flex-box;
+             @include flex-box(center,flex-start,50px);
+             .title {
+                font-size: $f-size;
+                color: $text-dark-color;
+             }
+             .links {
+                @include flex-box(center,flex-start,10px);
+                button {
+                    font-size: $f-size-s;
+                    color: $text-dark-color;
+                    &.active {
+                        font-weight: bold;
+                        position: relative;
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 100%;
+                            height: 2px;
+                            background-color: $text-dark-color;
+                        }
+                    }
+                }
+             }
         }
 
     }

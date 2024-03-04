@@ -32,11 +32,13 @@ const MovieMedia = ({id,mediaType})=> {
                     </h4>
                     <div className="links">
                         <button 
+                            className={selection === 'backdrops' && 'active'}
                             onClick={()=> setSelecion('backdrops')}
                             >
                                 backdrops {mediaVed?.backdrops?.length}
                         </button>
                         <button 
+                           className={selection === 'posters' && 'active'}
                             onClick={()=> setSelecion('posters')}
                            >
                                 posters {mediaVed?.posters?.length}
@@ -78,7 +80,6 @@ const MovieMedia = ({id,mediaType})=> {
                 </div>
 
             </div>
-            <hr />
         </section>
     )
 }
