@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav'
-import fetchData from '../../Utilities/fetchData';
 import { useParams } from 'react-router-dom';
 
 import "./AlternativeTitles.scss";
+import fetchData from '../../../Utilities/fetchData';
 
 const AlternativeTitles = () => {
     const {id} = useParams();
@@ -40,9 +39,6 @@ const AlternativeTitles = () => {
 
   return (
     <main className="alt-titles">
-        <header className="alt-header">
-            <MainMediaNav />
-        </header>
         <div className="alt-content">
             <section className='alt-cout-list'>
                 <header className='cout-header'>

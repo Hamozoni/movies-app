@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav'
-import fetchData from '../../Utilities/fetchData';
 import { useParams } from 'react-router-dom';
-import PersonCard from '../../Components/PersonCard/PersonCard';
 
 import "./Cast.scss";
+import fetchData from '../../../Utilities/fetchData';
+import PersonCard from '../../../Components/PersonCard/PersonCard';
 
 const Cast = () => {
 
@@ -23,9 +22,6 @@ const Cast = () => {
 
   return (
     <div className='cast'>
-        <header className="cast-head">
-            <MainMediaNav />
-        </header>
         <div className="cast-container">
             <section className='cast-part'>
                 <h5 className='main-t'>

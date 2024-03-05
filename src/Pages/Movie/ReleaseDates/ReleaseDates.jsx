@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav'
 import { useParams } from 'react-router-dom'
-import fetchData from '../../Utilities/fetchData';
+import fetchData from '../../../Utilities/fetchData';
+
 
 const ReleaseDates = () => {
 
@@ -33,9 +33,6 @@ const ReleaseDates = () => {
 
   return (
     <main className="release-date">
-        <header className="release-head">
-            <MainMediaNav />
-        </header>
         <div className="alt-content">
             <section className='alt-cout-list'>
                 <header className="cout-header">

@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import fetchData from '../../Utilities/fetchData';
 import { globalContext } from '../../GlobalStateContext/GlobalContext';
-import MovieTvCover from '../../Components/MovieTvCover/MovieTvCover';
+import MovieTvCover from '../../Components/movieComponents/MovieTvCover/MovieTvCover';
 import TopBilledCast from '../../Components/TopBilledCast/TopBilledCast';
-import MovieSocial from '../../Components/MovieSocial/MovieSocial';
-import MovieMedia from '../../Components/MovieMedia/MovieMedia';
+import MovieSocial from '../../Components/movieComponents/MovieSocial/MovieSocial';
+import MovieMedia from '../../Components/movieComponents/MovieMedia/MovieMedia';
 import Recommendations from '../../Components/Recommendations/Recommendations';
 import TvSeasonCard from '../../Components/TvSeasonCard/TvSeasonCard';
 
 import "./Tv.scss";
-import MovieStitistics from '../../Components/MovieStitistics/MovieStitistics';
-import MainMediaNav from '../../Components/MainMediaNav/MainMediaNav';
+import MovieStitistics from '../../Components/movieComponents/MovieStitistics/MovieStitistics';
+import MainMediaNav from '../../Components/movieComponents/MainMediaNav/MainMediaNav';
 
 const Tv = () => {
     const {id} = useParams();

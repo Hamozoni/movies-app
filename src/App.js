@@ -3,24 +3,25 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import Movie from './Pages/Movie/Movie';
 import Person from './Pages/Person/Person';
 import Tv from './Pages/Tv/Tv';
 import Keywords from './Pages/Keywords/Keywords';
 import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
 import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
 import Search from './Pages/Search/Search';
-import Reviews from './Pages/Reviews/Reviews';
-import Cast from './Pages/Cast/Cast';
-import AlternativeTitles from './Pages/AlternitaveTitles/AlternativeTitles';
-import ReleaseDates from './Pages/ReleaseDates/ReleaseDates';
-import Translations from './Pages/Translations/Translations';
-import Changes from './Pages/Changes/Changes';
+import Reviews from './Pages/Movie/Reviews/Reviews';
+import Cast from './Pages/Movie/Cast/Cast';
+import AlternativeTitles from './Pages/Movie/AlternitaveTitles/AlternativeTitles';
+import ReleaseDates from './Pages/Movie/ReleaseDates/ReleaseDates';
+import Translations from './Pages/Movie/Translations/Translations';
+import Changes from './Pages/Movie/Changes/Changes';
 import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList';
 import PopularPresons from './Pages/PopularPersons/PopularPresons';
 import { useContext } from 'react';
 import { globalContext } from './GlobalStateContext/GlobalContext';
 import TrailerPlayer from './Components/TrailerPlayer/TrailerPlayer';
+import MovieLayout from './Layouts/movieLayout/MovieLayout';
+import Main from './Pages/Movie/main/Main';
 
 function App() {
 
@@ -37,14 +38,17 @@ function App() {
             <Route path='list/movie/:filter'  element={<FilteredMediaList mediaType='movie' />}/>
             <Route path='list/tv/:filter'  element={<FilteredMediaList mediaType='tv'  />}/>
             <Route path='list/person/:filter'  element={<PopularPresons />}/>
-            <Route path='/movie/:id'  element={<Movie />}/>
+            <Route  /> 
+            <Route path='/movie/:id' element={<MovieLayout />}>
+                <Route path='/'  element={<Main />}/>
+                <Route path='reviews'  element={<Reviews />}/>
+                <Route path='cast'  element={<Cast />}/>
+                <Route path='titles'  element={<AlternativeTitles />}/>
+                <Route path='releases'  element={<ReleaseDates />}/>
+                <Route path='translations'  element={<Translations/>}/>
+                <Route path='changes'  element={<Changes/>}/>
+            </Route>
             
-            <Route path='/reviews'  element={<Reviews />}/>
-            <Route path='/cast'  element={<Cast />}/>
-            <Route path='/titles'  element={<AlternativeTitles />}/>
-            <Route path='/releases'  element={<ReleaseDates />}/>
-            <Route path='/translations'  element={<Translations/>}/>
-            <Route path='/changes'  element={<Changes/>}/>
 
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>

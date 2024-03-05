@@ -1,18 +1,19 @@
 import {useParams } from "react-router-dom"
 
-import "./Movie.scss";
-import { Suspense, useContext, useEffect, useState } from "react";
-import fetchData from "../../Utilities/fetchData";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import MovieTvCover from "../../Components/MovieTvCover/MovieTvCover";
-import TopBilledCast from "../../Components/TopBilledCast/TopBilledCast";
-import MovieSocial from "../../Components/MovieSocial/MovieSocial";
-import MovieMedia from "../../Components/MovieMedia/MovieMedia";
-import MovieStitistics from "../../Components/MovieStitistics/MovieStitistics";
-import Recommendations from "../../Components/Recommendations/Recommendations";
-import MainMediaNav from "../../Components/MainMediaNav/MainMediaNav";
+import "./Main.scss";
+import { useContext, useEffect, useState } from "react";
+import fetchData from "../../../Utilities/fetchData";
+import MovieTvCover from "../../../Components/movieComponents/MovieTvCover/MovieTvCover";
+import TopBilledCast from "../../../Components/TopBilledCast/TopBilledCast";
+import MovieSocial from "../../../Components/movieComponents/MovieSocial/MovieSocial";
+import MovieMedia from "../../../Components/movieComponents/MovieMedia/MovieMedia";
+import Recommendations from "../../../Components/Recommendations/Recommendations";
+import MovieStitistics from "../../../Components/movieComponents/MovieStitistics/MovieStitistics";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
-const Movie = ()=> {
+
+
+const Main = ()=> {
     const  {id} = useParams();
  
     const {lang} = useContext(globalContext);
@@ -32,10 +33,7 @@ const Movie = ()=> {
     },[id]);
 
     return (
-        <main className="movie">
             <div className="movie-container">
-            <Suspense fallback={<p>loading... </p>} >
-                <MainMediaNav />
                 <MovieTvCover details={movieDetails} />
                 <section className="movie-content">
                     <div className="left-content">
@@ -49,10 +47,8 @@ const Movie = ()=> {
                     </div>
 
                 </section>
-            </Suspense>
             </div>
-        </main>
     )
 };
 
-export default Movie;
+export default Main;

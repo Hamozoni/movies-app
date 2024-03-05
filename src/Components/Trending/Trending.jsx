@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import fetchData from "../../Utilities/fetchData";
 import { languages } from "../../Utilities/languages";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../movieComponents/MovieCard/MovieCard";
 import "./Trending.scss";
 
 const Trending = ({type})=> {

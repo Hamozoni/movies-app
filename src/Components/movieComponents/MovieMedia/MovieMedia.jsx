@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import fetchData from "../../Utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../Utilities/fetchData";
 
 import "./MovieMedia.scss";
 import { Link } from "react-router-dom";

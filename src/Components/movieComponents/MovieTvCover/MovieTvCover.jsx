@@ -5,10 +5,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import StarIcon from '@mui/icons-material/Star';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { languages } from "../../Utilities/languages";
+import { languages } from "../../../Utilities/languages";
 import { Suspense, useContext, useEffect, useState } from "react";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import fetchData from "../../Utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../Utilities/fetchData";
 import { Link } from "react-router-dom";
 
 const MovieTvCover = ({details})=> {

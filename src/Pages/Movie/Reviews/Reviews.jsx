@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
-import fetchData from "../../Utilities/fetchData";
-import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 
 import WestIcon from '@mui/icons-material/West';
+import fetchData from "../../../Utilities/fetchData";
+import ReviewCard from "../../../Components/ReviewCard/ReviewCard";
 
 
 const Reviews = () => {

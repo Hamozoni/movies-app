@@ -1,6 +1,6 @@
 // import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import { useEffect, useState } from 'react';
-import fetchData from '../../Utilities/fetchData';
+import fetchData from '../../../Utilities/fetchData';
 
 import facebook_id from '../../Images/facebook.png';
 import wikidata_id from '../../Images/home.png';

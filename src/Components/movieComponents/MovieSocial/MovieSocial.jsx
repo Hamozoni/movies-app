@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import ReviewCard from "../ReviewCard/ReviewCard"
+import ReviewCard from "../../ReviewCard/ReviewCard"
 import { useContext, useEffect, useState } from "react"
-import fetchData from "../../Utilities/fetchData";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../Utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 import "./MovieSocial.scss";
 

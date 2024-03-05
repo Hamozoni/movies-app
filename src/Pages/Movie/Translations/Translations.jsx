@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import MainMediaNav from "../../Components/MainMediaNav/MainMediaNav"
 import { useParams } from "react-router-dom";
-import fetchData from "../../Utilities/fetchData";
 
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 import "./Translations.scss";
+import fetchData from "../../../Utilities/fetchData";
 
 const Transaction = () => {
 
@@ -22,9 +21,6 @@ const Transaction = () => {
 
   return (
     <main className="mov-transation">
-        <header className="tran-header">
-            <MainMediaNav />
-        </header>
         <div className="alt-content">
             <section className="trans-langs alt-cout-list ">
                   <header className="lang-header cout-header">
