@@ -38,12 +38,14 @@ function App() {
             <Route path='list/tv/:filter'  element={<FilteredMediaList mediaType='tv'  />}/>
             <Route path='list/person/:filter'  element={<PopularPresons />}/>
             <Route path='/movie/:id'  element={<Movie />}/>
-            <Route path='/movie/:id/reviews'  element={<Reviews />}/>
-            <Route path='/movie/:id/cast'  element={<Cast />}/>
-            <Route path='/movie/:id/titles'  element={<AlternativeTitles />}/>
-            <Route path='/movie/:id/releases'  element={<ReleaseDates />}/>
-            <Route path='/movie/:id/translations'  element={<Translations/>}/>
-            <Route path='/movie/:id/changes'  element={<Changes/>}/>
+            
+            <Route path='/reviews'  element={<Reviews />}/>
+            <Route path='/cast'  element={<Cast />}/>
+            <Route path='/titles'  element={<AlternativeTitles />}/>
+            <Route path='/releases'  element={<ReleaseDates />}/>
+            <Route path='/translations'  element={<Translations/>}/>
+            <Route path='/changes'  element={<Changes/>}/>
+
             <Route path='/tv/:id'  element={<Tv />}/>
             <Route path='/tv/:id/seasons'  element={<TvShowSeasons />}/>
             <Route path='/tv/:id/season/:seasonNumber'  element={<SeasonEpisodes />}/>
