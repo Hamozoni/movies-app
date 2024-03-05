@@ -3,13 +3,13 @@ import {useParams } from "react-router-dom"
 import "./Main.scss";
 import { useContext, useEffect, useState } from "react";
 import fetchData from "../../../Utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import MovieTvCover from "../../../Components/movieComponents/MovieTvCover/MovieTvCover";
 import TopBilledCast from "../../../Components/TopBilledCast/TopBilledCast";
 import MovieSocial from "../../../Components/movieComponents/MovieSocial/MovieSocial";
 import MovieMedia from "../../../Components/movieComponents/MovieMedia/MovieMedia";
 import Recommendations from "../../../Components/Recommendations/Recommendations";
 import MovieStitistics from "../../../Components/movieComponents/MovieStitistics/MovieStitistics";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 

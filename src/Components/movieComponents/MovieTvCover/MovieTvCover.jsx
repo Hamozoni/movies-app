@@ -7,9 +7,9 @@ import StarIcon from '@mui/icons-material/Star';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { languages } from "../../../Utilities/languages";
 import { Suspense, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../Utilities/fetchData";
-import { Link } from "react-router-dom";
 
 const MovieTvCover = ({details})=> {
 

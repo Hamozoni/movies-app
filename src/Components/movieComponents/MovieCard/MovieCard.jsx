@@ -2,7 +2,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import "./MovieCard.scss";
 import { useNavigate } from 'react-router-dom';
 
-import mediaImage from "../../Images/media.jpg"
+import mediaImage from "../../../Images/media.jpg"
 
 const MovieCard = ({movie, type})=> {
     const navigate = useNavigate()

@@ -1,6 +1,7 @@
-import MainMediaNav from "../../Components/movieComponents/MainMediaNav/MainMediaNav";
+
 import {Outlet} from 'react-router-dom'
 import './MovieLayout.scss';
+import MainMediaNav from '../../Components/movieComponents/MainMediaNav/MainMediaNav';
 
 const MovieLayout = () => {
   return (

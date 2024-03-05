@@ -1,19 +1,18 @@
 // import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import { useEffect, useState } from 'react';
-import fetchData from '../../../Utilities/fetchData';
 
-import facebook_id from '../../Images/facebook.png';
-import wikidata_id from '../../Images/home.png';
-import imdb_id from '../../Images/imdb.png';
-import instagram_id from '../../Images/insta.png';
-import twitter_id from '../../Images/twiter.png';
 
 import "./MovieStitistics.scss"
 import { useNavigate } from 'react-router-dom';
+import fetchData from '../../../Utilities/fetchData';
+
+import facebook_id from '../../../Images/facebook.png';
+import imdb_id from '../../../Images/imdb.png';
+import instagram_id from '../../../Images/insta.png';
+import twitter_id from '../../../Images/twiter.png';
 
 const images = {
   facebook_id,
-  wikidata_id,
   imdb_id,
   instagram_id,
   twitter_id

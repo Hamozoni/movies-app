@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
-import ReviewCard from "../../ReviewCard/ReviewCard"
 import { useContext, useEffect, useState } from "react"
-import fetchData from "../../../Utilities/fetchData";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+
 
 import "./MovieSocial.scss";
+import fetchData from "../../../Utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import ReviewCard from "../../ReviewCard/ReviewCard";
 
 const MovieSocial = ({id,section,mediaType})=> {
 
