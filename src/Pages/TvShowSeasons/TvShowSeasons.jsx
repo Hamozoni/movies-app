@@ -7,6 +7,7 @@ import TvSeasonCard from "../../Components/TvSeasonCard/TvSeasonCard";
 import WestIcon from '@mui/icons-material/West';
 
 import "./TvShowSeasons.scss";
+import MediaHeader from "../../Components/mediaHeader/MediaHeader";
 
 const TvShowSeasons = () => {
 
@@ -31,26 +32,7 @@ const TvShowSeasons = () => {
   return (
     <main className="tv-seasons">
         <div className="tv-s-container">
-            <header className="main-t-header">
-                <div className="media-details">
-                    <div className="media-image">
-                        <img 
-                            loading="lazy"
-                            src={process.env.REACT_APP_BASE_URL + 'w200' + seasons?.poster_path}
-                            alt="" 
-                            />
-
-                    </div>
-                    <div className="media-back-to">
-                        <h3 className="name">
-                            {`${seasons?.name} (${new Date(seasons?.first_air_date)?.getFullYear()})`}
-                        </h3>
-                        <Link to={`/tv/${id}`} className="back-to"> 
-                            <WestIcon /> back to main
-                        </Link>
-                    </div>
-                </div>
-            </header>
+            <MediaHeader id={id} />
             <div className="tv-seasons-content">
                 {
                  seasons?.seasons?.map((tvShow)=>(

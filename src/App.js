@@ -40,7 +40,7 @@ function App() {
             <Route path='list/person/:filter'  element={<PopularPresons />}/>
             <Route  /> 
             <Route path='movie/:id' element={<MovieLayout />}>
-                <Route path='main'  element={<Main />}/>
+                <Route index  element={<Main />}/>
                 <Route path='reviews'  element={<Reviews />}/>
                 <Route path='cast'  element={<Cast />}/>
                 <Route path='titles'  element={<AlternativeTitles />}/>
