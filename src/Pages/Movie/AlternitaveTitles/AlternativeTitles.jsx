@@ -10,21 +10,24 @@ const AlternativeTitles = ({mediaType}) => {
     const [titles,setTiltes] = useState([]);
     const [titlesCount,setTiltesCount] = useState(0);
 
+    const results = mediaType === 'tv' ? 'results' : 'titles'
+
     useEffect(()=>{
 
         fetchData(`${mediaType}/${id}/alternative_titles`)
         .then(title=>{
-            setTiltes(Object.groupBy(title.titles,ti => {
+            console.log(title)
+            setTiltes(Object.groupBy(title[results],ti => {
                 return ti.iso_3166_1
             }));
-            setTiltesCount(title?.titles?.length)
+            setTiltesCount(title[results]?.length)
            
             fetchData(`configuration/countries?language=en-US`)
             .then(data=> {
                     const newCoutListArray = []
                     data?.map((el)=>{
 
-                        if(title?.titles?.some(e=> e.iso_3166_1 === el.iso_3166_1)) {
+                        if(title[results]?.some(e=> e.iso_3166_1 === el.iso_3166_1)) {
                             newCoutListArray.push(el);
                             console.log(newCoutListArray);
                         }

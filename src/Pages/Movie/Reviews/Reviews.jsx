@@ -14,7 +14,7 @@ const Reviews = ({mediaType}) => {
         fetchData(`${mediaType}/${id}/reviews?language=en-US&page=1`)
         .then(data => {
             setReviews(data?.results);
-            console.log(data.results)
+            console.log(data)
         })
     },[id]);
 

@@ -58,7 +58,6 @@ function App() {
                 <Route path='reviews'  element={<Reviews mediaType='tv' />}/>
                 <Route path='cast'  element={<Cast mediaType='tv'/>}/>
                 <Route path='titles'  element={<AlternativeTitles  mediaType='tv'/>}/>
-                <Route path='releases'  element={<ReleaseDates mediaType='tv'/>}/>
                 <Route path='translations'  element={<Translations mediaType='tv'/>}/>
                 <Route path='changes'  element={<Changes mediaType='tv'/>}/>
             </Route>

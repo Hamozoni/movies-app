@@ -17,15 +17,18 @@ const MainMediaNav = ({mediaType}) => {
                     <li><Link to={`/${mediaType}/${id}/titles`}>alternative tiltes</Link></li>
                     <li><Link to={`/${mediaType}/${id}/cast`}>cast & crew</Link></li>
                     {
-                        mediaType === 'tv' && 
+                        mediaType === 'tv' ? 
                         (
                             <>
                                <li><Link to={`/${mediaType}/${id}/episode_groups`}>episode groups</Link></li>
                                <li><Link to={`/${mediaType}/${id}/seasons`}>seasons</Link></li>
                             </>
+                        ): 
+                        (
+
+                           <li><Link to={`/${mediaType}/${id}/releases`}>release dates</Link></li>
                         )
                     }
-                    <li><Link to={`/${mediaType}/${id}/releases`}>release dates</Link></li>
                     <li><Link to={`/${mediaType}/${id}/translations`}>translations</Link></li>
                     <li><Link to={`/${mediaType}/${id}/changes`}>changes</Link></li>
                  </ul>
@@ -45,7 +48,7 @@ const MainMediaNav = ({mediaType}) => {
                  <span><ArrowDropDownIcon /></span>
                  <ul className='links-list'>
                     <li><Link>discussions</Link></li>
-                    <li><Link to={`/movie/${id}/reviews`}>reviews</Link></li>
+                    <li><Link to={`/${mediaType}/${id}/reviews`}>reviews</Link></li>
                  </ul>
              </div>
              <div className='med-title'>
