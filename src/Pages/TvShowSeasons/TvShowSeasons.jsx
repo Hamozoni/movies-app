@@ -32,7 +32,6 @@ const TvShowSeasons = () => {
   return (
     <main className="tv-seasons">
         <div className="tv-s-container">
-            <MediaHeader id={id} />
             <div className="tv-seasons-content">
                 {
                  seasons?.seasons?.map((tvShow)=>(

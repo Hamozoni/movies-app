@@ -1,11 +1,9 @@
 
 import { useContext, useEffect, useState } from "react";
 import "./SeasonEpisodes.scss";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
-
-import WestIcon from '@mui/icons-material/West';
 import EpisodeCard from "../../Components/EpisodeCard/EpisodeCard";
 import "./SeasonEpisodes.scss";
 import MediaHeader from "../../Components/mediaHeader/MediaHeader";
@@ -30,7 +28,6 @@ const SeasonEpisodes = () => {
   return (
     <main className="season-episode">
         <div className="sea-episode">
-            <MediaHeader id={id} />
             <div className="episodes">
                 {
                     episodes?.episodes?.map((episode)=>(

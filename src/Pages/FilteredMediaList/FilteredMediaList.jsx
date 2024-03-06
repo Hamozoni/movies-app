@@ -4,7 +4,7 @@ import "./FilteredMediaList.scss";
 import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
-import MovieCard from "../../Components/movieComponents/MovieCard/MovieCard";
+import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";
 import MovieTvFilter from "../../Components/MovieTvFilter/MovieTvFilter";
 
 export const mediaFilter = createContext();

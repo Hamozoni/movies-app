@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import fetchData from '../../../Utilities/fetchData';
 
 
-const ReleaseDates = () => {
+const ReleaseDates = ({mediaType}) => {
 
     const {id} = useParams();
     const [dates,setDates] = useState([]);
@@ -11,7 +11,7 @@ const ReleaseDates = () => {
 
     useEffect(()=>{
 
-        fetchData(`movie/${id}/release_dates`)
+        fetchData(`${mediaType}/${id}/release_dates`)
         .then((dates)=>{
             setDates(dates?.results);
             console.log(dates.results);

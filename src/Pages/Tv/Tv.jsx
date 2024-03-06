@@ -2,16 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import fetchData from '../../Utilities/fetchData';
 import { globalContext } from '../../GlobalStateContext/GlobalContext';
-import MovieTvCover from '../../Components/movieComponents/MovieTvCover/MovieTvCover';
-import TopBilledCast from '../../Components/TopBilledCast/TopBilledCast';
-import MovieSocial from '../../Components/movieComponents/MovieSocial/MovieSocial';
-import MovieMedia from '../../Components/movieComponents/MovieMedia/MovieMedia';
+import MovieTvCover from '../../Components/movieComponents/movieTvCover/MovieTvCover';
+import TopBilledCast from '../../Components/topBilledCast/TopBilledCast';
+import MovieSocial from '../../Components/movieComponents/movieSocial/MovieSocial';
+import MovieMedia from '../../Components/movieComponents/movieMedia/MovieMedia';
 import Recommendations from '../../Components/Recommendations/Recommendations';
 import TvSeasonCard from '../../Components/TvSeasonCard/TvSeasonCard';
 
 import "./Tv.scss";
-import MovieStitistics from '../../Components/movieComponents/MovieStitistics/MovieStitistics';
-import MainMediaNav from '../../Components/movieComponents/MainMediaNav/MainMediaNav';
+import MovieStitistics from '../../Components/movieComponents/movieStitistics/MovieStitistics';
 
 const Tv = () => {
     const {id} = useParams();
@@ -29,9 +28,8 @@ const Tv = () => {
     },[id,lang])
 
   return (
-    <main className="tv">
+   
         <div className="tv-container">
-            <MainMediaNav />
             <MovieTvCover details={details}/>
             <section className='tv-content'>
                  <section className='cast'>
@@ -58,8 +56,6 @@ const Tv = () => {
             </section>
 
         </div>
-
-    </main>
   )
 }
 

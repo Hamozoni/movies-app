@@ -13,9 +13,10 @@
                 img {
                     height: 30px;
                     width: 30px;
+                    filter: grayscale(100%);   
                     &:hover {
-                        height: 32px;
-                        width: 32px;   
+                        transform: scale(1.05);
+                        filter: grayscale(0);
                     }
                 }
             }

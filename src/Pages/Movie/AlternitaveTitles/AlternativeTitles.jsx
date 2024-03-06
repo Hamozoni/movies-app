@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import "./AlternativeTitles.scss";
 import fetchData from '../../../Utilities/fetchData';
 
-const AlternativeTitles = () => {
+const AlternativeTitles = ({mediaType}) => {
     const {id} = useParams();
     const [countries,setCountries] = useState([]);
     const [titles,setTiltes] = useState([]);
@@ -12,7 +12,7 @@ const AlternativeTitles = () => {
 
     useEffect(()=>{
 
-        fetchData(`movie/${id}/alternative_titles`)
+        fetchData(`${mediaType}/${id}/alternative_titles`)
         .then(title=>{
             setTiltes(Object.groupBy(title.titles,ti => {
                 return ti.iso_3166_1

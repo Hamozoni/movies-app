@@ -41,36 +41,6 @@ img, picture {
   object-position: center;
 }
 
-.main-t-header {
-  padding: $padding-5 $padding;
-  background-color: $logo-color;
-  .media-details{
-      @include flex-box();
-      .media-image {
-          max-width: 70px;
-          overflow: hidden;
-          border-radius: $border-r;
-      }
-      .media-name {
-        .name {
-            font-size: $main-f-size;
-            color: $text-dark-color;
-        }
-        .media-back-to {
-            @include flex-box(center,flex-start,5px);
-            color: lighten($color: $text-dark-color, $amount: 10);
-            font-size: $f-size-s;
-            font-weight: 700;
-            svg {
-                font-size: $f-size-s;
-            }
-        }
-
-      }
-
-  }
-
-}
 
 .alt-content {
   padding: $padding;

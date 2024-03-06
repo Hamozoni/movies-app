@@ -5,14 +5,14 @@ import "./Cast.scss";
 import fetchData from '../../../Utilities/fetchData';
 import PersonCard from '../../../Components/PersonCard/PersonCard';
 
-const Cast = () => {
+const Cast = ({mediaType}) => {
 
     const [cast,setCast] = useState({});
     const [crew,setCrew] = useState([]);
     const {id} = useParams()
 
     useEffect(()=>{
-       fetchData(`movie/${id}/credits?language=en-US`)
+       fetchData(`${mediaType}/${id}/credits?language=en-US`)
        .then((data)=>{
           setCast(data);
           setCrew(Object.groupBy(data?.crew, ({ department}) => department));

@@ -6,13 +6,13 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import "./Translations.scss";
 import fetchData from "../../../Utilities/fetchData";
 
-const Transaction = () => {
+const Transaction = ({mediaType}) => {
 
   const {id} = useParams();
   const [translations,setTranslations] = useState();
 
   useEffect(()=>{
-     fetchData(`movie/${id}/translations`)
+     fetchData(`${mediaType}/${id}/translations`)
      .then((data)=> {
           setTranslations(data?.translations)
      })
