@@ -2,14 +2,14 @@ import {useParams } from "react-router-dom"
 
 import "./Main.scss";
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../Utilities/fetchData";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import MovieTvCover from "../../../Components/movieComponents/movieTvCover/MovieTvCover";
-import MovieSocial from "../../../Components/movieComponents/movieSocial/MovieSocial";
-import MovieMedia from "../../../Components/movieComponents/movieMedia/MovieMedia";
-import Recommendations from "../../../Components/Recommendations/Recommendations";
-import MovieStitistics from "../../../Components/movieComponents/movieStitistics/MovieStitistics";
-import TopBilledCast from "../../../Components/topBilledCast/TopBilledCast";
+import fetchData from "../../Utilities/fetchData";
+import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import MovieTvCover from "../../Components/movieComponents/movieTvCover/MovieTvCover";
+import MovieSocial from "../../Components/movieComponents/movieSocial/MovieSocial";
+import MovieMedia from "../../Components/movieComponents/movieMedia/MovieMedia";
+import Recommendations from "../../Components/Recommendations/Recommendations";
+import MovieStitistics from "../../Components/movieComponents/movieStitistics/MovieStitistics";
+import TopBilledCast from "../../Components/topBilledCast/TopBilledCast";
 
 
 

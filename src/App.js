@@ -1,28 +1,30 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home/Home';
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
-import Person from './Pages/Person/Person';
-import Tv from './Pages/Tv/Tv';
-import Keywords from './Pages/Keywords/Keywords';
-import TvShowSeasons from './Pages/TvShowSeasons/TvShowSeasons';
-import SeasonEpisodes from './Pages/SeasonEpisodes/SeasonEpisodes';
-import Search from './Pages/Search/Search';
-import Reviews from './Pages/Movie/Reviews/Reviews';
-import Cast from './Pages/Movie/Cast/Cast';
-import AlternativeTitles from './Pages/Movie/AlternitaveTitles/AlternativeTitles';
-import ReleaseDates from './Pages/Movie/ReleaseDates/ReleaseDates';
-import Translations from './Pages/Movie/Translations/Translations';
-import Changes from './Pages/Movie/Changes/Changes';
-import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList';
-import PopularPresons from './Pages/PopularPersons/PopularPresons';
 import { useContext } from 'react';
 import { globalContext } from './GlobalStateContext/GlobalContext';
-import TrailerPlayer from './Components/TrailerPlayer/TrailerPlayer';
-import MovieLayout from './Layouts/movieLayout/MovieLayout';
-import Main from './Pages/Movie/main/Main';
-import TvShowsLayout from './Layouts/tvShowsLayout/TvShowsLayout';
+
+import Header from './Components/Header/Header.jsx';
+import TrailerPlayer from './Components/TrailerPlayer/TrailerPlayer.jsx';
+import Home from './Pages/Home/Home.jsx';
+import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList.jsx';
+import PopularPresons from './Pages/PopularPersons/PopularPresons.jsx';
+import MovieLayout from './Layouts/movieLayout/MovieLayout.jsx';
+import Main from './Pages/movie/Main.jsx';
+import Reviews from './Pages/sharedPages/reviews/Reviews.jsx';
+import Cast from './Pages/sharedPages/cast&Crew/Cast.jsx';
+import AlternativeTitles from './Pages/sharedPages/alternitaveTitles/AlternativeTitles.jsx';
+import ReleaseDates from './Pages/sharedPages/releaseDates/ReleaseDates.jsx';
+import Translations from './Pages/sharedPages/translations/Translations.jsx';
+import Changes from './Pages/sharedPages/changes/Changes.jsx';
+
+import TvShowsLayout from './Layouts/tvShowsLayout/TvShowsLayout.jsx';
+import Tv from './Pages/Tv/main/Tv.jsx';
+import TvShowSeasons from './Pages/Tv/TvShowSeasons/TvShowSeasons.jsx';
+import SeasonEpisodes from './Pages/Tv/SeasonEpisodes/SeasonEpisodes.jsx';
+import Person from './Pages/Person/Person.jsx';
+import Keywords from './Pages/Keywords/Keywords.jsx';
+import Search from './Pages/Search/Search.jsx';
+
 
 function App() {
 
@@ -32,7 +34,7 @@ function App() {
     <BrowserRouter>
       <Header />
       {
-        isTrailer && (<TrailerPlayer />)
+        isTrailer &&     <TrailerPlayer />
       }
         <Routes>
             <Route path='/'  element={<Home />}/>
