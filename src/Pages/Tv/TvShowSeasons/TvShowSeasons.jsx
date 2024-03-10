@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import fetchData from "../../Utilities/fetchData";
-import TvSeasonCard from "../../Components/TvSeasonCard/TvSeasonCard";
+import {  useParams } from "react-router-dom"
 
-import WestIcon from '@mui/icons-material/West';
+
+
 
 import "./TvShowSeasons.scss";
-import MediaHeader from "../../Components/mediaHeader/MediaHeader";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../Utilities/fetchData";
+import TvSeasonCard from "../../../Components/tvComponents/tvSeasonCard/TvSeasonCard";
+
 
 const TvShowSeasons = () => {
 

@@ -7,7 +7,7 @@ import TopBilledCast from '../../../Components/topBilledCast/TopBilledCast';
 import MovieSocial from '../../../Components/movieComponents/movieSocial/MovieSocial';
 import MovieMedia from '../../../Components/movieComponents/movieMedia/MovieMedia';
 import Recommendations from '../../../Components/Recommendations/Recommendations';
-import TvSeasonCard from '../../../Components/TvSeasonCard/TvSeasonCard';
+import TvSeasonCard from '../../../Components/tvComponents/tvSeasonCard/TvSeasonCard';
 
 import "./Tv.scss";
 import MovieStitistics from '../../../Components/movieComponents/movieStitistics/MovieStitistics';

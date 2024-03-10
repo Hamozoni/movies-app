@@ -24,6 +24,7 @@ import SeasonEpisodes from './Pages/Tv/SeasonEpisodes/SeasonEpisodes.jsx';
 import Person from './Pages/Person/Person.jsx';
 import Keywords from './Pages/Keywords/Keywords.jsx';
 import Search from './Pages/Search/Search.jsx';
+import Footer from './Components/footer/Footer.jsx';
 
 
 function App() {

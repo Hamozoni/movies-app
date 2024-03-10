@@ -2,11 +2,13 @@
 import { useContext, useEffect, useState } from "react";
 import "./SeasonEpisodes.scss";
 import { useParams } from "react-router-dom";
-import fetchData from "../../Utilities/fetchData";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import EpisodeCard from "../../Components/EpisodeCard/EpisodeCard";
+
+
 import "./SeasonEpisodes.scss";
-import MediaHeader from "../../Components/mediaHeader/MediaHeader";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../Utilities/fetchData";
+import EpisodeCard from "../../../Components/tvComponents/episodeCard/EpisodeCard";
+
 
 const SeasonEpisodes = () => {
 
