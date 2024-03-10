@@ -1,7 +1,7 @@
-import FreeToWatch from "../../Components/FreeToWatch/FreeToWatch";
-import SearchBar from "../../Components/HomeSearchBar/SearchBar";
-import LatestTrailer from "../../Components/LatestTrailer/LatestTrailer";
-import Trending from "../../Components/Trending/Trending";
+import FreeToWatch from "../../Components/homeComponents/freeToWatch/FreeToWatch";
+import SearchBar from "../../Components/homeComponents/homeSearchBar/SearchBar";
+import LatestTrailer from "../../Components/homeComponents/latestTrailer/LatestTrailer";
+import Trending from "../../Components/homeComponents/trending/Trending";
 
 const Home = ()=> {
 

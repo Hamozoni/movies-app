@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { languages } from "../../Utilities/languages"
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import { languages } from "../../../Utilities/languages"
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 import "./SearchBar.scss";
 import { useNavigate } from "react-router-dom";
-import fetchData from "../../Utilities/fetchData";
+import fetchData from "../../../Utilities/fetchData";
 
 export const SearchForm = ()=> {
     const { lang } = useContext(globalContext);

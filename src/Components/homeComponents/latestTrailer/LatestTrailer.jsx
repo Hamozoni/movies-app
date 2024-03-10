@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../Utilities/fetchData";
+import fetchData from "../../../Utilities/fetchData";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
 import "./LatestTrailer.scss";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 const LatestTrailer = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import fetchData from "../../Utilities/fetchData";
+import fetchData from "../../../Utilities/fetchData";
 import { Link } from "react-router-dom";
 
 import WestIcon from '@mui/icons-material/West';

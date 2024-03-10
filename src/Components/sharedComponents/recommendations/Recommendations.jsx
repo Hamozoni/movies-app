@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react"
-import fetchData from "../../Utilities/fetchData"
-import { globalContext } from "../../GlobalStateContext/GlobalContext"
+import fetchData from "../../../Utilities/fetchData"
+import { globalContext } from "../../../GlobalStateContext/GlobalContext"
 
 import "./Recommendations.scss";
-import fitLongString from "../../Utilities/fitLongString";
+import fitLongString from "../../../Utilities/fitLongString";
 
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import FavoriteIcon from '@mui/icons-material/Favorite';

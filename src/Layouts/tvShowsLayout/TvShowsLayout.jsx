@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useParams } from "react-router-dom"
-import MainMediaNav from "../../Components/mainMediaNav/MainMediaNav"
-import MediaHeader from "../../Components/mediaHeader/MediaHeader"
 
+import MainMediaNav from '../../Components/sharedComponents/mainMediaNav/MainMediaNav';
+import MediaHeader from '../../Components/sharedComponents/mediaHeader/MediaHeader';
 
 const TvShowsLayout = () => {
 

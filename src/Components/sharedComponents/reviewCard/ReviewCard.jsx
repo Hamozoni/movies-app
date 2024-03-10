@@ -1,7 +1,7 @@
 
 import "./ReviewCard.scss";
-import autherImg from "../../Images/person.jpg";
-import fitLongString from "../../Utilities/fitLongString";
+import autherImg from "../../../Images/person.jpg";
+import fitLongString from "../../../Utilities/fitLongString";
 
 const ReviewCard = ({review})=> {
   return (

@@ -9,7 +9,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CheckIcon from '@mui/icons-material/Check';
 
 import "../Filters/Sort/Sort.scss";
-import { mediaFilter } from "../../../Pages/FilteredMediaList/FilteredMediaList";
+import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 
 
 const WhereToWatch = () => {

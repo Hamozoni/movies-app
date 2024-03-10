@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { mediaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
+import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
 import fetchData from "../../../../Utilities/fetchData";
 
 import ClearIcon from '@mui/icons-material/Clear';

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import "./PersonActing.scss";
 import { useEffect, useState } from 'react';
-import fetchData from '../../Utilities/fetchData';
+import fetchData from '../../../Utilities/fetchData';
 import StarIcon from '@mui/icons-material/Star';
-import fitLongString from '../../Utilities/fitLongString';
+import fitLongString from '../../../Utilities/fitLongString';
 // import { KingBed } from '@mui/icons-material';
 
 const PersonActing = ({knownFor}) => {

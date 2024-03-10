@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import fetchData from "../../Utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import { MovieCard } from "../Keywords/Keywords";
+import { MovieCard } from "../keywords/Keywords";
 
 import "./search.scss";
 import PersonCard from "../../Components/PersonCard/PersonCard";

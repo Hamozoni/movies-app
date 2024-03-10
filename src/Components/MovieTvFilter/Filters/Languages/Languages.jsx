@@ -8,7 +8,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 
 import "./Languages.scss";
-import { mediaFilter } from "../../../../Pages/FilteredMediaList/FilteredMediaList";
+import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
 
 const Languages = () => {
 

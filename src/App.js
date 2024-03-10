@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
 import { globalContext } from './GlobalStateContext/GlobalContext';
 
-import Header from './Components/Header/Header.jsx';
-import TrailerPlayer from './Components/TrailerPlayer/TrailerPlayer.jsx';
-import Home from './Pages/Home/Home.jsx';
-import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList.jsx';
+import Header from './Components/header/Header.jsx';
+import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
+import Home from './Pages/home/Home.jsx';
+import FilteredMediaList from './Pages/filteredMediaList/FilteredMediaList.jsx';
 import PopularPresons from './Pages/PopularPersons/PopularPresons.jsx';
 import MovieLayout from './Layouts/movieLayout/MovieLayout.jsx';
 import Main from './Pages/movie/Main.jsx';
@@ -22,7 +22,7 @@ import Tv from './Pages/Tv/main/Tv.jsx';
 import TvShowSeasons from './Pages/Tv/TvShowSeasons/TvShowSeasons.jsx';
 import SeasonEpisodes from './Pages/Tv/SeasonEpisodes/SeasonEpisodes.jsx';
 import Person from './Pages/Person/Person.jsx';
-import Keywords from './Pages/Keywords/Keywords.jsx';
+import Keywords from './Pages/keywords/Keywords.jsx';
 import Search from './Pages/Search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
 

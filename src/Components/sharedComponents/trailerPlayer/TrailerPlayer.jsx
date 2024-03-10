@@ -1,8 +1,8 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useContext, useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
-import fetchData from '../../Utilities/fetchData';
-import { globalContext } from '../../GlobalStateContext/GlobalContext';
+import fetchData from '../../../Utilities/fetchData';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 import "./TrailerPlayer.scss"
 

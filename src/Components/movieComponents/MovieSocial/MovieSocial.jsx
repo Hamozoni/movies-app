@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react"
 import "./MovieSocial.scss";
 import fetchData from "../../../Utilities/fetchData";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import ReviewCard from "../../ReviewCard/ReviewCard";
+import ReviewCard from "../../sharedComponents/reviewCard/ReviewCard";
 
 const MovieSocial = ({id,section,mediaType})=> {
 
