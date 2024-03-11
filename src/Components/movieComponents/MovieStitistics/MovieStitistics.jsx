@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import "./MovieStitistics.scss"
 import { useNavigate } from 'react-router-dom';
-import fetchData from '../../../Utilities/fetchData';
+import fetchData from '../../../utilities/fetchData';
 
 import facebook_id from '../../../Images/facebook.png';
 import imdb_id from '../../../Images/imdb.png';

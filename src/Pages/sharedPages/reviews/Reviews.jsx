@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 
-import fetchData from "../../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
 import ReviewCard from "../../../Components/ReviewCard/ReviewCard";
 
 

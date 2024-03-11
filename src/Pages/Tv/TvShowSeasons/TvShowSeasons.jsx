@@ -6,7 +6,7 @@ import {  useParams } from "react-router-dom"
 
 import "./TvShowSeasons.scss";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import fetchData from "../../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
 import TvSeasonCard from "../../../Components/tvComponents/tvSeasonCard/TvSeasonCard";
 
 

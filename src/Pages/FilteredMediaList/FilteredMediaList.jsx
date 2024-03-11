@@ -1,7 +1,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import "./FilteredMediaList.scss";
-import fetchData from "../../Utilities/fetchData";
+import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";

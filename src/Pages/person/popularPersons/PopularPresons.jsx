@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
-import fetchData from "../../Utilities/fetchData";
-import PersonCard from "../../Components/PersonCard/PersonCard";
+
 
 import './PopularPersons.scss';
-import PageNumber from "../../Components/PageNumber/PageNumber";
+import fetchData from "../../../utilities/fetchData";
+import PersonCard from "../../../Components/personComponents/PersonCard/PersonCard";
+import PageNumber from "../../../Components/sharedComponents/pageNumber/PageNumber";
+
 
 const PopularPresons = () => {
 

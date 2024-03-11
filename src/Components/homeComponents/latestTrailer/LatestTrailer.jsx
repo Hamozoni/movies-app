@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 

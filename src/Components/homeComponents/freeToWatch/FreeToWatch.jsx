@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import MovieCard from "../../movieComponents/movieCard/MovieCard";
-import { languages } from "../../../Utilities/languages";
+import { languages } from "../../../utilities/languages";
 
 const FreeToWatch = ()=> {
 

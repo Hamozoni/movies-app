@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 import "./AlternativeTitles.scss";
-import fetchData from '../../../Utilities/fetchData';
+import fetchData from '../../../utilities/fetchData';
 
 const AlternativeTitles = ({mediaType}) => {
     const {id} = useParams();

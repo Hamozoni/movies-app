@@ -7,7 +7,7 @@ import Header from './Components/header/Header.jsx';
 import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
 import Home from './Pages/home/Home.jsx';
 import FilteredMediaList from './Pages/filteredMediaList/FilteredMediaList.jsx';
-import PopularPresons from './Pages/PopularPersons/PopularPresons.jsx';
+import PopularPresons from './Pages/person/popularPersons/PopularPresons.jsx';
 import MovieLayout from './Layouts/movieLayout/MovieLayout.jsx';
 import Main from './Pages/movie/Main.jsx';
 import Reviews from './Pages/sharedPages/reviews/Reviews.jsx';
@@ -18,12 +18,12 @@ import Translations from './Pages/sharedPages/translations/Translations.jsx';
 import Changes from './Pages/sharedPages/changes/Changes.jsx';
 
 import TvShowsLayout from './Layouts/tvShowsLayout/TvShowsLayout.jsx';
-import Tv from './Pages/Tv/main/Tv.jsx';
-import TvShowSeasons from './Pages/Tv/TvShowSeasons/TvShowSeasons.jsx';
-import SeasonEpisodes from './Pages/Tv/SeasonEpisodes/SeasonEpisodes.jsx';
-import Person from './Pages/Person/Person.jsx';
+import Tv from './Pages/tv/main/Tv.jsx';
+import TvShowSeasons from './Pages/tv/TvShowSeasons/TvShowSeasons.jsx';
+import SeasonEpisodes from './Pages/tv/SeasonEpisodes/SeasonEpisodes.jsx';
+import Person from './Pages/person/main/Person.jsx';
 import Keywords from './Pages/keywords/Keywords.jsx';
-import Search from './Pages/Search/Search.jsx';
+import Search from './Pages/search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
 
 

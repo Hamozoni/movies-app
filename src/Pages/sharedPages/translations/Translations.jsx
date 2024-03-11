@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 import "./Translations.scss";
-import fetchData from "../../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
 
 const Transaction = ({mediaType}) => {
 

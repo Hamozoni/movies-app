@@ -1,15 +1,14 @@
-import { useContext, useEffect, useState } from "react"
-import fetchData from "../../../Utilities/fetchData"
-import { globalContext } from "../../../GlobalStateContext/GlobalContext"
+import { useContext, useEffect, useState } from "react";
 
 import "./Recommendations.scss";
-import fitLongString from "../../../Utilities/fitLongString";
 
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import StarRateIcon from '@mui/icons-material/StarRate';
+
 import { useNavigate } from "react-router-dom";
+import fetchData from "../../../utilities/fetchData";
 
 function Recommendations({id,mediaType}) {
 

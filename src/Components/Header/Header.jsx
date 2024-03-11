@@ -1,4 +1,4 @@
-import {languages }from "../../Utilities/languages";
+import {languages }from "../../utilities/languages";
 
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';

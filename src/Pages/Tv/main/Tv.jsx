@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import fetchData from '../../../Utilities/fetchData';
+import fetchData from '../../../utilities/fetchData';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import MovieTvCover from '../../../Components/movieComponents/movieTvCover/MovieTvCover';
-import TopBilledCast from '../../../Components/topBilledCast/TopBilledCast';
+import TopBilledCast from '../../../Components/sharedComponents/topBilledCast/TopBilledCast';
 import MovieSocial from '../../../Components/movieComponents/movieSocial/MovieSocial';
 import MovieMedia from '../../../Components/movieComponents/movieMedia/MovieMedia';
 import Recommendations from '../../../Components/Recommendations/Recommendations';

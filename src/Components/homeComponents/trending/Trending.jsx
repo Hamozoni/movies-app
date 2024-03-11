@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../Utilities/fetchData";
-import { languages } from "../../../Utilities/languages";
+import fetchData from "../../../utilities/fetchData";
+import { languages } from "../../../utilities/languages";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import MovieCard from "../../movieComponents/movieCard/MovieCard";
 import "./Trending.scss";

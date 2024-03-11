@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react"
-import fetchData from "../../Utilities/fetchData"
+import fetchData from "../../utilities/fetchData"
 import { Link, useParams } from "react-router-dom"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./Keyword.scss";
-import PageNumber from "../../Components/PageNumber/PageNumber";
+import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
 
 export const MovieCard = ({movie})=> {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 import "./Cast.scss";
-import fetchData from '../../../Utilities/fetchData';
+import fetchData from '../../../utilities/fetchData';
 import PersonCard from '../../../Components/personComponents/PersonCard/PersonCard';
 
 const Cast = ({mediaType}) => {

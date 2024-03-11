@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import SortingGauge from "./SortingGauge/SortingGauge"
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
-import fetchData from "../../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 

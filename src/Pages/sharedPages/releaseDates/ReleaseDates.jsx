@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import fetchData from '../../../Utilities/fetchData';
+import fetchData from '../../../utilities/fetchData';
 
 
 const ReleaseDates = ({mediaType}) => {

@@ -4,9 +4,10 @@ import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 
 import "./TopBilledCast.scss";
 import { Link } from "react-router-dom";
-import fetchData from "../../../Utilities/fetchData";
-import PersonCard from "../../PersonCard/PersonCard";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../utilities/fetchData";
+import PersonCard from "../../personComponents/PersonCard/PersonCard";
+
 
 const TopBilledCast = ({type,id,title})=> {
 

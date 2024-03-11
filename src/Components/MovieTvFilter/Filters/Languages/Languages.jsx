@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../../Utilities/fetchData";
+import fetchData from "../../../../utilities/fetchData";
 import { globalContext } from "../../../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 

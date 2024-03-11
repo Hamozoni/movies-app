@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
-import PersonCover from "../../Components/PersonCover/PersonCover";
 import { useContext, useEffect, useState } from "react";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import fetchData from "../../Utilities/fetchData";
+
 
 import "./person.scss";
+import fetchData from "../../../utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import PersonCover from "../../../Components/personComponents/PersonCover/PersonCover";
 
 const Person = ()=> {
 
