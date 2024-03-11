@@ -4,7 +4,7 @@ import fetchData from '../../../utilities/fetchData';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import MovieTvCover from '../../../Components/movieComponents/movieTvCover/MovieTvCover';
 import TopBilledCast from '../../../Components/sharedComponents/topBilledCast/TopBilledCast';
-import MovieSocial from '../../../Components/movieComponents/movieSocial/MovieSocial';
+import MovieSocial from '../../../Components/sharedComponents/movieSocial/MovieSocial';
 import TvSeasonCard from '../../../Components/tvComponents/tvSeasonCard/TvSeasonCard';
 
 import Media from "../../../Components/sharedComponents/mediaImages/Media";

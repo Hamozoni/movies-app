@@ -53,19 +53,19 @@ const MovieMedia = ({id,mediaType})=> {
                     </h4>
                     <div className="links">
                         <button 
-                           className={selection === 'most popular' && 'active'}
+                           className={`${selection === 'most popular' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('most popular')}
                            >
                                 most poluar {mostPopular?.length}
                         </button>
                         <button 
-                            className={selection === 'backdrops' && 'active'}
+                            className={`${selection === 'backdrops' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('backdrops')}
                             >
                                 backdrops {mediaVed?.backdrops?.length}
                         </button>
                         <button 
-                           className={selection === 'posters' && 'active'}
+                           className={`${selection === 'posters' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('posters')}
                            >
                                 posters {mediaVed?.posters?.length}
@@ -74,7 +74,7 @@ const MovieMedia = ({id,mediaType})=> {
                 </nav>
                 {
                     selection !== 'most popular' &&
-                    <Link to={`movie/${id}/${selection}`} className="view-all">
+                    <Link  to={`movie/${id}/${selection}`} className="view-all">
                         veiw all {selection}
                     </Link> 
 

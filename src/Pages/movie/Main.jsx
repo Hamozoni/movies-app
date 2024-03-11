@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieTvCover from "../../Components/movieComponents/movieTvCover/MovieTvCover";
-import MovieSocial from "../../Components/movieComponents/movieSocial/MovieSocial";
+import MovieSocial from "../../Components/sharedComponents/movieSocial/MovieSocial";
 import Media from "../../Components/sharedComponents/mediaImages/Media";
 import Recommendations from "../../Components/sharedComponents/recommendations/Recommendations";
 import MovieStitistics from "../../Components/movieComponents/movieStitistics/MovieStitistics";

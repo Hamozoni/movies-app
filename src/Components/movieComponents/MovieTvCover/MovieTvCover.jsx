@@ -22,18 +22,8 @@ const MovieTvCover = ({details})=> {
     useEffect(()=>{
         fetchData(`movie/${details?.id}/credits?language=${lang}`)
         .then((data)=>{
-            console.log(data.cast);
-            let unique = []
-            data?.crew?.forEach((p)=>{
-                
-                  if(unique.some( e => e.id === p.id || e.department === p.department)) {
+            setCrews(data?.crew)
 
-                } else {
-                      unique.push(p)
-                   }
-            })
-            setCrews(unique)
-            console.log(unique);
         })
     },[details?.id]);
 
@@ -125,7 +115,7 @@ const MovieTvCover = ({details})=> {
                             {
                             
                             crews?.map((crew,i)=>(
-                                   i < 6 &&
+                                   i < 4 &&
                                     <div key={crew?.id} className="crew">
                                         <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
                                         <aside>{crew?.job}</aside>

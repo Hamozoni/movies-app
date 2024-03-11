@@ -1,0 +1,36 @@
+@import '../../../GlobalStyle/variables';
+@import '../../../GlobalStyle/mixin';
+
+.Movie-social {
+    padding: $padding;
+    .social-header {
+        @include flex-box(center,flex-start,50px);
+        margin: $margin 0;
+        .social-title {
+            font-size: $f-size;
+        }
+        .social-nav {
+        @include flex-box();
+        // h5 {
+        //     cursor: pointer;
+        //     font-size: $f-size-s;
+        //     color: $text-dark-color;
+        //     font-weight: normal;
+        //     position: relative;
+        //     ::before {
+        //         position: absolute;
+        //         content: '';
+
+        //     }
+        // }
+
+        }
+    }
+    .read-review {
+        color: $text-dark-color;
+        font-size: $f-size-s;
+        padding: $padding-10 0;
+        display: block;
+        font-weight: 500;
+    }
+}

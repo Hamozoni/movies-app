@@ -10,6 +10,7 @@ import ReviewCard from "../../sharedComponents/reviewCard/ReviewCard";
 const MovieSocial = ({id,section,mediaType})=> {
 
     const [reviews,setReviews] = useState([]);
+    const [activeSection,setActiveSection] = useState('reviews');
 
     const {lang} = useContext(globalContext);
 
@@ -23,23 +24,35 @@ const MovieSocial = ({id,section,mediaType})=> {
 
   return (
     <section className="Movie-social">
-        <hr />
         <header className="social-header">
             <h4 className="social-title">
                 social
             </h4>
             <nav className="social-nav">
-                <h5>reviews {reviews?.length} </h5>
-                <h5>discussions </h5>
+                <h5 
+                    className={activeSection === 'reviews' ? 'active nav-btn' : ' nav-btn'}
+                    onClick={()=> setActiveSection('reviews')}
+                    >
+                        reviews {reviews?.length}
+                </h5>
+                <h5
+                    className={activeSection === 'discussions' ?  'active nav-btn' : ' nav-btn'}
+                    onClick={()=> setActiveSection('discussions')}
+                >discussions </h5>
             </nav>
         </header>
         <div className="social-content">
-            <ReviewCard review={reviews[0]} />
+            { 
+               activeSection === 'reviews' ?
+               reviews?.length > 0 ?
+                  <ReviewCard review={reviews[0]} />
+                  : <p>We don't have any {activeSection} for .... Would you like to write one?</p>
+               : ''
+            }
         </div>
-        <Link to={`/movie/${id}/reviews`} className="read-review">
-              read all reviews
+        <Link to={`/movie/${id}/${activeSection}`} className="read-review">
+              read all {activeSection}
         </Link>
-        <hr />
     </section>
   )
 }

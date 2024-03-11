@@ -132,6 +132,42 @@ img, picture {
 }
 
 
+// active links 
+
+.nav-btn {
+  font-size: $f-size-xs;
+  font-weight: 500;
+  color: $text-dark-color;
+  cursor: pointer;
+  &.active,&:hover,&.active:hover {
+      color: lighten($color: $text-dark-color, $amount: 50);
+      position: relative;
+      transition: color 1s ;
+      &::before {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          width: 0;
+          height: 1px;
+          border: 1px solid lighten($color: $text-dark-color, $amount: 50);
+          border-radius: $circle;
+          background-color: $logo-color;
+          box-shadow: 0 -10px 16px 2px rgb(0 0 0 / 60%);
+          animation: animateActiveBTN .5s  ease-out forwards ;
+      }
+  }
+  
+  &:hover {
+      color: $text-dark-color;
+
+      &::before {
+          background-color: $text-light-color;
+      }
+  }
+}
+
+
 
 
 
