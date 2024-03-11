@@ -50,8 +50,14 @@ const MovieSocial = ({id,section,mediaType})=> {
                : ''
             }
         </div>
-        <Link to={`/movie/${id}/${activeSection}`} className="read-review">
-              read all {activeSection}
+        
+        <Link to={`/${mediaType}/${id}/${activeSection}`} className="read-all"> 
+            {
+            reviews.length > 0 && 
+              `read all ${activeSection}`
+            }
+            
+        
         </Link>
     </section>
   )

@@ -1,0 +1,27 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.main-loaing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $text-light-color;
+    overflow: hidden;
+    z-index: 999999999999999999999999999999999999999999;
+    .loader-container {
+        @include flex-box(center,flex-start,0);
+        .left,.right {
+            width: calc(100vw / 2);
+           height: 100vh;
+        }
+        .left {
+            background-color: $logo-color;
+        }
+        .right {
+            background-color: $text-dark-color;
+        }
+
+    }
+}

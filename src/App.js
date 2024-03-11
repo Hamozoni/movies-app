@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { globalContext } from './GlobalStateContext/GlobalContext';
 
 import Header from './Components/header/Header.jsx';
@@ -25,15 +25,29 @@ import Person from './Pages/person/main/Person.jsx';
 import Keywords from './Pages/keywords/Keywords.jsx';
 import Search from './Pages/search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
+import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 
 
 function App() {
 
   const {isTrailer} = useContext(globalContext);
+  const [isLoaderModel,setIsLoaderModel] = useState(true);
+
+  useEffect(()=> {
+
+    const timeOut = setTimeout(()=>{
+      setIsLoaderModel(false)
+    },10000); 
+
+    return ()=> clearTimeout(timeOut)
+  },[setIsLoaderModel]);
 
   return (
     <BrowserRouter>
       <Header />
+      {
+        isLoaderModel && <MainLoaing />
+      }
       {
         isTrailer &&     <TrailerPlayer />
       }
