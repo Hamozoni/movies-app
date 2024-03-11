@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
-
+import { useParams } from "react-router-dom"
 import fetchData from "../../../utilities/fetchData";
-import ReviewCard from "../../../Components/ReviewCard/ReviewCard";
+import ReviewCard from "../../../Components/sharedComponents/reviewCard/ReviewCard";
+
 
 
 const Reviews = ({mediaType}) => {

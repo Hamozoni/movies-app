@@ -6,11 +6,11 @@ import MovieTvCover from '../../../Components/movieComponents/movieTvCover/Movie
 import TopBilledCast from '../../../Components/sharedComponents/topBilledCast/TopBilledCast';
 import MovieSocial from '../../../Components/movieComponents/movieSocial/MovieSocial';
 import MovieMedia from '../../../Components/movieComponents/movieMedia/MovieMedia';
-import Recommendations from '../../../Components/Recommendations/Recommendations';
 import TvSeasonCard from '../../../Components/tvComponents/tvSeasonCard/TvSeasonCard';
 
 import "./Tv.scss";
 import MovieStitistics from '../../../Components/movieComponents/movieStitistics/MovieStitistics';
+import Recommendations from '../../../Components/sharedComponents/recommendations/Recommendations';
 
 const Tv = () => {
     const {id} = useParams();

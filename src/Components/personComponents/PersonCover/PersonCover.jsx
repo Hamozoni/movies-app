@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import "./PersonCover.scss";
-import fetchData from "../../../utilities/fetchData";
+
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import MovieCard from "../../movieComponents/movieCard/MovieCard";
-import PersonStitistics from "../../PersonStitistics/PersonStitistics";
-import PersonActing from "../PersonActing/PersonActing";
+import fetchData from "../../../utilities/fetchData";
+import PersonStitistics from "../PersonStitistics/PersonStitistics";
 import fitLongString from "../../../utilities/fitLongString";
+import MovieCard from "../../movieComponents/movieCard/MovieCard";
+import PersonActing from '../PersonActing/PersonActing'
+
 
 
 const PersonCover = ({details,id}) => {

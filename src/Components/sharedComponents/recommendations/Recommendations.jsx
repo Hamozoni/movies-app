@@ -9,6 +9,8 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 
 import { useNavigate } from "react-router-dom";
 import fetchData from "../../../utilities/fetchData";
+import fitLongString from "../../../utilities/fitLongString";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 function Recommendations({id,mediaType}) {
 

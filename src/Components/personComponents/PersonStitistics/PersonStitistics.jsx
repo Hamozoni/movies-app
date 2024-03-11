@@ -1,13 +1,14 @@
 
 import "./PersonStitistics.scss";
 
-import facebook_id from '../../Images/facebook.png';
-import instagram_id from '../../Images/insta.png';
-import twitter_id from '../../Images/twiter.png';
-import tiktok_id from '../../Images/tiktok.png';
-import youtube_id from '../../Images/youtube.png';
+import facebook_id from '../../../Images/facebook.png';
+import instagram_id from '../../../Images/insta.png';
+import twitter_id from '../../../Images/twiter.png';
+import tiktok_id from '../../../Images/tiktok.png';
+import youtube_id from '../../../Images/youtube.png';
 import { useEffect, useState } from "react";
-import fetchData from "../../Utilities/fetchData";
+import fetchData from "../../../utilities/fetchData";
+
 
 const images = {
     facebook_id,

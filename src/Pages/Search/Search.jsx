@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import fetchData from "../../utilities/fetchData";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import { MovieCard } from "../keywords/Keywords";
+
 
 import "./search.scss";
-import PersonCard from "../../Components/PersonCard/PersonCard";
-import PageNumber from "../../Components/PageNumber/PageNumber";
+import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import fetchData from "../../utilities/fetchData";
+import PersonCard from "../../Components/personComponents/PersonCard/PersonCard";
+import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";
+import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
+
 
 const Search = ()=> {
     
