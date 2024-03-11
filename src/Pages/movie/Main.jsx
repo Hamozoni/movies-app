@@ -6,7 +6,7 @@ import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import MovieTvCover from "../../Components/movieComponents/movieTvCover/MovieTvCover";
 import MovieSocial from "../../Components/movieComponents/movieSocial/MovieSocial";
-import MovieMedia from "../../Components/movieComponents/movieMedia/MovieMedia";
+import Media from "../../Components/sharedComponents/mediaImages/Media";
 import Recommendations from "../../Components/sharedComponents/recommendations/Recommendations";
 import MovieStitistics from "../../Components/movieComponents/movieStitistics/MovieStitistics";
 import TopBilledCast from "../../Components/sharedComponents/topBilledCast/TopBilledCast";
@@ -39,7 +39,7 @@ const Main = ()=> {
                     <div className="left-content">
                         <TopBilledCast type='movie' id={id} title='Series Top Billed Cast'/>
                         <MovieSocial id={id} section='reviews' mediaType='movie'/>
-                        <MovieMedia id={id} mediaType='movie' />
+                        <Media id={id} mediaType='movie' />
                         <Recommendations id={id} mediaType='movie'/>
                     </div>
                     <div className="right-content">

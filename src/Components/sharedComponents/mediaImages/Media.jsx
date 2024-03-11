@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
 
-import "./MovieMedia.scss";
+import "./Media.scss";
 import { Link } from "react-router-dom";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";

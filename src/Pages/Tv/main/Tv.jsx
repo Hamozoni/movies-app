@@ -5,12 +5,14 @@ import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import MovieTvCover from '../../../Components/movieComponents/movieTvCover/MovieTvCover';
 import TopBilledCast from '../../../Components/sharedComponents/topBilledCast/TopBilledCast';
 import MovieSocial from '../../../Components/movieComponents/movieSocial/MovieSocial';
-import MovieMedia from '../../../Components/movieComponents/movieMedia/MovieMedia';
 import TvSeasonCard from '../../../Components/tvComponents/tvSeasonCard/TvSeasonCard';
+
+import Media from "../../../Components/sharedComponents/mediaImages/Media";
 
 import "./Tv.scss";
 import MovieStitistics from '../../../Components/movieComponents/movieStitistics/MovieStitistics';
-import Recommendations from '../../../Components/sharedComponents/recommendations/Recommendations';
+
+import Recommendations from "../../../Components/sharedComponents/recommendations/Recommendations";
 
 const Tv = () => {
     const {id} = useParams();
@@ -47,7 +49,7 @@ const Tv = () => {
                         </Link>
                     </section>
                     <MovieSocial id={id} section='reviews' mediaType='tv'/>
-                    <MovieMedia id={id} mediaType='tv' />
+                    <Media id={id} mediaType='tv' />
                     <Recommendations id={id} mediaType='tv'/>
                  </section>
                  <div className="right-content">
