@@ -6,11 +6,17 @@
     max-width: 150px;
     overflow: hidden;
     cursor: pointer;
+    &:hover {
+        transform: scale(1.07);
+    }
     .image-container {
         position: relative;
         .poster {
-            width: 150px;
             border-radius: $border-r;
+            width: 150px;
+            &:hover {
+                filter: brightness(150%);
+            }
         }
         .consensus, .more-btn  {
 
@@ -41,6 +47,9 @@
         .title {
             font-size: $f-size-s;
             color: $text-dark-color;
+            &:hover {
+                color: lighten($color: $text-dark-color, $amount: 20);
+            }
         }
         .time {
             font-size: $text-dark-color;

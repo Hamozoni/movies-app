@@ -5,6 +5,7 @@ import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
 import "./LatestTrailer.scss";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 
 const LatestTrailer = () => {
@@ -13,6 +14,8 @@ const LatestTrailer = () => {
     const [trailerData,setTrailerData] = useState([]);
     const [activeSection,setActiveSection] = useState('popular');
     const [backgroundImageIndex,setBackgroundImageIndex] = useState(0);
+
+    const navigate = useNavigate();
 
     useEffect(()=>{
         fetchData(`movie/popular?language=en-US&page=1`)
@@ -81,7 +84,7 @@ const LatestTrailer = () => {
                                         </span>
                                     </div>
                                     <div className="trailer-titles">
-                                        <h3 className="name">
+                                        <h3 className="name" onClick={()=> navigate(`/movie/${media.id}`)}>
                                             {media?.title}
                                         </h3>
                                     </div>

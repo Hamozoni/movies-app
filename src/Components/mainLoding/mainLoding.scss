@@ -10,18 +10,38 @@
     background-color: $text-light-color;
     overflow: hidden;
     z-index: 999999999999999999999999999999999999999999;
+    animation: backOpacity .5s .7s ease-in-out   forwards;
+    
     .loader-container {
         @include flex-box(center,flex-start,0);
+        transform: rotate3d(50deg);
         .left,.right {
             width: calc(100vw / 2);
            height: 100vh;
+           animation: translateY .7s ease-in-out   forwards;
         }
         .left {
             background-color: $logo-color;
+            transform: translateY(-100%);
         }
         .right {
             background-color: $text-dark-color;
+            transform: translateY(100%);
         }
 
+    }
+}
+
+@keyframes translateY {
+    50% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(100%,0);
+    }
+}
+@keyframes backOpacity {
+    100% {
+       opacity: 0;
     }
 }

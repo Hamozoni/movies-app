@@ -37,7 +37,7 @@ function App() {
 
     const timeOut = setTimeout(()=>{
       setIsLoaderModel(false)
-    },10000); 
+    },1200); 
 
     return ()=> clearTimeout(timeOut)
   },[setIsLoaderModel]);
