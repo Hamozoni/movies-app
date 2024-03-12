@@ -37,7 +37,7 @@ const MainMediaNav = ({mediaType}) => {
                  <span>media</span>
                  <span><ArrowDropDownIcon /></span>
                  <ul className='links-list'>
-                    <li><Link>backdrops</Link></li>
+                    <li><Link to={`/${mediaType}/${id}/backdrops`} > backdrops </Link> </li>
                     <li><Link>logos</Link></li>
                     <li><Link>posters</Link></li>
                     <li><Link>videos</Link></li>
