@@ -3,6 +3,8 @@ import fetchData from "../../../utilities/fetchData";
 import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import { useParams } from "react-router-dom";
 
+import "./backdrops&posters.scss";
+
 
 const BackdropsCard = ({drop})=> {
     const imageUrl = `${process.env.REACT_APP_BASE_URL}original${drop?.file_path}`
@@ -21,10 +23,10 @@ const BackdropsCard = ({drop})=> {
     )
 };
 
-const Backdrops = ({mediaType}) => {
+const Backdrops_posters = ({mediaType,type}) => {
 
-    const [backdrops,setBackdrops] = useState({});
-    const [backdropsLang,setBackdropsLang] = useState([]);
+    const [data,setData] = useState({});
+    const [dataLang,setDataLang] = useState([]);
     const [selectedLang,setSelectedLang] = useState('null');
 
     const {id} = useParams()
@@ -33,39 +35,41 @@ const Backdrops = ({mediaType}) => {
     useEffect(()=> {
         fetchData(`${mediaType}/${id}/images`)
         .then((data)=>{
-            setBackdrops(Object.groupBy(data?.backdrops,e=> e.iso_639_1));
-            console.log(Object.groupBy(data?.backdrops,e=> e.iso_639_1))
+            setData(Object.groupBy(data[type],e=> e.iso_639_1));
+            console.log(Object.groupBy(data[type],e=> e.iso_639_1))
         })
         fetchData(`configuration/languages`)
         .then(lang=> {
-            setBackdropsLang(lang);
+            setDataLang(lang);
             console.log(lang)
         })
-    },[mediaType,id]);
+    },[mediaType,id,type]);
 
 
   return (
     <div className="backdrops">
         <div className="backdrop-container">
             <nav className="back-nav">
-                <header>
+                <header className="b-header">
                     <h4>backdrops</h4>
                 </header>
-                <ul>
+                <ul className="lang-ul">
                     {
-                        Object.keys(backdrops)?.map((key)=>(
-                            <li>
+                        Object.keys(data)?.map((key)=>(
+                            <li onClick={()=> setSelectedLang(key)} className={`${selectedLang === key && 'active'} nav-btn`}>
                                 { key === 'null' ? 
                                   'no language' :
-                                   backdropsLang?.find(e=> e.iso_639_1 === key)?.english_name
-                            }</li>
+                                   dataLang?.find(e=> e.iso_639_1 === key)?.english_name
+                                }
+                                <span>{data[key]?.length}</span>
+                            </li>
                         ))
                     }
                 </ul>
             </nav>
             <div className="back-content">
                 {
-                    backdrops[selectedLang]?.map((drop)=> (
+                    data[selectedLang]?.map((drop)=> (
                         <BackdropsCard key={drop} drop={drop} />
                     ))
                 }
@@ -75,4 +79,4 @@ const Backdrops = ({mediaType}) => {
   )
 }
 
-export default Backdrops
+export default Backdrops_posters;

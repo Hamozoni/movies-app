@@ -26,7 +26,7 @@ import Keywords from './Pages/keywords/Keywords.jsx';
 import Search from './Pages/search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
-import Backdrops from './Pages/sharedPages/backdrops/Backdrops.jsx';
+import Backdrops_posters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
 
 
 function App() {
@@ -66,7 +66,8 @@ function App() {
                 <Route path='releases'  element={<ReleaseDates mediaType='movie' />}/>
                 <Route path='translations'  element={<Translations mediaType='movie' />}/>
                 <Route path='changes'  element={<Changes mediaType='movie'/>}/>
-                <Route path='backdrops'  element={<Backdrops mediaType='movie'/>}/>
+                <Route path='backdrops'  element={<Backdrops_posters mediaType='movie' type='backdrops'/>}/>
+                <Route path='posters'  element={<Backdrops_posters mediaType='movie' type='posters'/>}/>
             </Route>
             
 
@@ -79,7 +80,8 @@ function App() {
                 <Route path='titles'  element={<AlternativeTitles  mediaType='tv'/>}/>
                 <Route path='translations'  element={<Translations mediaType='tv'/>}/>
                 <Route path='changes'  element={<Changes mediaType='tv'/>}/>
-                <Route path='backdrops'  element={<Backdrops mediaType='tv'/>}/>
+                <Route path='backdrops'  element={<Backdrops_posters mediaType='tv' type='backdrops'/>}/>
+                <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>}/>
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>

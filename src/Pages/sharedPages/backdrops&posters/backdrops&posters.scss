@@ -1,0 +1,48 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.backdrops {
+    .backdrop-container {
+        padding: $padding * 2;
+        @include flex-box(flex-start,flex-start,40px);
+        .back-nav {
+            border-radius: $border-r-l;
+            border: 1px solid #00000031;
+            overflow: hidden;
+            min-width: 260px;
+            .b-header {
+                padding: $padding;
+                background-color: $header-b-ground-c;
+                h4 {
+                    color: $text-light-color;
+                    font-size: $f-size-s;
+                    font-weight: 600;
+                }
+            }
+            .lang-ul {
+                padding: $padding-10 0;
+                li {
+                    padding: $padding-5 $padding;
+                    font-size: $f-size-s;
+                    color: $text-dark-color;
+                    @include flex-box(center,space-between);
+                    span {
+                        @include flex-box(center,center);
+                        font-size: $f-size-xs;
+                        background-color: $text-light-color;
+                        border-radius: $border-r-l;
+                        padding: 0 $padding-10;
+                    }
+                }
+            }
+        }
+        .back-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+            grid-gap: 20px;
+            // .b-card {
+
+            // }
+        }
+    }
+}
