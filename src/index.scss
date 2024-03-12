@@ -143,6 +143,9 @@ img, picture {
       color: lighten($color: $text-dark-color, $amount: 50);
       position: relative;
       transition: color 1s ;
+      a {
+        color: lighten($color: $text-dark-color, $amount: 50);
+      }
       &::before {
           content: '';
           position: absolute;
@@ -170,7 +173,8 @@ img, picture {
 .image-hover {
   cursor: pointer;
     &:hover {
-      filter: brightness(120%) hue-rotate(160deg) ;
+      filter: brightness(150%) hue-rotate(30deg) ;
+      animation: animateImage 1s ease-in-out alternate-reverse;
     } 
 }
 
@@ -178,6 +182,12 @@ img, picture {
     &:hover {
       transform: scale(1.07);
     }
+}
+
+@keyframes animateImage {
+  100% {
+    filter: brightness(120%) hue-rotate(180deg) ;
+  }
 }
 
 

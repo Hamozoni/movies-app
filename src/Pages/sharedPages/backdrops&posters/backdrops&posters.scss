@@ -40,9 +40,21 @@
             display: grid;
             grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
             grid-gap: 20px;
-            // .b-card {
-
-            // }
+            .b-card {
+                min-width: 280px;
+                border-radius: $border-r-l;
+                overflow: hidden;
+                border: 1px solid #00000031;
+                .b-image-cont {
+                   
+                    min-height: 150px;
+                    @include flex-box(center,center);
+                    background-color: $text-light-color-2;
+                    &:hover {
+                        background-color: $header-b-ground-c;
+                    }
+                }
+            }
         }
     }
 }

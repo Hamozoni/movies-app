@@ -68,6 +68,7 @@ function App() {
                 <Route path='changes'  element={<Changes mediaType='movie'/>}/>
                 <Route path='backdrops'  element={<Backdrops_posters mediaType='movie' type='backdrops'/>}/>
                 <Route path='posters'  element={<Backdrops_posters mediaType='movie' type='posters'/>}/>
+                <Route path='logos'  element={<Backdrops_posters mediaType='movie' type='logos'/>}/>
             </Route>
             
 
@@ -82,6 +83,7 @@ function App() {
                 <Route path='changes'  element={<Changes mediaType='tv'/>}/>
                 <Route path='backdrops'  element={<Backdrops_posters mediaType='tv' type='backdrops'/>}/>
                 <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>}/>
+                <Route path='logos'  element={<Backdrops_posters mediaType='tv' type='logos'/>}/>
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>

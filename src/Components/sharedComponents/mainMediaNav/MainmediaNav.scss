@@ -12,7 +12,7 @@
             color: rgb(131, 129, 129);
             font-weight: normal;
             padding:$padding-10;
-            font-size: $f-size-s;
+            font-size: $f-size-xs;
             .links-list {
                 display: none;
                 position: absolute;
@@ -24,12 +24,10 @@
                 border-radius: 5px;
                 box-shadow: 0 0 10px 0px #8d8b8bb0;
                 li {
-                    padding: $padding-5 $padding-10;
+                     @include flex-box(center,space-between);
+                    padding: $padding-5 $padding;
                     a {
                         color: $text-dark-color;
-                    }
-                    &:hover {
-                        background-color: #8d8b8bb0;
                     }
                 }
             }

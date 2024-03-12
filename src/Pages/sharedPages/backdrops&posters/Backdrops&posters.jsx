@@ -37,13 +37,14 @@ const Backdrops_posters = ({mediaType,type}) => {
         .then((data)=>{
             setData(Object.groupBy(data[type],e=> e.iso_639_1));
             console.log(Object.groupBy(data[type],e=> e.iso_639_1))
+            setSelectedLang(Object.keys(Object.groupBy(data[type],e=> e.iso_639_1))[0])
         })
         fetchData(`configuration/languages`)
         .then(lang=> {
             setDataLang(lang);
             console.log(lang)
         })
-        setSelectedLang('null')
+        
     },[mediaType,id,type]);
 
 
