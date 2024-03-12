@@ -54,9 +54,10 @@ function Recommendations({id,mediaType}) {
         <div className="recom-content">
             {
                 recomData?.results?.map((media)=>(
-                    <div className="media-card">
+                    <div className="media-card scale">
                         <div className="image">
                             <img 
+                                className="image-hover"
                                 onClick={()=> handleNavigate(media?.media_type,media?.id)}
                                 src={process.env.REACT_APP_BASE_URL + "w300" + media?.backdrop_path} 
                                 alt="" />

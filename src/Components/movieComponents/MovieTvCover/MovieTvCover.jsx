@@ -42,6 +42,7 @@ const MovieTvCover = ({details})=> {
                 <div className="cover-container">
                     <div className="cover-image">
                         <img 
+                            className="image-hover"
                             loading="lazy"
                             src={process.env.REACT_APP_BASE_URL + 'w300' + details?.poster_path} 
                             alt="" 

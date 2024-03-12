@@ -9,9 +9,9 @@ import "./backdrops&posters.scss";
 const BackdropsCard = ({drop})=> {
     const imageUrl = `${process.env.REACT_APP_BASE_URL}original${drop?.file_path}`
     return (
-        <div className="b-card">
+        <div className="b-card scale">
             <div className="b-image-cont">
-                <img src={imageUrl} alt="backdrop" />
+                <img className="image-hover" src={imageUrl} alt="backdrop" />
             </div>
             <div className="b-info">
                 <div className="b-header">
@@ -43,6 +43,7 @@ const Backdrops_posters = ({mediaType,type}) => {
             setDataLang(lang);
             console.log(lang)
         })
+        setSelectedLang('null')
     },[mediaType,id,type]);
 
 
@@ -51,7 +52,7 @@ const Backdrops_posters = ({mediaType,type}) => {
         <div className="backdrop-container">
             <nav className="back-nav">
                 <header className="b-header">
-                    <h4>backdrops</h4>
+                    <h4>{type}</h4>
                 </header>
                 <ul className="lang-ul">
                     {

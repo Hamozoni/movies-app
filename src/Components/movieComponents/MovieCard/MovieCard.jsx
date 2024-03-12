@@ -15,12 +15,12 @@ const MovieCard = ({movie, type})=> {
     }
 
     return (
-        <div className="movie-card">
+        <div className="movie-card scale">
             <div className="image-container"> 
                  <img 
                     loading="lazy"
                     onClick={handleNavigation}
-                    className='poster'
+                    className='poster image-hover '
                     src={imgUrl ? process.env.REACT_APP_BASE_URL + 'w200' + imgUrl : mediaImage} 
                     alt={movie?.title}
                      />

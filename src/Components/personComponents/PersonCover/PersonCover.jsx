@@ -28,6 +28,7 @@ const PersonCover = ({details,id}) => {
         <div className="per-cover-container">
             <div className="person-img">
                 <img 
+                    className="image-hover"
                     src={process.env.REACT_APP_BASE_URL + 'w300' + details?.profile_path} 
                     alt={details?.name} 
                     />

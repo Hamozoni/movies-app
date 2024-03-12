@@ -167,6 +167,19 @@ img, picture {
   }
 }
 
+.image-hover {
+  cursor: pointer;
+    &:hover {
+      filter: brightness(120%) hue-rotate(160deg) ;
+    } 
+}
+
+.scale {
+    &:hover {
+      transform: scale(1.07);
+    }
+}
+
 
 
 

@@ -10,7 +10,7 @@
     .persons {
         @include flex-box(flex-start);
         overflow-x: auto;
-        margin: $margin 0;
+        padding: $padding 0;
     }
     .cast-link {
         color: $logo-color;

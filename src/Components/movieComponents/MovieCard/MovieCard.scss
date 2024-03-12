@@ -6,17 +6,11 @@
     max-width: 150px;
     overflow: hidden;
     cursor: pointer;
-    &:hover {
-        transform: scale(1.07);
-    }
     .image-container {
         position: relative;
         .poster {
             border-radius: $border-r;
             width: 150px;
-            &:hover {
-                filter: brightness(150%) hue-rotate(30deg) ;
-            }
         }
         .consensus, .more-btn  {
 
