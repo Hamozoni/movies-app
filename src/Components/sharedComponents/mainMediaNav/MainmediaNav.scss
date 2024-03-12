@@ -13,7 +13,7 @@
             font-weight: normal;
             padding:$padding-10;
             font-size: $f-size-xs;
-            .links-list {
+            .links-list , li.videos .videos-ul {
                 display: none;
                 position: absolute;
                 top: 38px;
@@ -25,9 +25,21 @@
                 box-shadow: 0 0 10px 0px #8d8b8bb0;
                 li {
                      @include flex-box(center,space-between);
-                    padding: $padding-5 $padding;
+                     padding: $padding-5 $padding;
                     a {
                         color: $text-dark-color;
+                    }
+                    &.videos {
+                        position: relative;
+                        .videos-ul {
+                            top: 0;
+                            left: 100%;
+                        }
+                        &:hover {
+                            .videos-ul {
+                                display: block;
+                            }
+                        }
                     }
                 }
             }

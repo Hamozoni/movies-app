@@ -54,6 +54,16 @@
                         background-color: $header-b-ground-c;
                     }
                 }
+                .b-info {
+                    .b-header {
+                        @include flex-box(center,space-between);
+                        padding: $padding-10;
+                        border-bottom: 1px solid #00000021;
+                    }
+                    .b-body {
+                        padding: $padding-10;
+                    }
+                }
             }
         }
     }

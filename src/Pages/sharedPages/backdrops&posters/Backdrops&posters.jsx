@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import fetchData from "../../../utilities/fetchData";
-import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import { useParams } from "react-router-dom";
+
+import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
+import CheckIcon from '@mui/icons-material/Check';
 
 import "./backdrops&posters.scss";
 
 
-const BackdropsCard = ({drop})=> {
+const BackdropsCard = ({drop,language})=> {
     const imageUrl = `${process.env.REACT_APP_BASE_URL}original${drop?.file_path}`
     return (
         <div className="b-card scale">
@@ -14,9 +16,19 @@ const BackdropsCard = ({drop})=> {
                 <img className="image-hover" src={imageUrl} alt="backdrop" />
             </div>
             <div className="b-info">
-                <div className="b-header">
+                <header className="b-header">
                     <span>info</span>
                     <LockOpenRoundedIcon />
+                </header>
+                <div className="b-body">
+                    <div className="size">
+                        <p>size</p>
+                        <p>{drop?.width}×{drop?.height} <CheckIcon /></p>
+                    </div>
+                    <div className="b-lang">
+                        <p>language</p>
+                        <p>{language}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,7 +84,11 @@ const Backdrops_posters = ({mediaType,type}) => {
             <div className="back-content">
                 {
                     data[selectedLang]?.map((drop)=> (
-                        <BackdropsCard key={drop} drop={drop} />
+                        <BackdropsCard 
+                            key={drop} 
+                            drop={drop} 
+                            language={dataLang?.find(e=> e.iso_639_1 === drop.iso_639_1)?.english_name || 'no laguage' }
+                            />
                     ))
                 }
             </div>

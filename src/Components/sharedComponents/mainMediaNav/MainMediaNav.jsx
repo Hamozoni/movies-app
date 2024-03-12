@@ -5,16 +5,23 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import fetchData from '../../../utilities/fetchData';
 
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+
 const MainMediaNav = ({mediaType}) => {
     const {id} = useParams();
 
     const [mediaData,setMediaData] = useState({})
+    const [videos,setVideos] = useState({})
 
     useEffect(()=> {
         fetchData(`${mediaType}/${id}/images`)
         .then((data)=>{
             setMediaData(data);
-        })  
+        }) 
+        fetchData(`${mediaType}/${id}/videos?language=en-US`)
+        .then((data)=>{
+            setVideos(Object.groupBy(data?.results,e=> e.type))
+        }) 
     },[mediaType,id]);
 
   return (
@@ -60,7 +67,22 @@ const MainMediaNav = ({mediaType}) => {
                         <Link to={`/${mediaType}/${id}/posters`} >posters</Link>
                         <span>{mediaData?.posters?.length}</span>
                     </li >
-                    <li className='nav-btn'><Link>videos</Link></li>
+                    <li className='nav-btn videos'>
+                        <Link>videos </Link>
+                        <span><ArrowRightIcon/></span>
+                        <ul className="videos-ul">
+                            {
+                                Object.keys(videos)?.map(video=> (
+                                    <li 
+                                        className='nav-btn'
+                                        key={video}>
+                                            {video} 
+                                            <span>{videos[video]?.length}</span>
+                                        </li>
+                                ))
+                            }
+                        </ul>
+                    </li>
                  </ul>
              </div>
              <div className='med-title'>
