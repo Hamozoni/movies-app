@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import fetchYoutubeData from "../../../utilities/fetchYoutubeData";
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
 import "./videosCard.scss";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 const VideosCard = ({yId,type,title})=> {
 
     const [videoInfo,setVideoIfo] = useState({});
+    const {setIsTrailer,setYoutubeId} = useContext(globalContext);
 
     useEffect(()=>{
         fetchYoutubeData(`video?id=${yId}`)
@@ -26,11 +29,17 @@ const VideosCard = ({yId,type,title})=> {
 
     return (
         <div className="vid-card card">
-            <div className="vid-image">
+            <div className="vid-image" onClick={()=>{
+                setIsTrailer(true);
+                setYoutubeId(yId);
+            } }>
                 {
                     videoInfo?.thumbnail && 
                    <img src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
                 }
+                <div className="play-icon">
+                    <PlayArrowRoundedIcon />
+                </div>
             </div>
             <div className="vid-info">
                 <div className="title-date">

@@ -8,19 +8,7 @@ import "./TrailerPlayer.scss"
 
 const TrailerPlayer = () => {
 
-    const {mediaType,mediaId,setIsTrailer} = useContext(globalContext);
-
-    const [videoId,setVideoId] = useState(null);
-    // const [mediaData,setMediaData] = useState({});
-
-    useEffect(()=>{
-        fetchData(`${mediaType}/${mediaId}/videos?language=en-US`)
-        .then((data)=>{
-            console.log(data?.results);
-            setVideoId(data?.results[0]?.key)
-        })
-
-    },[mediaId]);
+    const {youtubeId,setIsTrailer} = useContext(globalContext);
 
 
   return (
@@ -33,7 +21,7 @@ const TrailerPlayer = () => {
                 </span>
             </header>
                 <div className="tr-player">
-                    <ReactPlayer playing={true} controls url={`https://www.youtube.com/watch?v=${videoId}`} />
+                    <ReactPlayer playing={true} controls url={`https://www.youtube.com/watch?v=${youtubeId}`} />
                 </div>
         </div>
 

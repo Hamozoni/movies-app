@@ -208,6 +208,9 @@ img, picture {
   border-radius: $border-r-l;
   border: 1px solid #00000031;
   overflow: hidden;
+  &:hover {
+    transform: scale(1.03);
+  }
 }
 
 
