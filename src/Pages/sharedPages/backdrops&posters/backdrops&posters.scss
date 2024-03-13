@@ -6,9 +6,6 @@
         padding: $padding * 2;
         @include flex-box(flex-start,flex-start,40px);
         .back-nav {
-            border-radius: $border-r-l;
-            border: 1px solid #00000031;
-            overflow: hidden;
             min-width: 260px;
             .b-header {
                 padding: $padding;

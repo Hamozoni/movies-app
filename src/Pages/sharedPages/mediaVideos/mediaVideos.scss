@@ -3,12 +3,13 @@
 
 .media-videos {
     .vid-container {
-        @include flex-box(flex-start,flex-start,40px);
+        @include flex-box(flex-start,_,40px);
         padding: $padding;
         .vid-nav {
             border-radius: $border-r-l;
             overflow: hidden;
             border: 1px solid #00000015;
+            flex-basis: 260px;
             .vid-head {
                 padding: $padding-10;
                 background-color: $header-b-ground-c;
@@ -16,6 +17,9 @@
                     font-size: $f-size;
                     color: $text-light-color;
                 }
+            }
+            .vid-ul {
+                padding: $padding-5 0;
             }
         }
     }

@@ -1,0 +1,43 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.vid-card {
+    @include flex-box(_,_,0);
+    max-height: fit-content;
+    margin-bottom: $margin;
+    max-height: 188px;
+    flex-basis: calc(100% - 260px);
+    .vid-image {
+        max-height: fit-content;
+    }
+    .vid-info {
+        @include flex-box(_,space-between);
+        flex-direction: column;
+        .title-date {
+            padding: $padding-10;
+            .name {
+                font-size: $f-size-s;
+                color: $text-dark-color;
+            }
+            .d {
+                font-size: $f-size-xs;
+            }
+        }
+        .yout-ch {
+            padding: $padding-10;
+            background-color: $text-light-color-2;
+            @include flex-box(center,flex-start,5px);
+            span {
+                font-size: $f-size-xs;
+                color: darken($color: $text-light-color, $amount: 30);
+            }
+            svg:nth-of-type() {
+                font-size: 22px;
+            }
+            svg:nth-of-type(2) {
+                font-size: 16px;
+                color: darken($color: $text-light-color, $amount: 20);
+            }
+        }
+    }
+}

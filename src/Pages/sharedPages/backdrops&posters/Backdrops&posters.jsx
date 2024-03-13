@@ -63,7 +63,7 @@ const Backdrops_posters = ({mediaType,type}) => {
   return (
     <div className="backdrops">
         <div className="backdrop-container">
-            <nav className="back-nav">
+            <nav className="back-nav card">
                 <header className="b-header">
                     <h4>{type}</h4>
                 </header>

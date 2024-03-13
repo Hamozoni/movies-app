@@ -4,7 +4,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import fetchYoutubeData from "../../../utilities/fetchYoutubeData";
 
-
+import "./videosCard.scss";
 
 const VideosCard = ({yId,type,title})=> {
 
@@ -25,7 +25,7 @@ const VideosCard = ({yId,type,title})=> {
     }
 
     return (
-        <div className="vid-card">
+        <div className="vid-card card">
             <div className="vid-image">
                 {
                     videoInfo?.thumbnail && 
@@ -40,15 +40,12 @@ const VideosCard = ({yId,type,title})=> {
                     </p>
                 </div>
                 <div className="yout-ch">
-                    <span className="icon">
                         <YouTubeIcon />
-                    </span>
+
                     <span className="ch-t">
                         {videoInfo?.channelTitle}
                     </span>
-                    <span className="veri">
                         <VerifiedIcon />
-                    </span>
                 </div>
             </div>
         </div>
