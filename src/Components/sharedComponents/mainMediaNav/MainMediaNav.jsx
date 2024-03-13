@@ -76,8 +76,10 @@ const MainMediaNav = ({mediaType}) => {
                                     <li 
                                         className='nav-btn'
                                         key={video}>
-                                            {video} 
-                                            <span>{videos[video]?.length}</span>
+                                            <Link to={`/${mediaType}/${id}/videos?type=${video}`}>
+                                                {video} 
+                                                <span>{videos[video]?.length}</span>
+                                            </Link>
                                         </li>
                                 ))
                             }

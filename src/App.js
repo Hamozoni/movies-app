@@ -27,6 +27,7 @@ import Search from './Pages/search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 import Backdrops_posters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
+import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
                 <Route path='backdrops'  element={<Backdrops_posters mediaType='movie' type='backdrops'/>}/>
                 <Route path='posters'  element={<Backdrops_posters mediaType='movie' type='posters'/>}/>
                 <Route path='logos'  element={<Backdrops_posters mediaType='movie' type='logos'/>}/>
+                <Route path='videos'  element={<MediaVideos mediaType='movie' />}/>
             </Route>
             
 
@@ -84,6 +86,7 @@ function App() {
                 <Route path='backdrops'  element={<Backdrops_posters mediaType='tv' type='backdrops'/>}/>
                 <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>}/>
                 <Route path='logos'  element={<Backdrops_posters mediaType='tv' type='logos'/>}/>
+                <Route path='videos'  element={<MediaVideos mediaType='tv' />}/>
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
