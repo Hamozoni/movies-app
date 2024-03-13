@@ -27,6 +27,8 @@
                      @include flex-box(center,space-between);
                      padding: $padding-5 $padding;
                     a {
+                        @include flex-box(center,space-between);
+                        width: 100%;
                         color: $text-dark-color;
                     }
                     &.videos {

@@ -47,8 +47,16 @@ const MainMediaNav = ({mediaType}) => {
                            <li className='nav-btn'><Link to={`/${mediaType}/${id}/releases`}>release dates</Link></li>
                         )
                     }
-                    <li className='nav-btn'><Link to={`/${mediaType}/${id}/translations`}>translations</Link></li>
-                    <li className='nav-btn'><Link to={`/${mediaType}/${id}/changes`}>changes</Link></li>
+                    <li className='nav-btn'>
+                        <Link to={`/${mediaType}/${id}/translations`}>
+                            translations
+                        </Link>
+                    </li>
+                    <li className='nav-btn'>
+                        <Link to={`/${mediaType}/${id}/changes`}>
+                            changes
+                        </Link>
+                    </li>
                  </ul>
              </div>
              <div className='med-title'>
@@ -56,16 +64,22 @@ const MainMediaNav = ({mediaType}) => {
                  <span><ArrowDropDownIcon /></span>
                  <ul className='links-list'>
                     <li className='nav-btn'>
-                        <Link to={`/${mediaType}/${id}/backdrops`} > backdrops </Link>
-                        <span>{mediaData?.backdrops?.length}</span>
+                        <Link to={`/${mediaType}/${id}/backdrops`} >
+                             backdrops
+                            <span>{mediaData?.backdrops?.length}</span>
+                         </Link>
                      </li>
                     <li className='nav-btn'>
-                        <Link to={`/${mediaType}/${id}/logos`} >logos</Link>
-                        <span>{mediaData?.logos?.length}</span>
+                        <Link to={`/${mediaType}/${id}/logos`} >
+                            logos
+                            <span>{mediaData?.logos?.length}</span>
+                        </Link>
                     </li>
                     <li className='nav-btn'>
-                        <Link to={`/${mediaType}/${id}/posters`} >posters</Link>
-                        <span>{mediaData?.posters?.length}</span>
+                        <Link to={`/${mediaType}/${id}/posters`} >
+                            posters
+                            <span>{mediaData?.posters?.length}</span>
+                       </Link>
                     </li >
                     <li className='nav-btn videos'>
                         <Link>videos </Link>
