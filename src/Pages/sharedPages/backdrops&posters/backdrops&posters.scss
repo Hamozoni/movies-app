@@ -22,10 +22,6 @@
             .lang-ul {
                 padding: $padding-10 0;
                 li {
-                    padding: $padding-5 $padding;
-                    font-size: $f-size-s;
-                    color: $text-dark-color;
-                    @include flex-box(center,space-between);
                     span {
                         @include flex-box(center,center);
                         font-size: $f-size-xs;

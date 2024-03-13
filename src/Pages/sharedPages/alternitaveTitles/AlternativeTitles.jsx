@@ -53,7 +53,7 @@ const AlternativeTitles = ({mediaType}) => {
                         countries?.map((cout)=>(
                             
                                 
-                            <li key={cout?.cout?.iso_3166_1}>
+                            <li key={cout?.cout?.iso_3166_1} className='nav-btn'>
                                 <h4>{cout?.native_name}</h4>
                                 <span>{titles[cout?.iso_3166_1]?.length}</span>
                             </li>

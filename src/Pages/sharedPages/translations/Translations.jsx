@@ -32,7 +32,7 @@ const Transaction = ({mediaType}) => {
                   <ul className="cout-list">
                     {
                         translations?.map((trans)=> (
-                            <li key={trans?.iso_3166_1}>
+                            <li key={trans?.iso_3166_1} className="nav-btn">
                                  <h4>{trans?.english_name}</h4>
                                 <span>{trans?.iso_639_1}-{trans?.iso_3166_1}</span>
                             </li>

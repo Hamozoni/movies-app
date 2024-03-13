@@ -138,14 +138,21 @@ img, picture {
   font-size: $f-size-xs;
   font-weight: 500;
   color: $text-dark-color;
+  padding: $padding-10 $padding;
+  @include flex-box(center,space-between);
+    a {
+        @include flex-box(center,space-between);
+        width: 100%;
+        color: $text-dark-color;
+    }
   cursor: pointer;
   &.active,&:hover,&.active:hover {
       color: lighten($color: $text-dark-color, $amount: 50);
       position: relative;
       transition: color 1s ;
-      a {
-        color: lighten($color: $text-dark-color, $amount: 50);
-      }
+      // a {
+      //   color: lighten($color: $text-dark-color, $amount: 50);
+      // }
       &::before {
           content: '';
           position: absolute;

@@ -4,6 +4,8 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import fetchData from "../../../utilities/fetchData";
 import VideosCard from "./VideosCard";
 
+import "./mediaVideos.scss";
+
 
 
 const MediaVideos = ({mediaType}) => {

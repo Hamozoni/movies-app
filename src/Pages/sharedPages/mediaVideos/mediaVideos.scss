@@ -1,0 +1,22 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.media-videos {
+    .vid-container {
+        @include flex-box(flex-start,flex-start,40px);
+        padding: $padding;
+        .vid-nav {
+            border-radius: $border-r-l;
+            overflow: hidden;
+            border: 1px solid #00000015;
+            .vid-head {
+                padding: $padding-10;
+                background-color: $header-b-ground-c;
+                .t {
+                    font-size: $f-size;
+                    color: $text-light-color;
+                }
+            }
+        }
+    }
+}

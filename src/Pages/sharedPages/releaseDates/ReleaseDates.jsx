@@ -44,7 +44,7 @@ const ReleaseDates = ({mediaType}) => {
                 <ul className="cout-list">
                     {
                         countries?.map((count)=> (
-                            <li key={count?.iso_3166_1}>
+                            <li key={count?.iso_3166_1} className='nav-btn'>
                                  <h4>{count?.native_name}</h4>
                                 <span>{dates?.find(el=> el.iso_3166_1 === count.iso_3166_1)?.release_dates?.length}</span>
                             </li>

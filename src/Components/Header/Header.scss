@@ -43,12 +43,6 @@
                         border-radius: 5px;
                         border: 1px solid #ecebeb;
                         z-index: 9999999;
-                        li {
-                            cursor: pointer;
-                            color: $text-dark-color;
-                            font-size: $f-size-xs;
-                            padding: $padding-5 $padding;
-                        }
                     }
                     &:hover {
                         .fiter {

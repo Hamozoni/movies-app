@@ -12,7 +12,7 @@
             color: rgb(131, 129, 129);
             font-weight: normal;
             padding:$padding-10;
-            font-size: $f-size-xs;
+            font-size: $f-size-s;
             .links-list , li.videos .videos-ul {
                 display: none;
                 position: absolute;
@@ -24,13 +24,6 @@
                 border-radius: 5px;
                 box-shadow: 0 0 10px 0px #8d8b8bb0;
                 li {
-                     @include flex-box(center,space-between);
-                     padding: $padding-5 $padding;
-                    a {
-                        @include flex-box(center,space-between);
-                        width: 100%;
-                        color: $text-dark-color;
-                    }
                     &.videos {
                         position: relative;
                         .videos-ul {
