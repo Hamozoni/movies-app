@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
 import VideosCard from "../../../Pages/sharedPages/mediaVideos/VideosCard";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
 
 const MediaCard = ({data})=>{
     return (
@@ -31,6 +33,10 @@ const MovieMedia = ({id,mediaType})=> {
     const [selection,setSelecion] = useState('posters');
     const [mostPopular,setMostPopular] = useState([]);
     const [videos,setVideos] = useState([]);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
+    const [isPending2,setIsPending2] = useState(true);
+    const [error2,setError2] = useState(null);
 
     const {lang} = useContext(globalContext);
 
@@ -41,13 +47,25 @@ const MovieMedia = ({id,mediaType})=> {
             setMediaVed(data);
             const allData = data.backdrops.concat(data.posters)
                 const popular = allData.filter((el)=> el.vote_average < 5.6);
-                setMostPopular([...popular])
+                setMostPopular([...popular]);
+                setIsPending(false);
         })
+        .catch(error=> {
+            setError(error);
+            setIsPending(false)
+        });
 
         fetchData(`${mediaType}/${id}/videos?language=en-US`)
         .then(data=> {
-            setVideos(data?.results)
+            setVideos(data?.results);
+            setIsPending2(false);
         })
+        .catch(error=> {
+            setError2(error);
+            setIsPending2(false);
+            console.log(error)
+        })
+
     },[id,lang]);
 
     return (
@@ -97,20 +115,28 @@ const MovieMedia = ({id,mediaType})=> {
             </header>
             <div className="media-content">
                 <div className="media-content-container">
-                    {  
-                      selection === 'most popular' ?
-                      <MediaCard data={mostPopular}/>:
-                      selection === 'backdrops' ?
-                      <MediaCard data={mediaVed?.backdrops}/>
-                     : selection === 'posters' ?
-                     <MediaCard data={ mediaVed?.posters}/> 
-                     :
-                     selection === 'videos'  &&
-                        videos?.map((video,i)=> (
-                            i < 8 &&
-                            <VideosCard yId={video?.key}  type={video?.type} title={video?.name}/>
-                        ))
-                    
+                    {
+                         isPending ? <Loading width='100%' height='300px' /> :
+                        mediaVed ?
+                            ( 
+                                selection === 'most popular' ?
+                                <MediaCard data={mostPopular}/>:
+                                selection === 'backdrops' ?
+                                <MediaCard data={mediaVed?.backdrops}/>
+                                : selection === 'posters' ?
+                                <MediaCard data={ mediaVed?.posters}/> 
+                                : 
+                                selection === 'videos'  && (
+                                    isPending2 ? <Loading width='100%' height='300px' /> : 
+                                    videos ?
+                                    videos?.map((video,i)=> (
+                                        i < 8 &&
+                                        <VideosCard yId={video?.key}  type={video?.type} title={video?.name}/>
+                                    ))
+                                    : error2 &&  <Error error={error2}/>
+                                )
+                            
+                            ): error && <Error error={error} />
                     }
                     {
                         selection !== 'most popular' &&

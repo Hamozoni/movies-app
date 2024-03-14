@@ -10,6 +10,8 @@ import Media from "../../Components/sharedComponents/mediaImages/Media";
 import Recommendations from "../../Components/sharedComponents/recommendations/Recommendations";
 import MovieStitistics from "../../Components/movieComponents/movieStitistics/MovieStitistics";
 import TopBilledCast from "../../Components/sharedComponents/topBilledCast/TopBilledCast";
+import Error from "../../Components/error/Error";
+import Loading from "../../Components/loading/Loading";
 
 
 
@@ -19,22 +21,33 @@ const Main = ()=> {
     const {lang} = useContext(globalContext);
     
     const [movieDetails,setMovieDetails] = useState({})
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
     useEffect(()=>{
+        setIsPending(true);
         fetchData(`movie/${id}?language=${lang}`)
         .then((data)=>{
             setMovieDetails(data);
+            setIsPending(false);
+            setError(null);
             console.log(data)
         })
         .catch((error)=>{
-            console.log(error)
+            setError(error);
+            setIsPending(false)
         })
 
     },[id]);
 
     return (
             <div className="movie-container">
-                <MovieTvCover details={movieDetails} />
+                {
+                    isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> : 
+                    movieDetails ? 
+                    <MovieTvCover details={movieDetails} />
+                    : error && <Error error={error} />
+                }
                 <section className="movie-content">
                     <div className="left-content">
                         <TopBilledCast type='movie' id={id} title='Series Top Billed Cast'/>
@@ -43,7 +56,12 @@ const Main = ()=> {
                         <Recommendations id={id} mediaType='movie'/>
                     </div>
                     <div className="right-content">
-                        <MovieStitistics id={id} details={movieDetails}  type='movie' />
+                        {
+                            isPending ? <Loading width='100%' height='100vh' /> : 
+                            movieDetails ? 
+                            <MovieStitistics id={id} details={movieDetails}  type='movie' />
+                            : error && <Error error={error} />
+                        }
                     </div>
 
                 </section>

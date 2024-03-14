@@ -7,16 +7,26 @@ import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
 import "./videosCard.scss";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import Loading from "../../../Components/loading/Loading";
+import Error from "../../../Components/error/Error";
 
 const VideosCard = ({yId,type,title})=> {
+    
+    const {setTrailer} = useContext(globalContext);
 
     const [videoInfo,setVideoIfo] = useState({});
-    const {setTrailer} = useContext(globalContext);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
     useEffect(()=>{
         fetchYoutubeData(`video?id=${yId}`)
         .then((data)=> {
             setVideoIfo(data);
+            setIsPending(false);
+        })
+        .catch(error=> {
+            setError(error);
+            setIsPending(false);
         })
 
     },[yId]);
@@ -33,31 +43,37 @@ const VideosCard = ({yId,type,title})=> {
 
     return (
         <div className="vid-card card">
-            <div className="vid-image" onClick={handleTrailer}>
-                {
-                    videoInfo?.thumbnail && 
-                   <img loading="lazy" src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
-                }
-                <div className="play-icon scale">
-                    <PlayArrowRoundedIcon />
-                </div>
-            </div>
-            <div className="vid-info">
-                <div className="title-date">
-                    <h3 className="name">{title}</h3>
-                    <p className="d">
-                        {type} . {getLengthSeconds(videoInfo?.lengthSeconds)} {new Date(videoInfo?.publishDate)?.toDateString()}
-                    </p>
-                </div>
-                <div className="yout-ch">
-                        <YouTubeIcon />
+            {
+                isPending ? <Loading width='100%' height='300px' /> : videoInfo ? 
+                <div className="vid-cont">
+                    <div className="vid-image" onClick={handleTrailer}>
+                        {
+                            videoInfo?.thumbnail && 
+                        <img loading="lazy" src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
+                        }
+                        <div className="play-icon scale">
+                            <PlayArrowRoundedIcon />
+                        </div>
+                    </div>
+                    <div className="vid-info">
+                        <div className="title-date">
+                            <h3 className="name">{title}</h3>
+                            <p className="d">
+                                {type} . {getLengthSeconds(videoInfo?.lengthSeconds)} {new Date(videoInfo?.publishDate)?.toDateString()}
+                            </p>
+                        </div>
+                        <div className="yout-ch">
+                                <YouTubeIcon />
 
-                    <span className="ch-t">
-                        {videoInfo?.channelTitle}
-                    </span>
-                        <VerifiedIcon />
+                            <span className="ch-t">
+                                {videoInfo?.channelTitle}
+                            </span>
+                                <VerifiedIcon />
+                        </div>
+                    </div>
                 </div>
-            </div>
+                : error && <Error error={error} />
+            }
         </div>
     )
 }

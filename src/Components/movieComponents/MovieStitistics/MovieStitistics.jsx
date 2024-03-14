@@ -10,6 +10,8 @@ import facebook_id from '../../../Images/facebook.png';
 import imdb_id from '../../../Images/imdb.png';
 import instagram_id from '../../../Images/insta.png';
 import twitter_id from '../../../Images/twiter.png';
+import Error from '../../error/Error';
+import Loading from '../../loading/Loading';
 
 const images = {
   facebook_id,
@@ -23,17 +25,38 @@ const MovieStitistics = ({id,details,type}) => {
      
   const [keywords,setKeywords] = useState();
   const [externalIds,setExternalIds] = useState();
+  const [isPending2,setIsPending2] = useState(true);
+  const [error2,setError2] = useState(null);
+  const [isPending,setIsPending] = useState(true);
+  const [error,setError] = useState(null);
 
   useEffect(()=>{
+    setIsPending(true);
+    setIsPending2(true);
     fetchData(`${type}/${id}/keywords`)
     .then((data)=>{
       setKeywords(data?.keywords || data?.results );
+      setIsPending(false);
+      setError(null);
+
       console.log(details);
     })
+    .catch(error=> {
+      setError(error);
+      setIsPending(false);
+    });
+
+
     fetchData(`${type}/${id}/external_ids`)
     .then((data)=>{
       setExternalIds(data);
+      setIsPending2(false);
+      setError2(null);
       console.log(data)
+    })
+    .catch(error=>{
+      setIsPending2(false);
+      setError2(error);
     })
    
   },[id,type]);
@@ -47,6 +70,8 @@ const MovieStitistics = ({id,details,type}) => {
         <div className="stits-container">
             <nav className="stits-nav">
             {
+              isPending2 ? <Loading width='100%' height='65px'/> : 
+              externalIds ?
                 alowedSocialMedia?.map((social)=> (
                     (externalIds && externalIds[social] !== null && externalIds[social]) &&
                     <a 
@@ -57,6 +82,7 @@ const MovieStitistics = ({id,details,type}) => {
                      <img src={images[social]} />
                   </a>
                 ))
+              : error2 && <Error error={error2} />
             }
             {
             details?.homepage && 
@@ -89,21 +115,26 @@ const MovieStitistics = ({id,details,type}) => {
 
             </div>
             <section className="keywords">
-              <h4 className='key-t'>keywords</h4>
+                <h4 className='key-t'>keywords</h4>
+                {
+                  isPending ? <Loading width='100%' height='300px' /> : 
+                  keywords ? 
+                  <ul className="keywords-ul">
+                    {
+                      keywords?.map((key)=>(
+                        <li 
+                          onClick={()=> navigate(`/keywords/${key?.id}`)}
+                          key={key?.id} 
+                          className="key"
+                          >
+                            {key?.name}
+                        </li>
+                      ))
+                    }
+                  </ul>
+                  : error && <Error error={error}/> 
+                }
             
-              <ul className="keywords-ul">
-                 {
-                  keywords?.map((key)=>(
-                    <li 
-                      onClick={()=> navigate(`/keywords/${key?.id}`)}
-                      key={key?.id} 
-                      className="key"
-                      >
-                        {key?.name}
-                    </li>
-                  ))
-                 }
-              </ul>
 
             </section>
             <section className="score">
