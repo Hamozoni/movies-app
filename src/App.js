@@ -32,7 +32,7 @@ import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
 
 function App() {
 
-  const {isTrailer} = useContext(globalContext);
+  const {trailer} = useContext(globalContext);
   const [isLoaderModel,setIsLoaderModel] = useState(true);
 
   useEffect(()=> {
@@ -51,7 +51,7 @@ function App() {
         isLoaderModel && <MainLoaing />
       }
       {
-        isTrailer &&     <TrailerPlayer />
+        trailer.isTrailer &&     <TrailerPlayer />
       }
         <Routes>
             <Route path='/'  element={<Home />}/>

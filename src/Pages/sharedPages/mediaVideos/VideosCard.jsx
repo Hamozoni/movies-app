@@ -11,7 +11,7 @@ import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 const VideosCard = ({yId,type,title})=> {
 
     const [videoInfo,setVideoIfo] = useState({});
-    const {setIsTrailer,setYoutubeId} = useContext(globalContext);
+    const {setTrailer} = useContext(globalContext);
 
     useEffect(()=>{
         fetchYoutubeData(`video?id=${yId}`)
@@ -27,12 +27,13 @@ const VideosCard = ({yId,type,title})=> {
         return `${m.toFixed(0)}:${se}`
     }
 
+    const handleTrailer = ()=> {
+        setTrailer( {isTrailer: true,youtubeId: yId,type})
+    }
+
     return (
         <div className="vid-card card">
-            <div className="vid-image" onClick={()=>{
-                setIsTrailer(true);
-                setYoutubeId(yId);
-            } }>
+            <div className="vid-image" onClick={handleTrailer}>
                 {
                     videoInfo?.thumbnail && 
                    <img src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
