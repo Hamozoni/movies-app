@@ -138,7 +138,7 @@ img, picture {
   font-size: $f-size-xs;
   font-weight: 500;
   color: $text-dark-color;
-  padding: $padding-10 $padding;
+  padding: $padding-10;
   @include flex-box(center,space-between);
     a {
         @include flex-box(center,space-between);

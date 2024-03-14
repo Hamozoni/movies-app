@@ -56,7 +56,13 @@ const MovieMedia = ({id,mediaType})=> {
                            className={`${selection === 'most popular' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('most popular')}
                            >
-                                most poluar {mostPopular?.length}
+                                most poluar
+                        </button>
+                        <button 
+                            className={`${selection === 'videos' && 'active'} nav-btn`}
+                            onClick={()=> setSelecion('videos')}
+                            >
+                                videos 
                         </button>
                         <button 
                             className={`${selection === 'backdrops' && 'active'} nav-btn`}

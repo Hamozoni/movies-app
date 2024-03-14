@@ -27,15 +27,15 @@
             padding: $padding 0;
             .img-container {
                 height: 300px;
+                min-width: 200px;
                 img {
-                    min-width: 200px;
                     min-height: 300px;
+                    max-height: 300px;
                 }
             }
             .poster , .poster img , .view-more{
-                max-width: 200px;
-                min-width: 200px;
                 min-height: 300px;
+                max-height: 300px;
             }
             .view-more {
                 @include flex-box(center,center)

@@ -16,7 +16,6 @@ const Cast = ({mediaType}) => {
        .then((data)=>{
           setCast(data);
           setCrew(Object.groupBy(data?.crew, ({ department}) => department));
-          console.log(data)
        })
     },[id]);
 
