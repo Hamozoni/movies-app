@@ -8,7 +8,7 @@
         .spin {
             width: 60px;
             height: 60px;
-            border-bottom: 3px solid darken($color: $text-light-color-2, $amount: 20);
+            border-bottom: 1px solid darken($color: $text-light-color-2, $amount: 20);
             border-radius: $circle;
             animation: spiner .5s  infinite forwards;
         }
@@ -18,5 +18,6 @@
 @keyframes spiner {
     100% {
         transform: rotate(180deg);
+        border-width: 4px;
     }
 }

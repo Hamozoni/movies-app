@@ -29,11 +29,13 @@
                 height: 300px;
                 min-width: 200px;
                 img {
+                    min-width: 533px;
                     min-height: 300px;
                     max-height: 300px;
                 }
             }
             .poster , .poster img , .view-more{
+                min-width: 200px;
                 min-height: 300px;
                 max-height: 300px;
             }
