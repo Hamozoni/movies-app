@@ -22,11 +22,11 @@ const BackdropsCard = ({drop,language})=> {
                 </header>
                 <div className="b-body">
                     <div className="size">
-                        <p>size</p>
+                        <span>size</span>
                         <p>{drop?.width}×{drop?.height} <CheckIcon /></p>
                     </div>
                     <div className="b-lang">
-                        <p>language</p>
+                        <span>language</span>
                         <p>{language}</p>
                     </div>
                 </div>

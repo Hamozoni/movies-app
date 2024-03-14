@@ -87,7 +87,9 @@ const MovieMedia = ({id,mediaType})=> {
                 </nav>
                 {
                     selection !== 'most popular' &&
-                    <Link  to={`/movie/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`} className="view-all">
+                    <Link  
+                        to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`} 
+                        className="view-all" >
                         veiw all {selection}
                     </Link> 
 
@@ -113,7 +115,11 @@ const MovieMedia = ({id,mediaType})=> {
                     {
                         selection !== 'most popular' &&
                         <div className="view-more">
-                            <Link to={`/movie/${id}/${selection}`}>view more</Link>
+                            <Link 
+                                to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`}
+                                >
+                                view more
+                            </Link>
                         </div>
                     }
 

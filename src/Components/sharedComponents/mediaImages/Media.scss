@@ -20,11 +20,11 @@
     .media-content {
         max-width: 100%;
         overflow-x:  auto;
+        overflow-y: hidden;
         border-radius: $border-r-l;
         .media-content-container {
             min-width: fit-content;
             @include flex-box(flex-start,center,0);
-            padding: $padding 0;
             .img-container {
                 height: 300px;
                 min-width: 200px;

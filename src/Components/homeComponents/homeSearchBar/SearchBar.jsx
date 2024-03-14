@@ -39,14 +39,26 @@ const SearchBar = ()=> {
 
    const { lang, theme} = useContext(globalContext);
    const [images,setImages] = useState([]);
-   const [imgIdex,setImgIdex] = useState(Math.ceil(Math.random() * 20));
+   const [isPending,setIsPending] = useState(true);
+   const [error,setError] = useState(null);
+
+
+   const imgIdex= Math.ceil(Math.random() * 20);
 
    useEffect(()=>{
+    setIsPending(true);
+    setError(null);
        fetchData(`trending/movie/week?language=${lang}&page=1`)
        .then((data)=>{
-           setImages(data?.results)
+           setImages(data?.results);
+           setIsPending(false);
+
            console.log(data?.results);
-       });
+       })
+       .catch(error=> {
+            setIsPending(false);
+            setError(error);
+       })
    },[lang]);
 
 

@@ -6,24 +6,36 @@ import TheatersIcon from '@mui/icons-material/Theaters';
 import StarIcon from '@mui/icons-material/Star';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { languages } from "../../../utilities/languages";
-import { Suspense, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
 
 const MovieTvCover = ({details})=> {
 
     const {lang,setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
     const [crews,setCrews] = useState([]);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
     const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
     const linearGrad = 'linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 31.5, 0.84) 50%, rgba(31.5, 31.5, 31.5, 0.84) 100%)'
     
     useEffect(()=>{
+        setIsPending(true);
         fetchData(`movie/${details?.id}/credits?language=${lang}`)
         .then((data)=>{
-            setCrews(data?.crew)
-
+            setCrews(data?.crew);
+            setIsPending(false);
+            setError(null);
+            console.log(data)
+        })
+        .catch(error=> {
+            setIsPending(false);
+            setError(error);
+            console.log(error)
         })
     },[details?.id]);
 
@@ -35,10 +47,10 @@ const MovieTvCover = ({details})=> {
 
 
     return (
-        <Suspense fallback={<p>loading... </p>} >
-            <section 
-                className="cover" 
-                style={{backgroundImage: `${linearGrad},url(${imageUrl})`}}>
+        <section 
+            className="cover" 
+            style={{backgroundImage: `${linearGrad},url(${imageUrl})`}}
+            >
                 <div className="cover-container">
                     <div className="cover-image">
                         <img 
@@ -114,20 +126,21 @@ const MovieTvCover = ({details})=> {
                         </div>
                         <div className="crews flex-box">
                             {
-                            
-                            crews?.map((crew,i)=>(
-                                   i < 4 &&
+                            isPending ? <Loading width='100%'  height='80px' /> 
+                            : crews ? 
+                                crews?.map((crew,i)=>(
+                                    i < 4 &&
                                     <div key={crew?.id} className="crew">
                                         <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
                                         <aside>{crew?.job}</aside>
                                     </div>
                                 ))
+                               :  error &&  <Error error={error}/> 
                             }
                         </div>
                     </div>
                 </div>
-            </section>
-        </Suspense>
+        </section>
     )
 }
 

@@ -1,0 +1,22 @@
+@import '../../GlobalStyle/variables';
+@import '../../GlobalStyle/mixin';
+
+.loading {
+     min-width: 100%;
+    .loading-container {
+        @include flex-box(center,center);
+        .spin {
+            width: 60px;
+            height: 60px;
+            border-bottom: 3px solid darken($color: $text-light-color-2, $amount: 20);
+            border-radius: $circle;
+            animation: spiner .5s  infinite forwards;
+        }
+    }
+}
+
+@keyframes spiner {
+    100% {
+        transform: rotate(180deg);
+    }
+}
