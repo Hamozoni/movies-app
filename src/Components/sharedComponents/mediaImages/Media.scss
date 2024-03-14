@@ -38,7 +38,8 @@
                 max-height: 300px;
             }
             .view-more {
-                @include flex-box(center,center)
+                @include flex-box(center,center);
+                width: 150px;
             }
 
         }
@@ -49,6 +50,25 @@
         font-weight: 700;
         &:hover {
             color: lighten($color: $logo-color, $amount: 20);
+        }
+    }
+
+    // video card
+    .vid-card {
+        min-height: 300px;
+        min-width: 500px;
+        border-radius: 0;
+        border: none;
+        .vid-image {
+            min-height: 300px;
+            min-width: 500px;
+            img {
+                min-height: 300px;
+                min-width: 500px;
+            }
+        }
+        .vid-info {
+            display: none !important;
         }
     }
 }

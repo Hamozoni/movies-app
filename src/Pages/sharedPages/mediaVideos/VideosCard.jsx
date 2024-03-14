@@ -36,9 +36,9 @@ const VideosCard = ({yId,type,title})=> {
             <div className="vid-image" onClick={handleTrailer}>
                 {
                     videoInfo?.thumbnail && 
-                   <img src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
+                   <img loading="lazy" src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
                 }
-                <div className="play-icon">
+                <div className="play-icon scale">
                     <PlayArrowRoundedIcon />
                 </div>
             </div>

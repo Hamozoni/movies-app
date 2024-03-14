@@ -10,6 +10,9 @@
     .vid-image {
         max-height: fit-content;
         position: relative;
+        min-width: 336px;
+        min-height: 188px;
+        background-color: $text-light-color;
         cursor: pointer;
         .play-icon {
             position: absolute;

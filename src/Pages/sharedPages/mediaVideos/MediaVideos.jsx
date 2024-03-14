@@ -13,7 +13,9 @@ const MediaVideos = ({mediaType}) => {
     const type = useLocation()?.search?.split('=')[1]?.replaceAll('%20',' ');
     const {id} = useParams();
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    console.log(type);
 
     const [videos,setVideos] = useState({});
 
@@ -21,8 +23,12 @@ const MediaVideos = ({mediaType}) => {
         fetchData(`${mediaType}/${id}/videos?language=en-US`)
         .then((data)=> {
 
-            const videosObject = Object.groupBy(data?.results,e => e.type)
+            const videosObject = Object.groupBy(data?.results,e => e.type);
             setVideos(videosObject);
+            if(type === undefined) {
+                navigate(`/${mediaType}/${id}/videos?type=${data.results[0].type}`)
+            }
+
         })
     },[type,id,mediaType]);
 

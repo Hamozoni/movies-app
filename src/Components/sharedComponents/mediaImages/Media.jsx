@@ -5,6 +5,7 @@ import "./Media.scss";
 import { Link } from "react-router-dom";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
+import VideosCard from "../../../Pages/sharedPages/mediaVideos/VideosCard";
 
 const MediaCard = ({data})=>{
     return (
@@ -29,6 +30,7 @@ const MovieMedia = ({id,mediaType})=> {
     const [mediaVed,setMediaVed] = useState([]);
     const [selection,setSelecion] = useState('posters');
     const [mostPopular,setMostPopular] = useState([]);
+    const [videos,setVideos] = useState([]);
 
     const {lang} = useContext(globalContext);
 
@@ -40,6 +42,11 @@ const MovieMedia = ({id,mediaType})=> {
             const allData = data.backdrops.concat(data.posters)
                 const popular = allData.filter((el)=> el.vote_average < 5.6);
                 setMostPopular([...popular])
+        })
+
+        fetchData(`${mediaType}/${id}/videos?language=en-US`)
+        .then(data=> {
+            setVideos(data?.results)
         })
     },[id,lang]);
 
@@ -62,7 +69,7 @@ const MovieMedia = ({id,mediaType})=> {
                             className={`${selection === 'videos' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('videos')}
                             >
-                                videos 
+                                videos {videos?.length}
                         </button>
                         <button 
                             className={`${selection === 'backdrops' && 'active'} nav-btn`}
@@ -80,7 +87,7 @@ const MovieMedia = ({id,mediaType})=> {
                 </nav>
                 {
                     selection !== 'most popular' &&
-                    <Link  to={`movie/${id}/${selection}`} className="view-all">
+                    <Link  to={`/movie/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`} className="view-all">
                         veiw all {selection}
                     </Link> 
 
@@ -93,8 +100,15 @@ const MovieMedia = ({id,mediaType})=> {
                       <MediaCard data={mostPopular}/>:
                       selection === 'backdrops' ?
                       <MediaCard data={mediaVed?.backdrops}/>
-                     : selection === 'posters' &&
+                     : selection === 'posters' ?
                      <MediaCard data={ mediaVed?.posters}/> 
+                     :
+                     selection === 'videos'  &&
+                        videos?.map((video,i)=> (
+                            i < 8 &&
+                            <VideosCard yId={video?.key}  type={video?.type} title={video?.name}/>
+                        ))
+                    
                     }
                     {
                         selection !== 'most popular' &&

@@ -23,6 +23,7 @@
                 background-color: aliceblue;
                 border-radius: 5px;
                 box-shadow: 0 0 10px 0px #8d8b8bb0;
+                z-index: 9999999;
                 li {
                     &.videos {
                         position: relative;
