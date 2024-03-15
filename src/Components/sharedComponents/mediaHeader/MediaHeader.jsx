@@ -5,48 +5,68 @@ import { Link } from "react-router-dom";
 import WestIcon from '@mui/icons-material/West';
 
 import "./mediaHeader.scss";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
 
 const MediaHeader = ({mediaType,id}) => {
 
-    const [details,setDetails] = useState({})
+    const [details,setDetails] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const fetchDetails = ()=>{
+
+        setIsPending(true);
+        setError(null);
+
         fetchData(`${mediaType}/${id}?language=en-US`)
         .then((data)=> {
             setDetails(data);
+            setIsPending(false);
             console.log(data)
         })
-    },{id});
+        .catch(error=> {
+            setError(error);
+            setIsPending(false);
+        })
+    }
+
+    useEffect(fetchDetails,[id]);
 
   return (
         <header className="main-t-header">
-            <div className="media-details">
-                <div className="media-image">
-                    <img 
-                        loading="lazy"
-                        src={process.env.REACT_APP_BASE_URL + 'w200' + details?.poster_path}
-                        alt="" 
-                        />
+            {
+                isPending ? <Loading width='100%' height='100px' /> :
+                details ? 
+                <div className="media-details">
+                    <div className="media-image">
+                        <img 
+                            loading="lazy"
+                            src={process.env.REACT_APP_BASE_URL + 'w200' + details?.poster_path}
+                            alt="" 
+                            />
 
+                    </div>
+                    <div className="media-back-to">
+                        <h3 className="name">
+                            {
+                                mediaType === 'tv' ? 
+                                (
+                                    `${details?.name} (${new Date(details?.first_air_date)?.getFullYear()})`
+                                )
+                                : 
+                                (
+                                    `${details?.title} (${new Date(details?.release_date)?.getFullYear()})`
+                                )
+                            }
+                        </h3>
+                        <Link to={`/${mediaType}/${id}`} className="back-to"> 
+                            <WestIcon /> back to main
+                        </Link>
+                    </div>
                 </div>
-                <div className="media-back-to">
-                    <h3 className="name">
-                        {
-                            mediaType === 'tv' ? 
-                            (
-                                `${details?.name} (${new Date(details?.first_air_date)?.getFullYear()})`
-                            )
-                            : 
-                            (
-                                `${details?.title} (${new Date(details?.release_date)?.getFullYear()})`
-                            )
-                        }
-                    </h3>
-                    <Link to={`/${mediaType}/${id}`} className="back-to"> 
-                        <WestIcon /> back to main
-                    </Link>
-                </div>
-            </div>
+                : error && <Error error={error} height='100px' onClick={fetchDetails} />
+            }
         </header>
   )
 }

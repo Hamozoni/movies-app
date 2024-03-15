@@ -6,6 +6,8 @@ import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import CheckIcon from '@mui/icons-material/Check';
 
 import "./backdrops&posters.scss";
+import Loading from "../../../Components/loading/Loading";
+import Error from "../../../Components/error/Error";
 
 
 const BackdropsCard = ({drop,language})=> {
@@ -37,26 +39,58 @@ const BackdropsCard = ({drop,language})=> {
 
 const Backdrops_posters = ({mediaType,type}) => {
 
-    const [data,setData] = useState({});
+    const [data,setData] = useState(null);
+    const [error,setError] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+
     const [dataLang,setDataLang] = useState([]);
+    const [error2,setError2] = useState(null);
+    const [isPending2,setIsPending2] = useState(true);
     const [selectedLang,setSelectedLang] = useState('null');
 
-    const {id} = useParams()
+    const {id} = useParams();
 
+    const fetchImagesData = ()=> {
 
-    useEffect(()=> {
+        setIsPending(true);
+        setError(null);
+
         fetchData(`${mediaType}/${id}/images`)
         .then((data)=>{
             setData(Object.groupBy(data[type],e=> e.iso_639_1));
             console.log(Object.groupBy(data[type],e=> e.iso_639_1))
-            setSelectedLang(Object.keys(Object.groupBy(data[type],e=> e.iso_639_1))[0])
+            setSelectedLang(Object.keys(Object.groupBy(data[type],e=> e.iso_639_1))[0]);
+            setIsPending(false);
         })
+        .catch(error=> {
+            setError(error);
+            setIsPending(false);
+        });
+    };
+
+    const fectLangData = ()=> {
+
+        setIsPending2(true);
+        setError2(null);
+
         fetchData(`configuration/languages`)
         .then(lang=> {
             setDataLang(lang);
+            setIsPending2(false)
             console.log(lang)
         })
-        
+        .catch(error=> {
+            setError2(error);
+            setIsPending2(false);
+        });
+    }
+
+
+    useEffect(()=> {
+
+        fetchImagesData();
+        fectLangData()
+
     },[mediaType,id,type]);
 
 
@@ -69,6 +103,8 @@ const Backdrops_posters = ({mediaType,type}) => {
                 </header>
                 <ul className="lang-ul">
                     {
+                        isPending2 ? <Loading width='100%' height='400px' /> 
+                        : (data && dataLang) ?
                         Object.keys(data)?.map((key)=>(
                             <li onClick={()=> setSelectedLang(key)} className={`${selectedLang === key && 'active'} nav-btn`}>
                                 { key === 'null' ? 
@@ -77,12 +113,15 @@ const Backdrops_posters = ({mediaType,type}) => {
                                 }
                                 <span>{data[key]?.length}</span>
                             </li>
-                        ))
+                        )) 
+                        : error2 && <Error error={error2} height='400px' onClick={fectLangData} />
                     }
                 </ul>
             </nav>
             <div className="back-content">
                 {
+                    isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
+                    : data ?
                     data[selectedLang]?.map((drop)=> (
                         <BackdropsCard 
                             key={drop} 
@@ -90,6 +129,7 @@ const Backdrops_posters = ({mediaType,type}) => {
                             language={dataLang?.find(e=> e.iso_639_1 === drop.iso_639_1)?.english_name || 'no laguage' }
                             />
                     ))
+                    : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchImagesData}/>
                 }
             </div>
         </div>
