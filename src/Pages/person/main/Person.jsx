@@ -12,7 +12,8 @@ const Person = ()=> {
     const {id} = useParams();
     const {lang} = useContext(globalContext);
 
-    const [details,setDetails] = useState({});
+    const [details,setDetails] = useState(null);
+    const [isPending,setIsPending] = useState(true);
 
     useEffect(()=>{
         fetchData(`person/${id}?language=${lang}`)
