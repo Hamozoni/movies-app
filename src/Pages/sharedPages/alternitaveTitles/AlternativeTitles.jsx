@@ -63,7 +63,7 @@ const AlternativeTitles = ({mediaType}) => {
   return (
     <main className="alt-titles">
         <div className="alt-content">
-            <section className='alt-cout-list'>
+            <section className='alt-cout-list card'>
                 <header className='cout-header'>
                      <h3>Alternative Titles</h3>
                      <p>{titlesCount}</p>
@@ -112,7 +112,7 @@ const TitlesTabel = ({title,country})=> {
         <tabel 
             id={title[0]}
             key={title?.title}
-            className="titles-card">
+            className="titles-card card">
         <thead className='t-h'>
            <tr>
                 <h3> 

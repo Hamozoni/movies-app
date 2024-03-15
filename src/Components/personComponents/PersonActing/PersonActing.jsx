@@ -77,7 +77,7 @@ const PersonActing = ({knownFor}) => {
             
             return ()=> root.removeEventListener('click',handleClick)
         };
-    },[]);
+    });
 
 
   return (

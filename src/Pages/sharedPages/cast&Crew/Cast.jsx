@@ -4,20 +4,34 @@ import { useParams } from 'react-router-dom';
 import "./Cast.scss";
 import fetchData from '../../../utilities/fetchData';
 import PersonCard from '../../../Components/personComponents/PersonCard/PersonCard';
+import Loading from '../../../Components/loading/Loading';
+import Error from '../../../Components/error/Error';
 
 const Cast = ({mediaType}) => {
 
-    const [cast,setCast] = useState({});
-    const [crew,setCrew] = useState([]);
-    const {id} = useParams()
+    const [cast,setCast] = useState(null);
+    const [crew,setCrew] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const {id} = useParams();
+
+    const fetchCast = ()=>{
+        setIsPending(true);
+        setError(null);
        fetchData(`${mediaType}/${id}/credits?language=en-US`)
        .then((data)=>{
           setCast(data);
           setCrew(Object.groupBy(data?.crew, ({ department}) => department));
+          setIsPending(false);
        })
-    },[id]);
+       .catch(error=> {
+           setError(error);
+           setIsPending(false);
+       })
+    }
+
+    useEffect(fetchCast,[id]);
 
   return (
     <div className='cast'>
@@ -29,9 +43,12 @@ const Cast = ({mediaType}) => {
                 </h5>
                 <div className="cast-content">
                     {
+                        isPending ? <Loading width='100%' height='400px'/> :
+                        cast ? 
                         cast?.cast?.map((person)=>(
                             <PersonCard key={person?.id} person={person}/>
                         ))
+                        : error && <Error error={error} height='400px' onClick={fetchCast}/> 
                     }
                 </div>
             </section>
@@ -42,7 +59,8 @@ const Cast = ({mediaType}) => {
                 </h5> 
                 <div className="cast-content">
                     {
-                        crew &&
+                        isPending ? <Loading width='100%' height='400px'/> :
+                        crew ?
                         
                         Object.entries(crew)?.map((p)=>(
                             <>
@@ -55,6 +73,7 @@ const Cast = ({mediaType}) => {
                             }
                             </>
                         ))
+                        : error && <Error error={error} height='400px' onClick={fetchCast}/>
                         
                     }
                 </div>
