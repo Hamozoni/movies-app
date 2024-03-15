@@ -6,8 +6,8 @@ import "./search.scss";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../utilities/fetchData";
 import PersonCard from "../../Components/personComponents/PersonCard/PersonCard";
-import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";
 import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
+import MediaCard from "../../Components/sharedComponents/mediaCard/MediaCard";
 
 
 const Search = ()=> {
@@ -19,14 +19,23 @@ const Search = ()=> {
 
     const {lang} = useContext(globalContext);
 
-    const [searchData,setSearchData] = useState({});
+    const [searchData,setSearchData] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
+
     const [page,setPage] = useState(1)
 
     useEffect(()=>{
+        setIsPending(true);
         fetchData(`search/${type}${query.search}&include_adult=false&language=${lang}&page=${page}`)
         .then((data)=> {
             setSearchData(data);
+            setIsPending(false);
+
             console.log(data)
+        })
+        .catch(error=> {
+            setError(error)
         })
 
     },[type,lang,page]);
@@ -130,7 +139,7 @@ const Search = ()=> {
 
                             <PersonCard key={media?.id} person={media} />
                             :
-                            <MovieCard key={media?.id} movie={media} />
+                            <MediaCard key={media?.id} movie={media} />
                         ))
                     }
                     <PageNumber page={page} setPage={setPage} totalPages={searchData?.total_pages}/>

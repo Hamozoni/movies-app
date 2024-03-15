@@ -4,38 +4,3 @@
 .keywords-page {
     padding: $padding;
 }
-
-.key-card {
-   @include flex-box(center,flex-start,0);
-   margin-bottom: $margin;
-    .key-image {
-       min-width: 100px;
-        img {
-           width: 100px;
-        }
-    }
-    .card-details {
-       padding: $padding-10 $padding;
-        .key-title {
-           .name {
-               color: $text-dark-color;
-               font-weight: 700;
-               font-size: $f-size;
-            }
-            .date-re {
-                font-size: $f-size-xs;
-                font-weight: 600;
-                color: lighten($color: $text-dark-color, $amount: 20);
-                margin-bottom: $margin;
-
-            }
-        }
-        .key-overview {
-            p {
-               font-size: $f-size-xs;
-               font-weight: 600;
-               color: $text-dark-color;
-            }
-        }
-    }
-}
