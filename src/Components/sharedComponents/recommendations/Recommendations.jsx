@@ -63,7 +63,7 @@ function Recommendations({id,mediaType}) {
 
   return (
 
-    isPending ? <Loading width='100%' height='240px'/> : recomData?.length ?
+    isPending ? <Loading width='100%' height='240px'/> : recomData ?
     <section className="recommendations">
         <h4 className="recom-t">Recommendations</h4>
         <div className="recom-content">
