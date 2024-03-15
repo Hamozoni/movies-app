@@ -14,8 +14,9 @@ const FreeToWatch = ()=> {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const fetch = ()=> {
         setIsPending(true);
+        setError(null);
         fetchData(`discover/${mediaType}?language=${lang}&page=1&with_watch_monetization_types=free`)
         .then((data)=> {
             setMedia(data?.results);
@@ -24,8 +25,14 @@ const FreeToWatch = ()=> {
         .catch(error=> {
             setError(error);
             setIsPending(false);
+            console.log(error);
         })
+    }
+
+    useEffect(()=>{
+        fetch()
     },[mediaType]);
+
 
     return (
         <div className="free-to-watch">
@@ -54,10 +61,12 @@ const FreeToWatch = ()=> {
                     </header>
                     <div className="movies">
                         {
-                            isPending ? <Loading width='100%' height='350px' /> : error ? <Error error={error} /> :
+                            isPending ? <Loading width='100%' height='350px' /> :
+                            media?.length ?
                             media?.map((movie)=>(
                                 <MovieCard movie={movie} type={mediaType} />
                             ))
+                            : error && <Error error={error}  height='350px' onClick={fetch} /> 
                         }
                     </div>
                 </div>

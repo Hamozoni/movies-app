@@ -10,7 +10,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 
-const TopBilledCast = ({type,id,title})=> {
+const TopBilledCast = ({mediaType,id,title})=> {
 
     const {lang} = useContext(globalContext);
 
@@ -18,37 +18,45 @@ const TopBilledCast = ({type,id,title})=> {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const fetch = ()=>{
         setIsPending(true);
-       fetchData(`${type}/${id}/credits?language=${lang}`)
+        setError(null)
+       fetchData(`${mediaType}/${id}/credits?language=${lang}`)
        .then((data)=>{
             setCast(data?.cast);
             setIsPending(false);
+            console.log(data);
        })
        .catch(error=> {
           setError(error);
           setIsPending(false);
        })
-    },[id,lang]);
+    }
+
+    useEffect(fetch,[id,lang]);
 
   return (
     <section className="top-billed">
         <h4 className="title">{title}</h4>
+
         <div className="persons">
             {
-                 isPending ? <Loading width='100%'  height='340px'/> : cast ? 
+                 isPending ? <Loading width='100%' height='340px'/> : cast?.length ? 
+                    
                 cast?.map((person,i)=>(
                     i < 11 &&
                     <PersonCard key={person?.id} person={person} />
                 ))
-                : error && <Error error={error}/>
+                
+                : error && <Error error={error} height='340px' onClick={fetch}/>
             }
             <div className="view-more">
-                <Link to={`/movie/${id}/cast`} className="cast-link">view more <ArrowRightAltRoundedIcon /></Link>
+                <Link to={`/${mediaType}/${id}/cast`} className="cast-link">view more <ArrowRightAltRoundedIcon /></Link>
                 
             </div>
         </div>
-        <Link to={`/movie/${id}/cast`} className="cast-link">full cast & crew</Link>
+
+        <Link to={`/${mediaType}/${id}/cast`} className="cast-link">full cast & crew</Link>
     </section>
   )
 }

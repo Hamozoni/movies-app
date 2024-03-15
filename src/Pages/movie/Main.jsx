@@ -20,47 +20,48 @@ const Main = ()=> {
  
     const {lang} = useContext(globalContext);
     
-    const [movieDetails,setMovieDetails] = useState({})
+    const [movieDetails,setMovieDetails] = useState(null)
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const fetch = ()=> {
         setIsPending(true);
+        setError(null);
         fetchData(`movie/${id}?language=${lang}`)
         .then((data)=>{
             setMovieDetails(data);
             setIsPending(false);
             setError(null);
-            console.log(data)
         })
         .catch((error)=>{
             setError(error);
             setIsPending(false)
-        })
+        });
+    }
 
-    },[id]);
+    useEffect(fetch,[id]);
 
     return (
             <div className="movie-container">
                 {
                     isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> : 
                     movieDetails ? 
-                    <MovieTvCover details={movieDetails} />
-                    : error && <Error error={error} />
+                      <MovieTvCover details={movieDetails} mediaType='movie'/>
+                    : error && <Error error={error} height='calc(100vh - 100px)'  onClick={fetch} />
                 }
                 <section className="movie-content">
                     <div className="left-content">
-                        <TopBilledCast type='movie' id={id} title='Series Top Billed Cast'/>
-                        <MovieSocial id={id} section='reviews' mediaType='movie'/>
+                        <TopBilledCast mediaType='movie' id={id} title='Series Top Billed Cast'/>
+                        <MovieSocial section='reviews' mediaType='movie'/>
                         <Media id={id} mediaType='movie' />
                         <Recommendations id={id} mediaType='movie'/>
                     </div>
                     <div className="right-content">
                         {
                             isPending ? <Loading width='100%' height='100vh' /> : 
-                            movieDetails ? 
+                            movieDetails?.length ? 
                             <MovieStitistics id={id} details={movieDetails}  type='movie' />
-                            : error && <Error error={error} />
+                            : error && <Error error={error} height='100vh' onClick={fetch} />
                         }
                     </div>
 

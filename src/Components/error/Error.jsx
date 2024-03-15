@@ -1,10 +1,16 @@
+import './error.scss';
 
-
-const Error = ({error}) => {
+const Error = ({error,height,onClick}) => {
   return (
-    <div className="error">
-        <div className="error-container">
-            <h3 className="er">{error?.response?.data?.status_message}</h3>
+    <div className="error" style={{height}}>
+        <div className="error-container" >
+            <h3 className="er-m">{error?.message}</h3>
+            <button 
+                  onClick={onClick}
+                  className='try-btn' 
+                  type="button"
+                  > try agin
+            </button>
         </div>
     </div>
   )

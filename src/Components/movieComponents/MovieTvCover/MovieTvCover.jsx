@@ -13,7 +13,7 @@ import fetchData from "../../../utilities/fetchData";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 
-const MovieTvCover = ({details})=> {
+const MovieTvCover = ({details,mediaType})=> {
 
     const {lang,setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
     const [crews,setCrews] = useState([]);
@@ -21,23 +21,24 @@ const MovieTvCover = ({details})=> {
     const [error,setError] = useState(null);
 
     const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
-    const linearGrad = 'linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 31.5, 0.84) 50%, rgba(31.5, 31.5, 31.5, 0.84) 100%)'
-    
-    useEffect(()=>{
+    const linearGrad = 'linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 31.5, 0.84) 50%, rgba(31.5, 31.5, 31.5, 0.84) 100%)';
+
+    const fetch = ()=> {
         setIsPending(true);
-        fetchData(`movie/${details?.id}/credits?language=${lang}`)
+        setError(null);
+        fetchData(`${mediaType}/${details?.id}/credits?language=${lang}`)
         .then((data)=>{
             setCrews(data?.crew);
             setIsPending(false);
-            setError(null);
-            console.log(data)
+            console.log(details)
         })
         .catch(error=> {
             setIsPending(false);
             setError(error);
             console.log(error)
-        })
-    },[details?.id]);
+        });
+    }
+    useEffect(fetch,[details?.id]);
 
     const getMovieRuntime = (time)=>{
         const runTime = (time / 60)?.toString()?.split('.');
@@ -127,7 +128,7 @@ const MovieTvCover = ({details})=> {
                         <div className="crews flex-box">
                             {
                             isPending ? <Loading width='100%'  height='80px' /> 
-                            : crews ? 
+                            : crews?.length ? 
                                 crews?.map((crew,i)=>(
                                     i < 4 &&
                                     <div key={crew?.id} className="crew">
@@ -135,7 +136,7 @@ const MovieTvCover = ({details})=> {
                                         <aside>{crew?.job}</aside>
                                     </div>
                                 ))
-                               :  error &&  <Error error={error}/> 
+                               :  error &&  <Error error={error} height='80px'  onClick={fetch}/> 
                             }
                         </div>
                     </div>

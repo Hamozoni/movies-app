@@ -21,8 +21,9 @@ const LatestTrailer = () => {
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        setIsPending(true)
+    const fecth = ()=> {
+        setIsPending(true);
+        setError(null);
         fetchData(`movie/popular?language=en-US&page=1`)
         .then((data)=> {
             setTrailerData(data?.results);
@@ -30,8 +31,13 @@ const LatestTrailer = () => {
             console.log(data?.results);
         })
         .catch(error=> {
-            setError(error)
-        })
+            setError(error);
+            setIsPending(false);
+        });
+    }
+
+    useEffect(()=>{
+        fecth();
     },[]);
 
     const style = {
@@ -70,7 +76,8 @@ const LatestTrailer = () => {
                 </header>
                 <div className="trailer-content">
                     {
-                        isPending ? <Loading width='100%' height='330px'/> : error ? <Error error={error} /> :
+                        isPending ? <Loading width='100%' height='330px'/> : 
+                        trailerData?.length ?
                         <div className="trailer-container">
                             {
                                 trailerData?.map((media,i)=>(
@@ -103,6 +110,8 @@ const LatestTrailer = () => {
                                 ))
                             }
                         </div>
+                        :
+                        error && <Error error={error} height='330px' onClick={fecth} /> 
                     }
                 </div>
 

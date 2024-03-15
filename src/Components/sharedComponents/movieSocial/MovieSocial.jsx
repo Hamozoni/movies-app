@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 
 
@@ -9,29 +9,33 @@ import ReviewCard from "../../sharedComponents/reviewCard/ReviewCard";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 
-const MovieSocial = ({id,section,mediaType})=> {
+const MovieSocial = ({section,mediaType})=> {
 
-    const [reviews,setReviews] = useState([]);
+    const {id} = useParams();
+
+    const [reviews,setReviews] = useState(null);
     const [activeSection,setActiveSection] = useState('reviews');
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
     const {lang} = useContext(globalContext);
 
-    useEffect(()=>{
+    const fetch = ()=>{
         setIsPending(true);
+        setError(null);
         fetchData(`${mediaType}/${id}/${section}?language=${lang}&page=1`)
         .then((data)=>{
             setReviews(data?.results);
             setIsPending(false);
-            setError(null);
             console.log(data)
         })
         .catch(error=> {
             setIsPending(false);
             setError(error);
         })
-    },[id,lang,section]);
+    }
+
+    useEffect(fetch,[id,lang,section]);
 
   return (
     <section className="Movie-social">
@@ -64,17 +68,19 @@ const MovieSocial = ({id,section,mediaType})=> {
                 : ''
                 }
             </div>
-            : error && <Error error={error}/>
+            : error && <Error error={error} height='300px' onClick={fetch}/>
         }
-        
-        <Link to={`/${mediaType}/${id}/${activeSection}`} className="read-all"> 
-            {
-            reviews.length > 0 && 
-              `read all ${activeSection}`
-            }
+        {
+            reviews &&
+            <Link to={`/${mediaType}/${id}/${activeSection}`} className="read-all"> 
+                {
+                reviews.length > 0 && 
+                `read all ${activeSection}`
+                }
+                
             
-        
-        </Link>
+            </Link>
+        }
     </section>
   )
 }

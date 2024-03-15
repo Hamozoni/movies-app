@@ -9,12 +9,12 @@ import VideosCard from "../../../Pages/sharedPages/mediaVideos/VideosCard";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 
-const MediaCard = ({data})=>{
+const MediaCard = ({data,type})=>{
     return (
         data?.map((media,i)=>(
 
             i < 9 &&
-            <div className="img-container" key={media?.file_path}>
+            <div className={`${type} img-container`}key={media?.file_path}>
                     <img 
                         loading="lazy"
                         src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
@@ -29,10 +29,10 @@ const MediaCard = ({data})=>{
 
 const MovieMedia = ({id,mediaType})=> {
 
-    const [mediaVed,setMediaVed] = useState([]);
+    const [mediaImages,setMediaImages] = useState(null);
     const [selection,setSelecion] = useState('posters');
     const [mostPopular,setMostPopular] = useState([]);
-    const [videos,setVideos] = useState([]);
+    const [videos,setVideos] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
     const [isPending2,setIsPending2] = useState(true);
@@ -40,11 +40,12 @@ const MovieMedia = ({id,mediaType})=> {
 
     const {lang} = useContext(globalContext);
 
-    useEffect(()=>{
-
+    const fetchImages = ()=> {
+        setError(null);
+        setIsPending(true)
         fetchData(`${mediaType}/${id}/images`)
         .then((data)=>{
-            setMediaVed(data);
+            setMediaImages(data);
             const allData = data.backdrops.concat(data.posters)
                 const popular = allData.filter((el)=> el.vote_average < 5.6);
                 setMostPopular([...popular]);
@@ -54,7 +55,11 @@ const MovieMedia = ({id,mediaType})=> {
             setError(error);
             setIsPending(false)
         });
+    }
 
+    const fetchVidoes = ()=> {
+        setError2(null);
+        setIsPending2(null);
         fetchData(`${mediaType}/${id}/videos?language=en-US`)
         .then(data=> {
             setVideos(data?.results);
@@ -65,7 +70,11 @@ const MovieMedia = ({id,mediaType})=> {
             setIsPending2(false);
             console.log(error)
         })
+    }
 
+    useEffect(()=>{
+        fetchImages();
+        fetchVidoes()
     },[id,lang]);
 
     return (
@@ -93,13 +102,13 @@ const MovieMedia = ({id,mediaType})=> {
                             className={`${selection === 'backdrops' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('backdrops')}
                             >
-                                backdrops {mediaVed?.backdrops?.length}
+                                backdrops {mediaImages?.backdrops?.length}
                         </button>
                         <button 
                            className={`${selection === 'posters' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('posters')}
                            >
-                                posters {mediaVed?.posters?.length}
+                                posters {mediaImages?.posters?.length}
                         </button>
                     </div>
                 </nav>
@@ -117,14 +126,14 @@ const MovieMedia = ({id,mediaType})=> {
                 <div className="media-content-container">
                     {
                          isPending ? <Loading width='100%' height='300px' /> :
-                        mediaVed ?
+                        mediaImages ?
                             ( 
                                 selection === 'most popular' ?
-                                <MediaCard data={mostPopular}/>:
+                                <MediaCard data={mostPopular} type='popular' />:
                                 selection === 'backdrops' ?
-                                <MediaCard data={mediaVed?.backdrops}/>
+                                <MediaCard data={mediaImages?.backdrops} type='backdrops'/>
                                 : selection === 'posters' ?
-                                <MediaCard data={ mediaVed?.posters}/> 
+                                <MediaCard data={ mediaImages?.posters} type='posters'/> 
                                 : 
                                 selection === 'videos'  && (
                                     isPending2 ? <Loading width='100%' height='300px' /> : 
@@ -133,13 +142,13 @@ const MovieMedia = ({id,mediaType})=> {
                                         i < 8 &&
                                         <VideosCard yId={video?.key}  type={video?.type} title={video?.name}/>
                                     ))
-                                    : error2 &&  <Error error={error2}/>
+                                    : error2 &&  <Error error={error2}  height='300px' onClick={fetchImages} />
                                 )
                             
-                            ): error && <Error error={error} />
+                            ): error && <Error error={error}  height='300px' onClick={fetchVidoes} />
                     }
                     {
-                        selection !== 'most popular' &&
+                        (selection !== 'most popular' && videos ) &&
                         <div className="view-more">
                             <Link 
                                 to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`}

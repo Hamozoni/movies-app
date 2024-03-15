@@ -11,19 +11,32 @@ import { useNavigate } from "react-router-dom";
 import fetchData from "../../../utilities/fetchData";
 import fitLongString from "../../../utilities/fitLongString";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
 
 function Recommendations({id,mediaType}) {
 
     const {lang} = useContext(globalContext);
-    const [recomData,setRecomData] = useState([])
+    const [recomData,setRecomData] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const fetch = ()=>{
+        setError(null);
+        setIsPending(true);
         fetchData(`${mediaType}/${id}/recommendations?language=${lang}&page=1`)
         .then((data)=> {
             setRecomData(data);
+            setIsPending(false)
            console.log(data)
         })
-    },[id,lang]);
+        .catch(error=> {
+            setError(error);
+            setIsPending(false);
+        });
+    }
+
+    useEffect(fetch,[id,lang]);
 
     const OnHoherOverlay = ({media})=> {
         return (
@@ -49,6 +62,8 @@ function Recommendations({id,mediaType}) {
 
 
   return (
+
+    isPending ? <Loading width='100%' height='240px'/> : recomData?.length ?
     <section className="recommendations">
         <h4 className="recom-t">Recommendations</h4>
         <div className="recom-content">
@@ -76,6 +91,7 @@ function Recommendations({id,mediaType}) {
             }
         </div>
     </section>
+   : error && <Error error={error} height='240px' onClick={fetch}/>
   )
 }
 

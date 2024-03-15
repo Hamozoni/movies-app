@@ -29,16 +29,25 @@
                 height: 300px;
                 min-width: 200px;
                 img {
-                    min-width: 533px;
                     min-height: 300px;
                     max-height: 300px;
                 }
+                &.backdrops {
+                    img {
+                        min-width: 533px
+                    }
+                }
+                &.posters {
+                    img {
+                        min-width: 200px
+                    }
+                }
             }
-            .poster , .poster img , .view-more{
-                min-width: 200px;
-                min-height: 300px;
-                max-height: 300px;
-            }
+            // .poster , .poster img , .view-more{
+            //     min-width: 200px;
+            //     min-height: 300px;
+            //     max-height: 300px;
+            // }
             .view-more {
                 @include flex-box(center,center);
                 width: 150px;

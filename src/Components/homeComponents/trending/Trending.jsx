@@ -13,24 +13,27 @@ const Trending = ({type})=> {
 
     const [movies,setMovies] = useState([]);
     const [filter,setFilter] = useState('day');
-    const [isPending,setPending] = useState(true);
+    const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    useEffect(()=>{
-        setPending(true);
+    const fetch = ()=> {
+        setIsPending(true);
+        setError(null);
         fetchData(`trending/${type}/${filter}?language=${lang}&page=1`)
         .then((data)=>{
-            setError(null);
             setMovies(data?.results);
-            setPending(false);
+            setIsPending(false);
             console.log(data?.results);
         })
         .catch(error=> {
-            setPending(false);
-            error(error)
+            setError(error);
+            setIsPending(false);
+
 
         });
-
+    }
+    useEffect(()=>{
+        fetch()
     },[lang,filter]);
 
     return (
@@ -61,10 +64,11 @@ const Trending = ({type})=> {
                 <div className="movies">
                      {
                         isPending ? <Loading width='100%' height='350px' />  
-                        :  error ? <Error error={error}/> : 
+                       : movies?.length ?
                         movies?.map((movie)=>(
                             <MovieCard movie={movie} type={type} />
                         ))
+                        :  error && <Error error={error}  height='350px' onClick={fetch}/> 
                      }
                 </div>
             </div>  

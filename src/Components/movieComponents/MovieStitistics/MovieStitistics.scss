@@ -35,6 +35,17 @@
                 }
             }
         }
+        .network {
+            .net-t {
+                font-size: $f-size-5;
+            }
+            .net-images {
+                padding: $padding-10 0;
+                img {
+                    max-width: 150px;
+                }
+            }
+        }
         .keywords {
             padding-bottom: $padding;
             .key-t {

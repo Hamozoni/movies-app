@@ -30,14 +30,15 @@ const MovieStitistics = ({id,details,type}) => {
   const [isPending,setIsPending] = useState(true);
   const [error,setError] = useState(null);
 
-  useEffect(()=>{
+  const fetch = ()=> {
     setIsPending(true);
+    setError(null);
     setIsPending2(true);
+    setError2(null);
     fetchData(`${type}/${id}/keywords`)
     .then((data)=>{
       setKeywords(data?.keywords || data?.results );
       setIsPending(false);
-      setError(null);
 
       console.log(details);
     })
@@ -51,15 +52,16 @@ const MovieStitistics = ({id,details,type}) => {
     .then((data)=>{
       setExternalIds(data);
       setIsPending2(false);
-      setError2(null);
+
       console.log(data)
     })
     .catch(error=>{
       setIsPending2(false);
       setError2(error);
-    })
-   
-  },[id,type]);
+    });
+  }
+
+  useEffect(fetch,[id,type]);
 
   const navigate = useNavigate();
 
@@ -82,7 +84,7 @@ const MovieStitistics = ({id,details,type}) => {
                      <img src={images[social]} />
                   </a>
                 ))
-              : error2 && <Error error={error2} />
+              : error2 && <Error error={error2} height='65px' onClick={fetch} />
             }
             {
             details?.homepage && 
@@ -104,21 +106,39 @@ const MovieStitistics = ({id,details,type}) => {
                   <h4>original language</h4>
                   <h5>{details?.original_language}</h5>
               </div>
-              <div className="stat">
-                  <h4>budget</h4>
-                  <h5>${ new Intl.NumberFormat().format(details?.budget)}</h5>
-              </div>
-              <div className="stat">
-                  <h4>revenue</h4>
-                  <h5>${new Intl.NumberFormat().format(details?.revenue)}</h5>
-              </div>
+              {
+                type === 'movie' ? 
+                  (<><div className="stat">
+                      <h4>budget</h4>
+                      <h5>${ new Intl.NumberFormat().format(details?.budget)}</h5>
+                  </div>
+                  <div className="stat">
+                      <h4>revenue</h4>
+                      <h5>${new Intl.NumberFormat().format(details?.revenue)}</h5>
+                  </div></>)
+                  :
+                  (<div className="network">
+                    <h3 className='net-t'>network</h3>
+                    <div className="net-images">
+                        {
+                           details?.networks?.map((network)=> (
+                             <img 
+                                  className='image-hover'
+                                  src={process.env.REACT_APP_BASE_URL + 'original' + network?.logo_path} 
+                                  alt="network"
+                                  />
+                           ))
+                        }
+                    </div>
+                  </div>)
+              }
 
             </div>
             <section className="keywords">
                 <h4 className='key-t'>keywords</h4>
                 {
                   isPending ? <Loading width='100%' height='300px' /> : 
-                  keywords ? 
+                  keywords?.length ? 
                   <ul className="keywords-ul">
                     {
                       keywords?.map((key)=>(
@@ -132,7 +152,7 @@ const MovieStitistics = ({id,details,type}) => {
                       ))
                     }
                   </ul>
-                  : error && <Error error={error}/> 
+                  : error && <Error error={error}  height='300px' onClick={fetch} /> 
                 }
             
 

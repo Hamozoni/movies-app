@@ -8,6 +8,9 @@
     cursor: pointer;
     .image-container {
         position: relative;
+        width: 150px;
+        height: 225px;
+        background-color: $text-light-color;
         .poster {
             border-radius: $border-r;
             width: 150px;

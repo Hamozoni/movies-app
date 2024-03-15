@@ -18,6 +18,8 @@
                 position: relative;
                 border-radius: $border-r;
                 overflow: hidden;
+                height: 141px;
+                background-color: $text-light-color;
                 img {
                     min-width: 250px;
                     min-height: 141px; 

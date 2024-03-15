@@ -1,0 +1,28 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.error {
+    width: 100%;
+    @include flex-box(center,center);
+    .error-container {
+        width: fit-content;
+        text-align: center;
+        .er-m {
+            font-size: $f-size-s;
+            color: $text-dark-color;
+            margin-bottom: $margin;
+        }
+        .try-btn {
+            font-size: $f-size-xs;
+            font-weight: bold;
+            color: $text-dark-color;
+            padding: $padding-5 $padding;
+            background-color: transparent;
+            border: 1px solid #00000023;
+            border-radius: $border-r;
+            &:hover {
+                background-color: #00000023;
+            }
+        }
+    }
+}
