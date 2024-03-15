@@ -7,29 +7,27 @@ main.search {
         @include flex-box(flex-start);
         .search-flters {
             min-width: 200px;
-            border-radius: $border-r;
-            overflow: hidden;
-            border: 1px solid #e6e3e3;
             .filter-header {
                 background-color: $logo-color;
                 padding: $padding;
             }
-            .fliters-ul {
-                li {
-                    padding: $padding-10 $padding;
-                    cursor: pointer;
-                    color: $text-dark-color;
-                    @include flex-box(center,space-between);
-                    span {
-                        background-color: #f0ebeb;
-                        padding: $padding-5 $padding-10;
-                        border-radius: 5px;
-                        font-size: $f-size-xs;
-                    }
-                    &.active, &:hover {
-                        background-color: #d3d0d0;
-                    }
-                }
+        }
+    }
+
+
+    .person-card {
+        @include flex-box;
+        min-width: fit-content;
+        max-height: 70px;
+        margin-bottom: $margin;
+        box-shadow: none;
+        .person-image {
+            border-radius: $border-r;
+            overflow: hidden;
+            width: 70px;
+            img {
+                width: 70px;
+                max-height: 70px;
             }
         }
     }

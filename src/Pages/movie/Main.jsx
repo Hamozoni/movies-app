@@ -59,7 +59,7 @@ const Main = ()=> {
                     <div className="right-content">
                         {
                             isPending ? <Loading width='100%' height='100vh' /> : 
-                            movieDetails?.length ? 
+                            movieDetails ? 
                             <MovieStitistics id={id} details={movieDetails}  type='movie' />
                             : error && <Error error={error} height='100vh' onClick={fetch} />
                         }

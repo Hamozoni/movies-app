@@ -10,7 +10,9 @@ import PageNumber from "../../../Components/sharedComponents/pageNumber/PageNumb
 const PopularPresons = () => {
 
     const [page,setPage] = useState(1);
-    const [persons,setPersons] = useState([]);
+    const [persons,setPersons] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
     const [totalPages,setTotalPages] = useState(1)
 
     useEffect(()=>{

@@ -8,6 +8,8 @@ import fetchData from "../../utilities/fetchData";
 import PersonCard from "../../Components/personComponents/PersonCard/PersonCard";
 import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
 import MediaCard from "../../Components/sharedComponents/mediaCard/MediaCard";
+import Loading from "../../Components/loading/Loading";
+import Error from "../../Components/error/Error";
 
 
 const Search = ()=> {
@@ -23,27 +25,30 @@ const Search = ()=> {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const [page,setPage] = useState(1)
+    const [page,setPage] = useState(1);
 
-    useEffect(()=>{
+    const fetchSeachData = ()=>{
+
         setIsPending(true);
+        setError(null);
         fetchData(`search/${type}${query.search}&include_adult=false&language=${lang}&page=${page}`)
         .then((data)=> {
             setSearchData(data);
             setIsPending(false);
-
             console.log(data)
         })
         .catch(error=> {
-            setError(error)
+            setError(error);
+            setIsPending(false);
         })
 
-    },[type,lang,page]);
+    }
+
+    useEffect(fetchSeachData,[type,lang,page]);
 
     const navigate = useNavigate();
 
     const handleFilter = (type)=> {
-
         navigate(`/search/${type}${query?.search}`)
         setPage(1);
     };
@@ -51,14 +56,14 @@ const Search = ()=> {
     return (
         <main className="search">
             <div className="search-container">
-                <section className="search-flters">
+                <section className="search-flters card">
                     <header className="filter-header">
                         <h4>Search filter</h4>
                     </header>
                     <ul className="fliters-ul">
                         <li 
                             onClick={()=> handleFilter('movie')}
-                            className={type === 'movie' && 'active'}
+                            className={`${type === 'movie' && 'active'} nav-btn`}
                             >
                                 movie 
                                 {
@@ -70,7 +75,7 @@ const Search = ()=> {
                             </li>
                         <li 
                            onClick={()=> handleFilter('tv')}
-                           className={type === 'tv' && 'active'}
+                           className={`${type === 'tv' && 'active'} nav-btn`}
                            >
                               tv shows
                               {
@@ -82,7 +87,7 @@ const Search = ()=> {
                             </li>
                         <li 
                            onClick={()=> handleFilter('person')}
-                           className={type === 'person' && 'active'}
+                           className={`${type === 'person' && 'active'} nav-btn`}
                            >
                             people
                             {
@@ -94,7 +99,7 @@ const Search = ()=> {
                         </li>
                         <li 
                            onClick={()=> handleFilter('collection')}
-                           className={type === 'collection' && 'active'}
+                           className={`${type === 'collection' && 'active'} nav-btn`}
                            >
                             collections
                             {
@@ -105,8 +110,9 @@ const Search = ()=> {
                             }
                         </li>
                         <li 
-                           onClick={()=> handleFilter('keyword')}
-                           className={type === 'keyword' && 'active'}>
+                            onClick={()=> handleFilter('keyword')}
+                            className={`${type === 'keyword' && 'active'} nav-btn`} 
+                            >
                             keywords
                             {
                                 type === 'keyword' &&
@@ -117,33 +123,37 @@ const Search = ()=> {
                             </li>
                         <li
                            onClick={()=> handleFilter('company')}
-                           className={type === 'company' && 'active'}
+                           className={`${type === 'company' && 'active'} nav-btn`}
                            >
                             companies
                             {
                                 type === 'company' &&
                                 <span>
                                     {new Intl.NumberFormat().format(searchData?.total_results)}
-                                    </span>
+                                </span>
                             }
                         </li>
                     </ul>
 
                 </section>
-                <section className="search-resulte">
-                    {
+                {
+                    isPending ? <Loading width='60%' height='calc(100vh - 100px)'/> : 
+                    searchData ?
+                    <section className="search-resulte">
+                        {
 
-                        
-                        searchData?.results?.map((media)=> (
-                            type === 'person' ? 
+                            searchData?.results?.map((media)=> (
+                                type === 'person' ? 
 
-                            <PersonCard key={media?.id} person={media} />
-                            :
-                            <MediaCard key={media?.id} movie={media} />
-                        ))
-                    }
-                    <PageNumber page={page} setPage={setPage} totalPages={searchData?.total_pages}/>
-                </section>
+                                <PersonCard key={media?.id} person={media} />
+                                :
+                                <MediaCard key={media?.id} movie={media} />
+                            ))
+                        }
+                        <PageNumber page={page} setPage={setPage} totalPages={searchData?.total_pages}/>
+                    </section>
+                    : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchSeachData} />
+                }
 
             </div>
         </main>
