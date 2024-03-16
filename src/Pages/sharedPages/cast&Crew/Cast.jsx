@@ -27,6 +27,7 @@ const Cast = ({mediaType}) => {
        })
        .catch(error=> {
            setError(error);
+           console.log(error);
            setIsPending(false);
        })
     }

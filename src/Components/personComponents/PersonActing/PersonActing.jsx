@@ -25,7 +25,7 @@ const PersonActing = ({knownFor}) => {
             
             return ()=> root.removeEventListener('click',handleClick)
         };
-    },[setIsMediaOpen]);
+    },);
 
 console.log(isMediaOpen)
   return (

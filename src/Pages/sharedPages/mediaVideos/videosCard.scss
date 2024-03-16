@@ -2,12 +2,14 @@
 @import "../../../GlobalStyle/mixin";
 
 .vid-card {
-    @include flex-box(_,_,0);
-    max-height: fit-content;
-    margin-bottom: $margin;
-    max-height: 188px;
-    flex: 1;
-    .vid-image {
+    .vid-cont {
+
+        @include flex-box(_,_,0);
+        max-height: fit-content;
+        margin-bottom: $margin;
+        max-height: 188px;
+        flex: 1;
+        .vid-image {
         max-height: fit-content;
         position: relative;
         min-width: 336px;
@@ -31,7 +33,7 @@
         }
     }
     .vid-info {
-        @include flex-box(_,space-between);
+        @include flex-box(space-between,space-between);
         flex-direction: column;
         flex: 1;
         .title-date {
@@ -61,4 +63,5 @@
             }
         }
     }
+  }
 }

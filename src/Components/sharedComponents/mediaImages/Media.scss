@@ -43,28 +43,13 @@
                     }
                 }
             }
-            // .poster , .poster img , .view-more{
-            //     min-width: 200px;
-            //     min-height: 300px;
-            //     max-height: 300px;
-            // }
             .view-more {
                 @include flex-box(center,center);
                 width: 150px;
             }
 
         }
-    }
-    .view-all,.view-more a {
-        font-size: $f-size-xs;
-        color: $logo-color;
-        font-weight: 700;
-        &:hover {
-            color: lighten($color: $logo-color, $amount: 20);
-        }
-    }
-
-    // video card
+            // video card
     .vid-card {
         min-height: 300px;
         min-width: 500px;
@@ -80,6 +65,15 @@
         }
         .vid-info {
             display: none !important;
+        }
+    }
+    }
+    .view-all,.view-more a {
+        font-size: $f-size-xs;
+        color: $logo-color;
+        font-weight: 700;
+        &:hover {
+            color: lighten($color: $logo-color, $amount: 20);
         }
     }
 }
