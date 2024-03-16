@@ -1,97 +1,117 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import fetchData from '../../../utilities/fetchData';
+import Loading from '../../../Components/loading/Loading';
+import Error from '../../../Components/error/Error';
 
 
 const ReleaseDates = ({mediaType}) => {
 
     const {id} = useParams();
-    const [dates,setDates] = useState([]);
-    const [countries,setCountries] = useState([]);
+    const [dates,setDates] = useState(null);
+    const [countries,setCountries] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
-    useEffect(()=>{
-
+    const fetchDates = ()=>{
+        setIsPending(true);
+        setError(null);
         fetchData(`${mediaType}/${id}/release_dates`)
         .then((dates)=>{
             setDates(dates?.results);
             console.log(dates.results);
+        }).then(()=> {
             fetchData(`configuration/countries?language=en-US`)
             .then((count)=>{
-                const countriesList = Object.groupBy(count,c=> c.iso_3166_1);
-                const filteredCountriesList = [];
-                
-                dates.results?.map((date)=>{
-                    filteredCountriesList.push(countriesList[date.iso_3166_1][0])
-                })
-
-                setCountries(filteredCountriesList);
-                console.log(filteredCountriesList);
+                setCountries(count);
+                setIsPending(false);
             })
+            .catch(error=> {
+                setError(error);
+                setIsPending(false);
+            });
         })
+        .catch(error=> {
+            setError(error);
+            setIsPending(false);
+        });
 
-    },[id]);
+    }
+
+    useEffect(fetchDates,[id,mediaType]);
 
   return (
     <main className="release-date">
-        <div className="alt-content">
-            <section className='alt-cout-list'>
-                <header className="cout-header">
-                    <h3 >
-                        Release Dates
-                    </h3>
-                    <p>{dates?.length}</p>
-                </header>
-                <ul className="cout-list">
+        {
+            isPending ? <Loading width='100%' height='calc(100vh - 100px)'/> 
+            : dates ?
+            <div className="alt-content">
+                <section className='alt-cout-list card'>
+                    <header className="cout-header ">
+                        <h3 >
+                            Release Dates
+                        </h3>
+                        <p>{dates?.length}</p>
+                    </header>
+                    <ul className="cout-list">
+                        {
+                            dates?.map((date)=> (
+                                <li key={date?.iso_3166_1} className='nav-btn'>
+                                    <a href={`#${date.iso_3166_1}`}>
+                                        <h4>{countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}</h4>
+                                        <span>{date?.release_dates?.length}</span>
+
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </section>
+                <section className='alt-t-tabels'>
                     {
-                        countries?.map((count)=> (
-                            <li key={count?.iso_3166_1} className='nav-btn'>
-                                 <h4>{count?.native_name}</h4>
-                                <span>{dates?.find(el=> el.iso_3166_1 === count.iso_3166_1)?.release_dates?.length}</span>
-                            </li>
+                        dates.map((date)=>(
+                            <tabel 
+                                id={date?.iso_3166_1}
+                                key={date?.iso_3166_1} 
+                                className="titles-card card">
+                            <thead className='t-h'>
+                                <tr>
+
+                                    <h3> 
+                                        <img src={`https://flagsapi.com/${date?.iso_3166_1 }/shiny/64.png`}></img>
+                                        {countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}
+                                    </h3>
+
+                                    
+                                </tr>
+                            </thead>
+                            <tbody className='tbody'>
+                                <tr className='tr tr'>
+                                    <td>Date</td>
+                                    <td>Certification</td>
+                                    <td>type</td>
+                                    <td>Language</td>
+                                </tr>
+                                {
+                                    date?.release_dates?.map((relDate)=>(
+                                        
+                                        <tr key={relDate?.release_date} className='tr'>
+                                            <td>{new Date(relDate?.release_date)?.toLocaleDateString()}</td>
+                                            <td >{relDate?.certification}</td>
+                                            <td >{relDate?.type}</td>
+                                            <td >{relDate?.iso_639_1}</td>
+                                        </tr>
+
+                                    ))
+                                }
+                            </tbody>
+                            </tabel>
                         ))
                     }
-                </ul>
-            </section>
-            <section className='alt-t-tabels'>
-                {
-                    dates.map((date)=>(
-                        <tabel key={date?.iso_3166_1} className="titles-card">
-                           <thead className='t-h'>
-                              <tr>
-
-                                <h3> 
-                                    <img src={`https://flagsapi.com/${date?.iso_3166_1 }/shiny/64.png`}></img>
-                                    {countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}
-                                </h3>
-
-                                
-                              </tr>
-                           </thead>
-                           <tbody className='tbody'>
-                               <tr className='tr tr'>
-                                  <td>Date</td>
-                                  <td>Certification</td>
-                                  <td>type</td>
-                                  <td>Language</td>
-                               </tr>
-                               {
-                                  date?.release_dates?.map((relDate)=>(
-                                    
-                                    <tr key={relDate?.release_date} className='tr'>
-                                        <td>{new Date(relDate?.release_date)?.toLocaleDateString()}</td>
-                                        <td >{relDate?.certification}</td>
-                                        <td >{relDate?.type}</td>
-                                        <td >{relDate?.iso_639_1}</td>
-                                    </tr>
-
-                                  ))
-                               }
-                           </tbody>
-                        </tabel>
-                    ))
-                }
-            </section>
-        </div>
+                </section>
+            </div>
+            : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchDates}/>
+        }
     </main>
   )
 }
