@@ -69,8 +69,8 @@ function Recommendations({id,mediaType}) {
         <div className="recom-content">
             {
                 recomData?.results?.map((media)=>(
-                    <div className="media-card scale">
-                        <div className="image">
+                    <div className="recomm-media-card scale">
+                        <div className="recomm-image">
                             <img 
                                 className="image-hover"
                                 onClick={()=> handleNavigate(media?.media_type,media?.id)}

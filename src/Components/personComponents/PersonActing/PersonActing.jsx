@@ -14,7 +14,7 @@ const PersonActing = ({knownFor}) => {
     useEffect(()=>{
         if(isMediaOpen === true){
             const handleClick = (e)=> {
-                if(!e.target.classList.contains('media')){
+                if(!e.target.classList.contains('open')){
                     
                     setIsMediaOpen(false);
                 }
@@ -48,9 +48,9 @@ console.log(isMediaOpen)
                             <td className='year'>
                                 {new Date(movie?.release_date)?.getFullYear()  || new Date(movie?.first_air_date)?.getFullYear() || '___'}
                             </td>
-                            <td className='cercle media'>
+                            <td className='cercle open'>
                                 <span 
-                                    className='media' 
+                                    className='open' 
                                     onClick={()=> {
                                         setMediaCardIndex(i)
                                         setIsMediaOpen(true);

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Error from "../../error/Error";
 import StarIcon from '@mui/icons-material/Star';
 import fitLongString from "../../../utilities/fitLongString";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 import './actingMediaCard.scss';
 
@@ -38,35 +40,40 @@ const ActingMediaCard = ({mediaType,id}) => {
     useEffect(fetchMedia,[mediaType,id])
 
     return (
-        <div className="media-card media">
+        <div className="media-card open">
             {
                 isPending ? <Loading width='100%' height='100%' /> 
                 : mediaData ?
-                <div className="media-container media">
-                    <Link to={`/${mediaType}/${id}`} className="image-box media">
+                <div className="media-container open">
+                    <Link to={`/${mediaType}/${id}`} className="image-box">
                         <img 
-                            className='media image-hover'
+                            className='image-hover open'
                             loading='lazy' 
                             src={process.env.REACT_APP_BASE_URL + 'original' + mediaData?.poster_path}
                             alt={mediaData?.title}
                             />
                     </Link>
-                    <div className="media-details media">
-                        <nav className='media'>
+                    <div className="media-details open">
+                        <nav className='act-media'>
                             <Link 
                                 to={`/${mediaType}/${id}`} 
-                                className="name media"
+                                className="name open"
                                 >
                                     {mediaData?.title ? fitLongString(mediaData?.title,30) :fitLongString(mediaData?.name,30)}
                             </Link>
-                            <div className='media vote'>
-                                <StarIcon className='media' />
-                                <p className='media'>
+                            <div className='act-vote open'>
+                                <StarIcon className="open"  />
+                                <p className="open" >
                                     {mediaData?.vote_average?.toFixed(1)}
                                 </p>  
                             </div>
                         </nav>
-                        <p className='media overview'>{fitLongString(mediaData?.overview,380)}</p>
+                        <p className='overview open'>{fitLongString(mediaData?.overview,150)}</p>
+                        <div className="add-to open">
+                            <div className="add scale image-hover open"><FavoriteIcon className="open" /></div>
+                            <div className="add scale image-hover open"><BookmarkIcon className="open"  /></div>
+                            <div className="add scale image-hover open"> <StarIcon className="open"  /></div>
+                        </div>
                     </div>
                 </div>
                 : error && <Error error={error} height='100%' onClick={fetchMedia}/>

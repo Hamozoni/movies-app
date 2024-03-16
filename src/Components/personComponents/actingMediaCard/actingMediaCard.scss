@@ -38,7 +38,7 @@
         }
         .media-details {
             color: $text-light-color;
-            nav.media {
+            nav.act-media {
                 @include flex-box(center,flex-start);
                 .name {
                     font-size: $f-size;
@@ -48,22 +48,39 @@
                         color: lighten($color: $text-light-color, $amount: 10);
                     }
                 }
-                .vote {
+                .act-vote {
                     background-color: $logo-color;
                     border-radius: $border-r;
-                    @include flex-box(center,flex-start,5px); 
-                    padding: 0 $padding-5;
+                    @include flex-box(center,flex-start,0); 
+                    padding:0 $padding-5;
                     svg {
                         font-size: $f-size-s;
                     }
                     p {
                         font-size: $f-size-xs;
+                        padding:0 $padding-5;
                     }
                 }
             }
             .overview {
                 font-size: $f-size-xs;
                 line-height: 1.6;
+                height: 71px;
+                overflow: hidden;
+            }
+            .add-to {
+                @include flex-box(center,flex-start,10px);
+                .add {
+                    @include flex-box(center,center,0);
+                    background-color: $logo-color;
+                    border-radius: $border-r;
+                    padding: $padding-10;
+                    cursor: pointer;
+                    svg {
+                        font-size: $f-size-5;
+                    }
+
+                }
             }
         }
     }
