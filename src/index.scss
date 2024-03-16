@@ -48,6 +48,13 @@ img, picture {
   @include flex-box(flex-start,flex-start);
   .alt-cout-list {
     min-width: 260px;
+    position: sticky;
+    top: 30px;
+    .cout-list {
+      margin: $padding-10 0;
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+    }
     .cout-header {
         padding: $padding;
         background-color: $logo-color;
@@ -55,7 +62,6 @@ img, picture {
     }
   }
   .alt-t-tabels {
-      // min-width: calc(100% - 260px);
       .titles-card {
           margin-bottom: $margin;
           min-width: 100%;

@@ -3,7 +3,6 @@
 
 .main-t-header {
     padding: $padding-5 $padding;
-    background-color: $text-dark-color;
     .media-details{
         @include flex-box();
         .media-image {
@@ -14,19 +13,17 @@
         .media-back-to {
           .name {
               font-size: $main-f-size;
-              color: $text-light-color-2;
               font-weight: bold
           }
           a {
               @include flex-box(center,flex-start,5px);
-              color: $text-light-color;
               font-size: $f-size-xs;
               font-weight: 700;
               svg {
                   font-size: $f-size-s;
               }
               &:hover {
-                color: darken($color: $text-light-color, $amount: 15);
+                filter: opacity(70%);
               }
           }
   

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import fetchData from "../../../utilities/fetchData";
 import { Link } from "react-router-dom";
 
@@ -7,12 +7,15 @@ import WestIcon from '@mui/icons-material/West';
 import "./mediaHeader.scss";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
+import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 
 const MediaHeader = ({mediaType,id}) => {
 
     const [details,setDetails] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
+
+    const {textColor,backColor} = useContext(mediaColorContext);
 
     const fetchDetails = ()=>{
 
@@ -31,10 +34,14 @@ const MediaHeader = ({mediaType,id}) => {
         })
     }
 
+
     useEffect(fetchDetails,[id]);
 
+
   return (
-        <header className="main-t-header">
+        <header 
+            className="main-t-header" 
+            style={backColor}>
             {
                 isPending ? <Loading width='100%' height='100px' /> :
                 details ? 
@@ -48,7 +55,9 @@ const MediaHeader = ({mediaType,id}) => {
 
                     </div>
                     <div className="media-back-to">
-                        <h3 className="name">
+                        <h3
+                            style={textColor}
+                           className="name" >
                             {
                                 mediaType === 'tv' ? 
                                 (
@@ -60,7 +69,10 @@ const MediaHeader = ({mediaType,id}) => {
                                 )
                             }
                         </h3>
-                        <Link to={`/${mediaType}/${id}`} className="back-to"> 
+                        <Link 
+                             style={textColor}
+                            to={`/${mediaType}/${id}`} 
+                            className="back-to"> 
                             <WestIcon /> back to main
                         </Link>
                     </div>

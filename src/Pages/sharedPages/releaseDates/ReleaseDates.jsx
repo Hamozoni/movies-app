@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import fetchData from '../../../utilities/fetchData';
 import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
+import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext';
 
 
 const ReleaseDates = ({mediaType}) => {
+
+    const {textColor,backColor} = useContext(mediaColorContext);
+
 
     const {id} = useParams();
     const [dates,setDates] = useState(null);
@@ -47,11 +51,11 @@ const ReleaseDates = ({mediaType}) => {
             : dates ?
             <div className="alt-content">
                 <section className='alt-cout-list card'>
-                    <header className="cout-header ">
-                        <h3 >
+                    <header className="cout-header " style={backColor}>
+                        <h3 style={textColor}>
                             Release Dates
                         </h3>
-                        <p>{dates?.length}</p>
+                        <p style={textColor}> {dates?.length}</p>
                     </header>
                     <ul className="cout-list">
                         {

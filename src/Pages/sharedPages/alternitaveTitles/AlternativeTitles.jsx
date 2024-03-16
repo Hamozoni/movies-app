@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 import "./AlternativeTitles.scss";
 import fetchData from '../../../utilities/fetchData';
 import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
+import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext';
 
 const AlternativeTitles = ({mediaType}) => {
+
+    const {textColor,backColor} = useContext(mediaColorContext);
 
     const {id} = useParams();
     const [countries,setCountries] = useState(null);
@@ -14,23 +17,34 @@ const AlternativeTitles = ({mediaType}) => {
     const [error,setError] = useState(null);
 
     const [titles,setTiltes] = useState(null);
-    const [isPending2,setIsPending2] = useState(true);
-    const [error2,setError2] = useState(null);
 
     const [titlesCount,setTiltesCount] = useState(0);
 
     const results = mediaType === 'tv' ? 'results' : 'titles';
 
-    const fetchCountries = ()=> {
+    const fetchTitles = ()=> {
 
         setIsPending(true);
         setError(null);
 
-        fetchData(`configuration/countries?language=en-US`)
-        .then(data=> {
-            setCountries(data);
-            setIsPending(false);       
-            console.log(data);
+        fetchData(`${mediaType}/${id}/alternative_titles`)
+        .then(titles=>{
+            console.log(titles[results]);
+            setTiltes(titles[results]);
+            setTiltesCount(titles[results]?.length);
+           
+        })
+        .then(()=> {
+            fetchData(`configuration/countries?language=en-US`)
+            .then(data=> {
+                setCountries(data);
+                setIsPending(false);       
+                console.log(data);
+            })
+            .catch(error=> {
+                setError(error);
+                setIsPending(false);
+            });
         })
         .catch(error=> {
             setError(error);
@@ -38,71 +52,50 @@ const AlternativeTitles = ({mediaType}) => {
         });
     };
 
-    const fetchTitles = ()=> {
-        setIsPending2(true);
-        setError2(null);
-        fetchData(`${mediaType}/${id}/alternative_titles`)
-        .then(title=>{
-            console.log(title);
-            setTiltes(Object.groupBy(title[results],ti => ti.iso_3166_1));
-            setTiltesCount(title[results]?.length);
-            setIsPending2(false);
-           
-        })
-        .catch(error=> {
-            setError2(error);
-            setIsPending2(false);
-        });
-    };
-
-    useEffect(()=>{
-        fetchCountries();
-        fetchTitles()
-    },[id]);
+    useEffect(fetchTitles,[id]);
 
   return (
     <main className="alt-titles">
-        <div className="alt-content">
-            <section className='alt-cout-list card'>
-                <header className='cout-header'>
-                     <h3>Alternative Titles</h3>
-                     <p>{titlesCount}</p>
-                </header>
-                <ul className="cout-list">     
-                    {
-                        isPending ? <Loading width='100%' height='300px' /> : 
-                        (countries && titles) ?
-                        Object.keys(titles)?.map((cout)=>(   
-                            <li 
-                                key={cout} 
-                                className='nav-btn'
-                                >
-                                    <a href={`#${cout}`}>
+        {
+            isPending ? <Loading width='100%' height='300px' /> : 
+            (countries && titles) ?
+            <div className="alt-content">
+                <section className='alt-cout-list card'>
+                    <header className='cout-header' style={backColor}>
+                            <h3 style={textColor}>Alternative Titles</h3>
+                            <p style={textColor}>{titlesCount}</p>
+                    </header>
+                    <ul className="cout-list">     
+                        {
+                            titles?.map((title)=>(   
+                                <li 
+                                    key={title?.iso_3166_1} 
+                                    className='nav-btn'
+                                    >
+                                    <a href={`#${title?.iso_3166_1}`}>
 
-                                        {countries?.find(e=> e.iso_3166_1 === cout)?.native_name}
-                                        <span>{titles[cout]?.length}</span>
+                                        {countries?.find(e=> e.iso_3166_1 === title?.iso_3166_1)?.native_name}
+                                        <span>1</span>
                                     </a>
-                            </li> 
+                                </li> 
+                            ))
+                        }
+                                
+                    </ul>
+                </section>
+                <section className='alt-t-tabels'>
+                    {
+                        titles?.map((title)=>(
+                            <TitlesTabel 
+                                key={title?.title} 
+                                title={title} 
+                                country={countries?.find(e=> e.iso_3166_1 === title?.iso_3166_1)?.native_name}/>
                         ))
-                        : error && <Error error={error} height='300px' onClick={fetchCountries} />
                     }
-                           
-                </ul>
-            </section>
-            <section className='alt-t-tabels'>
-                {
-                    isPending2 ? <Loading  width='100%' height='300px'/> : 
-                    (countries && titles) ?
-                    Object.entries(titles)?.sort()?.map((title)=>(
-                        <TitlesTabel 
-                            key={title?.title} 
-                            title={title} 
-                            country={countries?.find(e=> e.iso_3166_1 === title[0])?.native_name}/>
-                    ))
-                    : error2 && <Error error={error2} height='300px' onClick={fetchTitles} />
-                }
-            </section>
-        </div>
+                </section>
+            </div>
+            : error && <Error error={error} height='300px' onClick={fetchTitles} />
+        }
     </main>
   )
 }
@@ -110,13 +103,12 @@ const AlternativeTitles = ({mediaType}) => {
 const TitlesTabel = ({title,country})=> {
     return (
         <tabel 
-            id={title[0]}
-            key={title?.title}
+            id={title?.iso_3166_1}
             className="titles-card card">
         <thead className='t-h'>
            <tr>
                 <h3> 
-                    <img src={`https://flagsapi.com/${title[0]}/shiny/64.png`}></img>
+                    <img src={`https://flagsapi.com/${title?.iso_3166_1}/shiny/64.png`}></img>
                     {country}
                 </h3>
            </tr>
@@ -126,15 +118,10 @@ const TitlesTabel = ({title,country})=> {
                <td>title</td>
                <td>type</td>
             </tr>
-            {
-               title[1]?.map((t)=>(
-                 <tr key={t?.title} className='tr'>
-                     <td>{t?.title}</td>
-                     <td >{t?.type}</td>
-                 </tr>
-
-               ))
-            }
+            <tr className='tr'>
+                <td>{title?.title}</td>
+                <td >{title?.type}</td>
+            </tr>
         </tbody>
      </tabel>
     )
