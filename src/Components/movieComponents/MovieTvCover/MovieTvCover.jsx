@@ -12,8 +12,15 @@ import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
+import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 
 const MovieTvCover = ({details,mediaType})=> {
+
+    const {color} = useContext(mediaColorContext);
+
+    console.log()
+
+    const gradientColor = color.backColor.slice(4,color.backColor.length - 1).replaceAll(' ',', ')
 
     const {lang,setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
     const [crews,setCrews] = useState([]);
@@ -21,7 +28,7 @@ const MovieTvCover = ({details,mediaType})=> {
     const [error,setError] = useState(null);
 
     const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
-    const linearGrad = 'linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 31.5, 0.84) 50%, rgba(31.5, 31.5, 31.5, 0.84) 100%)';
+    const linearGrad = `linear-gradient(to right, rgba(${gradientColor}, 1) , rgba(32, 32, 32, 0.84), rgba(${gradientColor}, 0.84) )`;
 
     const fetch = ()=> {
         setIsPending(true);

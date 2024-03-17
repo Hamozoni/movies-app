@@ -5,8 +5,12 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 import "./Translations.scss";
 import fetchData from "../../../utilities/fetchData";
+import { useContext } from "react";
+import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 
 const Transaction = ({mediaType}) => {
+
+  const {color} = useContext(mediaColorContext);
 
   const {id} = useParams();
   const [translations,setTranslations] = useState();
@@ -22,12 +26,15 @@ const Transaction = ({mediaType}) => {
   return (
     <main className="mov-transation">
         <div className="alt-content">
-            <section className="trans-langs alt-cout-list ">
-                  <header className="lang-header cout-header">
-                  <h3 >
+            <section className="trans-langs alt-cout-list card">
+                  <header 
+                    className="lang-header cout-header" 
+                    style={{backgroundColor:color.backColor}}
+                    >
+                     <h3 style={{color: color.textColor}}>
                        Translations
-                    </h3>
-                    <p>{translations?.length}</p>
+                    </h3 >
+                    <p style={{color: color.textColor}} >{translations?.length}</p>
                   </header>
                   <ul className="cout-list">
                     {

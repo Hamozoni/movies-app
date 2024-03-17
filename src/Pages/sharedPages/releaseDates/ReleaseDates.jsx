@@ -8,7 +8,7 @@ import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext
 
 const ReleaseDates = ({mediaType}) => {
 
-    const {textColor,backColor} = useContext(mediaColorContext);
+    const {color} = useContext(mediaColorContext);
 
 
     const {id} = useParams();
@@ -51,11 +51,15 @@ const ReleaseDates = ({mediaType}) => {
             : dates ?
             <div className="alt-content">
                 <section className='alt-cout-list card'>
-                    <header className="cout-header " style={backColor}>
-                        <h3 style={textColor}>
+                    <header 
+                        className="cout-header" 
+                        style={{backgroundColor:color.backColor}}
+                        >
+
+                        <h3 style={{color: color.textColor}}>
                             Release Dates
                         </h3>
-                        <p style={textColor}> {dates?.length}</p>
+                        <p style={{color: color.textColor}}> {dates?.length}</p>
                     </header>
                     <ul className="cout-list">
                         {

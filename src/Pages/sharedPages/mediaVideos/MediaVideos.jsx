@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 import fetchData from "../../../utilities/fetchData";
 import VideosCard from "./VideosCard";
 
 import "./mediaVideos.scss";
+import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 
 
 
 const MediaVideos = ({mediaType}) => {
+
+    const {color} = useContext(mediaColorContext);
 
     const type = useLocation()?.search?.split('=')[1]?.replaceAll('%20',' ');
     const {id} = useParams();
@@ -36,8 +39,10 @@ const MediaVideos = ({mediaType}) => {
     <div className="media-videos">
         <div className="vid-container">
             <nav className="vid-nav">
-                <header className="vid-head">
-                    <h3 className="t">
+                <header 
+                    style={{backgroundColor: color.backColor}}
+                    className="vid-head">
+                    <h3 className="t"  style={{color: color.textColor}}>
                         vidoes
                     </h3>
                 </header>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import fetchData from "../../../utilities/fetchData";
 import { useParams } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import "./backdrops&posters.scss";
 import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
+import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 
 
 const BackdropsCard = ({drop,language})=> {
@@ -38,6 +39,8 @@ const BackdropsCard = ({drop,language})=> {
 };
 
 const Backdrops_posters = ({mediaType,type}) => {
+
+    const {color} = useContext(mediaColorContext);
 
     const [data,setData] = useState(null);
     const [error,setError] = useState(null);
@@ -98,8 +101,10 @@ const Backdrops_posters = ({mediaType,type}) => {
     <div className="backdrops">
         <div className="backdrop-container">
             <nav className="back-nav card">
-                <header className="b-header">
-                    <h4>{type}</h4>
+                <header 
+                    style={{backgroundColor: color.backColor}}
+                    className="b-header">
+                    <h4 style={{color: color.textColor}}>{type}</h4>
                 </header>
                 <ul className="lang-ul">
                     {

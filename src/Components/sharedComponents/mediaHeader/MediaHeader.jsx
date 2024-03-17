@@ -15,7 +15,7 @@ const MediaHeader = ({mediaType,id}) => {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {textColor,backColor} = useContext(mediaColorContext);
+    const {color} = useContext(mediaColorContext);
 
     const fetchDetails = ()=>{
 
@@ -41,7 +41,7 @@ const MediaHeader = ({mediaType,id}) => {
   return (
         <header 
             className="main-t-header" 
-            style={backColor}>
+            style={{backgroundColor: color.backColor}}>
             {
                 isPending ? <Loading width='100%' height='100px' /> :
                 details ? 
@@ -56,7 +56,7 @@ const MediaHeader = ({mediaType,id}) => {
                     </div>
                     <div className="media-back-to">
                         <h3
-                            style={textColor}
+                            style={{color:color.textColor}}
                            className="name" >
                             {
                                 mediaType === 'tv' ? 
@@ -70,7 +70,7 @@ const MediaHeader = ({mediaType,id}) => {
                             }
                         </h3>
                         <Link 
-                             style={textColor}
+                             style={{color:color.textColor}}
                             to={`/${mediaType}/${id}`} 
                             className="back-to"> 
                             <WestIcon /> back to main

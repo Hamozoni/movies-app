@@ -9,7 +9,7 @@ import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext
 
 const AlternativeTitles = ({mediaType}) => {
 
-    const {textColor,backColor} = useContext(mediaColorContext);
+    const {color} = useContext(mediaColorContext);
 
     const {id} = useParams();
     const [countries,setCountries] = useState(null);
@@ -61,9 +61,9 @@ const AlternativeTitles = ({mediaType}) => {
             (countries && titles) ?
             <div className="alt-content">
                 <section className='alt-cout-list card'>
-                    <header className='cout-header' style={backColor}>
-                            <h3 style={textColor}>Alternative Titles</h3>
-                            <p style={textColor}>{titlesCount}</p>
+                    <header className='cout-header' style={{backgroundColor : color.backColor,color: color.textColor}}>
+                            <h3 style={{color :color.textColor}}>Alternative Titles</h3>
+                            <p style={{color : color.textColor}}>{titlesCount}</p>
                     </header>
                     <ul className="cout-list">     
                         {
