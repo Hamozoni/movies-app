@@ -27,6 +27,7 @@ const Person = ()=> {
             setDetails(data);
             setIsPending(false);
             console.log(data);
+            document.title = data.name;
         })
         .catch(error=> {
             setError(error)

@@ -32,6 +32,7 @@ const Main = ()=> {
             setMovieDetails(data);
             setIsPending(false);
             setError(null);
+            document.title = data?.title;
         })
         .catch((error)=>{
             setError(error);

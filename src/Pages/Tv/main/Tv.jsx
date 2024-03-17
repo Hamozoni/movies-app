@@ -31,7 +31,8 @@ const Tv = () => {
         .then(data => {
             setDetails(data);
             setIsPending(false);
-            console.log(data)
+            console.log(data);
+            document.title = data?.name;
         })
         .catch(error=> {
             setError(error);

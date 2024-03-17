@@ -38,6 +38,7 @@ const FilteredMediaList = ({mediaType}) => {
     const {filter}= useParams()
 
     useEffect(()=>{
+        document.title = `${filter} ${mediaType}`
         fetchData(`${mediaType}/${filter}?language=${lang}&page=${page}`)
         .then((data)=> {
             setMedia(data);

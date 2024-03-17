@@ -17,8 +17,6 @@ const Search = ()=> {
     const {type} = useParams();
     const query = useLocation();
 
-    console.log(query);
-
     const {lang} = useContext(globalContext);
 
     const [searchData,setSearchData] = useState(null);
@@ -28,7 +26,7 @@ const Search = ()=> {
     const [page,setPage] = useState(1);
 
     const fetchSeachData = ()=>{
-
+        document.title = query.search.split('=')[1] + ' ' + type;
         setIsPending(true);
         setError(null);
         fetchData(`search/${type}${query.search}&include_adult=false&language=${lang}&page=${page}`)

@@ -20,7 +20,7 @@ const Keywords = () => {
   const [page,setPage] = useState(1);
 
   const fetchKeywords = ()=>{
-
+    document.title = 'keywords';
     setIsPending(true);
     setError(null);
     fetchData(`keyword/${id}/movies?include_adult=false&language=${lang}&page=${page}`)

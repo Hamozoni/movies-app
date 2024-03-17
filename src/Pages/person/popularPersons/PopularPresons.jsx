@@ -18,6 +18,7 @@ const PopularPresons = () => {
     const [totalPages,setTotalPages] = useState(1);
 
     const fetchPersons = ()=>{
+        document.title = 'popular people';
         setIsPending(true);
         setError(null);
         fetchData(`person/popular?language=en-US&page=${page}`)
