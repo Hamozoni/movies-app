@@ -2,16 +2,61 @@
 @import "../../../GlobalStyle/mixin";
 
 .season-card {
-    @include flex-box(flex-start);
+    @include flex-box(flex-start,flex-start,10px);
     margin-bottom: $margin;
-    padding: $padding 0;
-    border-bottom: 1px solid #b1adad ;
+    max-height: 195px;
     cursor: pointer;
     .season-image {
-        max-width: 100px;
-        min-width: 100px;
         img {
-            border-radius: $border-r;
+            max-width: 130px;
+        }
+    }
+    .season-details {
+        padding: $padding-10;
+        .s-titles {
+            .s-name {
+                color: $text-dark-color;
+                font-size: $f-size-3;
+            }
+            .rating-year  {
+                @include flex-box(center,flex-start,10px);
+                .rating {
+                    @include flex-box(center,center,0);
+                    background-color: $header-b-ground-c;
+                    border-radius: $border-r;
+                    padding: 0 $padding-5;
+                    color: $text-light-color-2;
+                    font-size: $f-size-6;
+                    font-weight: bold;
+                    span {
+                        padding: 0 $padding-5;
+                    }
+                    svg {
+                        font-size: $f-size-6;
+                    }
+                }
+                .year {
+                    font-size: $f-size-5;
+                    color: $text-dark-color;
+                    font-weight: 600;
+                    max-height: 25px;
+                    overflow: hidden;
+                }
+            }
+        }
+        .s-overview {
+            .date {
+                font-size: $f-size-5;
+                color: $text-dark-color;
+                font-weight: 600;
+                margin: $padding-10 0;
+                max-height: 25px;
+                overflow: hidden;
+            }
+            .overview {
+                max-height: 51px;
+                overflow: hidden;
+            }
         }
     }
 }

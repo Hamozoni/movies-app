@@ -2,15 +2,20 @@
 import { useNavigate } from "react-router-dom";
 import "./TvSeasonCard.scss";
 
+import StarIcon from '@mui/icons-material/Star';
+import fitLongString from "../../../utilities/fitLongString";
+
 const TvSeasonCard = ({tvShow,id}) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    console.log(tvShow)
 
   return (
-    <div className="season-card">
+    <div className="season-card card">
         <div 
             onClick={()=> navigate(`/tv/${id}/season/${tvShow?.season_number}`)}
-            className="season-image"
+            className="season-image image-hover"
             >
             <img 
                 loading="lazy" 
@@ -24,15 +29,13 @@ const TvSeasonCard = ({tvShow,id}) => {
                     {tvShow?.name}
                 </h3>
                 <div className="rating-year">
-                    <span className="rating">
-                        {tvShow?.vote_average}
-                    </span>
-                    <span className="year">
-                        {new Date(tvShow?.air_date)?.getFullYear()}.
-                    </span>
-                    <span>
-                        {tvShow?.episode_count} episodes
-                    </span>
+                    <div className="rating">
+                       <StarIcon />
+                        <span>{tvShow?.vote_average}</span>
+                    </div>
+                    <p className="year">
+                        {new Date(tvShow?.air_date)?.getFullYear()}.{tvShow?.episode_count} episodes
+                    </p>
 
                 </div>
 
