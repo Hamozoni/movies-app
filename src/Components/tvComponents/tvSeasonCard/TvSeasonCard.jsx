@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./TvSeasonCard.scss";
 
 import StarIcon from '@mui/icons-material/Star';
-import fitLongString from "../../../utilities/fitLongString";
+
+import imageUrl from "../../../Images/smooth-gray-background-with-high-quality_53876-124606.avif"
 
 const TvSeasonCard = ({tvShow,id}) => {
 
@@ -19,20 +20,23 @@ const TvSeasonCard = ({tvShow,id}) => {
             >
             <img 
                 loading="lazy" 
-                src={process.env.REACT_APP_BASE_URL + 'w200' + tvShow?.poster_path}
+                src={tvShow.poster_path ? process.env.REACT_APP_BASE_URL + 'w200' + tvShow?.poster_path : imageUrl}
                 alt="" 
                 />
         </div>
         <div className="season-details">
             <div className="s-titles">
-                <h3 className="s-name">
+                <h3 className="s-name"  onClick={()=> navigate(`/tv/${id}/season/${tvShow?.season_number}`)}>
                     {tvShow?.name}
                 </h3>
                 <div className="rating-year">
-                    <div className="rating">
-                       <StarIcon />
-                        <span>{tvShow?.vote_average}</span>
-                    </div>
+                    {
+                        tvShow?.vote_average > 0 &&
+                        <div className="rating">
+                        <StarIcon />
+                            <span>{tvShow?.vote_average?.toFixed(1)}</span>
+                        </div>
+                    }
                     <p className="year">
                         {new Date(tvShow?.air_date)?.getFullYear()}.{tvShow?.episode_count} episodes
                     </p>

@@ -2,9 +2,7 @@
 @import "../../../GlobalStyle/mixin";
 
 .review-card {
-    box-shadow: 0px 0px 9px -4px #8b8b8b;
     padding: $padding;
-    border-radius: $border-r;
     .review-header {
         @include flex-box;
         margin-bottom: $margin;

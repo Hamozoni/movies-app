@@ -14,8 +14,9 @@
         // flex-wrap: wrap;
         .cover-image {
             min-width: 300px;
-            background-color: #504e4e48;
+            background-color: #ffffff3d;
             height: 450px;
+            border-radius: $border-r;
             img {
                 border-radius: $border-r;
             }

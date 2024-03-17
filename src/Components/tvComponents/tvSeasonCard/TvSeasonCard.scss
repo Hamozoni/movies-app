@@ -9,6 +9,7 @@
     .season-image {
         img {
             max-width: 130px;
+            min-height: 195px;
         }
     }
     .season-details {
@@ -17,6 +18,10 @@
             .s-name {
                 color: $text-dark-color;
                 font-size: $f-size-3;
+                cursor: pointer;
+                &:hover {
+                    color: lighten($color: $text-dark-color, $amount: 10)
+                }
             }
             .rating-year  {
                 @include flex-box(center,flex-start,10px);

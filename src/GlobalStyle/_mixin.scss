@@ -14,3 +14,8 @@
     left: $left;
     z-index: $z;
 }
+
+@mixin text-overflow ($max-h){
+    max-height: $max-h;
+    overflow: hidden;
+}

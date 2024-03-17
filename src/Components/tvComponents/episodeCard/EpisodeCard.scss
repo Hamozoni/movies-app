@@ -2,40 +2,55 @@
 @import "../../../GlobalStyle/mixin";
 
 .episode-card {
-    border-radius: $border-r;
     margin-bottom: $margin;
-    box-shadow: 0px 0px 9px -4px #8b8b8b;
-    overflow: hidden;
     .card {
-        @include flex-box;
+        @include flex-box(flex-start,flex-start,10px);
         .epis-image {
-            min-width: 200px;
+            max-height: 128px;
+            img {
+                min-width:  227px;
+                max-height: 128px;
+            }
         }
         .epis-details {
+            padding: $padding-10;
             .titles {
+                .name {
+                    font-size: $f-size-4;
+                    color: $text-dark-color-2
+                }
                @include flex-box(flex-start,flex-start,5px);
-               .rating-date  {
-                  @include flex-box(center,flex-start,5px);
-                  padding: $padding-5 0;
-                  font-size: $f-size-xs;
-                  font-weight: 500;
-                  color: $text-dark-color
-               }
-               .rating {
-                    @include flex-box(center,flex-start,0);
-                    border-radius: 5px;
-                    background-color: $logo-color;
-                    padding: 2px $padding-5;
-                  svg {
-                    font-size: $f-size-s;
-                  }
-               }
-
+               .rating-year  {
+                @include flex-box(center,flex-start,10px);
+                .rating {
+                    @include flex-box(center,center,0);
+                    background-color: $header-b-ground-c;
+                    border-radius: $border-r;
+                    padding: 0 $padding-5;
+                    color: $text-light-color-2;
+                    font-size: $f-size-6;
+                    font-weight: bold;
+                    span {
+                        padding: 0 $padding-5;
+                    }
+                    svg {
+                        font-size: $f-size-6;
+                    }
+                }
+                .year {
+                    font-size: $f-size-5;
+                    color: $text-dark-color;
+                    font-weight: 600;
+                    max-height: 25px;
+                    overflow: hidden;
+                }
+            }
             }
             .overview {
-                font-size: $f-size-xs;
-                font-weight: 500;
-                color: $text-dark-color
+                font-size: $f-size-5;
+                font-weight: 600;
+                color: $text-dark-color;
+                padding-top: $padding-10;
             }
         }
     }

@@ -5,7 +5,7 @@ import fitLongString from "../../../utilities/fitLongString";
 
 const ReviewCard = ({review})=> {
   return (
-    <div className="review-card">
+    <div className="review-card card">
         <header className="review-header">
              <div className="img">
                 <img 

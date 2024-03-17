@@ -43,6 +43,9 @@
                 padding: $padding-10 0;
                 img {
                     max-width: 150px;
+                    max-height: 30px;
+                    margin-bottom: 5px;
+                    display: block;
                 }
             }
         }
