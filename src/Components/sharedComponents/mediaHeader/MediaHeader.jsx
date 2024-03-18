@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import fetchData from "../../../utilities/fetchData";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import WestIcon from '@mui/icons-material/West';
 
@@ -16,6 +16,7 @@ const MediaHeader = ({mediaType,id}) => {
     const [error,setError] = useState(null);
 
     const {color} = useContext(mediaColorContext);
+    const urlQuery = useLocation().pathname?.split('/')
 
     const fetchDetails = ()=>{
 
@@ -26,7 +27,9 @@ const MediaHeader = ({mediaType,id}) => {
         .then((data)=> {
             setDetails(data);
             setIsPending(false);
-            console.log(data)
+            console.log();
+
+            document.title = `${data?.title || data?.title}-${urlQuery[urlQuery.length - 1]}`
         })
         .catch(error=> {
             setError(error);

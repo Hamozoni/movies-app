@@ -29,10 +29,9 @@ const AlternativeTitles = ({mediaType}) => {
 
         fetchData(`${mediaType}/${id}/alternative_titles`)
         .then(titles=>{
-            console.log(titles[results]);
+            console.log(titles);
             setTiltes(titles[results]);
-            setTiltesCount(titles[results]?.length);
-           
+            setTiltesCount(titles[results]?.length); 
         })
         .then(()=> {
             fetchData(`configuration/countries?language=en-US`)
