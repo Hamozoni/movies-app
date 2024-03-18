@@ -45,16 +45,16 @@ const EpisodeInfo = ({episode}) => {
             </nav>
             <div className="epis-crew-guest">
                 <section className='ep-crew'>
-                    <h4>crew {episode?.crew?.length}</h4>
+                    <h4 className="ep-t">crew {episode?.crew?.length}</h4>
                     <div className="ep-crew-box">
-                        <p>Directed by :<span>{episode?.crew?.find(e=> e.job === 'Director')?.original_name}</span></p>
-                        <p>Written by :<span>{episode?.crew?.find(e=> e.job === 'Writer')?.original_name}</span></p>
+                        <p><strong>Directed by :</strong><span>{episode?.crew?.find(e=> e.job === 'Director')?.original_name}</span></p>
+                        <p><strong>Written by :</strong><span>{episode?.crew?.find(e=> e.job === 'Writer')?.original_name}</span></p>
                     </div>
                 </section>
                 <section className='ep-guest'>
                     <nav className="ep-g-nav">
-                        <h4>guest starts {episode?.guest_stars?.length}</h4>
-                        <Link >full cast&crew</Link>
+                        <h4 className="ep-t">guest starts {episode?.guest_stars?.length}</h4>
+                        <Link className="ep-link color-hover" >full cast&crew</Link>
                     </nav>
                     <div className="ep-guest-box">
                         {
@@ -67,8 +67,8 @@ const EpisodeInfo = ({episode}) => {
             </div>
             <section className="epis-images">
                 <nav className="ep-img-nav">
-                    <h4 className="ep-img-t">episode images</h4>
-                    <Link >view all episode images</Link>
+                    <h4 className="ep-t" >episode images</h4>
+                    <Link className="ep-link color-hover" >view all episode images</Link>
                 </nav>
                 <div className="ep-images-box">
 

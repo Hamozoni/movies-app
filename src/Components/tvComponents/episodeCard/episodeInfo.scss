@@ -1,2 +1,68 @@
 @import "../../../GlobalStyle/variables";
 @import "../../../GlobalStyle/mixin";
+
+.epis-more-info {
+    .ep-t,.ep-link {
+        padding-bottom: $padding-10;
+        font-size: $f-size-5;
+        color: $text-dark-color;
+    }
+    .ep-link {
+        color: $text-dark-color-2;
+        font-size: $f-size-6;
+    }
+    .epis-nav {
+        padding: $padding-10 $padding;
+        border: 1px solid;
+        border-color: #6360603f transparent;
+        .epis-nav-ul {
+            @include flex-box(center,space-between);
+            li {
+                font-size: $f-size-5;
+                color: $text-light-color;
+                font-weight: 700;
+                &:hover {
+                    color: $text-dark-color-2;
+                }
+            }
+        }
+    }
+    .epis-crew-guest {
+        padding: $padding-10 $padding;
+        @include flex-box(flex-start,space-between);
+        .ep-crew {
+            .ep-crew-box {
+                p {
+                    color: $text-dark-color-2;
+                }
+            }
+        }
+        .ep-guest {
+            flex-basis: 75%;
+            .ep-g-nav {
+                @include flex-box(center,space-between);
+                h4 {}
+                a {}
+            }
+            .ep-guest-box {
+                display: grid;
+                grid-template-columns: 50% 50%;
+            }
+        }
+    }
+    .epis-images {
+        padding: $padding;
+        .ep-img-nav {
+            @include flex-box(center,space-between);
+        }
+        .ep-images-box {
+            @include flex-box;
+            overflow-y: auto;
+            img {
+                width: 250px;
+                min-width: 250px;
+            }
+
+        }
+    }
+}

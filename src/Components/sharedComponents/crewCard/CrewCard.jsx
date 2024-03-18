@@ -12,7 +12,7 @@ const CrewCard = ({person}) => {
 
   return (
     <div 
-        className="crew-card scale" 
+        className="crew-card card" 
         onClick={()=> navigate(`/person/${person?.id}`)}
         >
         <div className="crew-image">
