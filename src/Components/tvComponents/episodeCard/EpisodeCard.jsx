@@ -2,7 +2,7 @@ import StarIcon from '@mui/icons-material/Star';
 import "./EpisodeCard.scss";
 
 import imageURL from '../../../Images/smooth-gray-background-with-high-quality_53876-124606.avif'
-import { Link } from 'react-router-dom';
+import EpisodeInfo from './EpisodeInfo';
 
 
 const EpisodeCard = ({episode}) => {
@@ -44,43 +44,7 @@ const EpisodeCard = ({episode}) => {
                 <p className='overview'>{episode?.overview || "We don't have an overview translated in English. Help us expand our database by adding one."}</p>
             </div>
         </div>
-        <div className="epis-more-info">
-            <nav className="epis-nav">
-                <ul className="epis-nav-ul">
-                    <li>videos</li>
-                    <li>images</li>
-                    <li>changes</li>
-                    <li>report</li>
-                    <li>edit</li>
-                </ul>
-            </nav>
-            <div className="epis-crew-guest">
-                <section className='ep-crew'>
-                    <h4>crew</h4>
-                    <div className="ep-crew-box">
-
-                    </div>
-                </section>
-                <section className='ep-guest'>
-                    <nav className="ep-g-nav">
-                        <h4>guest starts</h4>
-                        <Link>full cast&crew</Link>
-                    </nav>
-                    <div className="ep-guest-box">
-
-                    </div>
-                </section>
-            </div>
-            <section className="epis-images">
-                <nav className="ep-img-nav">
-                    <h4 className="ep-img-t">episode images</h4>
-                    <Link >view all episode images</Link>
-                </nav>
-                <div className="ep-images-box">
-                    
-                </div>
-            </section>
-        </div>
+        <EpisodeInfo episode={episode} /> 
     </div>
   )
 }
