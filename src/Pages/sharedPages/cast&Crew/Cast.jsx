@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import "./Cast.scss";
 import fetchData from '../../../utilities/fetchData';
-import PersonCard from '../../../Components/personComponents/PersonCard/PersonCard';
 import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
+import CrewCard from '../../../Components/sharedComponents/crewCard/CrewCard';
 
 const Cast = ({mediaType}) => {
 
@@ -47,7 +47,7 @@ const Cast = ({mediaType}) => {
                         isPending ? <Loading width='100%' height='400px'/> :
                         cast ? 
                         cast?.cast?.map((person)=>(
-                            <PersonCard key={person?.id} person={person}/>
+                            <CrewCard key={person?.id} person={person}/>
                         ))
                         : error && <Error error={error} height='400px' onClick={fetchCast}/> 
                     }
@@ -69,7 +69,7 @@ const Cast = ({mediaType}) => {
                             {
                                 p[1]?.map((person)=>(
 
-                                    <PersonCard key={person?.id} person={person}/>
+                                    <CrewCard key={person?.id} person={person}/>
                                 ))
                             }
                             </>
