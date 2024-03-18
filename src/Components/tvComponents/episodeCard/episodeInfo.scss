@@ -41,12 +41,10 @@
             flex-basis: 75%;
             .ep-g-nav {
                 @include flex-box(center,space-between);
-                h4 {}
-                a {}
             }
             .ep-guest-box {
                 display: grid;
-                grid-template-columns: 50% 50%;
+                grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
             }
         }
     }
@@ -56,7 +54,7 @@
             @include flex-box(center,space-between);
         }
         .ep-images-box {
-            @include flex-box;
+            @include flex-box(_,_,5px);
             overflow-y: auto;
             img {
                 width: 250px;

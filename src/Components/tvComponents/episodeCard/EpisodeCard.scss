@@ -56,4 +56,15 @@
             }
         }
     }
+    .expand {
+        @include flex-box(center,center);
+        padding: $padding-5 $padding;
+        border-top: 1px solid   #6360603f ;
+        .exp-link {
+            @include flex-box(center,center,0);
+            font-size: $f-size-6;
+            font-weight: bold;
+            color: $text-dark-color-2;
+        }
+    }
 }

@@ -47,14 +47,24 @@ const EpisodeInfo = ({episode}) => {
                 <section className='ep-crew'>
                     <h4 className="ep-t">crew {episode?.crew?.length}</h4>
                     <div className="ep-crew-box">
-                        <p><strong>Directed by :</strong><span>{episode?.crew?.find(e=> e.job === 'Director')?.original_name}</span></p>
-                        <p><strong>Written by :</strong><span>{episode?.crew?.find(e=> e.job === 'Writer')?.original_name}</span></p>
+                        <p>
+                            <strong>Directed by :</strong>
+                            <span>
+                                {episode?.crew?.find(e=> e.job === 'Director')?.original_name || "No director has been added."}
+                            </span>
+                        </p>
+                        <p>
+                             <strong>Written by :</strong>
+                             <span>
+                                {episode?.crew?.find(e=> e.job === 'Writer')?.original_name || " No writer has been added."}
+                            </span>
+                        </p>
                     </div>
                 </section>
                 <section className='ep-guest'>
                     <nav className="ep-g-nav">
                         <h4 className="ep-t">guest starts {episode?.guest_stars?.length}</h4>
-                        <Link className="ep-link color-hover" >full cast&crew</Link>
+                        <Link className="ep-link link-hover" >full cast&crew</Link>
                     </nav>
                     <div className="ep-guest-box">
                         {
@@ -67,8 +77,8 @@ const EpisodeInfo = ({episode}) => {
             </div>
             <section className="epis-images">
                 <nav className="ep-img-nav">
-                    <h4 className="ep-t" >episode images</h4>
-                    <Link className="ep-link color-hover" >view all episode images</Link>
+                    <h4 className="ep-t" >episode images {images?.length}</h4>
+                    <Link className="ep-link link-hover" >view all episode images</Link>
                 </nav>
                 <div className="ep-images-box">
 
@@ -82,6 +92,7 @@ const EpisodeInfo = ({episode}) => {
                                 alt="episode images"
                                 />
                         ))
+                        : images.length === 0 ? <p>No episode images have been added.</p>
                         : error && <Error error={error} height='100%' onClick={fetchImages} />
                     }
                 </div>

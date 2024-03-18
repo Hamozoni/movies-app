@@ -1,13 +1,14 @@
 import StarIcon from '@mui/icons-material/Star';
 import "./EpisodeCard.scss";
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import imageURL from '../../../Images/smooth-gray-background-with-high-quality_53876-124606.avif'
 import EpisodeInfo from './EpisodeInfo';
+import { Link, useLocation} from 'react-router-dom';
 
 
 const EpisodeCard = ({episode}) => {
 
-    console.log(episode)
+    const episodeNum = useLocation()?.search?.split('=')[1]
 
   return (
     <div className="episode-card card">
@@ -44,7 +45,21 @@ const EpisodeCard = ({episode}) => {
                 <p className='overview'>{episode?.overview || "We don't have an overview translated in English. Help us expand our database by adding one."}</p>
             </div>
         </div>
-        <EpisodeInfo episode={episode} /> 
+        <div className="more-ep-info">
+            {
+                episode?.episode_number == episodeNum ?
+                <EpisodeInfo episode={episode} /> 
+                : 
+                <div className="expand">
+                    <Link 
+                        className='exp-link link-hover'
+                        to={`?episode-number=${episode?.episode_number}`}
+                        >
+                       <KeyboardArrowDownIcon /> expand
+                    </Link>
+                </div>
+            }
+        </div>
     </div>
   )
 }
