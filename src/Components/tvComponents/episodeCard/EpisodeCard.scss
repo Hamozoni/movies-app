@@ -48,11 +48,11 @@
             }
             }
             .overview {
-                font-size: $f-size-5;
+                font-size: $f-size-6;
                 font-weight: 600;
                 color: $text-dark-color;
                 padding-top: $padding-10;
-                @include text-overflow(61px);
+                @include text-overflow(55px);
             }
         }
     }

@@ -14,7 +14,7 @@ const options = {
 
     const {data} = await axios.request(options)
 
-    return data
+    return data;
 };
 
 export default fetchData;

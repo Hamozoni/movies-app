@@ -6,6 +6,8 @@ import imageURL from '../../../Images/smooth-gray-background-with-high-quality_5
 
 const EpisodeCard = ({episode}) => {
 
+    console.log(episode)
+
   return (
     <div className="episode-card card">
         <div className="card-container">
@@ -41,8 +43,22 @@ const EpisodeCard = ({episode}) => {
                 <p className='overview'>{episode?.overview || "We don't have an overview translated in English. Help us expand our database by adding one."}</p>
             </div>
         </div>
-        <div className="episode-move-info">
-            
+        <div className="epis-more-info">
+            <nav className="epis-nav">
+                <ul className="epis-nav-ul">
+                    <li>videos</li>
+                    <li>images</li>
+                    <li>changes</li>
+                    <li>report</li>
+                    <li>edit</li>
+                </ul>
+            </nav>
+            <div className="epis-crew-cast">
+
+            </div>
+            <div className="epis-images">
+
+            </div>
         </div>
     </div>
   )
