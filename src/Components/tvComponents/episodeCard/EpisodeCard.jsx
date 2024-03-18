@@ -8,7 +8,7 @@ const EpisodeCard = ({episode}) => {
 
   return (
     <div className="episode-card card">
-        <div className="card">
+        <div className="card-container">
             <div className="epis-image">
                 <img 
                     className='image-hover'
@@ -38,10 +38,12 @@ const EpisodeCard = ({episode}) => {
                     </div>
 
                 </div>
-                <p className='overview'>{episode?.overview}</p>
+                <p className='overview'>{episode?.overview || "We don't have an overview translated in English. Help us expand our database by adding one."}</p>
             </div>
         </div>
-
+        <div className="episode-move-info">
+            
+        </div>
     </div>
   )
 }

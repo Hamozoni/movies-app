@@ -29,7 +29,7 @@ const MediaHeader = ({mediaType,id}) => {
             setIsPending(false);
             console.log();
 
-            document.title = `${data?.title || data?.title}-${urlQuery[urlQuery.length - 1]}`
+            document.title = `${mediaType  === 'tv' ? data?.name : data?.title}-${urlQuery[urlQuery.length - 1]}`
         })
         .catch(error=> {
             setError(error);

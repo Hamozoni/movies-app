@@ -3,7 +3,7 @@
 
 .episode-card {
     margin-bottom: $margin;
-    .card {
+    .card-container {
         @include flex-box(flex-start,flex-start,10px);
         .epis-image {
             max-height: 128px;
@@ -17,7 +17,8 @@
             .titles {
                 .name {
                     font-size: $f-size-4;
-                    color: $text-dark-color-2
+                    color: $text-dark-color-2;
+                    @include text-overflow(30px);
                 }
                @include flex-box(flex-start,flex-start,5px);
                .rating-year  {
@@ -51,6 +52,7 @@
                 font-weight: 600;
                 color: $text-dark-color;
                 padding-top: $padding-10;
+                @include text-overflow(61px);
             }
         }
     }
