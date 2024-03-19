@@ -15,12 +15,12 @@ const MediaColorContext = ({children}) => {
     useEffect(()=> {
 
         const rgbColor = {
-            r: Math.floor(Math.random() * 65),
-            g: Math.floor(Math.random() * 50),
-            b: Math.floor(Math.random() * 65),
+            r: Math.floor(Math.random() * 55),
+            g: Math.floor(Math.random() * 55),
+            b: Math.floor(Math.random() * 55),
           };
 
-          const textColor = `rgb(${rgbColor.r < 125 ? 0 : 240} ${rgbColor.g < 125 ? 240  : 0} ${rgbColor.b < 125 ? 240  : 0})`
+          const textColor = `rgb(${rgbColor.r + 200} ${rgbColor.g + 200} ${rgbColor.b + 200})`
           
           const backColor = `rgb(${rgbColor.r} ${rgbColor.g} ${rgbColor.b})`
 

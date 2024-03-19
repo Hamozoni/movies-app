@@ -28,6 +28,7 @@ import Footer from './Components/footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 import Backdrops_posters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
+import TvShowSeasonLayout from './Layouts/tvShowSeason/TvShowSeason.jsx';
 
 
 function App() {
@@ -77,7 +78,6 @@ function App() {
             <Route path='/tv/:id'  element={<TvShowsLayout />}>
                 <Route index element={<Tv/>}/>
                 <Route path='seasons'  element={<TvShowSeasons />}/>
-                <Route path='season/:seasonNumber'  element={<SeasonEpisodes />}/>
                 <Route path='reviews'  element={<Reviews mediaType='tv' />}/>
                 <Route path='cast'  element={<Cast mediaType='tv'/>}/>
                 <Route path='titles'  element={<AlternativeTitles  mediaType='tv'/>}/>
@@ -87,6 +87,9 @@ function App() {
                 <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>}/>
                 <Route path='logos'  element={<Backdrops_posters mediaType='tv' type='logos'/>}/>
                 <Route path='videos'  element={<MediaVideos mediaType='tv' />}/>
+            </Route>
+            <Route path='/tv/:id/season/:seasonNumber' element={<TvShowSeasonLayout/>} >
+               <Route index element={<SeasonEpisodes />}/>
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>

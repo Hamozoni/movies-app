@@ -11,7 +11,7 @@ const EpisodeCard = ({episode}) => {
     const episodeNum = useLocation()?.search?.split('=')[1]
 
   return (
-    <div className="episode-card card">
+    <div className="episode-card card" id={episode.episode_number}>
         <div className="card-container">
             <div className="epis-image">
                 <img 
