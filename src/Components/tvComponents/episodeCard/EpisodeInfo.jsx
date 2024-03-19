@@ -14,7 +14,9 @@ const EpisodeInfo = ({episode}) => {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const{id,seasonNumber} = useParams()
+    const{id,seasonNumber} = useParams();
+
+    const routsLink = `/tv/${id}/season/${seasonNumber}/episode/${episode?.episode_number}`
 
     const fetchImages = ()=> {
 
@@ -37,11 +39,11 @@ const EpisodeInfo = ({episode}) => {
         <div className="epis-more-info">
             <nav className="epis-nav">
                 <ul className="epis-nav-ul">
-                    <li><Link to={`/tv/${id}/season/${seasonNumber}/videos`}>videos</Link></li>
-                    <li><Link to={`/tv/${id}/season/${seasonNumber}/posters`}>images</Link></li>
-                    <li><Link to={`/tv/${id}/season/${seasonNumber}/changes`}>changes</Link></li>
-                    <li><Link to={`/tv/${id}/season/${seasonNumber}`}>report</Link></li>
-                    <li><Link to={`/tv/${id}/season/${seasonNumber}`}>edit</Link></li>
+                    <li><Link to={`${routsLink}/videos`}>videos</Link></li>
+                    <li><Link to={`${routsLink}/posters`}>images</Link></li>
+                    <li><Link to={`${routsLink}/changes`}>changes</Link></li>
+                    <li><Link to={`${routsLink}`}>report</Link></li>
+                    <li><Link to={`${routsLink}`}>edit</Link></li>
                 </ul>
             </nav>
             <div className="epis-crew-guest">
@@ -66,7 +68,7 @@ const EpisodeInfo = ({episode}) => {
                     <nav className="ep-g-nav">
                         <h4 className="ep-t">guest starts {episode?.guest_stars?.length}</h4>
                         <Link 
-                            to={`/tv/${id}/season/${seasonNumber}/cast`}
+                            to={`${routsLink}/cast`}
                             className="ep-link link-hover" >
                                 full cast&crew
                         </Link>
@@ -84,7 +86,7 @@ const EpisodeInfo = ({episode}) => {
                 <nav className="ep-img-nav">
                     <h4 className="ep-t" >episode images {images?.length}</h4>
                     <Link 
-                     to={`/tv/${id}/season/${seasonNumber}/posters`}
+                     to={`${routsLink}/posters`}
                         className="ep-link link-hover" >view all episode images</Link>
                 </nav>
                 <div className="ep-images-box">

@@ -29,6 +29,7 @@ import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 import Backdrops_posters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
 import TvShowSeasonLayout from './Layouts/tvShowSeason/TvShowSeason.jsx';
+import EpisodesLayout from './Layouts/tvShowsEpisodeLayout.jsx/EpisodesLayout.jsx';
 
 
 function App() {
@@ -94,6 +95,9 @@ function App() {
                <Route path='translations'  element={<Translations mediaType='tv' isSeason={true}/>}/>
                <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>} isSeason={true}/>
                <Route path='videos'  element={<MediaVideos mediaType='tv' isSeason={true}/>}/>
+            </Route>
+            <Route path='/tv/:id/season/:seasonNumber/episode/:episodeNumber'element={<EpisodesLayout />}  >
+                
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
