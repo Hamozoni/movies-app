@@ -6,34 +6,62 @@ import VideosCard from "./VideosCard";
 
 import "./mediaVideos.scss";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
+import Loading from "../../../Components/loading/Loading";
+import Error from "../../../Components/error/Error";
 
 
 
-const MediaVideos = ({mediaType}) => {
+const MediaVideos = ({mediaType,isSeason = false}) => {
 
     const {color} = useContext(mediaColorContext);
 
     const type = useLocation()?.search?.split('=')[1]?.replaceAll('%20',' ');
-    const {id} = useParams();
+    const {id,seasonNumber} = useParams();
 
     const navigate = useNavigate();
 
     console.log(type);
 
-    const [videos,setVideos] = useState({});
+    const [videos,setVideos] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
 
-    useEffect(()=> {
-        fetchData(`${mediaType}/${id}/videos?language=en-US`)
+    const fetchVideos = ()=> {
+        let season = '';
+        if(isSeason){
+            season = `/season/${seasonNumber}`
+        }
+        setIsPending(true);
+        setError(null);
+        fetchData(`${mediaType}/${id}${season}/videos?language=en-US`)
         .then((data)=> {
 
-            const videosObject = Object.groupBy(data?.results,e => e.type);
-            setVideos(videosObject);
-            if(type === undefined) {
+            if(type == undefined) {
                 navigate(`/${mediaType}/${id}/videos?type=${data.results[0].type}`)
             }
+            const videosObject = Object.groupBy(data?.results,e => e.type);
+            setVideos(videosObject);
+            setIsPending(false);
 
         })
-    },[type,id,mediaType]);
+        .catch(error=> {
+            setError(error);
+            setIsPending(false);
+        })
+    }
+
+    useEffect(fetchVideos,[type,id,mediaType]);
+
+    if(isPending) {
+        return (
+            <Loading width='100%' height='calc(100vh - 100px)' />
+        )
+    }
+    if(error) {
+        return (
+            <Error error={error} height='calc(100vh - 100px)' onClick={fetchVideos}/>
+        )
+    }
 
   return (
     <div className="media-videos">
