@@ -25,8 +25,8 @@ const MainMediaNav = ({mediaType}) => {
     },[mediaType,id]);
 
   return (
-    <header className='media-header'>
-        <nav className='media-nav'>
+    <nav className='media-header'>
+        <div className='media-nav'>
              <div className='med-title'>
                  <span>overview</span>
                  <span><ArrowDropDownIcon /></span>
@@ -118,8 +118,8 @@ const MainMediaNav = ({mediaType}) => {
                     <li className='nav-btn'><Link>tweet</Link></li>
                  </ul>
              </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
   )
 }
 
