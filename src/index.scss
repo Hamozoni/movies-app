@@ -174,21 +174,14 @@ img, picture {
 .image-hover {
   cursor: pointer;
     &:hover {
-      filter: brightness(150%) hue-rotate(30deg) ;
-      animation: animateImage 1s ease-in-out alternate-reverse;
+      filter:hue-rotate(20deg) brightness(120%)  ;
     } 
 }
 
 .scale {
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
-}
-
-@keyframes animateImage {
-  100% {
-    filter: brightness(120%) hue-rotate(180deg) ;
-  }
 }
 
 .card {

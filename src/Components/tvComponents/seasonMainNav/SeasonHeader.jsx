@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import WestIcon from '@mui/icons-material/West';
 
@@ -8,6 +8,7 @@ import "../../sharedComponents/mediaHeader/mediaHeader.scss";
 const SeasonHeader = ({details}) => {
 
     const {color} = useContext(mediaColorContext);
+    const {id} = useParams();
   return (
     <header 
         className="main-t-header" 
@@ -31,9 +32,9 @@ const SeasonHeader = ({details}) => {
                     </h3>
                     <Link 
                         style={{color:color.textColor}}
-                        to={``} 
+                        to={`/tv/${id}/seasons`} 
                         className="back-to"> 
-                        <WestIcon /> back to main
+                        <WestIcon /> back to seasons list
                     </Link>
                 </div>
             </div>

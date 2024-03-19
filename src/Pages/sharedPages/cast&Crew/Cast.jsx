@@ -7,19 +7,23 @@ import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
 import CrewCard from '../../../Components/sharedComponents/crewCard/CrewCard';
 
-const Cast = ({mediaType}) => {
+const Cast = ({mediaType,isSeason = false}) => {
 
     const [cast,setCast] = useState(null);
     const [crew,setCrew] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {id} = useParams();
+    const {id,seasonNumber} = useParams();
 
     const fetchCast = ()=>{
         setIsPending(true);
         setError(null);
-       fetchData(`${mediaType}/${id}/credits?language=en-US`)
+        let season = '';
+        if(isSeason) {
+            season = `/season/${seasonNumber}`
+        }
+       fetchData(`${mediaType}/${id}${season}/credits?language=en-US`)
        .then((data)=>{
           setCast(data);
           setCrew(Object.groupBy(data?.crew, ({ department}) => department));

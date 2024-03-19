@@ -90,6 +90,9 @@ function App() {
             </Route>
             <Route path='/tv/:id/season/:seasonNumber' element={<TvShowSeasonLayout/>} >
                <Route index element={<SeasonEpisodes />}/>
+               <Route path='cast'  element={<Cast mediaType='tv' isSeason={true}/>}/>
+               <Route path='translations'  element={<Translations mediaType='tv' isSeason={true}/>}/>
+               <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>} isSeason={true}/>
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>

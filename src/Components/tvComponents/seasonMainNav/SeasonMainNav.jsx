@@ -1,13 +1,16 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import "../../sharedComponents/mainMediaNav/MainmediaNav.scss";
-import { Link} from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 // import { useEffect, useState } from 'react';
 // import fetchData from '../../../utilities/fetchData';
 
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 const SeasonMainNav = () => {
+
+    const {seasonNumber,id} = useParams();
+
   return (
         <nav className='media-header'>
             <div className='media-nav'>
@@ -18,14 +21,14 @@ const SeasonMainNav = () => {
                         <li 
                             className='nav-btn' 
                             >
-                                <Link to={''}>main</Link>
+                                <Link to={`/tv/${id}/season/${seasonNumber}`}>main</Link>
                         </li>
                         <li 
                             className='nav-btn' >
-                                <Link to={``}>cast & crew</Link>
+                                <Link to={`/tv/${id}/season/${seasonNumber}/cast`}>cast & crew</Link>
                         </li>
                         <li className='nav-btn'>
-                            <Link to={``}>
+                            <Link to={`/tv/${id}/season/${seasonNumber}/translations`}>
                                 translations
                             </Link>
                         </li>
@@ -41,7 +44,7 @@ const SeasonMainNav = () => {
                     <span><ArrowDropDownIcon /></span>
                     <ul className='links-list'>
                         <li className='nav-btn'>
-                            <Link to={``} >
+                            <Link to={`/tv/${id}/season/${seasonNumber}/posters`} >
                                 posters
                                 {/* <span>{mediaData?.posters?.length}</span> */}
                         </Link>
