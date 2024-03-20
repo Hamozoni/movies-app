@@ -2,18 +2,30 @@
 @import "../../../GlobalStyle/mixin";
 
 .main-t-header {
-    padding: $padding-5 $padding;
+    padding: $padding $padding;
     .media-details{
         @include flex-box();
         .media-image {
-            max-width: 70px;
+            max-height: 80px;
             overflow: hidden;
             border-radius: $border-r;
+            img {
+                max-height: 80px !important;   
+            }
         }
         .media-back-to {
           .name {
-              font-size: $main-f-size;
-              font-weight: bold
+              font-size: $f-size-1;
+              font-weight: bold;
+              span {
+                font-weight: 300;
+                font-size: $f-size-4;
+                border-radius: $border-r;
+                padding: 0 $padding-5;
+                line-height: 1;
+                background-color: rgba(255, 255, 255, 0.116);
+                margin-right: 5px
+              }
           }
           a {
               @include flex-box(center,flex-start,5px);

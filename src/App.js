@@ -97,7 +97,10 @@ function App() {
                <Route path='videos'  element={<MediaVideos mediaType='tv' isSeason={true}/>}/>
             </Route>
             <Route path='/tv/:id/season/:seasonNumber/episode/:episodeNumber'element={<EpisodesLayout />}  >
-                
+                <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='stills' isEpisode={true}/>}  />
+                <Route path='videos'  element={<MediaVideos mediaType='tv' isEpisode={true} />}/>
+                <Route path='cast'  element={<Cast mediaType='tv' isEpisode={true}/>}/>
+                <Route path='translations'  element={<Translations mediaType='tv' isEpisode={true}/>}/>
             </Route>
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>

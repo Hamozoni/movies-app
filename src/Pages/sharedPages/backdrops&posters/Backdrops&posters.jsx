@@ -38,7 +38,7 @@ const BackdropsCard = ({drop,language})=> {
     )
 };
 
-const Backdrops_posters = ({mediaType,type,isSeason = false}) => {
+const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) => {
 
     const {color} = useContext(mediaColorContext);
 
@@ -51,7 +51,7 @@ const Backdrops_posters = ({mediaType,type,isSeason = false}) => {
     const [isPending2,setIsPending2] = useState(true);
     const [selectedLang,setSelectedLang] = useState('null');
 
-    const {id,seasonNumber} = useParams();
+    const {id,seasonNumber,episodeNumber} = useParams();
 
     const fetchImagesData = ()=> {
 
@@ -60,6 +60,9 @@ const Backdrops_posters = ({mediaType,type,isSeason = false}) => {
         let season = '';
         if(isSeason) {
             season = `/season/${seasonNumber}`
+        }
+        if(isEpisode){
+            season = `/season/${seasonNumber}/episode/${episodeNumber}` 
         }
         fetchData(`${mediaType}/${id}${season}/images`)
         .then((data)=>{

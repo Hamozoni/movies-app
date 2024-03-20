@@ -11,12 +11,12 @@ import Error from "../../../Components/error/Error";
 
 
 
-const MediaVideos = ({mediaType,isSeason = false}) => {
+const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
 
     const {color} = useContext(mediaColorContext);
 
     const type = useLocation()?.search?.split('=')[1]?.replaceAll('%20',' ');
-    const {id,seasonNumber} = useParams();
+    const {id,seasonNumber,episodeNumber} = useParams();
 
     const navigate = useNavigate();
 
@@ -31,12 +31,15 @@ const MediaVideos = ({mediaType,isSeason = false}) => {
         if(isSeason){
             season = `/season/${seasonNumber}`
         }
+        if(isEpisode){
+            season = `/season/${seasonNumber}/episode/${episodeNumber}` 
+        }
         setIsPending(true);
         setError(null);
         fetchData(`${mediaType}/${id}${season}/videos?language=en-US`)
         .then((data)=> {
 
-            if(type == undefined) {
+            if(type == undefined && data.results.length > 0) {
                 navigate(`/${mediaType}/${id}/videos?type=${data.results[0].type}`)
             }
             const videosObject = Object.groupBy(data?.results,e => e.type);

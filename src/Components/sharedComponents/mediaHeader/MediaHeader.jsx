@@ -61,7 +61,7 @@ const MediaHeader = ({mediaType,id}) => {
                 <div className="media-back-to">
                     <h3
                         style={{color:color.textColor}}
-                    className="name" >
+                         className="name" >
                         {
                             mediaType === 'tv' ? 
                             (

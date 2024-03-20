@@ -8,11 +8,11 @@ import fetchData from "../../../utilities/fetchData";
 import { useContext } from "react";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 
-const Transaction = ({mediaType,isSeason = false}) => {
+const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
 
   const {color} = useContext(mediaColorContext);
 
-  const {id,seasonNumber} = useParams();
+  const {id,seasonNumber,episodeNumber} = useParams();
   const [translations,setTranslations] = useState();
 
   useEffect(()=>{
@@ -20,6 +20,9 @@ const Transaction = ({mediaType,isSeason = false}) => {
     if(isSeason) {
       season = `/season/${seasonNumber}`
     }
+    if(isEpisode){
+      season = `/season/${seasonNumber}/episode/${episodeNumber}` 
+     }
      fetchData(`${mediaType}/${id}${season}/translations`)
      .then((data)=> {
           setTranslations(data?.translations)

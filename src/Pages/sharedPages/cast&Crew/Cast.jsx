@@ -7,14 +7,14 @@ import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
 import CrewCard from '../../../Components/sharedComponents/crewCard/CrewCard';
 
-const Cast = ({mediaType,isSeason = false}) => {
+const Cast = ({mediaType,isSeason = false,isEpisode = false}) => {
 
     const [cast,setCast] = useState(null);
     const [crew,setCrew] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {id,seasonNumber} = useParams();
+    const {id,seasonNumber,episodeNumber} = useParams();
 
     const fetchCast = ()=>{
         setIsPending(true);
@@ -22,6 +22,9 @@ const Cast = ({mediaType,isSeason = false}) => {
         let season = '';
         if(isSeason) {
             season = `/season/${seasonNumber}`
+        }
+        if(isEpisode){
+            season = `/season/${seasonNumber}/episode/${episodeNumber}` 
         }
        fetchData(`${mediaType}/${id}${season}/credits?language=en-US`)
        .then((data)=>{

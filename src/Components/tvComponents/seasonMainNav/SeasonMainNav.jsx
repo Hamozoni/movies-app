@@ -2,16 +2,14 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import "../../sharedComponents/mainMediaNav/MainmediaNav.scss";
 import { Link, useParams} from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-// import fetchData from '../../../utilities/fetchData';
 
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { useEffect, useState } from 'react';
 import fetchData from '../../../utilities/fetchData';
 
-const SeasonMainNav = () => {
+const SeasonMainNav = ({isEpisode = false }) => {
 
-    const {seasonNumber,id} = useParams();
+    const {seasonNumber,id,episodeNumber} = useParams();
     const [videos,setVideos] = useState({});
     const [mediaData,setMediaData] = useState({});
 
@@ -26,7 +24,9 @@ const SeasonMainNav = () => {
         })
     }
 
-    useEffect(fetchVideos,[id,seasonNumber])
+    useEffect(fetchVideos,[id,seasonNumber]);
+
+    const navLink = `/tv/${id}/season/${seasonNumber}${isEpisode ? '/episode/' + episodeNumber : ''}`
 
   return (
         <nav className='media-header'>
@@ -42,15 +42,15 @@ const SeasonMainNav = () => {
                         </li>
                         <li 
                             className='nav-btn' >
-                                <Link to={`/tv/${id}/season/${seasonNumber}/cast`}>cast & crew</Link>
+                                <Link to={`${navLink}/cast`}>cast & crew</Link>
                         </li>
                         <li className='nav-btn'>
-                            <Link to={`/tv/${id}/season/${seasonNumber}/translations`}>
+                            <Link to={`${navLink}/translations`}>
                                 translations
                             </Link>
                         </li>
                         <li className='nav-btn'>
-                            <Link to={``}>
+                            <Link to={`${navLink}/changes`}>
                                 changes
                             </Link>
                         </li>
@@ -61,7 +61,7 @@ const SeasonMainNav = () => {
                     <span><ArrowDropDownIcon /></span>
                     <ul className='links-list'>
                         <li className='nav-btn'>
-                            <Link to={`/tv/${id}/season/${seasonNumber}/posters`} >
+                            <Link to={`${navLink}/posters`} >
                                 posters
                                 <span>{mediaData?.length}</span>
                         </Link>
@@ -75,7 +75,7 @@ const SeasonMainNav = () => {
                                         <li 
                                             className='nav-btn'
                                             key={video}>
-                                                <Link to={`/tv/${id}/season/${seasonNumber}/videos?type=${video}`}>
+                                                <Link to={`${navLink}/videos?type=${video}`}>
                                                     {video} 
                                                     <span>{videos[video]?.length}</span>
                                                 </Link>
