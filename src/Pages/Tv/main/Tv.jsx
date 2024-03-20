@@ -27,6 +27,7 @@ const Tv = () => {
     const fetchDetails = () =>{
         setIsPending(true);
         setError(null);
+        window.scrollTo({top: 0,left: 0 ,behavior: "smooth"});
         fetchData(`tv/${id}?language=${lang}`)
         .then(data => {
             setDetails(data);
@@ -38,19 +39,16 @@ const Tv = () => {
             setError(error);
             setIsPending(false);
         })
-        window.scrollTo({top: 0,left: 0 ,behavior: "smooth"});
     }
 
     useEffect(fetchDetails,[id,lang])
 
   return (
    
+    isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> : details ?
         <div className="tv-container">
-            {
-                isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> : details ?
-                <MovieTvCover details={details} mediaType='tv' />
-                : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchDetails}/>
-            }
+            <MovieTvCover details={details} mediaType='tv' />
+
             <section className='tv-content'>
                  <section className='cast'>
                     <TopBilledCast mediaType='tv' id={id} title='Series Cast'/>
@@ -81,6 +79,8 @@ const Tv = () => {
             </section>
 
         </div>
+    : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchDetails}/>
+    
   )
 }
 

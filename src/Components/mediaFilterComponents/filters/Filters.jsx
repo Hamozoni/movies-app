@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import SortingGauge from "./SortingGauge/SortingGauge"
+import SortingGauge from "./sortingGauge/SortingGauge"
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import fetchData from "../../../utilities/fetchData";
@@ -7,7 +7,7 @@ import fetchData from "../../../utilities/fetchData";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Filters.scss";
-import Languages from "./Languages/Languages";
+import Languages from "./languages/Languages";
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 import Keywords from "./Keywords/Keywords";
 

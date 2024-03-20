@@ -5,27 +5,27 @@ import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";
-import MovieTvFilter from "../../Components/MovieTvFilter/MovieTvFilter";
+import MediaFilter from "../../Components/mediaFilterComponents/MedidaFilter";
 
 export const mediaFilter = createContext();
 
+const intialFilter = {
+    // sort_by: '',
+    // 'release_date.gte': '',
+    // 'release_date.lte': '',
+    with_genres: [],
+    // with_original_language: 'none seleted',
+    with_watch_providers: [],
+    'vote_average.gte': 0,
+    'vote_average.lte' : 10,
+    'with_runtime.gte': 0,
+    'with_runtime.lte': 400,
+    watch_region: 'SA',
+    with_keywords: []
+}
+
 
 const FilteredMediaList = ({mediaType}) => {
-
-    const intialFilter = {
-        // sort_by: '',
-        // 'release_date.gte': '',
-        // 'release_date.lte': '',
-        with_genres: [],
-        // with_original_language: 'none seleted',
-        with_watch_providers: [],
-        'vote_average.gte': 0,
-        'vote_average.lte' : 10,
-        'with_runtime.gte': 0,
-        'with_runtime.lte': 400,
-        watch_region: 'SA',
-        with_keywords: []
-    }
 
     const {lang} = useContext(globalContext);
 
@@ -95,7 +95,7 @@ const FilteredMediaList = ({mediaType}) => {
         <main className="movies">
             <div className="movies-container">
                 <div className="filters-box">
-                    <MovieTvFilter mediaType={mediaType === 'movie' ? 'movies' : 'tv shows'} />
+                    <MediaFilter mediaType={mediaType === 'movie' ? 'movies' : 'tv shows'} />
                     <button className="filter-btn" onClick={discoverMovies}>
                         serach
                     </button>

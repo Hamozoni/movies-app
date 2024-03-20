@@ -27,6 +27,7 @@ const Main = ()=> {
     const fetch = ()=> {
         setIsPending(true);
         setError(null);
+        window.scrollTo({top: 0,left: 0 ,behavior: "smooth"});
         fetchData(`movie/${id}?language=${lang}`)
         .then((data)=>{
             setMovieDetails(data);
@@ -43,13 +44,12 @@ const Main = ()=> {
     useEffect(fetch,[id]);
 
     return (
+            isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> : 
+            movieDetails ? 
             <div className="movie-container">
-                {
-                    isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> : 
-                    movieDetails ? 
-                      <MovieTvCover details={movieDetails} mediaType='movie'/>
-                    : error && <Error error={error} height='calc(100vh - 100px)'  onClick={fetch} />
-                }
+                
+               <MovieTvCover details={movieDetails} mediaType='movie'/>
+                
                 <section className="movie-content">
                     <div className="left-content">
                         <TopBilledCast mediaType='movie' id={id} title='Series Top Billed Cast'/>
@@ -68,6 +68,7 @@ const Main = ()=> {
 
                 </section>
             </div>
+         : error && <Error error={error} height='calc(100vh - 100px)'  onClick={fetch} />
     )
 };
 

@@ -1,11 +1,11 @@
 
-import Sort from "./Filters/Sort/Sort";
-import WhereToWatch from "./WhereToWatch/WhereToWatch";
-import Filters from "./Filters/Filters";
+import Sort from "./sort/Sort";
+import WhereToWatch from "./whereToWatch/WhereToWatch";
+import Filters from "./filters/Filters";
 import { useParams } from "react-router-dom";
 
 
-const MovieTvFilter = ({mediaType}) => {
+const MediaFilter = ({mediaType}) => {
 
     const {filter} = useParams();
 
@@ -22,4 +22,4 @@ const MovieTvFilter = ({mediaType}) => {
   )
 }
 
-export default MovieTvFilter
+export default MediaFilter

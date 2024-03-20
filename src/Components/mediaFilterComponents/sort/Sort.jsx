@@ -2,7 +2,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import "./Sort.scss";
 import { useContext} from 'react';
-import { mediaFilter } from '../../../../Pages/filteredMediaList/FilteredMediaList';
+import { mediaFilter } from '../../../Pages/filteredMediaList/FilteredMediaList';
 
 const Sort = () => {
 
