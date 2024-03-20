@@ -12,9 +12,6 @@ const MediaFilter = ({mediaType}) => {
 
   return (
     <section className="filters">
-        <h4 className="filt-title">
-            {filter?.replace('_',' ')} {mediaType}
-        </h4>
         <Sort />
         <WhereToWatch />
         <Filters />

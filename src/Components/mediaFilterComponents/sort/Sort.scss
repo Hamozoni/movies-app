@@ -1,26 +1,23 @@
 
-@import "../../../../GlobalStyle/variables.scss";
-@import "../../../../GlobalStyle/mixin.scss";
+@import "../../../GlobalStyle/variables.scss";
+@import "../../../GlobalStyle/mixin.scss";
 
 .sort {
-    width: 240px;
-    border-radius: $border-r;
-    border: 1px solid #e2e1e1;
-    box-shadow: 0 0 10px 1px #8b8b8b49;
+    width: 280px;
     margin-top: $margin;
     .filter-t {
         @include flex-box(center,space-between);
-        font-size: $f-size;
+        font-size: $f-size-5;
         color: $text-dark-color;
         border-bottom: 1px solid #dddadaab;
-        padding: $padding-10;
+        padding: $padding-10 $padding;
       }
     .sort-content {
-        padding: $padding-10;
+        padding: $padding;
         border-bottom:1px solid  #dddadaab ;
         .c-ti {
             color: lighten($color: $text-dark-color, $amount: 10);
-            font-size: $f-size-s;
+            font-size: $f-size-5;
             font-weight: 200;
             padding-bottom: $padding-10;
         }

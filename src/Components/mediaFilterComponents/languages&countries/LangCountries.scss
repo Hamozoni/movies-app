@@ -1,5 +1,5 @@
-@import "../../../../GlobalStyle/variables";
-@import "../../../../GlobalStyle/mixin";
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
 
 .lang-container {
      position: relative;
@@ -29,16 +29,20 @@
             }
         }
         .lang {
-            max-height: 150px;
+            max-height: 250px;
             overflow-y: auto;
             .lang-ul {
                 .lang-li {
                     padding: $padding-5 $padding-10;
                     cursor: pointer;
-                    font-size: $f-size-s;
+                    font-size: $f-size-5;
                     color: lighten($color: $text-dark-color, $amount: 5);
                     &:hover, &.active {
                         background-color: #e0dede;
+                    }
+                    @include flex-box(center,flex-start,4px);
+                    img {
+                        max-width: 25px;
                     }
                 }
 

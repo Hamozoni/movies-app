@@ -11,6 +11,16 @@
         .movies-content {
             @include flex-box(flex-start,center);
             flex-wrap: wrap;
+            .not-found {
+                width: 400px;
+                height: calc(100vh - 100px);
+                @include flex-box(center,center);
+                .text {
+                    font-size: $f-size-2;
+                    color: $text-dark-color-2;
+                }
+
+            }
         }
     }
     .filter-btn {
@@ -23,12 +33,7 @@
         color: lighten($color: $text-dark-color, $amount: 10);
         font-weight: 700;
         font-size: $f-size-s;
-        &:hover {
-            transform: scale(1.01);
-            box-shadow: 0 -3px 7px 0px #736e6eb5;
-            background-color: rgb(201, 201, 202);
-        }
-        &.active {
+        &.loading {
             position: relative;
             overflow: hidden;
             z-index: 0;
