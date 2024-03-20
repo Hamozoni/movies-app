@@ -44,7 +44,7 @@ const VideosCard = ({yId,type,title})=> {
     return (
         <div className="vid-card card">
             {
-                isPending ? <Loading width='100%' height='300px' /> : videoInfo ? 
+                isPending ? <Loading width='calc(100vw - 400px)' height='188px' /> : videoInfo ? 
                 <div className="vid-cont">
                     <div className="vid-image" onClick={handleTrailer}>
                         {
@@ -72,7 +72,7 @@ const VideosCard = ({yId,type,title})=> {
                         </div>
                     </div>
                 </div>
-                : error && <Error error={error} />
+                : error && <Error error={error}  height='188px' onClick='' />
             }
         </div>
     )
