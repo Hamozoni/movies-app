@@ -68,12 +68,12 @@ const Header = ()=> {
                                     </li>
                                 <li 
                                     className="nav-btn"
-                                    onClick={()=> handleNavigate('now_playing','tv')}>
+                                    onClick={()=> handleNavigate('airing_today','tv')}>
                                         {languages[lang].airingToday}
                                 </li>
                                 <li 
                                     className="nav-btn"
-                                    onClick={()=> handleNavigate('upcoming','tv')}>
+                                    onClick={()=> handleNavigate('on_the_air','tv')}>
                                         {languages[lang].onTv}
                                 </li>
                                 <li 

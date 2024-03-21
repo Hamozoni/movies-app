@@ -43,8 +43,8 @@
                     margin-top: $margin;
                     cursor: pointer;
                     &:hover {
-                        filter: opacity(40%);
-                        transform: scale(1.05)
+                        filter:hue-rotate(20deg) brightness(120%);
+                        transform: scale(1.03)
                     }
                     .trailer-image {
                         position: relative;
@@ -84,10 +84,13 @@
 
                     .trailer-titles {
                         .name {
-                            font-weight: 700;
+                            font-weight: 500;
                             color: $text-light-color-2; 
-                            font-size: $f-size-s;
-                            padding-bottom: 10px; 
+                            font-size: $f-size-4;
+                        }
+                        .tr-type {
+                            color: $text-light-color;
+                            font-size: $f-size-6;
                         }
                     }
                 }

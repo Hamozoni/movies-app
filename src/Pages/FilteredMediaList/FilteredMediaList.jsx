@@ -119,7 +119,7 @@ const FilteredMediaList = ({mediaType}) => {
             <main className="movies">
                 <section className="filterd-media">
                     <h4 className="filt-title">
-                        {filter?.replace('_',' ')} {mediaType}
+                        {filter?.replaceAll('_',' ')} {mediaType}
                     </h4>
                     <div className="movies-container">
                         <div className="filters-box">
