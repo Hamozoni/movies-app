@@ -14,6 +14,7 @@
         .logo {
             min-width: fit-content;
             @include flex-box(center,flex-start,5px);
+            flex: 1;
             cursor: pointer;
             h1 {
                 text-transform: uppercase;
@@ -32,37 +33,52 @@
                 // @include flex-box(center,center,20px);
                 // flex: 1;
                 // max-width: fit-content;
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                height: 100vh;
-                background-color: #fff;
-                z-index: 999999999999999999999;
-                padding: $padding;
-                &.active {
-                    left: 0;
-                }
-                h4 {
-                    position: relative;
-                    text-transform: capitalize;
-                    color: $text-dark-color-2;
-                
-                    cursor: pointer;
-                    .fiter {
-                        // display: none;
-                        // position: absolute;
-                        // left: 0;
-                        // top: 100%;
-                        // background-color: #fff;
-                        min-width: 150px;
-                        // border-radius: 5px;
-                        // border: 1px solid #ecebeb;
-                        z-index: 9999999;
+                .mobile {
+                    position: fixed;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100vh;
+                    background-color: #0000008f;
+                    z-index: 999999999999999999999;
+                    &.active {
+                        left: 0;
                     }
-                    &:hover {
+                }
+                .part-one-contaner {
+                    background-color: $text-light-color-2;
+                    padding: $padding;
+                    max-width: 300px;
+                    height: 100vh;
+                    overflow-y: auto;
+                    .close-icon {
+                       cursor: pointer;
+                       color: $text-dark-color-2;
+                       font-size: $f-size-1;
+                    }
+                    h4 {
+                        position: relative;
+                        text-transform: capitalize;
+                        color: $text-dark-color-2;  
+                        border-bottom: 1px solid #0202021e ; 
+                        margin-bottom: $margin;               
+                        cursor: pointer;
                         .fiter {
-                            display: block;
+                            // display: none;
+                            // position: absolute;
+                            // left: 0;
+                            // top: 100%;
+                            // background-color: #fff;
+                            min-width: 150px;
+                            // border-radius: 5px;
+                            // border: 1px solid #ecebeb;
+                            z-index: 9999999;
+    
+                        }
+                        &:hover {
+                            .fiter {
+                                display: block;
+                            }
                         }
                     }
                 }
