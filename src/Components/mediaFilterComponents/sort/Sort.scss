@@ -4,21 +4,23 @@
 
 .sort {
     width: 280px;
-    margin-top: $margin;
+    margin-bottom: 10px;
+    overflow: unset;
     .filter-t {
         @include flex-box(center,space-between);
         font-size: $f-size-5;
         color: $text-dark-color;
-        border-bottom: 1px solid #dddadaab;
+        border-bottom: 1px solid #eeececab;
         padding: $padding-10 $padding;
+        cursor: pointer;
       }
     .sort-content {
         padding: $padding;
-        border-bottom:1px solid  #dddadaab ;
+        border-bottom:1px solid  #eeececab ;
         .c-ti {
-            color: lighten($color: $text-dark-color, $amount: 10);
+            color: $text-dark-color-2;
             font-size: $f-size-5;
-            font-weight: 200;
+            font-weight: 400;
             padding-bottom: $padding-10;
         }
         .selections {
@@ -27,8 +29,7 @@
             width: 100%;
             max-width: 100%;
             padding: $padding-5 $padding-10;
-            background-color: #d3d3d3;
-            border-radius: $border-r;
+            font-weight: 400;
         }
         #selections * {
             padding: $padding-5;

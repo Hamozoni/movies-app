@@ -123,7 +123,7 @@ const FilteredMediaList = ({mediaType}) => {
                     <div className="movies-container">
                         <div className="filters-box">
                             <MediaFilter mediaType={mediaType === 'movie' ? 'movies' : 'tv shows'} />
-                            <button className="filter-btn searching" onClick={fetchFilteredMedia}>
+                            <button className="filter-btn card link-hover" onClick={fetchFilteredMedia}>
                                 serach
                             </button>
                         </div>
@@ -147,7 +147,7 @@ const FilteredMediaList = ({mediaType}) => {
                                 page + 1 < totalPage && 
                                 <button 
                                     disabled={isLoadingMore}
-                                    className={`${isLoadingMore && 'loading'} filter-btn`} 
+                                    className={`${isLoadingMore && 'loading'} filter-btn card link-hover`} 
                                     onClick={()=> loadMore(true)}
                                     >
                                     { isLoadingMore ? <span>loading... </span>:'laod more'}

@@ -32,7 +32,7 @@ const Sort = () => {
                 </h5>
                 <select 
                     onChange={(e)=> handleSelection(e)}
-                    className='selections'
+                    className='selections card'
                     id='selecteions'
                     >
                     <option value="popularty.desc">popularty descending</option>

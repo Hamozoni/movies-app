@@ -9,7 +9,6 @@
         left: 0;
         width: 100%;
         padding: $padding-10 0;
-        box-shadow: 0 0 10px 1px #8b8b8b49;
         z-index: 9999999;
         background-color: #ffffff;
         .lang-header {
@@ -20,10 +19,8 @@
                  border: 1px solid #9b9898cc;
                  padding: $padding-5;
                  width: 100%;
-                 span {
-                    svg {
-                        font-size: $f-size-s;
-                    }
+                 svg {
+                        font-size: $f-size-3;
                  }
 
             }

@@ -11,7 +11,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import "../sort/Sort.scss";
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
-import Countries from "./countries/Countries";
 import LanguagesCountries from "../languages&countries/LanguagesCountries";
 
 

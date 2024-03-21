@@ -25,12 +25,12 @@
             @include flex-box(center,flex-start,5px);
             flex-wrap: wrap;
             li {
-                border: 1px solid #dddadaab;
-                padding: $padding-5 $padding-10;
-                border-radius: $border-r-l;
+                padding: 0 $padding-10;
                 cursor: pointer;
-                font-size: $f-size-xs + 3;
-                color: $text-dark-color;
+                font-size: $f-size-5;
+                color: $text-dark-color-2;
+                border-radius: $border-r;
+                border: 1px solid #e0dbdb;
                 &:hover {
                     background-color: lighten($color: $text-dark-color, $amount: 10);
                     border-color: $text-dark-color; 

@@ -126,7 +126,7 @@ img, picture {
   font-size: $f-size-xs;
   font-weight: 500;
   color: $text-dark-color;
-  padding: $padding-10;
+  padding: $padding-10 $padding;
   @include flex-box(center,space-between);
     a {
         @include flex-box(center,space-between);
@@ -148,7 +148,6 @@ img, picture {
           left: 50%;
           width: 0;
           height: 0;
-          border-bottom: 2px solid lighten($color: $text-light-color-2, $amount: 50);
           border-radius: $circle;
           background-color: $logo-color;
           box-shadow: 0 -10px 16px 2px rgba(36, 35, 35, 0.6);
