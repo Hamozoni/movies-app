@@ -40,7 +40,9 @@ const FilteredMediaList = ({mediaType}) => {
     const [filteredError,setFilteredError] = useState(null);
 
     const {filter}= useParams();
+
     const fetchMedia = ()=>{
+
         document.title = `${filter} ${mediaType}`;
         setIsPending(true);
         setError(null);
@@ -65,21 +67,20 @@ const FilteredMediaList = ({mediaType}) => {
 
     const fetchFilteredMedia = async ()=> {
 
-
         setIsFilteredLoading(true);
         setFilteredError(null);
         setPage(1);
          const filterKeysList = [];
         for (let [key, value] of Object.entries(mediaFiltering)) {
             if(value.length || typeof value === 'number') {
-              filterKeysList.push(`&${key}=${typeof value === "object" ? value?.toString().replaceAll(',','|') : value}`)   
+                filterKeysList.push(`&${key}=${typeof value === "object" ? value?.toString().replaceAll(',','|') : value}`)   
             }
         }
         console.log(filterKeysList);
        await fetchData(`discover/${mediaType}?include_adult=false&page=${page}${filterKeysList.toString().replaceAll(',','')}`)
         .then((data)=> {
             setMedia(data);
-            console.log(`discover/${mediaType}?include_adult=false&page=${page}${filterKeysList.toString().replaceAll(',','')}`);
+            console.log();
             setTotalPage(data?.total_pages);
             setIsFilteredLoading(false);
             setFilteredError(null);
