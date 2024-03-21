@@ -19,7 +19,7 @@ const LatesTrailerVideoCard = ({detail,onMouse}) => {
     const fetchVideos = ()=> {
         setIsPending(true);
         setError(null);
-        fetchData(`movie/${detail.id}/videos?language=en-US`)
+        fetchData(`movie/${detail.id}/videos?language=en-US&page=2`)
         .then((data)=> {
             setVideo(data?.results[0]);
             setIsPending(false);

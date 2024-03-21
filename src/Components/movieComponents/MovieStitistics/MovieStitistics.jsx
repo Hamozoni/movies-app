@@ -6,10 +6,10 @@ import "./MovieStitistics.scss"
 import { useNavigate } from 'react-router-dom';
 import fetchData from '../../../utilities/fetchData';
 
-import facebook_id from '../../../Images/facebook.png';
-import imdb_id from '../../../Images/imdb.png';
-import instagram_id from '../../../Images/insta.png';
-import twitter_id from '../../../Images/twiter.png';
+import facebook_id from '../../../assets/facebook.png';
+import imdb_id from '../../../assets/imdb.png';
+import instagram_id from '../../../assets/insta.png';
+import twitter_id from '../../../assets/twiter.png';
 import Error from '../../error/Error';
 import Loading from '../../loading/Loading';
 

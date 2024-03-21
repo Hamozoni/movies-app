@@ -7,6 +7,7 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import "./Header.scss";
 import { useContext, useState } from "react";
@@ -20,6 +21,7 @@ const Header = ()=> {
     const navigate = useNavigate();
 
     const [isSearch,setisSearch] = useState(false);
+    const [isMenu,setIsMenu] = useState(false);
 
     const handleNavigate = (filter,mediaType)=>{
         navigate(`list/${mediaType}/${filter}`);
@@ -29,30 +31,32 @@ const Header = ()=> {
         <header className="main-header">
             <div className="header-container">
                 <section onClick={()=> navigate(`/`)} className="logo">
+                    <MenuIcon className="menu-icon" onClick={()=> setIsMenu(true)} />
                     <h1>myh movies</h1>
                 </section>
                 <nav className="nav-links">
-                    <div className="part-one">
+                    <div className={`${isMenu && 'active'} part-one`}>
+                        <span  onClick={()=> setIsMenu(false)} ><CloseIcon /></span>
                         <h4 >
                             {languages[lang].movies} 
                             <ul className="fiter">
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('popular','movie')}>
                                         {languages[lang].popular}
                                 </li>
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('now_playing','movie')}>
                                         {languages[lang].nowPlaying}
                                     </li>
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('upcoming','movie')}>
                                         {languages[lang].upComing}
                                     </li>
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('top_rated','movie')}>
                                          {languages[lang].topRated}
                                 </li>
@@ -62,22 +66,22 @@ const Header = ()=> {
                             {languages[lang].tvShows}
                             <ul className="fiter">
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('popular','tv')}>
                                         {languages[lang].popular}
                                     </li>
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('airing_today','tv')}>
                                         {languages[lang].airingToday}
                                 </li>
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('on_the_air','tv')}>
                                         {languages[lang].onTv}
                                 </li>
                                 <li 
-                                   className="nav-btn"
+                                   className="nav-btn link-hover"
                                    onClick={()=> handleNavigate('top_rated','tv')}>
                                     {languages[lang].topRated}
                                 </li>
@@ -87,7 +91,7 @@ const Header = ()=> {
                             {languages[lang].people}
                             <ul className="fiter">
                                 <li 
-                                    className="nav-btn"
+                                    className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('popular','person')}>
                                         {languages[lang].popular} people
                                 </li>

@@ -1,7 +1,7 @@
 import StarIcon from '@mui/icons-material/Star';
 import "./EpisodeCard.scss";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import imageURL from '../../../Images/smooth-gray-background-with-high-quality_53876-124606.avif'
+import imageURL from '../../../assets/smooth-gray-background-with-high-quality_53876-124606.avif'
 import EpisodeInfo from './EpisodeInfo';
 import { Link, useLocation} from 'react-router-dom';
 

@@ -4,7 +4,7 @@ import "./TvSeasonCard.scss";
 
 import StarIcon from '@mui/icons-material/Star';
 
-import imageUrl from "../../../Images/smooth-gray-background-with-high-quality_53876-124606.avif"
+import imageUrl from "../../../assets/smooth-gray-background-with-high-quality_53876-124606.avif"
 
 const TvSeasonCard = ({tvShow,id}) => {
 

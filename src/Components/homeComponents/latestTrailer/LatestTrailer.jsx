@@ -63,13 +63,13 @@ const LatestTrailer = () => {
                                 >popular
                             </li>
                             <li 
-                                className={activeSection === '' && 'active'}
-                                onClick={()=> setActiveSection('')}
+                                className={activeSection === 'now_playing' && 'active'}
+                                onClick={()=> setActiveSection('now_playing')}
                                 >streaming
                             </li>
                             <li 
-                                className={activeSection === 'on_the_air' && 'active'}
-                                onClick={()=> setActiveSection('on_the_air')}
+                                className={activeSection === 'upcoming' && 'active'}
+                                onClick={()=> setActiveSection('upcoming')}
                                 >on tv
                             </li>
                             <li onClick={()=> setActiveSection('')}>for rent</li>

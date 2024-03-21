@@ -13,35 +13,51 @@
         position: relative;
         .logo {
             min-width: fit-content;
+            @include flex-box(center,flex-start,5px);
             cursor: pointer;
             h1 {
                 text-transform: uppercase;
                 color: $logo-color;
                 cursor: pointer;
             }
+            .menu-icon {
+                color: $text-light-color;
+                font-size: $f-size-1;
+            }
         }
         .nav-links {
             min-width: calc(100% - 210px);
             @include flex-box(center,space-between);
             .part-one {
-                @include flex-box(center,center,20px);
-                flex: 1;
-                max-width: fit-content;
+                // @include flex-box(center,center,20px);
+                // flex: 1;
+                // max-width: fit-content;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: #fff;
+                z-index: 999999999999999999999;
+                padding: $padding;
+                &.active {
+                    left: 0;
+                }
                 h4 {
                     position: relative;
                     text-transform: capitalize;
-                    color: $text-light-color;
+                    color: $text-dark-color-2;
+                
                     cursor: pointer;
                     .fiter {
-                        display: none;
-                        position: absolute;
-                        left: 0;
-                        top: 100%;
-                        background-color: #fff;
-                        padding: $padding-10 0;
+                        // display: none;
+                        // position: absolute;
+                        // left: 0;
+                        // top: 100%;
+                        // background-color: #fff;
                         min-width: 150px;
-                        border-radius: 5px;
-                        border: 1px solid #ecebeb;
+                        // border-radius: 5px;
+                        // border: 1px solid #ecebeb;
                         z-index: 9999999;
                     }
                     &:hover {

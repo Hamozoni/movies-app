@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import fitLongString from "../../../utilities/fitLongString"
 
-import persinImg from "../../../Images/person.jpg";
+import persinImg from "../../../assets/person.jpg";
 
 import "./crewCard.scss";
 

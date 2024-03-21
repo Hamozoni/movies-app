@@ -1,7 +1,7 @@
 
 import "./PersonCard.scss";
 
-import persinImg from '../../../Images/person.jpg'
+import persinImg from '../../../assets/person.jpg'
 import { useNavigate } from "react-router-dom";
 import fitLongString from "../../../utilities/fitLongString";
 
