@@ -41,7 +41,7 @@ const Header = ()=> {
     const SittingIcons = ({isMobile = false})=> {
         return (
             <>
-                <div className="theme">
+                <div className="theme icons">
                     <span>
                         {
                             theme === 'light '?
@@ -54,7 +54,7 @@ const Header = ()=> {
                         isMobile && <h5>theme mode</h5>
                     }
                 </div>
-                <div className="lang">
+                <div className="lang icons">
                     <span>
                          <TranslateOutlinedIcon />
                     </span>
@@ -62,7 +62,7 @@ const Header = ()=> {
                         isMobile && <h5>Languages</h5>
                     }
                 </div>
-                <div className="notfication">
+                <div className="notfication icons">
                     <span>
                         <NotificationsOutlinedIcon />
                     </span>
@@ -89,7 +89,7 @@ const Header = ()=> {
                 </section>
                 <nav className="nav-links">
                     <div 
-                        className={`${isMenu && innerWidth < 667 ? 'active mobile': innerWidth < 667 ? 'mobile' : ''} part-one`}  
+                        className={`${isMenu && innerWidth < 667 ? 'active mobile': innerWidth < 667 ? 'mobile' : 'web'} part-one`}  
                         onClick={()=> setIsMenu(false)} >
                         <div className="part-one-contaner">
                             {
@@ -101,9 +101,10 @@ const Header = ()=> {
                                 </span>
                             }
                             {
+                                 innerWidth < 667 && 
                                 <SittingIcons isMobile={innerWidth < 667} />
                             }
-                            <div >
+                            <div className="filter-box">
                                 <h4> {languages[lang].movies} </h4>
                                 <ul className="fiter">
                                     <li 
@@ -128,7 +129,7 @@ const Header = ()=> {
                                     </li>
                                 </ul>
                             </div>
-                            <div>
+                            <div className="filter-box">
                                 <h4>{languages[lang].tvShows}</h4>
                                 <ul className="fiter">
                                     <li 
@@ -153,7 +154,7 @@ const Header = ()=> {
                                     </li>
                                 </ul>
                             </div>
-                            <div>
+                            <div className="filter-box">
                                 <h4> {languages[lang].people}</h4>
                                 <ul className="fiter">
                                     <li 
