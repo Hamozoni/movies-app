@@ -85,42 +85,33 @@ const MovieMedia = ({id,mediaType})=> {
                     <h4 className="title">
                         media
                     </h4>
-                    <div className="links">
-                        <button 
+                    <ul className="links">
+                        <li 
                            className={`${selection === 'most popular' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('most popular')}
                            >
                                 most poluar
-                        </button>
-                        <button 
+                        </li>
+                        <li 
                             className={`${selection === 'videos' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('videos')}
                             >
                                 videos {videos?.length}
-                        </button>
-                        <button 
+                        </li>
+                        <li 
                             className={`${selection === 'backdrops' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('backdrops')}
                             >
                                 backdrops {mediaImages?.backdrops?.length}
-                        </button>
-                        <button 
+                        </li>
+                        <li 
                            className={`${selection === 'posters' && 'active'} nav-btn`}
                             onClick={()=> setSelecion('posters')}
                            >
                                 posters {mediaImages?.posters?.length}
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                 </nav>
-                {
-                    selection !== 'most popular' &&
-                    <Link  
-                        to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`} 
-                        className="view-all" >
-                        veiw all {selection}
-                    </Link> 
-
-                }
             </header>
             <div className="media-content">
                 <div className="media-content-container">
@@ -161,6 +152,15 @@ const MovieMedia = ({id,mediaType})=> {
                 </div>
 
             </div>
+            {
+                selection !== 'most popular' &&
+                <Link  
+                    to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`} 
+                    className="view-all" >
+                    veiw all {selection}
+                </Link> 
+
+            }
         </section>
     )
 }

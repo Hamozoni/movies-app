@@ -2,17 +2,24 @@
 @import '../../../GlobalStyle/mixin';
 
 .movie-media {
-    padding: $padding;
+    margin-top: $margin;
     .movie-media-header {
-        @include flex-box(center,space-between);
+        // @include flex-box(center,space-between);
         .media-nav {
-             @include flex-box(center,flex-start,50px);
+            //  @include flex-box(center,flex-start,50px);
              .title {
-                font-size: $f-size;
+                font-size: $f-size-3;
                 color: $text-dark-color;
+                padding: 0 $padding;
              }
              .links {
+                padding: $padding-10 0;
                 @include flex-box(center,flex-start,0);
+                overflow-y: auto;
+                li {
+                    padding: 0 $padding-10;
+                    font-size: $f-size-5;
+                }
              }
         }
 
