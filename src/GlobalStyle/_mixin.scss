@@ -6,8 +6,8 @@
     gap: $gap
 }
 
-@mixin postion-absolute ($width: 100%,$height: 100%,$top: 0,$left: 0,$z: 999){
-    position: absolute;
+@mixin postion ($pos,$width: 100%,$height: 100%,$top: 0,$left: 0,$z: 999){
+    position: $pos;
     width: $width;
     height: $height;
     top: $top;

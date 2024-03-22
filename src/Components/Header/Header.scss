@@ -48,7 +48,7 @@
                         max-width: 300px;
                         h4 {
                             color: $text-dark-color-2;  
-                            border-top: 1px solid #0202021e ; 
+                            border-top: 1px solid #0202020a ; 
                             margin-top: $margin; 
                             padding-top: $padding-5
                         }
@@ -70,6 +70,7 @@
                            cursor: pointer;
                            color: $text-dark-color-2;
                            font-size: $f-size-1;
+                           margin-bottom: $margin;
                         }
                         .filter-box {
                             position: relative;

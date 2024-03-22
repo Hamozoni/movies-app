@@ -5,8 +5,8 @@
     .trending-container {
         padding: $padding;
         .trend-header {
-            @include flex-box;
-            padding: $padding 0;
+            @include flex-box(center,flex-start,10px);
+            flex-wrap: wrap;
             .trend-title {
                 text-transform: capitalize;
                 color: $text-dark-color;
@@ -14,14 +14,13 @@
             }
             .trend-nav {
                ul {
-                @include flex-box;
-                gap: 0;
+                @include flex-box(center,flex-start,0);
                 border-radius: $border-r-l;
                 border: 1px solid $logo-color;
                 li {
                     cursor: pointer;
                     font-weight: 500;
-                    padding: $padding-5 $padding;
+                    padding: 0 $padding-10;
                     color: $text-dark-color;
                     border-radius: $border-r-l;
                     &.active{

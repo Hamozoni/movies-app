@@ -12,7 +12,7 @@
                 color: $text-dark-color;
              }
              .links {
-                @include flex-box(center,flex-start,10px);
+                @include flex-box(center,flex-start,0);
              }
         }
 

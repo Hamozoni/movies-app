@@ -17,27 +17,16 @@ import { SearchForm } from "../homeComponents/homeSearchBar/SearchBar";
 
 const Header = ()=> {
 
-    const {theme,lang} = useContext(globalContext);
+    const {theme,lang,innerWidth} = useContext(globalContext);
     const navigate = useNavigate();
 
     const [isSearch,setisSearch] = useState(false);
     const [isMenu,setIsMenu] = useState(false);
-    const [innerWidth,setInnerWidth] = useState(0);
 
     const handleNavigate = (filter,mediaType)=>{
         navigate(`list/${mediaType}/${filter}`);
     };
-
-    useEffect(()=>{
-          setInnerWidth(window.innerWidth)
-       const handleResize = (e)=> {
-          setInnerWidth(e.target.innerWidth);
-       }
-        window.addEventListener('resize',handleResize);
-
-        return ()=> window.removeEventListener('resize',handleResize)
-    },[])
-
+    
     const SittingIcons = ({isMobile = false})=> {
         return (
             <>

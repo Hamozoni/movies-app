@@ -1,11 +1,11 @@
 
 import { Link } from 'react-router-dom';
 import './mediaCard.scss';
-const MediaCard = ({movie})=> {
+const MediaInlineCard = ({movie, type})=> {
     return (
       <div className="key-card card">
           <Link 
-              to={movie?.title ? `/movie/${movie?.id}` : `/tv/${movie?.id}`} 
+              to={`/${type}/${movie?.id}`} 
               className="key-image">
               <img 
                   className="image-hover"
@@ -18,7 +18,7 @@ const MediaCard = ({movie})=> {
             <div className="key-title">
                 <Link 
                     className="name" 
-                    to={movie?.title ? `/movie/${movie?.id}` : `/tv/${movie?.id}`} 
+                    to={`/${type}/${movie?.id}`} 
                     >
                     {movie?.title || movie?.name}
                 </Link>
@@ -37,4 +37,4 @@ const MediaCard = ({movie})=> {
     )
   }
 
-  export default MediaCard;
+  export default MediaInlineCard;

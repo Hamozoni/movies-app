@@ -7,7 +7,6 @@
     width: 150px;
     min-width: 150px;
     max-width: 150px;
-    box-shadow: 0px 0px 9px -4px #8b8b8b;
     height: 100%;
     cursor: pointer;
     .person-image {
@@ -19,12 +18,17 @@
         }
    }
    .person-content {
-    padding: $padding-10;
+    padding: $padding-10 0;
     .name {
         color: $text-dark-color;
+        font-size: $f-size-6;
         &:hover {
             color: lighten($color: $text-dark-color, $amount: 20);
         }
+    }
+    .char {
+        font-size: $f-size-6;
+        color: $text-dark-color-2;
     }
    }
 }

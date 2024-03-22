@@ -7,9 +7,9 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../utilities/fetchData";
 import PersonCard from "../../Components/personComponents/PersonCard/PersonCard";
 import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
-import MediaCard from "../../Components/sharedComponents/mediaCard/MediaCard";
 import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
+import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 
 
 const Search = ()=> {
@@ -145,7 +145,7 @@ const Search = ()=> {
 
                                 <PersonCard key={media?.id} person={media} />
                                 :
-                                <MediaCard key={media?.id} movie={media} />
+                                <MediaInlineCard key={media?.id} movie={media} type={type}/>
                             ))
                         }
                         <PageNumber page={page} setPage={setPage} totalPages={searchData?.total_pages}/>

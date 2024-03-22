@@ -9,12 +9,19 @@
         color: $text-dark-color
     }
     .movies-container {
-        @include flex-box(flex-start);
+        &.web {
+            @include flex-box(flex-start,center,20px);
+            .sort {
+                 width: 280px;
+            }
+        }
         .filters-box {
             min-width: fit-content;
         }
         .movies-content {
-            @include flex-box(flex-start,center);
+            // display: grid ;
+            // grid-template-columns: repeat(auto-fill, minmax(225px,1fr));
+            @include flex-box(flex-start,flex-start,20px);
             flex-wrap: wrap;
             .not-found {
                 width: 400px;
@@ -31,11 +38,12 @@
     .filter-btn {
         width: 100%;
         text-align: center;
-        margin-top: $margin;
+        margin: 10px 0;
         padding: $padding-5;
         color: lighten($color: $text-dark-color, $amount: 10);
         font-weight: 700;
-        font-size: $f-size-s;
+        font-size: $f-size-3;
+        border: 1px solid $logo-color;
         &.loading {
             position: relative;
             overflow: hidden;

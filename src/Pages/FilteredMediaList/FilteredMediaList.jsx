@@ -5,6 +5,7 @@ import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
 import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";
+import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 import MediaFilter from "../../Components/mediaFilterComponents/MedidaFilter";
 import Error from "../../Components/error/Error";
 import Loading from "../../Components/loading/Loading";
@@ -25,7 +26,7 @@ const intialFilter = {
 
 const FilteredMediaList = ({mediaType}) => {
 
-    const {lang} = useContext(globalContext);
+    const {lang,innerWidth} = useContext(globalContext);
 
     const [meida,setMedia] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -121,7 +122,7 @@ const FilteredMediaList = ({mediaType}) => {
                     <h4 className="filt-title">
                         {filter?.replaceAll('_',' ')} {mediaType}
                     </h4>
-                    <div className="movies-container">
+                    <div className={`${innerWidth > 676 && 'web'} movies-container`}>
                         <div className="filters-box">
                             <MediaFilter mediaType={mediaType === 'movie' ? 'movies' : 'tv shows'} />
                             <button className="filter-btn card link-hover" onClick={fetchFilteredMedia}>
@@ -138,6 +139,9 @@ const FilteredMediaList = ({mediaType}) => {
                                     </div>  :
                                     meida?.results?.length  > 0 ?
                                     meida?.results?.map((movie)=> (
+                                        innerWidth < 676 ? 
+                                        <MediaInlineCard  key={movie?.id} movie={movie} type={mediaType} />
+                                        :
                                         <MovieCard key={movie?.id} movie={movie} type={mediaType}/>
                                     ))
                                     : filteredError && <Error error={error}  height='calc(100vh - 100px)' onClick={fetchFilteredMedia} />

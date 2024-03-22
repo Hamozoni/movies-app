@@ -7,7 +7,7 @@ import "./Keywords.scss";
 import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
 import Error from "../../Components/error/Error";
 import Loading from "../../Components/loading/Loading";
-import MediaCard from "../../Components/sharedComponents/mediaCard/MediaCard";
+import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 
 const Keywords = () => {
 
@@ -45,7 +45,7 @@ const Keywords = () => {
              {
                isPending ? <Loading width='100%' height='100vh' /> : Keywords ?
               Keywords?.results?.map((movie)=> (
-                <MediaCard key={movie?.id} movie={movie} />
+                <MediaInlineCard key={movie?.id} movie={movie} type={movie.name ? 'tv' : 'movie'} />
               )) 
               : error && <Error error={error} height='100vh' onClick={fetchKeywords} />
              }

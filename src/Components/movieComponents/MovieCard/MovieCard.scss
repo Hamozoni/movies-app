@@ -23,12 +23,12 @@
 
         }
         .consensus {
-            @include postion-absolute(34px,34px,calc(100% - 20px),10px);
+            @include postion(absolute,34px,34px,calc(100% - 20px),10px);
             background-color: $text-dark-color;
             font-size: $f-size-xs;
         }
         .more-btn {
-            @include postion-absolute(28px,28px,10px,112px);
+            @include postion(absolute,28px,28px,10px,112px);
             cursor: pointer;
             border: 1px solid $logo-color;
             svg {
@@ -42,15 +42,16 @@
     .content {
         margin-top: $margin;
         .title {
-            font-size: $f-size-s;
+            font-size: $f-size-6;
             color: $text-dark-color;
+            font-weight: 600;
             &:hover {
                 color: lighten($color: $text-dark-color, $amount: 20);
             }
         }
         .time {
             font-size: $text-dark-color;
-            font-size: $f-size-xs;
+            font-size: $f-size-6;
         }
     }
 }

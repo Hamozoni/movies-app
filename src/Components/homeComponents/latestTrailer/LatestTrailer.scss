@@ -4,10 +4,10 @@
 .latest-trailer {
     .trailer-box-cotainer {
         padding:  $padding;
-        padding-bottom: 0;
         background-color: rgba(11, 76, 119, 0.644);
         .trailer-header {
             @include flex-box(center,flex-start,20px);
+            flex-wrap: wrap;
             h3 {
                 font-weight: 700;
                 color: $text-light-color-2;
@@ -15,15 +15,21 @@
 
             }
             .trailer-nav {
+                border-radius: $border-r-l;
+                border: 1px solid $logo-color;
+                border-bottom-color: transparent;
+                overflow-y: auto;
                  .trailer-ul {
-                     @include flex-box(center,flex-start,10px);
-                     border-radius: $border-r-l;
-                     border: 1px solid $logo-color;
+                    border-bottom: 1px solid $logo-color;
+                     @include flex-box(center,flex-start,0);
+                     min-width: fit-content;
+                     
                      li {
-                        padding: $padding-5 $padding-10;
+                        padding: 0 $padding-10;
                         border-radius: $border-r-l;
                         color: $text-dark-color;
-                        font-weight: 700;
+                        min-width: fit-content;
+                        font-weight: 500;
                         color: $text-light-color-2;
                         &.active{
                             background-color: $logo-color;
@@ -43,7 +49,7 @@
                     margin-top: $margin;
                     cursor: pointer;
                     &:hover {
-                        filter:hue-rotate(20deg) brightness(120%);
+                        filter: hue-rotate(20deg) brightness(120%);
                         transform: scale(1.03)
                     }
                     .trailer-image {
@@ -55,9 +61,6 @@
                             object-fit: fill;
     
                         }
-                        // &:hover,&:hover svg{
-                        //     transform: scale(1.05);
-                        // }
                         .more-info {
                             position: absolute;
                             right: 20px;
