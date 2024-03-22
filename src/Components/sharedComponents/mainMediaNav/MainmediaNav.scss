@@ -13,13 +13,12 @@
             font-weight: normal;
             padding:$padding-10;
             font-size: $f-size-s;
+            .head {
+                font-size: $f-size-5;
+            }
             .links-list , li.videos .videos-ul {
+                @include postion(absolute,150px,fit-content,45px);
                 display: none;
-                position: absolute;
-                top: 38px;
-                left: 0;
-                padding:10px 0;
-                width: 150px;
                 background-color: aliceblue;
                 border-radius: 5px;
                 box-shadow: 0 0 10px 0px #8d8b8bb0;
@@ -37,6 +36,13 @@
                             }
                         }
                     }
+                }
+            }
+            .links-list {
+                &.last {
+                    left: unset;
+                    right: 0;
+
                 }
             }
             &:hover {

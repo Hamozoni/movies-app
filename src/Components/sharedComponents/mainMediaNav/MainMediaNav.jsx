@@ -2,16 +2,20 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import "./MainmediaNav.scss";
 import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import fetchData from '../../../utilities/fetchData';
 
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const MainMediaNav = ({mediaType}) => {
     const {id} = useParams();
 
-    const [mediaData,setMediaData] = useState({})
-    const [videos,setVideos] = useState({})
+    const [mediaData,setMediaData] = useState({});
+    const [videos,setVideos] = useState({});
+
+    const {innerWidth} = useContext(globalContext);
+
 
     useEffect(()=> {
         fetchData(`${mediaType}/${id}/images`)
@@ -23,13 +27,14 @@ const MainMediaNav = ({mediaType}) => {
             setVideos(Object.groupBy(data?.results,e=> e.type))
         }) 
     },[mediaType,id]);
+    const arrowIcon = innerWidth > 460 &&  <span className='icon'><ArrowDropDownIcon /></span>
 
   return (
     <nav className='media-header'>
         <div className='media-nav'>
              <div className='med-title'>
-                 <span>overview</span>
-                 <span><ArrowDropDownIcon /></span>
+                 <span className='head'>overview</span>
+                 {arrowIcon}
                  <ul className='links-list'>
                     <li className='nav-btn' ><Link to={`/${mediaType}/${id}`}>main</Link></li>
                     <li className='nav-btn' ><Link to={`/${mediaType}/${id}/titles`}>alternative tiltes</Link></li>
@@ -60,8 +65,8 @@ const MainMediaNav = ({mediaType}) => {
                  </ul>
              </div>
              <div className='med-title'>
-                 <span>media</span>
-                 <span><ArrowDropDownIcon /></span>
+                 <span className='head'>media</span>
+                 {arrowIcon}
                  <ul className='links-list'>
                     <li className='nav-btn'>
                         <Link to={`/${mediaType}/${id}/backdrops`} >
@@ -102,17 +107,17 @@ const MainMediaNav = ({mediaType}) => {
                  </ul>
              </div>
              <div className='med-title'>
-                 <span> fandom</span>
-                 <span><ArrowDropDownIcon /></span>
+                 <span className='head'> fandom</span>
+                 {arrowIcon}
                  <ul className='links-list'>
                     <li className='nav-btn'><Link>discussions</Link></li>
                     <li className='nav-btn'><Link to={`/${mediaType}/${id}/reviews`}>reviews</Link></li>
                  </ul>
              </div>
              <div className='med-title'>
-                 <span> share</span>
-                 <span><ArrowDropDownIcon /></span>
-                 <ul className='links-list'>
+                 <span className='head'> share</span>
+                 {arrowIcon}
+                 <ul className={`${innerWidth < 560 && 'last'} links-list`}>
                     <li className='nav-btn'><Link>share link</Link></li>
                     <li className='nav-btn'><Link>facebook</Link></li>
                     <li className='nav-btn'><Link>tweet</Link></li>

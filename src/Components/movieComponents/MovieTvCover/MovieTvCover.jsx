@@ -136,7 +136,7 @@ const MovieTvCover = ({details,mediaType})=> {
                             </aside>
                         </div>
                         <div className="crew-container">
-                            <div className="crews flex-box">
+                            <div className="crews">
                                 {
                                 isPending ? <Loading width='100%'  height='80px' /> 
                                 : crews?.length ? 

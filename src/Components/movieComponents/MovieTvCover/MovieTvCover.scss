@@ -7,7 +7,7 @@
     padding: $padding;
     @include flex-box(center,center);
     .flex-box {
-      @include flex-box;
+      @include flex-box(center,flex-start,10px);
     }
     .cover-container {
         @media (min-width: 720px) {
@@ -27,20 +27,25 @@
         .cover-content {
             .titles {
                 .name {
+                    text-align: center;
                     @include text-overflow(44px);
-                    font-size: $main-f-size;
+                    font-size: $f-size-2;
                     color: $text-light-color;
                 }
                 .details {
                     span {
-                        color: $text-light-color-2;
+                        color: $text-light-color;
+                        font-size: $f-size-5;
                     }
                 }
             }
         }
-
         .links {
             margin: $margin - 5 0;
+            @media (max-width:419px) {
+                margin: 0;
+                padding: $padding-5 0;
+            }
             .user-score-container {
                 display: none;
                 @media (min-width: 867px) {
@@ -55,27 +60,36 @@
                         display: flex;
                     }
                 }
-            }
-            .user-score  {
-                background-color: #0b316b3d;
-                color: $text-light-color;
-                border-radius: $circle;
-                @include flex-box(center,center);
-                width: 65px;
-                height: 65px;
-                border: 5px solid ;
-                border-color: $logo-color $logo-color $logo-color transparent;
-                cursor: pointer;
-                &:hover {
-                    transform: scale(1.07);
-                }
-                h4 {
-                    span {
-                        font-size: $f-size-xs;
+                .user-score  {
+                    background-color: #0b316b3d;
+                    color: $text-light-color;
+                    border-radius: $circle;
+                    @include flex-box(center,center);
+                    width: 65px;
+                    height: 65px;
+                    border: 5px solid ;
+                    border-color: $logo-color $logo-color $logo-color transparent;
+                    cursor: pointer;
+                    &:hover {
+                        transform: scale(1.07);
+                    }
+                    h4 {
+                        span {
+                            font-size: $f-size-xs;
+                        }
                     }
                 }
             }
             .add-to {
+                @media (max-width:419px) {
+                    ul {
+                        background-color: $header-b-ground-c;
+                        @include postion(fixed,100%,fit-content,unset,0,99999999999999);
+                        bottom: 0;
+                        justify-content: space-evenly;
+                    }
+                    
+                }
                 ul {
                     li {
                         background-color: $header-b-ground-c;
@@ -85,18 +99,24 @@
                         cursor: pointer;
                         &:hover {
                             transform: scale(1.08);
-                         }
-                    }
-                }
+                            }
+                        }
+                    }  
             }
             .play-trailer {
-                gap: 5px;
+                gap: 0;
                 &:hover {
-                   transform: scale(1.03);
+                    transform: scale(1.03);
                 }
-                button, svg{
+                button{
                     cursor: pointer;
-                    color: $logo-color;
+                    color: $text-light-color;
+                    font-size: $f-size-5;
+                    font-weight: 600;
+                }
+                svg {
+                    color: $text-light-color;
+                    font-size: $f-size-1; 
                 }
             }
         }
@@ -114,15 +134,16 @@
             aside {
                 color: $text-light-color;
                 font-size: $f-size-6;
-                @include text-overflow(102px);
+                @media (min-width:720px) {
+                    @include text-overflow(102px);
+                    
+                }
             }
         }
-        .crew-container {
-            overflow-y: auto;
-        }
         .crews {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
             .crew {
-                min-width: fit-content;
                a {
                 color: $text-light-color-2;
                 font-size: $f-size-s;

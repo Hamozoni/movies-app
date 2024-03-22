@@ -54,7 +54,7 @@ const Main = ()=> {
                     <div className="left-content">
                         <TopBilledCast mediaType='movie' id={id} title='Series Top Billed Cast'/>
                         <MovieSocial section='reviews' mediaType='movie'/>
-                        <Media id={id} mediaType='movie' />
+                        {/* <Media id={id} mediaType='movie' /> */}
                         <Recommendations id={id} mediaType='movie'/>
                     </div>
                     <div className="right-content">
