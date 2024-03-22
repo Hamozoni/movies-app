@@ -7,15 +7,15 @@
     .movie-container {
         .movie-content {
             @media (min-width:880px) {
-                @include flex-box(flex-start,center,10px);
+                @include flex-box(flex-start,flex-start,20px);
+                max-width: 100vw;
+                .left-content {
+                    width: 75%;
+                }
+                .right-content {
+                    width: 25%;
+                }
                 
             }
-            // max-width: 100vw;
-            // .left-content {
-            //     width: 75%;
-            // }
-            // .right-content {
-            //     width: 25%;
-            // }
         }
     }

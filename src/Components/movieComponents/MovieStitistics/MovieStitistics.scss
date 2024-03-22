@@ -2,7 +2,7 @@
 @import '../../../GlobalStyle/mixin';
 
 .movie-stits {
-    margin-top: $margin;
+    padding: $padding;
     .stits-container {
         .stits-nav {
             @include flex-box(center,flex-start,10px);

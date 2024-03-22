@@ -2,14 +2,14 @@
 @import "../../../GlobalStyle/mixin";
 
 .recommendations {
-    padding: $padding;
     .recom-t {
-        font-size: $main-f-size;
+        font-size: $f-size-2;
         color: $text-dark-color;
+        padding: 0 $padding
     }
     .recom-content {
           @include flex-box(flex-start);
-          padding: $padding 0;
+          padding: 0 $padding;
           overflow-x: auto;
           .recomm-media-card {
             min-width: 250px;

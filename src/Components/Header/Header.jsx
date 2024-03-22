@@ -159,8 +159,8 @@ const Header = ()=> {
                     <div className="part-two">
 
                         {
-                            innerWidth > 480 &&
-                            <SittingIcons isMobile={innerWidth < 481} />
+                            innerWidth > 666  &&
+                            <SittingIcons isMobile={innerWidth < 667} />
                         }
                         <div className="acount">
                             <PersonAddOutlinedIcon />

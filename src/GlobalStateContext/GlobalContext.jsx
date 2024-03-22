@@ -17,7 +17,7 @@ const GlobalContext = ({children})=> {
         window.addEventListener('resize',handleResize);
 
         return ()=> window.removeEventListener('resize',handleResize)
-    },[]);
+    },);
 
     
 

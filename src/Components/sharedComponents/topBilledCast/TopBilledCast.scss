@@ -2,27 +2,31 @@
 @import "../../../GlobalStyle/mixin";
 
 .top-billed {
-    padding: $padding;
+    margin-bottom: $margin;
     .title {
-        font-size: $main-f-size;
-        color: $text-dark-color
+        font-size: $f-size-2;
+        color: $text-dark-color;
+        padding: $padding;
+        padding-bottom: 0;
     }
     .persons {
         @include flex-box(flex-start);
         overflow-x: auto;
-        padding: $padding 0;
+        padding: 0 $padding;
     }
     .cast-link {
         color: $logo-color;
         font-size: $f-size-s;
         font-weight: bold;
+        padding: 0 $padding;
         &:hover {
             color: darken($color: $logo-color, $amount: 10);
         }
     }
     .view-more {
-        min-width: 120px;
+        min-width: 220px;
         min-height: 280px;
+        padding: 0;
         @include flex-box(center,center);
         a {
             @include flex-box(center,center,0);

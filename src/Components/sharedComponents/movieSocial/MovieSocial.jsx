@@ -43,18 +43,19 @@ const MovieSocial = ({section,mediaType})=> {
             <h4 className="social-title">
                 social
             </h4>
-            <nav className="social-nav">
-                <h5 
+            <ul className="social-nav">
+                <li
                     className={activeSection === 'reviews' ? 'active nav-btn' : ' nav-btn'}
                     onClick={()=> setActiveSection('reviews')}
                     >
                         reviews {reviews?.length}
-                </h5>
-                <h5
+                </li>
+                <li
                     className={activeSection === 'discussions' ?  'active nav-btn' : ' nav-btn'}
                     onClick={()=> setActiveSection('discussions')}
-                >discussions </h5>
-            </nav>
+                >discussions 
+                </li>
+            </ul>
         </header>
         {
             isPending ? <Loading width='100%' height='300px'/> :
