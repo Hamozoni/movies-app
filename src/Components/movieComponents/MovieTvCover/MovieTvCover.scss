@@ -2,17 +2,20 @@
 @import '../../../GlobalStyle/mixin';
 
 .cover {
-    height: calc(100vh - 60px);
     background-size: cover;
     background-position: center;
     padding: $padding;
+    @include flex-box(center,center);
     .flex-box {
       @include flex-box;
     }
     .cover-container {
-        @include flex-box(center,center);
-        // flex-wrap: wrap;
+        @media (min-width: 720px) {
+            @include flex-box(flex-start,center);
+        }
         .cover-image {
+            margin: 0 auto;
+            width: fit-content;
             min-width: 300px;
             background-color: #ffffff3d;
             height: 450px;
@@ -24,6 +27,7 @@
         .cover-content {
             .titles {
                 .name {
+                    @include text-overflow(44px);
                     font-size: $main-f-size;
                     color: $text-light-color;
                 }
@@ -38,11 +42,18 @@
         .links {
             margin: $margin - 5 0;
             .user-score-container {
-                @include flex-box(center,space-between,5px);
-                h3 {
+                display: none;
+                @media (min-width: 867px) {
+                    @include flex-box(center,space-between,5px);
+                }
+                .user-t {
                     max-width: 50px;
                     font-size: $f-size-s;
                     color: $text-light-color;
+                    display: none;
+                    @media (min-width: 867px) {
+                        display: flex;
+                    }
                 }
             }
             .user-score  {
@@ -101,13 +112,17 @@
                 margin:  $margin - 5 0;
             }
             aside {
-                color: $text-light-color-2;
-                font-size: $f-size-xs;
+                color: $text-light-color;
+                font-size: $f-size-6;
+                @include text-overflow(102px);
             }
         }
+        .crew-container {
+            overflow-y: auto;
+        }
         .crews {
-            flex-wrap: wrap;
             .crew {
+                min-width: fit-content;
                a {
                 color: $text-light-color-2;
                 font-size: $f-size-s;

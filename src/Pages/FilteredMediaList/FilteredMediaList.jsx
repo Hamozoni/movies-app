@@ -60,7 +60,7 @@ const FilteredMediaList = ({mediaType}) => {
         })  
     }
 
-    useEffect(fetchMedia,[lang,filter,mediaType]);
+    useEffect(fetchMedia,[lang,filter,mediaType,page]);
 
     useEffect(()=>{
          console.log(mediaFiltering)

@@ -39,7 +39,7 @@ const Cast = ({mediaType,isSeason = false,isEpisode = false}) => {
        })
     }
 
-    useEffect(fetchCast,[id]);
+    useEffect(fetchCast,[id,seasonNumber,episodeNumber,isEpisode,isSeason,mediaType]);
 
   return (
     <div className='cast'>

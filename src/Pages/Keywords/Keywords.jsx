@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import fetchData from "../../utilities/fetchData"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./Keywords.scss";
@@ -43,7 +43,7 @@ const Keywords = () => {
         <div className="keywords-container">
           <div className="key-content">
              {
-               isPending ? <Loading width='100%' height='100vh' /> : Keywords ?
+              isPending ? <Loading width='100%' height='100vh' /> : Keywords ?
               Keywords?.results?.map((movie)=> (
                 <MediaInlineCard key={movie?.id} movie={movie} type={movie.name ? 'tv' : 'movie'} />
               )) 

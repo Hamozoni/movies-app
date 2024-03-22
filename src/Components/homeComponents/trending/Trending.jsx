@@ -32,9 +32,7 @@ const Trending = ({type})=> {
 
         });
     }
-    useEffect(()=>{
-        fetch()
-    },[lang,filter]);
+    useEffect(fetch,[lang,filter,type]);
 
     return (
         <section className={`${type} trending`}>
@@ -66,7 +64,7 @@ const Trending = ({type})=> {
                         isPending ? <Loading width='100%' height='350px' />  
                        : movies?.length ?
                         movies?.map((movie)=>(
-                            <MovieCard movie={movie} type={type} />
+                            <MovieCard key={movie.id} movie={movie} type={type} />
                         ))
                         :  error && <Error error={error}  height='350px' onClick={fetch}/> 
                      }

@@ -51,13 +51,17 @@ const MovieTvCover = ({details,mediaType})=> {
         const runTime = (time / 60)?.toString()?.split('.');
         return `${runTime[0]}h ${time % 60}m`
         
+    };
+
+    const backImage = {
+        backgroundImage: `${linearGrad},url(${imageUrl})`
     }
 
 
     return (
         <section 
             className="cover" 
-            style={{backgroundImage: `${linearGrad},url(${imageUrl})`}}
+            style={backImage}
             >
                 <div className="cover-container">
                     <div className="cover-image">
@@ -94,8 +98,7 @@ const MovieTvCover = ({details,mediaType})=> {
                                         <span>%</span>
                                     </h4>
                                 </div>
-                                <h3>user score</h3>
-
+                                <h3 className="user-t">user score</h3>
                             </div>
                             <nav className="add-to flex-box">
                                 <ul className="flex-box">
@@ -132,19 +135,22 @@ const MovieTvCover = ({details,mediaType})=> {
                                 {details?.overview}
                             </aside>
                         </div>
-                        <div className="crews flex-box">
-                            {
-                            isPending ? <Loading width='100%'  height='80px' /> 
-                            : crews?.length ? 
-                                crews?.map((crew,i)=>(
-                                    i < 4 &&
-                                    <div key={crew?.id} className="crew">
-                                        <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
-                                        <aside>{crew?.job}</aside>
-                                    </div>
-                                ))
-                               :  error &&  <Error error={error} height='80px'  onClick={fetch}/> 
-                            }
+                        <div className="crew-container">
+                            <div className="crews flex-box">
+                                {
+                                isPending ? <Loading width='100%'  height='80px' /> 
+                                : crews?.length ? 
+                                    crews?.map((crew,i)=>(
+                                        i < 4 &&
+                                        <div key={crew?.id} className="crew">
+                                            <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
+                                            <aside>{crew?.job}</aside>
+                                        </div>
+                                    ))
+                                :  error &&  <Error error={error} height='80px'  onClick={fetch}/> 
+                                }
+                            </div>
+
                         </div>
                     </div>
                 </div>

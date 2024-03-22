@@ -7,6 +7,7 @@
      .key-image {
         min-width: 100px;
         max-width: 100px;
+        max-height: 150px;
          img {
             width: 100px;
          }
@@ -14,6 +15,10 @@
      .card-details {
         padding: $padding-10 $padding;
          .key-title {
+            h5 {
+
+                @include text-overflow(19px);
+            }
             .name {
                 color: $text-dark-color;
                 font-weight: 600;
@@ -28,8 +33,8 @@
              }
          }
          .key-overview {
-            @include text-overflow(81.88px);
              p {
+                 @include text-overflow(81.88px);
                 font-size: $f-size-6;
                 font-weight:500;
                 color: $text-dark-color-2;

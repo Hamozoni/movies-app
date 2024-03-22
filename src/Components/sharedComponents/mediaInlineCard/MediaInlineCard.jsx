@@ -16,12 +16,14 @@ const MediaInlineCard = ({movie, type})=> {
           </Link>
         <div className="card-details">
             <div className="key-title">
+               <h5>
                 <Link 
                     className="name" 
                     to={`/${type}/${movie?.id}`} 
                     >
                     {movie?.title || movie?.name}
                 </Link>
+               </h5>
                 <p className="date-re">
                     {movie?.release_date || movie?.first_air_date}
                 </p>

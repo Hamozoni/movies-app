@@ -5,7 +5,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./search.scss";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../utilities/fetchData";
-import PersonCard from "../../Components/personComponents/PersonCard/PersonCard";
 import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
 import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
@@ -43,7 +42,7 @@ const Search = ()=> {
 
     }
 
-    useEffect(fetchSeachData,[type,lang,page]);
+    useEffect(fetchSeachData,[type,lang,page,query.search]);
 
     const navigate = useNavigate();
 
@@ -57,7 +56,7 @@ const Search = ()=> {
             <div className="search-container">
                 <section className="search-flters card">
                     <header className="filter-header">
-                        <h4>Search filter</h4>
+                        <h4 className="fil-t">Search filter</h4>
                     </header>
                     <ul className="fliters-ul">
                         <li 
@@ -138,7 +137,7 @@ const Search = ()=> {
                 {
                     isPending ? <Loading width='60%' height='calc(100vh - 100px)'/> : 
                     searchData ?
-                    <section className="search-resulte">
+                    <section className="search-results">
                         {
 
                             searchData?.results?.map((media)=> (

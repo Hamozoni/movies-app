@@ -10,7 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import "./Header.scss";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { SearchForm } from "../homeComponents/homeSearchBar/SearchBar";
@@ -26,7 +26,7 @@ const Header = ()=> {
     const handleNavigate = (filter,mediaType)=>{
         navigate(`list/${mediaType}/${filter}`);
     };
-    
+
     const SittingIcons = ({isMobile = false})=> {
         return (
             <>
