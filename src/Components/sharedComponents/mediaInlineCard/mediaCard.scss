@@ -28,6 +28,7 @@
              }
          }
          .key-overview {
+            @include text-overflow(81.88px);
              p {
                 font-size: $f-size-6;
                 font-weight:500;

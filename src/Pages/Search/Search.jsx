@@ -10,6 +10,7 @@ import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber"
 import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
 import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
+import CrewCard from "../../Components/sharedComponents/crewCard/CrewCard";
 
 
 const Search = ()=> {
@@ -143,7 +144,7 @@ const Search = ()=> {
                             searchData?.results?.map((media)=> (
                                 type === 'person' ? 
 
-                                <PersonCard key={media?.id} person={media} />
+                                <CrewCard key={media?.id} person={media} />
                                 :
                                 <MediaInlineCard key={media?.id} movie={media} type={type}/>
                             ))
