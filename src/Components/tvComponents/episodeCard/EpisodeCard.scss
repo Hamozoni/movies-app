@@ -9,8 +9,11 @@
         }
         .epis-image {
             max-height: 128px;
-            width: fit-content;
-            margin: 0 auto;
+            @media (max-width: 531px) {
+                width: fit-content;
+                margin: 0 auto;
+                
+            }
             img {
                 min-width:  227px;
                 max-height: 128px;

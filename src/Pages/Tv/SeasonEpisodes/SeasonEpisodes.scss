@@ -1,9 +1,11 @@
 @import '../../../GlobalStyle/variables';
 
-// .season-episode {
-//     .sea-episode {
-//         .episodes {
-//             padding: $padding;
-//         }
-//     }
-// }
+.season-episode {
+    .sea-episode {
+        max-width: 1000px;
+        margin: 0 auto;
+        .episodes {
+            padding: $padding-10;
+        }
+    }
+}

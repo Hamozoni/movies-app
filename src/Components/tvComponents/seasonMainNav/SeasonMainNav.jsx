@@ -4,14 +4,17 @@ import "../../sharedComponents/mainMediaNav/MainmediaNav.scss";
 import { Link, useParams} from 'react-router-dom';
 
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import fetchData from '../../../utilities/fetchData';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const SeasonMainNav = ({isEpisode = false }) => {
 
     const {seasonNumber,id,episodeNumber} = useParams();
     const [videos,setVideos] = useState({});
     const [mediaData,setMediaData] = useState({});
+
+    const {innerWidth} = useContext(globalContext);
 
     const fetchVideos = ()=> {
         fetchData(`tv/${id}/season/${seasonNumber}/images`)
@@ -26,14 +29,15 @@ const SeasonMainNav = ({isEpisode = false }) => {
 
     useEffect(fetchVideos,[id,seasonNumber]);
 
-    const navLink = `/tv/${id}/season/${seasonNumber}${isEpisode ? '/episode/' + episodeNumber : ''}`
+    const navLink = `/tv/${id}/season/${seasonNumber}${isEpisode ? '/episode/' + episodeNumber : ''}`;
+    const arrowIcon = innerWidth > 460 &&  <span className='icon'><ArrowDropDownIcon /></span>
 
   return (
         <nav className='media-header'>
             <div className='media-nav'>
                 <div className='med-title'>
                     <span>overview</span>
-                    <span><ArrowDropDownIcon /></span>
+                    {arrowIcon}
                     <ul className='links-list'>
                         <li 
                             className='nav-btn' 
@@ -58,7 +62,7 @@ const SeasonMainNav = ({isEpisode = false }) => {
                 </div>
                 <div className='med-title'>
                     <span>media</span>
-                    <span><ArrowDropDownIcon /></span>
+                    {arrowIcon}
                     <ul className='links-list'>
                         <li className='nav-btn'>
                             <Link to={`${navLink}/posters`} >
@@ -88,14 +92,14 @@ const SeasonMainNav = ({isEpisode = false }) => {
                 </div>
                 <div className='med-title'>
                     <span> fandom</span>
-                    <span><ArrowDropDownIcon /></span>
+                    {arrowIcon}
                     <ul className='links-list'>
                         <li className='nav-btn'><Link>discussions</Link></li>
                     </ul>
                 </div>
                 <div className='med-title'>
                     <span> share</span>
-                    <span><ArrowDropDownIcon /></span>
+                    {arrowIcon}
                     <ul className='links-list'>
                         <li className='nav-btn'><Link>share link</Link></li>
                         <li className='nav-btn'><Link>facebook</Link></li>
