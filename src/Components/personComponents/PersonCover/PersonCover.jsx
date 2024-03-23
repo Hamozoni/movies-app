@@ -12,7 +12,7 @@ import PersonActing from '../PersonActing/PersonActing'
 
 const PersonCover = ({details,id}) => {
 
-    const {lang} = useContext(globalContext);
+    const {lang,innerWidth} = useContext(globalContext);
     const [knownFor,setKnownFor] = useState([]);
 
     useEffect(()=>{
@@ -26,17 +26,24 @@ const PersonCover = ({details,id}) => {
   return (
     <section className="person-cover">
         <div className="per-cover-container">
-            <div className="person-img">
-                <img 
-                    className="image-hover"
-                    src={process.env.REACT_APP_BASE_URL + 'w300' + details?.profile_path} 
-                    alt={details?.name} 
-                    />
-                    <PersonStitistics details={details}/>
+            <div className="person-info">
+                <div className="person-img">
+                    <img 
+                        className="image-hover"
+                        src={process.env.REACT_APP_BASE_URL + 'w300' + details?.profile_path} 
+                        alt={details?.name} 
+                        />
+                        {
+                            innerWidth < 630 && <h3 className="person-name">{details?.name}</h3>
+                        }
+                </div>
+                <PersonStitistics details={details}/>
             </div>
             <div className="person-cov-content">
                 <div className="person-name">
-                    <h3>{details?.name}</h3>
+                    { 
+                        innerWidth > 629 && <h3>{details?.name}</h3>
+                    }
                 </div>
                 <div className="piagrahpy">
                     <h4 className="pi-ti">

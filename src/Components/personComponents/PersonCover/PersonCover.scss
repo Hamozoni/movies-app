@@ -4,24 +4,20 @@
 .person-cover {
     max-width: 100%;
     .per-cover-container {
-        @include flex-box(flex-start);
         padding: $padding;
         .person-img {
-            width: 30%;
+            text-align: center;
             img {
+                width: 300px;
                 max-width: 100%;
                 border-radius: $border-r;
             }
         }
+        .person-name {
+            font-size: $main-f-size;
+            color: $text-dark-color;
+        }
         .person-cov-content {
-            width: 70%;
-            .person-name {
-                padding-bottom: $padding;
-                h3 {
-                    font-size: $main-f-size;
-                    color: $text-dark-color;
-                }
-            }
             .piagrahpy {
                 padding-bottom: $padding;
             }
@@ -37,6 +33,23 @@
                     @include flex-box(flex-start);
                 }
             }
+        }
+        @media (min-width:630px) {
+            @include flex-box(flex-start);
+            .person-info {
+                width: 30%;
+                .person-img {
+                    img {
+                        max-width: 100%;
+                        border-radius: $border-r;
+                    }
+                }
+
+            }
+            .person-cov-content {
+                width: 70%;
+            }
+            
         }
     } 
 }

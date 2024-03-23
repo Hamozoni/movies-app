@@ -2,13 +2,16 @@
 @import "../../../GlobalStyle/mixin";
 
 .tv-content {
-    @include flex-box(flex-start,center,10px);
     max-width: 100vw;
-    .cast {
-        width: 75%;
-    }
-    .right-content {
-        width: 25%;
+
+    @media (min-width: 880px) {
+        @include flex-box(flex-start,center,10px);
+        .cast {
+            width: 70%;
+        }
+        .right-content {
+            width: 30%;
+        }  
     }
 }
 .tv-season {

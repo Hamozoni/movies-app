@@ -40,7 +40,7 @@ console.log(isMediaOpen)
             </nav>
         </header>
         <table className="credits-tabel">
-            <tbody className='credits-tabel-body'>
+            <tbody className='credits-tabel-body '>
                 {
                     knownFor?.cast?.map((movie,i)=>(
     
@@ -65,7 +65,7 @@ console.log(isMediaOpen)
                             </td>
                             <td className='movie-title'> 
                                 <tr>
-                                    <Link to={`/${movie?.media_type}/${movie?.id}`}>
+                                    <Link to={`/${movie?.media_type}/${movie?.id}`} className='link-hover'>
                                         { movie?.title || movie?.name}
                                     </Link>
                                 </tr> 

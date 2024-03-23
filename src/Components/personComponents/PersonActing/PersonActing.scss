@@ -21,13 +21,12 @@
         }
     }
     .credits-tabel {
-        border: 1px solid #726f6f52;
-        border-radius: $border-r;
         width: 100%;
         .credits-tabel-body{
             .part {
                 display: block;
-                padding: $padding-5 $padding;
+                padding: $padding-10;
+                border-bottom: 1px solid #bdb7b742;
                 .year {
                     width: 40px;
                 }
@@ -59,15 +58,12 @@
                 }
                 .movie-title {
                     a {
-                        color: $logo-color;
-                        &:hover {
-                            color: darken($color: $logo-color, $amount: 10);
-                        }
+                        color: $text-dark-color;
                     }
                     span {
                         color: $text-dark-color;
-                        font-weight: 100;
-                        font-size: $f-size-xs;
+                        font-weight: 400;
+                        font-size: $f-size-6;
                     }
                 }
             }
