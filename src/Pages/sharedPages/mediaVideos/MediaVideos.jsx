@@ -67,17 +67,17 @@ const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
     }
 
   return (
-    <div className="media-videos">
-        <div className="vid-container">
-            <nav className="vid-nav">
+    <div className="media-videos alt-titles">
+        <div className="vid-container alt-content">
+            <nav className="vid-nav alt-cout-list card">
                 <header 
                     style={{backgroundColor: color.backColor}}
-                    className="vid-head">
+                    className="vid-head cout-header">
                     <h3 className="t"  style={{color: color.textColor}}>
                         vidoes
                     </h3>
                 </header>
-                <ul className="vid-ul">
+                <ul className="vid-ul cout-list">
                     {
                       Object.keys(videos)?.map((video)=> (
                         <li 
@@ -90,7 +90,7 @@ const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
                     }
                 </ul>
             </nav>
-            <div className="vid-content">
+            <div className="vid-content alt-t-tabels">
                 {
                     videos[type]?.map((video)=> (
                         <VideosCard yId={video?.key}  type={type} title={video?.name}/>

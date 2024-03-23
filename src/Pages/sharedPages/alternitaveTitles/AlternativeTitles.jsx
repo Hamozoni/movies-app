@@ -106,10 +106,15 @@ const TitlesTabel = ({title,country})=> {
             className="titles-card card">
         <thead className='t-h'>
            <tr>
-                <h3> 
-                    <img src={`https://flagsapi.com/${title?.iso_3166_1}/shiny/64.png`}></img>
-                    {country}
-                </h3>
+               <div className="count-name">
+                    <span className="count-imge">
+                        <img src={`https://flagsapi.com/${title?.iso_3166_1}/shiny/64.png`}></img>
+                    </span>
+                    <h3> 
+                        {country}
+                    </h3>
+
+               </div>
            </tr>
         </thead>
         <tbody className='tbody'>

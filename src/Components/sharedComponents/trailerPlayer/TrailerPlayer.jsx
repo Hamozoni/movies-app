@@ -27,7 +27,7 @@ const TrailerPlayer = () => {
                 </span>
             </header>
                 <div className="tr-player">
-                    <ReactPlayer playing={true} controls url={`https://www.youtube.com/watch?v=${trailer?.youtubeId}`} />
+                    <ReactPlayer className='media-player'  playing={true} controls url={`https://www.youtube.com/watch?v=${trailer?.youtubeId}`} />
                 </div>
         </div>
 

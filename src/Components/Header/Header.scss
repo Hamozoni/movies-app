@@ -39,6 +39,16 @@
                     &.active {
                         left: 0;
                     }
+                    .close-icon-logo {
+                        @include flex-box(center,flex-start,10px);
+                        margin-bottom: $margin;
+                        .close-icon {
+                           cursor: pointer;
+                           color: $text-dark-color-2;
+                           font-size: $f-size-1;
+
+                        }
+                    }
                     .part-one-contaner {
                         height: 100vh;
                         overflow-y: auto;
@@ -65,12 +75,6 @@
                         @include flex-box(center,center,20px);
                         flex: 1;
                         max-width: fit-content;
-                        .close-icon {
-                           cursor: pointer;
-                           color: $text-dark-color-2;
-                           font-size: $f-size-1;
-                           margin-bottom: $margin;
-                        }
                         .filter-box {
                             position: relative;
                             h4 {              

@@ -104,15 +104,15 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
 
 
   return (
-    <div className="backdrops">
-        <div className="backdrop-container">
-            <nav className="back-nav card">
+    <div className="backdrops alt-content">
+        <div className="backdrop-container alt-content">
+            <nav className="back-nav alt-cout-list card">
                 <header 
                     style={{backgroundColor: color.backColor}}
-                    className="b-header">
+                    className="b-header cout-header">
                     <h4 style={{color: color.textColor}}>{type}</h4>
                 </header>
-                <ul className="lang-ul">
+                <ul className="lang-ul cout-list">
                     {
                         isPending2 ? <Loading width='100%' height='400px' /> 
                         : (data && dataLang) ?
@@ -129,7 +129,7 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
                     }
                 </ul>
             </nav>
-            <div className="back-content">
+            <div className="back-content alt-t-tabels">
                 {
                     isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
                     : data ?

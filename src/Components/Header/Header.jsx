@@ -28,6 +28,7 @@ const Header = ()=> {
     };
 
     const SittingIcons = ({isMobile = false})=> {
+
         return (
             <>
                 <div className="theme icons">
@@ -83,11 +84,11 @@ const Header = ()=> {
                         <div className="part-one-contaner">
                             {
                                 innerWidth < 667 && 
-                                <span  
-                                    onClick={()=> setIsMenu(false)} 
-                                    className="close-icon" >
-                                        <CloseIcon />
-                                </span>
+
+                                <div className="close-icon-logo">
+                                        <CloseIcon   onClick={()=> setIsMenu(false)} className="close-icon"/>
+                                    <h2 className="l">MYH MOVIES</h2>
+                                </div>
                             }
                             {
                                  innerWidth < 667 && 

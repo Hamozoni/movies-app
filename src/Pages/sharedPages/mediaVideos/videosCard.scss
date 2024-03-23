@@ -3,11 +3,13 @@
 
 .vid-card {
     .vid-cont {
-
-        @include flex-box(_,_,0);
+        @media (min-width: 570px) {
+            
+            @include flex-box(_,_,0);
+            max-height: 188px;
+        }
         max-height: fit-content;
         margin-bottom: $margin;
-        max-height: 188px;
         flex: 1;
         .vid-image {
         max-height: fit-content;
@@ -15,14 +17,15 @@
         min-width: 336px;
         min-height: 188px;
         background-color: $text-light-color;
+        @media (min-width:767px ) and (max-width: 992px){
+            max-width: 230px;
+            min-width: 230px;
+            min-height: unset;
+        }
         cursor: pointer;
         .play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            @include postion(absolute,60px,60px,50%,50%,99);
             transform: translate(-50%,-50%);
-            width: 60px;
-            height: 60px;
             border-radius: $circle;
             @include flex-box(center,center);
             background-color: rgba(0, 0, 0, 0.404);
@@ -33,26 +36,29 @@
         }
     }
     .vid-info {
-        @include flex-box(space-between,space-between);
+        @include flex-box(space-between,space-between,0);
         flex-direction: column;
         flex: 1;
         .title-date {
             padding: $padding-10;
             .name {
-                font-size: $f-size-s;
+                font-size: $f-size-5;
                 color: $text-dark-color;
+                font-weight: 600;
+                @include text-overflow(62px);
             }
             .d {
                 font-size: $f-size-xs;
             }
         }
         .yout-ch {
-            padding: $padding-10;
+            padding: $padding-5 $padding-10 ;
             background-color: $text-light-color-2;
             @include flex-box(center,flex-start,5px);
             span {
-                font-size: $f-size-xs;
+                font-size: $f-size-5;
                 color: darken($color: $text-light-color, $amount: 30);
+                @include text-overflow(20px);
             }
             svg:nth-of-type() {
                 font-size: 22px;

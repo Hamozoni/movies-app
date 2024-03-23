@@ -85,10 +85,12 @@ const ReleaseDates = ({mediaType}) => {
                             <thead className='t-h'>
                                 <tr>
 
-                                    <h3> 
-                                        <img src={`https://flagsapi.com/${date?.iso_3166_1 }/shiny/64.png`}></img>
-                                        {countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}
-                                    </h3>
+                                    <div className='count-name'> 
+                                        <span className='count-imge'>
+                                            <img src={`https://flagsapi.com/${date?.iso_3166_1 }/shiny/64.png`}></img>
+                                        </span>
+                                        <h3>{countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}</h3> 
+                                    </div>
 
                                     
                                 </tr>
