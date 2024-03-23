@@ -100,7 +100,7 @@ const SeasonMainNav = ({isEpisode = false }) => {
                 <div className='med-title'>
                     <span> share</span>
                     {arrowIcon}
-                    <ul className='links-list'>
+                    <ul className={`${innerWidth < 560 && 'last'} links-list`}>
                         <li className='nav-btn'><Link>share link</Link></li>
                         <li className='nav-btn'><Link>facebook</Link></li>
                         <li className='nav-btn'><Link>tweet</Link></li>
