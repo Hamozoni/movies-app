@@ -41,7 +41,7 @@ const Main = ()=> {
         });
     }
 
-    useEffect(fetch,[id]);
+    useEffect(fetch,[id,lang]);
 
     return (
             isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> : 

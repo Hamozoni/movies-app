@@ -61,7 +61,7 @@ const MovieStitistics = ({id,details,type}) => {
     });
   }
 
-  useEffect(fetch,[id,type]);
+  useEffect(fetch,[id,type,details]);
 
   const navigate = useNavigate();
 
@@ -80,8 +80,9 @@ const MovieStitistics = ({id,details,type}) => {
                         className='social-links'
                         href={`https://${social?.replace('_id','.com')}/${externalIds[social]}`} 
                         target='_blank'
+                        rel="noreferrer"
                     >
-                     <img src={images[social]} />
+                     <img src={images[social]} alt={externalIds[social]} />
                   </a>
                 ))
               : error2 && <Error error={error2} height='65px' onClick={fetch} />
@@ -92,8 +93,12 @@ const MovieStitistics = ({id,details,type}) => {
                   className='social-links'
                   href={details?.homepage} 
                   target='_blank'
+                  rel="noreferrer"
                   >
-                  <img src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-351-link-5f643a86c2515cb06ea08ebc798941824f76bbcea4ed571222a81f271b30c7f3.svg'/>
+                  <img 
+                      src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-351-link-5f643a86c2515cb06ea08ebc798941824f76bbcea4ed571222a81f271b30c7f3.svg'
+                       alt='home page'
+                      />
               </a>
             }
             </nav>

@@ -35,7 +35,7 @@ const MovieSocial = ({section,mediaType})=> {
         })
     }
 
-    useEffect(fetch,[id,lang,section]);
+    useEffect(fetch,[id,lang,section,mediaType]);
 
   return (
     <section className="Movie-social">

@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 import "./Media.scss";
 import { Link } from "react-router-dom";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+// import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
 import VideosCard from "../../../Pages/sharedPages/mediaVideos/VideosCard";
 import Loading from "../../loading/Loading";
@@ -38,9 +38,10 @@ const MovieMedia = ({id,mediaType})=> {
     const [isPending2,setIsPending2] = useState(true);
     const [error2,setError2] = useState(null);
 
-    const {lang} = useContext(globalContext);
+    // const {lang} = useContext(globalContext);
 
     const fetchImages = ()=> {
+
         setError(null);
         setIsPending(true)
         fetchData(`${mediaType}/${id}/images`)
@@ -56,8 +57,9 @@ const MovieMedia = ({id,mediaType})=> {
             setIsPending(false)
         });
     }
+     useEffect(fetchImages,[id,mediaType])
 
-    const fetchVidoes = ()=> {
+    const fetchVidoes =  ()=> {
         setError2(null);
         setIsPending2(null);
         fetchData(`${mediaType}/${id}/videos?language=en-US`)
@@ -71,11 +73,7 @@ const MovieMedia = ({id,mediaType})=> {
             console.log(error)
         })
     }
-
-    useEffect(()=>{
-        fetchImages();
-        fetchVidoes()
-    },[id,lang]);
+    useEffect(fetchVidoes,[id,mediaType]);
 
     return (
         <section className='movie-media'>

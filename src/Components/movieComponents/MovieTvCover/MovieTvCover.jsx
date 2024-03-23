@@ -45,7 +45,7 @@ const MovieTvCover = ({details,mediaType})=> {
             console.log(error)
         });
     }
-    useEffect(fetch,[details?.id]);
+    useEffect(fetch,[mediaType,details,lang]);
 
     const getMovieRuntime = (time)=>{
         const runTime = (time / 60)?.toString()?.split('.');

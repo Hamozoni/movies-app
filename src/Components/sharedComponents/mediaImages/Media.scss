@@ -2,18 +2,21 @@
 @import '../../../GlobalStyle/mixin';
 
 .movie-media {
-    margin-top: $margin;
+    margin: $margin 0;
     .movie-media-header {
         // @include flex-box(center,space-between);
         .media-nav {
-            //  @include flex-box(center,flex-start,50px);
+            @media (min-width: 630px) {
+                 @include flex-box(center,flex-start,50px); 
+             }
              .title {
                 font-size: $f-size-3;
                 color: $text-dark-color;
                 padding: 0 $padding;
              }
              .links {
-                padding: $padding-10 0;
+                padding: 0 $padding-10;
+                padding-bottom: $padding-5;
                 @include flex-box(center,flex-start,0);
                 overflow-y: auto;
                 li {
@@ -28,47 +31,82 @@
         max-width: 100%;
         overflow-x:  auto;
         overflow-y: hidden;
-        border-radius: $border-r-l;
+        // border-radius: $border-r-l;
         .media-content-container {
             min-width: fit-content;
             @include flex-box(flex-start,center,0);
             .img-container {
-                height: 300px;
-                min-width: 200px;
+                height: 200px;
+                min-width: 150px; 
                 img {
+                        min-height: 200px;
+                        max-height: 200px;
+                    }
+                    &.backdrops {
+                        img {
+                            min-width: 333px
+                        }
+                    }
+                    &.posters {
+                        img {
+                            min-width: 150px
+                        }
+                    }
+                }
+            @media (min-width:530px) {
+                .img-container {
                     min-height: 300px;
-                    max-height: 300px;
-                }
-                &.backdrops {
+                    min-width: 200px; 
                     img {
-                        min-width: 533px
+                        min-height: 300px;
+                        max-height: 300px;
                     }
-                }
-                &.posters {
-                    img {
-                        min-width: 200px
+                    &.backdrops {
+                        img {
+                            min-width: 533px
+                        }
                     }
+                    &.posters {
+                        img {
+                            min-width: 200px
+                        }
+                    }
+
                 }
             }
             .view-more {
                 @include flex-box(center,center);
                 width: 150px;
+                height: 200px;
             }
 
         }
             // video card
     .vid-card {
-        min-height: 300px;
-        min-width: 500px;
         border-radius: 0;
         border: none;
+        min-height: 200px;
+        min-width: 330px;
         .vid-image {
+            min-height: 200px;
+            min-width: 330px;
+            img {
+                min-height: 200px;
+                min-width: 330px;
+            }
+        }
+        @media (min-width: 530px) {
             min-height: 300px;
             min-width: 500px;
-            img {
+            .vid-image {
                 min-height: 300px;
                 min-width: 500px;
+                img {
+                    min-height: 300px;
+                    min-width: 500px;
+                }
             }
+            
         }
         .vid-info {
             display: none !important;
@@ -76,11 +114,9 @@
     }
     }
     .view-all,.view-more a {
-        font-size: $f-size-xs;
+        font-size: $f-size-5;
         color: $logo-color;
-        font-weight: 700;
-        &:hover {
-            color: lighten($color: $logo-color, $amount: 20);
-        }
+        font-weight: 600;
+        padding: 0 $padding;
     }
 }
