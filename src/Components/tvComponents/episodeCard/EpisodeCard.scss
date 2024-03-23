@@ -4,9 +4,13 @@
 .episode-card {
     margin-bottom: $margin;
     .card-container {
-        @include flex-box(flex-start,flex-start,10px);
+        @media (min-width: 530px) {
+            @include flex-box(flex-start,flex-start,10px);
+        }
         .epis-image {
             max-height: 128px;
+            width: fit-content;
+            margin: 0 auto;
             img {
                 min-width:  227px;
                 max-height: 128px;
@@ -20,7 +24,10 @@
                     color: $text-dark-color-2;
                     @include text-overflow(30px);
                 }
-               @include flex-box(flex-start,flex-start,5px);
+               @include flex-box(flex-start,center,5px);
+               @media (min-width: 530px) {
+                  justify-content: flex-start;
+               }
                .rating-year  {
                 @include flex-box(center,flex-start,10px);
                 .rating {

@@ -17,6 +17,7 @@
         border-color: #6360603f transparent;
         .epis-nav-ul {
             @include flex-box(center,space-between);
+            overflow-x: auto;
             li {
                 a{
                     font-size: $f-size-5;
@@ -33,6 +34,10 @@
     .epis-crew-guest {
         padding: $padding-10 $padding;
         @include flex-box(flex-start,space-between);
+        flex-direction: column;
+        @media (min-width:767px) {
+                flex-direction: row;
+        }
         .ep-crew {
             .ep-crew-box {
                 p {

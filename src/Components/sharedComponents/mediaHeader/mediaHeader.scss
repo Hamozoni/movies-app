@@ -15,8 +15,9 @@
         }
         .media-back-to {
           .name {
-              font-size: $f-size-1;
+              font-size: $f-size-2;
               font-weight: bold;
+              @include text-overflow(33px);
               span {
                 font-weight: 300;
                 font-size: $f-size-4;

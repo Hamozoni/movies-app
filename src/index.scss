@@ -48,16 +48,27 @@ img, picture {
 
 
 .alt-content {
-  padding: $padding;
-  @include flex-box(flex-start,flex-start);
+  @media (min-width: 768px) {
+    @include flex-box(flex-start,flex-start);
+     padding: $padding;
+  }
   .alt-cout-list {
     min-width: 260px;
     position: sticky;
-    top: 30px;
+    top: 0;
+    background-color: #ffffff;
+    border-radius: 0 !important;
     .cout-list {
       margin: $padding-10 0;
       max-height: calc(100vh - 130px);
       overflow-y: auto;
+    }
+    @media (max-width:767px) {
+      .cout-list {
+        @include flex-box(center,center,0);
+        overflow-x: auto;
+
+      }
     }
     .cout-header {
         padding: $padding;
@@ -66,6 +77,7 @@ img, picture {
     }
   }
   .alt-t-tabels {
+    padding: $padding-10;
       .titles-card {
           margin-bottom: $margin;
           min-width: 100%;
