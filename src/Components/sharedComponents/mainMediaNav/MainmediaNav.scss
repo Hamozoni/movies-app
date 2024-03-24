@@ -29,6 +29,10 @@
                         .videos-ul {
                             top: 0;
                             left: 101%;
+                            &.mobile {
+                                left: 0;
+                                top: 103%;
+                            }
                         }
                         &:hover {
                             .videos-ul {

@@ -45,7 +45,9 @@ const PersonStitistics = ({details}) => {
                         href={`https://${social?.replace('_id','.com')}/${social === 'tiktok_id' ? '@' : ''}${externalIds[social]}`} 
                         target='_blank'
                     >
-                     <img src={images[social]} />
+                        <span className="social-image image-hover">
+                          <img src={images[social]} alt="social icon"  />
+                        </span>
                   </a>
                 ))
             }

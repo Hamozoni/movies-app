@@ -9,7 +9,7 @@
     }
     .recom-content {
           @include flex-box(flex-start);
-          padding: 0 $padding;
+          padding: $padding-10 $padding;
           overflow-x: auto;
           .recomm-media-card {
             min-width: 250px;

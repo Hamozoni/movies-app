@@ -65,7 +65,7 @@ const MovieSocial = ({section,mediaType})=> {
                 activeSection === 'reviews' ?
                 reviews?.length > 0 ?
                     <ReviewCard review={reviews[0]} />
-                    : <p>We don't have any {activeSection} for .... Would you like to write one?</p>
+                    : <p className="no-result"> We don't have any {activeSection} for .... Would you like to write one?</p>
                 : ''
                 }
             </div>
@@ -73,7 +73,7 @@ const MovieSocial = ({section,mediaType})=> {
         }
         {
             reviews &&
-            <Link to={`/${mediaType}/${id}/${activeSection}`} className="read-all"> 
+            <Link to={`/${mediaType}/${id}/${activeSection}`} className="read-all-review link-hover"> 
                 {
                 reviews.length > 0 && 
                 `read all ${activeSection}`

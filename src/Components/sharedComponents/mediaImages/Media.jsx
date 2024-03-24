@@ -77,7 +77,6 @@ const MovieMedia = ({id,mediaType})=> {
 
     return (
         <section className='movie-media'>
-            <hr/>
             <header className="movie-media-header">
                 <nav className="media-nav">
                     <h4 className="title">

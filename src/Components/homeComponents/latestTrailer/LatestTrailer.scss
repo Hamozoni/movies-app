@@ -3,10 +3,11 @@
 
 .latest-trailer {
     .trailer-box-cotainer {
-        padding:  $padding;
+        padding:  $padding 0;
         background-color: rgba(11, 76, 119, 0.644);
         .trailer-header {
-            @include flex-box(center,flex-start,20px);
+            @include flex-box(center,flex-start,10px);
+            padding: 0  $padding;
             flex-wrap: wrap;
             h3 {
                 font-weight: 700;
@@ -40,6 +41,7 @@
         }
         .trailer-content {
             overflow-x: auto;
+            padding: 0 $padding;
             .trailer-container {
                 min-width: fit-content;
                 @include flex-box(flex-start,flex-start,20px);

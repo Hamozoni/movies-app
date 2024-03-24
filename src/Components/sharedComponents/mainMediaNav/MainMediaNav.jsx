@@ -89,7 +89,7 @@ const MainMediaNav = ({mediaType}) => {
                     <li className='nav-btn videos'>
                         <Link>videos </Link>
                         <span><ArrowRightIcon/></span>
-                        <ul className="videos-ul">
+                        <ul className={`${innerWidth < 520 && 'mobile'} videos-ul`}>
                             {
                                 Object.keys(videos)?.map(video=> (
                                     <li 

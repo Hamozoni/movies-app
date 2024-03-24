@@ -6,6 +6,7 @@
     .movie-media-header {
         // @include flex-box(center,space-between);
         .media-nav {
+            padding: $padding-10 0;
             @media (min-width: 630px) {
                  @include flex-box(center,flex-start,50px); 
              }

@@ -3,6 +3,7 @@
 
 .top-billed {
     margin-bottom: $margin;
+    padding: $padding-10 0;
     .title {
         font-size: $f-size-2;
         color: $text-dark-color;
@@ -12,7 +13,7 @@
     .persons {
         @include flex-box(flex-start);
         overflow-x: auto;
-        padding: 0 $padding;
+        padding: $padding-10 $padding;
     }
     .cast-link {
         color: $logo-color;

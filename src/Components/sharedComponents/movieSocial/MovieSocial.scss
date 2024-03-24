@@ -16,15 +16,14 @@
            }
         }
     }
-    .read-all {
+    .no-result {
+        padding: $padding;
+    }
+    .read-all-review  {
         color: $logo-color;
-        font-size: $f-size-s;
-        padding: $padding-10 0;
+        font-size: $f-size-5;
         display: block;
         font-weight: 700;
-        padding: 0 $padding;
-        &:hover {
-            color: lighten($color: $logo-color, $amount: 20);
-        }
+        padding: $padding;
     }
 }
