@@ -9,6 +9,7 @@ import "./backdrops&posters.scss";
 import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 const BackdropsCard = ({drop,language})=> {
@@ -41,16 +42,13 @@ const BackdropsCard = ({drop,language})=> {
 const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) => {
 
     const {color} = useContext(mediaColorContext);
+    const {languages} = useContext(globalContext);
 
     const [data,setData] = useState(null);
     const [error,setError] = useState(null);
     const [isPending,setIsPending] = useState(true);
 
-    const [dataLang,setDataLang] = useState([]);
-    const [error2,setError2] = useState(null);
-    const [isPending2,setIsPending2] = useState(true);
     const [selectedLang,setSelectedLang] = useState('null');
-
     const {id,seasonNumber,episodeNumber} = useParams();
 
     const fetchImagesData = ()=> {
@@ -67,83 +65,59 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
         fetchData(`${mediaType}/${id}${season}/images`)
         .then((data)=>{
             setData(Object.groupBy(data[type],e=> e.iso_639_1));
-            console.log(Object.groupBy(data[type],e=> e.iso_639_1))
-            setSelectedLang(Object.keys(Object.groupBy(data[type],e=> e.iso_639_1))[0]);
-            setIsPending(false);
+            setSelectedLang(data[type][0].iso_639_1)
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=> {
             setIsPending(false);
-        });
+        })
     };
 
-    const fectLangData = ()=> {
-
-        setIsPending2(true);
-        setError2(null);
-
-        fetchData(`configuration/languages`)
-        .then(lang=> {
-            setDataLang(lang);
-            setIsPending2(false)
-            console.log(lang)
-        })
-        .catch(error=> {
-            setError2(error);
-            setIsPending2(false);
-        });
-    }
-
-
-    useEffect(()=> {
-
-        fetchImagesData();
-        fectLangData()
-
-    },[mediaType,id,type]);
+    useEffect(fetchImagesData,[mediaType,id,type]);
 
 
   return (
     <div className="backdrops alt-content">
-        <div className="backdrop-container alt-content">
-            <nav className="back-nav alt-cout-list card">
-                <header 
-                    style={{backgroundColor: color.backColor}}
-                    className="b-header cout-header">
-                    <h4 style={{color: color.textColor}}>{type}</h4>
-                </header>
-                <ul className="lang-ul cout-list">
+        {
+            isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
+            : data ?
+            <div className="backdrop-container alt-content">
+                <nav className="back-nav alt-cout-list card">
+                    <header 
+                        style={{backgroundColor: color.backColor}}
+                        className="b-header cout-header">
+                        <h4 style={{color: color.textColor}}>{type}</h4>
+                    </header>
+                    <ul className="lang-ul cout-list">
+                        {
+                            Object.keys(data)?.map((key)=>(
+                                <li onClick={()=> setSelectedLang(key)} className={`${selectedLang === key && 'active'} nav-btn`}>
+                                    { key === 'null' ? 
+                                    'no language' :
+                                    languages?.find(e=> e.iso_639_1 === key)?.english_name
+                                    }
+                                    <span>{data[key]?.length}</span>
+                                </li>
+                            )) 
+                        }
+                    </ul>
+                </nav>
+                <div className="back-content alt-t-tabels">
                     {
-                        isPending2 ? <Loading width='100%' height='400px' /> 
-                        : (data && dataLang) ?
-                        Object.keys(data)?.map((key)=>(
-                            <li onClick={()=> setSelectedLang(key)} className={`${selectedLang === key && 'active'} nav-btn`}>
-                                { key === 'null' ? 
-                                  'no language' :
-                                   dataLang?.find(e=> e.iso_639_1 === key)?.english_name
-                                }
-                                <span>{data[key]?.length}</span>
-                            </li>
-                        )) 
-                        : error2 && <Error error={error2} height='400px' onClick={fectLangData} />
+                        data[selectedLang]?.map((drop)=> (
+                            <BackdropsCard 
+                                key={drop} 
+                                drop={drop} 
+                                language={languages?.find(e=> e.iso_639_1 === drop.iso_639_1)?.english_name || 'no laguage' }
+                                />
+                        ))
                     }
-                </ul>
-            </nav>
-            <div className="back-content alt-t-tabels">
-                {
-                    isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
-                    : data ?
-                    data[selectedLang]?.map((drop)=> (
-                        <BackdropsCard 
-                            key={drop} 
-                            drop={drop} 
-                            language={dataLang?.find(e=> e.iso_639_1 === drop.iso_639_1)?.english_name || 'no laguage' }
-                            />
-                    ))
-                    : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchImagesData}/>
-                }
+                </div>
             </div>
-        </div>
+            : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchImagesData}/>
+        }
     </div>
   )
 }

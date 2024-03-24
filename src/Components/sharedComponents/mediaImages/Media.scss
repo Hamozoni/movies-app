@@ -79,6 +79,11 @@
                 @include flex-box(center,center);
                 width: 150px;
                 height: 200px;
+                a {
+                    font-size: $f-size-5;
+                    color: $logo-color;
+                    font-weight: 600;
+                }
             }
 
         }
@@ -114,7 +119,7 @@
         }
     }
     }
-    .view-all,.view-more a {
+    .view-all {
         font-size: $f-size-5;
         color: $logo-color;
         font-weight: 600;

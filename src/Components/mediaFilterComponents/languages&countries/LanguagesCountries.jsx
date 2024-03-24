@@ -1,8 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useState } from "react";
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import fetchData from "../../../utilities/fetchData";
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
@@ -10,7 +7,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import SearchIcon from '@mui/icons-material/Search';
 import "./LangCountries.scss"
 
-const LanguagesCountries = ({type}) => {
+const LanguagesCountries = ({type,data}) => {
 
     const {setMediaFiltering} = useContext(mediaFilter);
 
@@ -18,19 +15,6 @@ const LanguagesCountries = ({type}) => {
     const [filterdData,setFilterdData] = useState([]);
     const [showDataList,setShowDataList] = useState(false);
     const [selectedLanguage,setSelectedLanguage] = useState('none seleted');
-
-    const {lang} = useContext(globalContext);
-
-    const {filter} = useParams();
-
-    useEffect(()=>{
-        fetchData(`configuration/${type}`)
-        .then((data)=>{
-            setData(data);
-            setFilterdData(data)
-        })
-        
-    },[lang,filter]);
 
     const handleFiltering = (e)=> {
 

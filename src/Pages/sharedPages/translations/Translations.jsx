@@ -7,15 +7,24 @@ import "./Translations.scss";
 import fetchData from "../../../utilities/fetchData";
 import { useContext } from "react";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
+import Loading from "../../../Components/loading/Loading";
+import Error from "../../../Components/error/Error";
 
 const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
 
   const {color} = useContext(mediaColorContext);
 
   const {id,seasonNumber,episodeNumber} = useParams();
-  const [translations,setTranslations] = useState();
 
-  useEffect(()=>{
+  const [translations,setTranslations] = useState(null);
+  const [isPending,setIsPending] = useState(true);
+  const [error,setError] = useState(null);
+
+  const fetchTrans = ()=>{
+
+    setIsPending(true);
+    setError(null);
+
     let season = ''
     if(isSeason) {
       season = `/season/${seasonNumber}`
@@ -27,11 +36,22 @@ const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
      .then((data)=> {
           setTranslations(data?.translations)
      })
+     .catch((error)=> {
+       setError(error)
+     })
+     .finally(()=> {
+        setIsPending(false)
+     })
 
-  },[id]);
+  }
+
+  useEffect(fetchTrans,[id]);
 
   return (
     <main className="mov-transation">
+      {
+        isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> 
+        : translations ?
         <div className="alt-content">
             <section className="trans-langs alt-cout-list card">
                   <header 
@@ -47,8 +67,10 @@ const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
                     {
                         translations?.map((trans)=> (
                             <li key={trans?.iso_3166_1} className="nav-btn">
+                              <a href={`#${trans?.iso_3166_1}`}>
                                  <h4>{trans?.english_name}</h4>
                                 <span>{trans?.iso_639_1}-{trans?.iso_3166_1}</span>
+                              </a>
                             </li>
                         ))
                     }
@@ -57,7 +79,10 @@ const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
             <section className="trans-titles">
                {
                   translations?.map((trans)=> (
-                    <div key={trans?.iso_3166_1} className="trans-content-card">
+                    <div 
+                        id={trans?.iso_3166_1}
+                        key={trans?.iso_3166_1} 
+                        className="trans-content-card">
                          <header className="trans-cont-head">
                                <h4 className="en-name">
                                    {trans?.english_name}
@@ -94,6 +119,8 @@ const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
                } 
             </section>
         </div>
+        : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchTrans}  />
+      }
     </main>
   )
 }

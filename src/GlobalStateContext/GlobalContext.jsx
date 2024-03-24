@@ -1,4 +1,7 @@
 import { createContext, useEffect, useState } from "react"
+import fetchData from "../utilities/fetchData";
+import Loading from "../Components/loading/Loading";
+import Error from "../Components/error/Error";
 
 export const globalContext = createContext();
 
@@ -8,6 +11,40 @@ const GlobalContext = ({children})=> {
     const [lang,setLang] = useState('en');
     const [trailer,setTrailer] = useState({isTrailer: false,youtubeId : null,type: null});
     const [innerWidth,setInnerWidth] = useState(0);
+    const [languages,setLanguages] = useState(null);
+    const [countries,setCountries] = useState(null);
+    const [isPending,setIsPending] = useState(true);
+    const [error,setError] = useState(null);
+
+
+
+    const fetchLanguages = ()=> {
+
+        setIsPending(true);
+        setError(null);
+
+        fetchData(`configuration/languages`)
+        .then(lang=> {
+            setLanguages(lang);
+        })
+        .then(()=> {
+            fetchData(`configuration/countries?language=en-US`)
+            .then((country)=> {
+                setCountries(country);
+            })
+            .catch(error=> {
+                setError(error);
+            });
+        })
+        .catch(error=> {
+            setError(error);
+        })
+        .finally(()=> {
+            setIsPending(false);
+        })
+    }
+
+    useEffect(fetchLanguages,[]);
 
     useEffect(()=>{
           setInnerWidth(window.innerWidth)
@@ -30,10 +67,20 @@ const GlobalContext = ({children})=> {
                 setLang,
                 trailer,
                 setTrailer,
-                innerWidth
+                innerWidth,
+                countries,
+                languages
             }}
         >
-           {children}
+           { isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> 
+              : (languages && countries) ?  children 
+              : error && 
+              <Error
+                   error={error} 
+                   height='calc(100vh - 100px)' 
+                   onClick={fetchLanguages}
+                />
+            }
        </globalContext.Provider>
     );
 

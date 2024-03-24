@@ -44,8 +44,7 @@
                     font-size: $f-size-5;
                     color: $text-dark-color;
                     font-weight: 600;
-                    max-height: 25px;
-                    overflow: hidden;
+                    @include text-overflow(24px);
                 }
             }
         }
@@ -55,12 +54,12 @@
                 color: $text-dark-color;
                 font-weight: 600;
                 margin: $padding-10 0;
-                max-height: 25px;
-                overflow: hidden;
+                @include text-overflow(20px);
             }
             .overview {
-                max-height: 51px;
-                overflow: hidden;
+                @include text-overflow(80px);
+                color: $text-dark-color-2;
+                font-size: $f-size-5;
             }
         }
     }

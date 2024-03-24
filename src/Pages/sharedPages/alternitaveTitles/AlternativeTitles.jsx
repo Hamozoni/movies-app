@@ -6,13 +6,14 @@ import fetchData from '../../../utilities/fetchData';
 import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
 import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const AlternativeTitles = ({mediaType}) => {
 
     const {color} = useContext(mediaColorContext);
+    const {countries} = useContext(globalContext);
 
     const {id} = useParams();
-    const [countries,setCountries] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
@@ -29,35 +30,24 @@ const AlternativeTitles = ({mediaType}) => {
 
         fetchData(`${mediaType}/${id}/alternative_titles`)
         .then(titles=>{
-            console.log(titles);
+            console.log(titles[results]);
             setTiltes(titles[results]);
             setTiltesCount(titles[results]?.length); 
         })
-        .then(()=> {
-            fetchData(`configuration/countries?language=en-US`)
-            .then(data=> {
-                setCountries(data);
-                setIsPending(false);       
-                console.log(data);
-            })
-            .catch(error=> {
-                setError(error);
-                setIsPending(false);
-            });
-        })
         .catch(error=> {
             setError(error);
-            setIsPending(false);
-        });
+        }).finally(()=> {
+            setIsPending(false)
+        })
     };
 
-    useEffect(fetchTitles,[id]);
+    useEffect(fetchTitles,[id,mediaType]);
 
   return (
     <main className="alt-titles">
         {
             isPending ? <Loading width='100%' height='300px' /> : 
-            (countries && titles) ?
+            titles ?
             <div className="alt-content">
                 <section className='alt-cout-list card'>
                     <header className='cout-header' style={{backgroundColor : color.backColor,color: color.textColor}}>
