@@ -20,7 +20,7 @@ const Filters = () => {
     const [isOpen,setIsOpen] = useState(false);
 
 
-    const {lang} = useContext(globalContext);
+    const {lang,languages} = useContext(globalContext);
 
     const {filter} = useParams();
 
@@ -105,7 +105,7 @@ const Filters = () => {
                     </nav>
                 </section>
                 <section className="sort-content">
-                    <LanguagesCountries type='languages' />
+                    <LanguagesCountries type='languages' data={languages} />
                 </section>
                 <section className="sort-content">
                 <SortingGauge  title="Minimum User Votes" renderFrom='rating'/>

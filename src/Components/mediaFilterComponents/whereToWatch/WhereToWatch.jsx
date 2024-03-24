@@ -58,13 +58,12 @@ const WhereToWatch = () => {
         {
             isOpen &&
             <div className="sort-content">
-                {
-                    isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> 
-                    : providers ? 
                     <section className="country">
                         <LanguagesCountries type='countries' data={countries}/>
                         <div className="movie-providers">
                             {
+                                isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> 
+                                : providers ? 
                                 providers?.map((provider)=> (
                                     <div 
                                         onClick={()=> setMediaFiltering(prev=> {
@@ -94,11 +93,10 @@ const WhereToWatch = () => {
                                         }
                                     </div>
                                 ))
+                                : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchProviders} /> 
                             }
                         </div>
                     </section>
-                    : error && <Error error={error} height='calc(100vh - 100px)' onClick={fetchProviders} /> 
-                }
             </div>
         }
     </section>

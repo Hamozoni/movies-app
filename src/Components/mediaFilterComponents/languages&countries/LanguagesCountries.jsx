@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -11,8 +11,7 @@ const LanguagesCountries = ({type,data}) => {
 
     const {setMediaFiltering} = useContext(mediaFilter);
 
-    const [data,setData] = useState([]);
-    const [filterdData,setFilterdData] = useState([]);
+    const [filterdData,setFilterdData] = useState(data);
     const [showDataList,setShowDataList] = useState(false);
     const [selectedLanguage,setSelectedLanguage] = useState('none seleted');
 
@@ -23,6 +22,7 @@ const LanguagesCountries = ({type,data}) => {
 
         setFilterdData(newLang);
     };
+
 
     const selectData = (langCode,langName)=> {
         if(type === 'languages'){
@@ -78,13 +78,16 @@ const LanguagesCountries = ({type,data}) => {
                         }
                         {
                             filterdData?.map((lang)=>(
-                                <li onClick={()=> selectData(type === 'languages' ?  lang?.iso_639_1 : lang?.iso_3166_1 ,lang?.english_name)}
+                                <li 
+                                    onClick={()=> selectData(type === 'languages' ?  lang?.iso_639_1 : lang?.iso_3166_1 ,lang?.english_name)}
                                     className={`${selectedLanguage === lang.english_name && "active"} lang-li`}
                                     key={lang.english_name}
                                     >
                                         {
                                              type === 'countries' && 
-                                             <img src={`https://flagsapi.com/${lang?.iso_3166_1 }/shiny/64.png`}></img>
+                                             <span>
+                                                 <img src={`https://flagsapi.com/${lang?.iso_3166_1 }/shiny/64.png`}></img>
+                                             </span>
                                         }
                                         {lang?.english_name}
                                 </li>

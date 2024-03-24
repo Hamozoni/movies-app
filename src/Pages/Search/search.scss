@@ -5,31 +5,13 @@ main.search {
     .search-container {
         .search-results {
             padding: $padding;
-        }
-        @media (min-width: 667px) {
-            padding: $padding;
-            @include flex-box(flex-start);
-            .search-results {
-                padding: 0;
-            }
-            
-        }
-        .search-flters {
-            min-width: 220px;
-            @include postion(sticky);
-            @media (max-width: 666px) {
-                border-radius: 0;
-                .fliters-ul {
-                    @include flex-box(center,flex-start,0);
-                    overflow-y: scroll;
-                    background-color: #fff;
-                }
-            }
-            .filter-header {
-                background-color: $logo-color;
-                padding: $padding-10 $padding;
-                .fil-t {
-                    color: $text-light-color;
+
+            .key-l {
+                padding: $padding-5 0;
+                .keyword-link  {
+                    color: $text-dark-color-2;
+                    font-size: $f-size-5;
+                    font-weight: 500;
                 }
             }
         }

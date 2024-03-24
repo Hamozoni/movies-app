@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 
 import "./search.scss";
@@ -52,13 +52,13 @@ const Search = ()=> {
     };
 
     return (
-        <main className="search">
-            <div className="search-container">
-                <section className="search-flters card">
-                    <header className="filter-header">
+        <main className="search alt-titles">
+            <div className="search-container alt-content">
+                <section className="search-flters alt-cout-list card">
+                    <header className="filter-header cout-header">
                         <h4 className="fil-t">Search filter</h4>
                     </header>
-                    <ul className="fliters-ul">
+                    <ul className="fliters-ul cout-list">
                         <li 
                             onClick={()=> handleFilter('movie')}
                             className={`${type === 'movie' && 'active'} nav-btn`}
@@ -119,31 +119,25 @@ const Search = ()=> {
                                     </span>
                             }
                             </li>
-                        <li
-                           onClick={()=> handleFilter('company')}
-                           className={`${type === 'company' && 'active'} nav-btn`}
-                           >
-                            companies
-                            {
-                                type === 'company' &&
-                                <span>
-                                    {new Intl.NumberFormat().format(searchData?.total_results)}
-                                </span>
-                            }
-                        </li>
                     </ul>
 
                 </section>
                 {
                     isPending ? <Loading width='60%' height='calc(100vh - 100px)'/> : 
                     searchData ?
-                    <section className="search-results">
+                    <section className="search-results alt-t-tabels">
                         {
-
+                            
                             searchData?.results?.map((media)=> (
                                 type === 'person' ? 
 
                                 <CrewCard key={media?.id} person={media} />
+                                : type === 'keyword' ? 
+                                <div className="key-l">
+                                    <Link key={media?.id} to={`/keywords/${media?.id}`} className="keyword-link link-hover" >
+                                        {media?.name}
+                                    </Link>
+                                </div>
                                 :
                                 <MediaInlineCard key={media?.id} movie={media} type={type}/>
                             ))
