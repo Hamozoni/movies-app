@@ -6,7 +6,7 @@ import { globalContext } from "../../GlobalStateContext/GlobalContext";
 import fetchData from "../../utilities/fetchData";
 import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
-import SeasonHeader from "../../Components/tvComponents/seasonMainNav/SeasonHeader";
+import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader";
 
 export const episodesContext = createContext()
 
@@ -55,7 +55,13 @@ const TvShowSeasonLayout = () => {
         <MediaColorContext>
             <episodesContext.Provider value={{episodes}}>
                 <SeasonMainNav />
-                <SeasonHeader details={episodes} />
+                <MediaHeader 
+                      imageUrl={episodes?.poster_path} 
+                      title={episodes?.name}
+                      navigateTo={`/tv/${id}/seasons`}
+                      linkTitle='back to seasons list'
+                      year={episodes?.air_date}
+                      /> 
                 <Outlet />
             </episodesContext.Provider>
         </MediaColorContext>

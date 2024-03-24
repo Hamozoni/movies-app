@@ -1,11 +1,11 @@
 import { Outlet, useParams } from "react-router-dom"
-import SeasonHeader from "../../Components/tvComponents/seasonMainNav/SeasonHeader"
 import SeasonMainNav from "../../Components/tvComponents/seasonMainNav/SeasonMainNav"
 import MediaColorContext from "../../GlobalStateContext/MediaColorContext"
 import { useEffect, useState } from "react"
 import fetchData from "../../utilities/fetchData"
 import Loading from "../../Components/loading/Loading"
 import Error from "../../Components/error/Error"
+import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader"
 
 
 const EpisodesLayout = () => {
@@ -21,12 +21,13 @@ const EpisodesLayout = () => {
     fetchData(`tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?language=en-US`)
     .then((data)=> {
       setDetails(data);
-      setIsPending(false);
     })
     .catch(error=> {
       setError(error);
-      setIsPending(false);
-    });
+    })
+    .finally(()=> {
+      setIsPending(false)
+    })
 
   }
 
@@ -39,7 +40,13 @@ const EpisodesLayout = () => {
                 {
                   isPending ? <Loading  width='100%' height='200px'/> : 
                   details ? 
-                  <SeasonHeader details={details} isEpisode={true} />
+                  <MediaHeader 
+                      imageUrl={details?.still_path} 
+                      title={`${seasonNumber}×${episodeNumber} ${details?.name}`}
+                      navigateTo={`/tv/${id}/season/${seasonNumber}`}
+                      linkTitle='back to episode'
+                      year={details.air_date}
+                      /> 
                   : error && <Error error={error} height='200px' onClick={fetchDetails}/>
                 }
                 <Outlet />

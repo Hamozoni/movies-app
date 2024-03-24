@@ -127,11 +127,13 @@ const MovieStitistics = ({id,details,type}) => {
                     <div className="net-images">
                         {
                            details?.networks?.map((network)=> (
-                             <img 
-                                  className='image-hover'
-                                  src={process.env.REACT_APP_BASE_URL + 'original' + network?.logo_path} 
-                                  alt="network"
-                                  />
+                            <div className='network-image'>
+                              <img 
+                                   className='image-hover'
+                                   src={process.env.REACT_APP_BASE_URL + 'original' + network?.logo_path} 
+                                   alt="network"
+                                   />
+                            </div>
                            ))
                         }
                     </div>

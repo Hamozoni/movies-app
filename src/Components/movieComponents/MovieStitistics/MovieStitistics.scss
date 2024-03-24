@@ -41,11 +41,9 @@
             }
             .net-images {
                 padding: $padding-10 0;
-                img {
+                .network-image {
                     max-width: 150px;
-                    max-height: 30px;
                     margin-bottom: 5px;
-                    display: block;
                 }
             }
         }

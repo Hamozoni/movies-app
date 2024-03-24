@@ -108,6 +108,9 @@ function App() {
             </Route>
             <Route path='/collection/:id'  element={<CollectionLayout />}> 
                 <Route index element={<Collection />}/>
+                <Route path='translations'  element={<Translations mediaType='collection' />}/>
+                <Route path='posters'  element={<Backdrops_posters mediaType='collection' type='poster'/>}  />
+                <Route path='backdrops'  element={<Backdrops_posters mediaType='collection' type='backdrops'/>}/>
             </Route>
 
             <Route path='/person/:id'  element={<Person />}/>
