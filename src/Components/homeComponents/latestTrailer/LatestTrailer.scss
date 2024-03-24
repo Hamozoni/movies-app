@@ -4,6 +4,9 @@
 .latest-trailer {
     .trailer-box-cotainer {
         padding:  $padding 0;
+        @media (min-width:992px) {
+            padding: $padding $padding-40;
+        }
         background-color: rgba(11, 76, 119, 0.644);
         .trailer-header {
             @include flex-box(center,flex-start,10px);

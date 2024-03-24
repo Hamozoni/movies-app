@@ -10,6 +10,9 @@
         font-size: $main-f-size;
         text-transform: capitalize;
         background-color: #161515b7;
+        @media (min-width: 992px) {
+            padding: 60px $padding-40;
+        }
         .welcome {
             font-size: $main-f-size + 10;
         }
