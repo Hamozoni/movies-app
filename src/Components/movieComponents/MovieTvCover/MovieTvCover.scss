@@ -27,10 +27,13 @@
         .cover-content {
             .titles {
                 .name {
-                    text-align: center;
-                    @include text-overflow(44px);
+                 
+                    @include text-overflow(38px);
                     font-size: $f-size-2;
                     color: $text-light-color;
+                    @media (max-width: 719px) {
+                        text-align: center;
+                    }
                 }
                 .details {
                     span {

@@ -1,0 +1,17 @@
+@import "../../GlobalStyle/variables";
+@import "../../GlobalStyle/mixin";
+
+.collection-main {
+    .coll-container {
+        .collection-movie {
+            padding: $padding;
+            .coll-header {
+                padding-bottom: $padding;
+                h4 {
+                    color: $text-dark-color-2;
+                    font-size: $f-size-4;
+                }
+            }
+        }
+    }
+}

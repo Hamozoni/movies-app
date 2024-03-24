@@ -17,35 +17,35 @@ import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext
 const MovieTvCover = ({details,mediaType})=> {
 
     const {color} = useContext(mediaColorContext);
-
-    console.log()
-
     const gradientColor = color.backColor.slice(4,color.backColor.length - 1).replaceAll(' ',', ')
-
     const {lang,setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
     const [crews,setCrews] = useState([]);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
-
     const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
     const linearGrad = `linear-gradient(to right, rgba(${gradientColor}, 1) , rgba(32, 32, 32, 0.84), rgba(${gradientColor}, 0.84) )`;
 
     const fetch = ()=> {
-        setIsPending(true);
-        setError(null);
-        fetchData(`${mediaType}/${details?.id}/credits?language=${lang}`)
-        .then((data)=>{
-            setCrews(data?.crew);
-            setIsPending(false);
-            console.log(details)
-        })
-        .catch(error=> {
-            setIsPending(false);
-            setError(error);
-            console.log(error)
-        });
+        if(mediaType !== 'collection'){
+            setIsPending(true);
+            setError(null);
+            fetchData(`${mediaType}/${details?.id}/credits?language=${lang}`)
+            .then((data)=>{
+                setCrews(data?.crew);
+                setIsPending(false);
+                console.log(details)
+            })
+            .catch(error=> {
+                setIsPending(false);
+                setError(error);
+                console.log(error)
+            });
+        }
     }
+
+  
     useEffect(fetch,[mediaType,details,lang]);
+
 
     const getMovieRuntime = (time)=>{
         const runTime = (time / 60)?.toString()?.split('.');
@@ -75,20 +75,22 @@ const MovieTvCover = ({details,mediaType})=> {
                     <div className="cover-content">
                         <div className="titles">
                             <h3 className="name">
-                                {details?.title || details?.name + `(${new Date(details?.release_date  || details?.first_air_date)?.getFullYear()})`}
+                                {details?.title || details?.name } { mediaType === 'collection' ? "" :`(${ new Date(details?.release_date  || details?.first_air_date)?.getFullYear()})`}
                             </h3>
-                            <div className="details">
-                                <span>
-                                    {details?.release_date && details?.release_date + `(${details?.original_language}) . `}
-                                </span>
-                                    {details?.genres?.map((genre)=>(
-                                        <span>
-                                            {genre?.name},  
-                                        </span>
-                                    ))}
-                                    <span>{getMovieRuntime(details?.runtime)}</span>
-                            </div>
-
+                            {
+                                mediaType !== 'collection' &&
+                                <div className="details">
+                                    <span>
+                                        {details?.release_date && details?.release_date + `(${details?.original_language}) . `}
+                                    </span>
+                                        {details?.genres?.map((genre)=>(
+                                            <span>
+                                                {genre?.name},  
+                                            </span>
+                                        ))}
+                                        <span>{getMovieRuntime(details?.runtime)}</span>
+                                </div>
+                            }
                         </div>
                         <div className="links flex-box">
                             <div className="user-score-container">
@@ -100,33 +102,37 @@ const MovieTvCover = ({details,mediaType})=> {
                                 </div>
                                 <h3 className="user-t">user score</h3>
                             </div>
-                            <nav className="add-to flex-box">
-                                <ul className="flex-box">
-                                    <li className="flex-box">
-                                        <PlaylistAddIcon />
-                                    </li>
-                                    <li className="flex-box">
-                                        <FavoriteIcon />
-                                    </li>
-                                    <li className="flex-box">
-                                        <TheatersIcon />
-                                    </li>
-                                    <li className="flex-box">
-                                        <StarIcon />
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div className="play-trailer flex-box">
-                                <PlayArrowIcon />
-                                <button onClick={()=> {
-                                    setMediaId(details?.id);
-                                    setMediaType(details?.title ? 'movie' : 'tv');
-                                    setIsTrailer(true);
-                                }}>
-                                    {languages[lang]?.playTrailer}
-                                </button>
-                            </div>
-
+                            {
+                                mediaType !== 'collection' &&
+                                <>
+                                    <nav className="add-to flex-box">
+                                        <ul className="flex-box">
+                                            <li className="flex-box">
+                                                <PlaylistAddIcon />
+                                            </li>
+                                            <li className="flex-box">
+                                                <FavoriteIcon />
+                                            </li>
+                                            <li className="flex-box">
+                                                <TheatersIcon />
+                                            </li>
+                                            <li className="flex-box">
+                                                <StarIcon />
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <div className="play-trailer flex-box">
+                                        <PlayArrowIcon />
+                                        <button onClick={()=> {
+                                            setMediaId(details?.id);
+                                            setMediaType(details?.title ? 'movie' : 'tv');
+                                            setIsTrailer(true);
+                                        }}>
+                                            {languages[lang]?.playTrailer}
+                                        </button>
+                                    </div>
+                                </>
+                            }
                         </div>
                         <div className="overview">
                             <p>{details?.tagline}</p>
@@ -135,23 +141,25 @@ const MovieTvCover = ({details,mediaType})=> {
                                 {details?.overview}
                             </aside>
                         </div>
-                        <div className="crew-container">
-                            <div className="crews">
-                                {
-                                isPending ? <Loading width='100%'  height='80px' /> 
-                                : crews?.length ? 
-                                    crews?.map((crew,i)=>(
-                                        i < 4 &&
-                                        <div key={crew?.id} className="crew">
-                                            <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
-                                            <aside>{crew?.job}</aside>
-                                        </div>
-                                    ))
-                                :  error &&  <Error error={error} height='80px'  onClick={fetch}/> 
-                                }
+                        {
+                            mediaType !== 'collection' &&
+                            <div className="crew-container">
+                                <div className="crews">
+                                    {
+                                    isPending ? <Loading width='100%'  height='80px' /> 
+                                    : crews?.length ? 
+                                        crews?.map((crew,i)=>(
+                                            i < 4 &&
+                                            <div key={crew?.id} className="crew">
+                                                <Link to={`/person/${crew?.id}`}>{crew?.name}</Link>
+                                                <aside>{crew?.job}</aside>
+                                            </div>
+                                        ))
+                                    :  error &&  <Error error={error} height='80px'  onClick={fetch}/> 
+                                    }
+                                </div>
                             </div>
-
-                        </div>
+                        }
                     </div>
                 </div>
         </section>

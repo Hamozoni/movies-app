@@ -30,6 +30,8 @@ import Backdrops_posters from './Pages/sharedPages/backdrops&posters/Backdrops&p
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
 import TvShowSeasonLayout from './Layouts/tvShowSeason/TvShowSeason.jsx';
 import EpisodesLayout from './Layouts/tvShowsEpisodeLayout.jsx/EpisodesLayout.jsx';
+import CollectionLayout from './Layouts/collectionLayout/CollectionLayout.jsx';
+import Collection from './Pages/collection/Collection.jsx';
 
 
 function App() {
@@ -89,6 +91,7 @@ function App() {
                 <Route path='logos'  element={<Backdrops_posters mediaType='tv' type='logos'/>}/>
                 <Route path='videos'  element={<MediaVideos mediaType='tv' />}/>
             </Route>
+
             <Route path='/tv/:id/season/:seasonNumber' element={<TvShowSeasonLayout/>} >
                <Route index element={<SeasonEpisodes />}/>
                <Route path='cast'  element={<Cast mediaType='tv' isSeason={true}/>}/>
@@ -96,12 +99,17 @@ function App() {
                <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>} isSeason={true}/>
                <Route path='videos'  element={<MediaVideos mediaType='tv' isSeason={true}/>}/>
             </Route>
+
             <Route path='/tv/:id/season/:seasonNumber/episode/:episodeNumber'element={<EpisodesLayout />}  >
                 <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='stills' isEpisode={true}/>}  />
                 <Route path='videos'  element={<MediaVideos mediaType='tv' isEpisode={true} />}/>
                 <Route path='cast'  element={<Cast mediaType='tv' isEpisode={true}/>}/>
                 <Route path='translations'  element={<Translations mediaType='tv' isEpisode={true}/>}/>
             </Route>
+            <Route path='/collection/:id'  element={<CollectionLayout />}> 
+                <Route index element={<Collection />}/>
+            </Route>
+
             <Route path='/person/:id'  element={<Person />}/>
             <Route path='/keywords/:id'  element={<Keywords />}/>
             <Route path='/search/:type'  element={<Search />}/>
