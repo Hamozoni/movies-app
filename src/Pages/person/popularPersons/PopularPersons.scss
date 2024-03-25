@@ -3,6 +3,9 @@
 
 .popular-people {
     padding: $padding;
+    @media (min-width: 992px) {
+        padding: $padding $padding-40;
+    }
     .p-title {
         font-size: $f-size;
         color: $text-dark-color;

@@ -3,6 +3,9 @@
 
 .movies {
     padding: $padding;
+    @media (min-width: 992px) {
+        padding: $padding $padding-40;
+    }
     .filt-title {
         margin-bottom: $margin;
         font-size: $f-size-1;

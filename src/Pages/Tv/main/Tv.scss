@@ -6,6 +6,7 @@
 
     @media (min-width: 880px) {
         @include flex-box(flex-start,center,10px);
+        padding: 0 $padding-40;
         .cast {
             width: 70%;
         }

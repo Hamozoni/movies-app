@@ -2,7 +2,10 @@
 @import "../../../GlobalStyle/mixin";
 
 .main-t-header {
-    padding: $padding $padding;
+    padding: $padding ;
+    @media (min-width: 992px) {
+      padding: $padding $padding-40;
+    }
     .media-details{
         @include flex-box();
         .media-image {

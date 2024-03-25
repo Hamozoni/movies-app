@@ -9,6 +9,7 @@
             @media (min-width:880px) {
                 @include flex-box(flex-start,flex-start,20px);
                 max-width: 100vw;
+                padding: 0 $padding-40;
                 .left-content {
                     width: 70%;
                 }

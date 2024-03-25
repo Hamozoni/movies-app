@@ -10,7 +10,9 @@
         .trend-header {
             @include flex-box(center,flex-start,10px);
             flex-wrap: wrap;
-            padding: $padding;
+            @media (max-width: 780px) {
+                padding: 0 $padding;
+            }
             .trend-title {
                 text-transform: capitalize;
                 color: $text-dark-color;
@@ -37,7 +39,7 @@
         }
         .movies {
            @include flex-box(flex-start,flex-start,10px);
-           padding: 0 $padding;
+           padding: $padding;
            overflow-x: auto;
         }
     }

@@ -50,9 +50,9 @@ img, picture {
 
 
 .alt-content {
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     @include flex-box(flex-start,flex-start);
-     padding: $padding;
+     padding: $padding $padding-40;
   }
   .alt-cout-list {
     min-width: 260px;
@@ -80,7 +80,10 @@ img, picture {
     }
   }
   .alt-t-tabels {
-    padding: $padding-10;
+    @media (max-width:991px) {
+      padding: $padding-10;
+      
+    }
       .titles-card {
           margin-bottom: $margin;
           min-width: 100%;

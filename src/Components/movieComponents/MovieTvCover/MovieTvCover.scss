@@ -5,6 +5,9 @@
     background-size: cover;
     background-position: center;
     padding: $padding;
+    @media (min-width: 992px) {
+        padding: $padding $padding-40;
+    }
     @include flex-box(center,center);
     .flex-box {
       @include flex-box(center,flex-start,10px);

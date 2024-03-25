@@ -5,6 +5,9 @@
     .coll-container {
         .collection-movie {
             padding: $padding;
+            @media (min-width: 992px) {
+                padding: $padding $padding-40;
+            }
             .coll-header {
                 padding-bottom: $padding;
                 h4 {

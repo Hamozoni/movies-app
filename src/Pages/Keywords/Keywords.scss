@@ -3,4 +3,7 @@
 
 .keywords-page {
     padding: $padding;
+    @media (min-width: 992px) {
+        padding: $padding $padding-40;
+    }
 }
