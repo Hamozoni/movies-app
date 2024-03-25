@@ -5,12 +5,17 @@
     .recom-t {
         font-size: $f-size-2;
         color: $text-dark-color;
-        padding: 0 $padding
+        @media  (max-width:991px){
+            padding: 0 $padding;
+        }
     }
     .recom-content {
           @include flex-box(flex-start);
-          padding: $padding-10 $padding;
           overflow-x: auto;
+          padding: $padding-10  0;
+          @media  (max-width:991px){
+            padding: $padding-10 $padding;
+        }
           .recomm-media-card {
             min-width: 250px;
             .recomm-image {
@@ -25,10 +30,8 @@
                     min-height: 141px; 
                 }
                 .overlay-content {
-                    position: absolute;
-                    left: 0;
+                    @include postion(absolute,100%,fit-content,unset,0,99);
                     bottom: -100%;
-                    width: 100%;
                     padding: $padding-5;
                     background-color: $text-light-color;
                     display: none;

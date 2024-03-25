@@ -23,7 +23,7 @@
                 overflow-y: auto;
                 li {
                     padding: 0 $padding-10;
-                    font-size: $f-size-4;
+                    font-size: $f-size-5;
                     color: $logo-color;
                 }
              }
@@ -34,9 +34,11 @@
         max-width: 100%;
         overflow-x:  auto;
         overflow-y: hidden;
-        @media (max-width:720px) {
+        @media (max-width:991px) {
             padding: 0 $padding;
+            border-radius: 0;
         }
+        border-radius: $border-r;
         .media-content-container {
             min-width: fit-content;
 

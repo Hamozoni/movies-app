@@ -10,7 +10,7 @@
         .trend-header {
             @include flex-box(center,flex-start,10px);
             flex-wrap: wrap;
-            @media (max-width: 780px) {
+            @media (max-width: 991px) {
                 padding: 0 $padding;
             }
             .trend-title {
@@ -41,6 +41,9 @@
            @include flex-box(flex-start,flex-start,10px);
            padding: $padding;
            overflow-x: auto;
+           @media (max-width: 991px) {
+            padding:  $padding 0;
+        }
         }
     }
 }

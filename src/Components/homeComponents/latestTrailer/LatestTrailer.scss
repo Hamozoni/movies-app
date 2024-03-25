@@ -10,7 +10,7 @@
         background-color: rgba(11, 76, 119, 0.644);
         .trailer-header {
             @include flex-box(center,flex-start,10px);
-            @media (max-width: 780px) {
+            @media (max-width: 991px) {
                 padding: 0 $padding;
             }
             flex-wrap: wrap;
