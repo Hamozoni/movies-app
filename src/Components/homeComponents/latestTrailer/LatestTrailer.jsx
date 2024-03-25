@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react";
+import {useContext, useEffect, useState } from "react";
 import fetchData from "../../../utilities/fetchData";
 
 
@@ -6,6 +6,8 @@ import "./LatestTrailer.scss";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 import LatesTrailerVideoCard from "./LatesTrailerVideoCard";
+import { languages } from "../../../utilities/languages";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 const LatestTrailer = () => {
@@ -16,6 +18,8 @@ const LatestTrailer = () => {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
+    const {lang} = useContext(globalContext);
+
 
 
     // const navigate = useNavigate();
@@ -23,19 +27,19 @@ const LatestTrailer = () => {
     const fecth = ()=> {
         setIsPending(true);
         setError(null);
-        fetchData(`movie/${activeSection}?language=en-US&page=1`)
+        fetchData(`movie/${activeSection}?language=${lang}&page=1`)
         .then((data)=> {
             setTrailerData(data?.results);
-            setIsPending(false);
-            console.log(data?.results);
         })
         .catch(error=> {
             setError(error);
-            setIsPending(false);
-        });
+        })
+        .finally(()=> {
+            setIsPending(false)
+        })
     }
 
-    useEffect(fecth,[activeSection]);
+    useEffect(fecth,[activeSection,lang]);
 
 
     const style = {
@@ -54,26 +58,26 @@ const LatestTrailer = () => {
         >
             <div className="trailer-box-cotainer">
                <header className="trailer-header">
-                <h3>latest trailer</h3>
+                <h3>{languages[lang].latestTrailer}</h3>
                     <nav className="trailer-nav">
                         <ul className="trailer-ul">
                             <li 
                                 className={activeSection === 'popular' && 'active'}
                                 onClick={()=> setActiveSection('popular')}
-                                >popular
+                                >{languages[lang].popular}
                             </li>
                             <li 
                                 className={activeSection === 'now_playing' && 'active'}
                                 onClick={()=> setActiveSection('now_playing')}
-                                >streaming
+                                >{languages[lang].streaming}
                             </li>
                             <li 
                                 className={activeSection === 'upcoming' && 'active'}
                                 onClick={()=> setActiveSection('upcoming')}
-                                >on tv
+                                >{languages[lang].onTv}
                             </li>
-                            <li onClick={()=> setActiveSection('')}>for rent</li>
-                            <li onClick={()=> setActiveSection('')}>in theatres</li>
+                            <li onClick={()=> setActiveSection('')}>{languages[lang].forRent}</li>
+                            <li onClick={()=> setActiveSection('')}>{languages[lang].inTheatres}</li>
                         </ul>
                     </nav>
                 </header>
@@ -81,7 +85,7 @@ const LatestTrailer = () => {
                     <div className="trailer-container">
                         {
                             isPending ? <Loading width='100%' height='330px'/> : 
-                            trailerData?.length ?
+                            trailerData.length > 0 ?
                             trailerData?.map((detail,i)=> (
                             <LatesTrailerVideoCard detail={detail} onMouse={()=> setBackgroundImageIndex(i)}/>
                             ))

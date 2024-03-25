@@ -1,15 +1,20 @@
 import { Outlet, useParams } from "react-router-dom"
-import SeasonMainNav from "../../Components/tvComponents/seasonMainNav/SeasonMainNav"
 import MediaColorContext from "../../GlobalStateContext/MediaColorContext"
 import { useEffect, useState } from "react"
 import fetchData from "../../utilities/fetchData"
 import Loading from "../../Components/loading/Loading"
 import Error from "../../Components/error/Error"
 import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader"
+import MainMediaNav from "../../Components/sharedComponents/mainMediaNav/MainMediaNav"
 
 
 const EpisodesLayout = () => {
+
+
+
   const {id,seasonNumber,episodeNumber} = useParams();
+
+  const lankUrl = `tv/${id}/season/${seasonNumber}/episode/${episodeNumber}`;
 
   const [details,setDetails] = useState(null);
   const [error,setError] = useState(null);
@@ -18,7 +23,7 @@ const EpisodesLayout = () => {
   const fetchDetails = ()=>{
     setIsPending(true);
     setError(null);
-    fetchData(`tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?language=en-US`)
+    fetchData(`${lankUrl}?language=en-US`)
     .then((data)=> {
       setDetails(data);
     })
@@ -31,12 +36,13 @@ const EpisodesLayout = () => {
 
   }
 
+
   useEffect(fetchDetails,[id,seasonNumber,episodeNumber]);
 
   return (
     <div>
         <MediaColorContext>
-                <SeasonMainNav isEpisode={true}  />
+              <MainMediaNav mediaType='tvEpisode' linkUrl={lankUrl} />
                 {
                   isPending ? <Loading  width='100%' height='200px'/> : 
                   details ? 

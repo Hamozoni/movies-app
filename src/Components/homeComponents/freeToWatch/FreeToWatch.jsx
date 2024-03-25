@@ -31,7 +31,9 @@ const FreeToWatch = ()=> {
 
     useEffect(()=>{
         fetch()
-    },[mediaType]);
+    },[mediaType,lang]);
+
+    const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
 
 
     return (
@@ -40,7 +42,7 @@ const FreeToWatch = ()=> {
                 <div className="trending-container">
                     <header className="trend-header">
                         <h3 className="trend-title">
-                            {languages[lang].freeToWatch}
+                            {languages[langCode].freeToWatch}
                         </h3>
                         <nav className="trend-nav">
                             <ul>
@@ -48,13 +50,13 @@ const FreeToWatch = ()=> {
                                     className={mediaType === 'movie' && 'active'}
                                     onClick={()=> setMediaType('movie')}
                                     >
-                                    {languages[lang].movies}
+                                    {languages[langCode].movies}
                             </li>
                                 <li 
                                     className={mediaType === 'tv' && 'active'}
                                     onClick={()=> setMediaType('tv')}
                                     >
-                                    {languages[lang].tvShows}
+                                    {languages[langCode].tvShows}
                                 </li>
                             </ul>
                         </nav>

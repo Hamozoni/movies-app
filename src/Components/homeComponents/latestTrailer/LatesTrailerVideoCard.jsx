@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const LatesTrailerVideoCard = ({detail,onMouse}) => {
 
-    const {setTrailer} = useContext(globalContext);
+    const {setTrailer,lang} = useContext(globalContext);
 
     const [video,setVideo] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -19,20 +19,19 @@ const LatesTrailerVideoCard = ({detail,onMouse}) => {
     const fetchVideos = ()=> {
         setIsPending(true);
         setError(null);
-        fetchData(`movie/${detail.id}/videos?language=en-US&page=2`)
+        fetchData(`movie/${detail.id}/videos?language=${lang}&page=2`)
         .then((data)=> {
             setVideo(data?.results[0]);
-            setIsPending(false);
-            console.log(data)
         })
         .catch(error=> {
             setError(error);
-            setIsPending(false);
-            console.log(error)
+        })
+        .finally(()=> {
+            setIsPending(false)
         })
     };
 
-  useEffect(fetchVideos,[detail]);
+  useEffect(fetchVideos,[detail,lang]);
 
   const handleTrailer = ( )=> {
     setTrailer({isTrailer: true,youtubeId : video?.key,type: video?.type})

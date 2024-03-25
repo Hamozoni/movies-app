@@ -14,7 +14,10 @@
     }
     .cover-container {
         @media (min-width: 720px) {
-            @include flex-box(flex-start,center);
+            @include flex-box(flex-start,center,20px);
+        }
+        @media (min-width: 992px) {
+            gap: $padding-40;
         }
         .cover-image {
             margin: 0 auto;
@@ -149,6 +152,7 @@
         .crews {
             display: grid;
             grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+            gap: 20px;
             .crew {
                a {
                 color: $text-light-color-2;

@@ -58,33 +58,12 @@
                 li {
                     padding: $padding-5 $padding-10;
                     border-radius: $border-r;
-                    background-color: $text-light-color;
+                    
                     cursor: pointer;
-                    font-size: $f-size-xs;
+                    font-size: $f-size-5;
+                    color: $text-dark-color;
+                    border: 1px solid $logo-color;
                 }
-            }
-        }
-        .score {
-            padding-top: $padding;
-            border-top: 1px solid #cac7c7;
-            max-width: 250px;
-            .sc-t {
-               color: $text-dark-color;
-               font-size: $f-size-s;
-            }
-            .sc-box {
-                border-radius: $border-r;
-                overflow: hidden;
-              .sc-per {
-                background-color: $text-dark-color;
-                color: $text-light-color;
-                padding: $padding-10;
-              }
-              p {
-                background-color: #c9c6c6;
-                color: $text-dark-color;
-                padding: $padding-10;
-              }
             }
         }
     }

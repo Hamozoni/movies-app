@@ -13,30 +13,56 @@ import fitLongString from "../../../utilities/fitLongString";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
+import { languages } from "../../../utilities/languages";
+
+import noDataFound from "../../../assets/NewImage.png";
 
 function Recommendations({id,mediaType}) {
 
     const {lang} = useContext(globalContext);
     const [recomData,setRecomData] = useState(null);
     const [isPending,setIsPending] = useState(true);
+    const [selected,setSelected] = useState('recommendations')
     const [error,setError] = useState(null);
 
     const fetch = ()=>{
         setError(null);
         setIsPending(true);
-        fetchData(`${mediaType}/${id}/recommendations?language=${lang}&page=1`)
+        fetchData(`${mediaType}/${id}/${selected}?language=${lang}&page=1`)
         .then((data)=> {
             setRecomData(data);
-            setIsPending(false)
-           console.log(data)
         })
         .catch(error=> {
             setError(error);
+        }).finally(()=> {
             setIsPending(false);
-        });
+        })
+    };
+
+    const RecommendationCard = ({media}) => {
+        return (
+            <div className="recomm-media-card scale">
+                <div className="recomm-image">
+                    <img 
+                        className="image-hover"
+                        onClick={()=> handleNavigate(media?.media_type,media?.id)}
+                        src={process.env.REACT_APP_BASE_URL + "w300" + media?.backdrop_path} 
+                        alt="" />
+                    <OnHoherOverlay media={media}/>
+                </div>
+                <div className="media-content">
+                    <p className="name" onClick={()=> handleNavigate(media?.media_type,media?.id)}>
+                        {fitLongString(media?.name,25) || fitLongString(media?.title,25) }
+                    </p>
+                    <h4>
+                        {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}%
+                    </h4>
+                </div>
+            </div>
+        )
     }
 
-    useEffect(fetch,[id,lang]);
+    useEffect(fetch,[id,lang,selected]);
 
     const OnHoherOverlay = ({media})=> {
         return (
@@ -63,35 +89,35 @@ function Recommendations({id,mediaType}) {
 
   return (
 
-    isPending ? <Loading width='100%' height='240px'/> : recomData ?
-    <section className="recommendations">
-        <h4 className="recom-t">Recommendations</h4>
+
+    <section className="recommendations b-b">
+        <ul className="select-ul">
+            <li 
+                onClick={()=> setSelected('recommendations')}
+                className={`${selected === 'recommendations' && 'active'} 
+                nav-btn`}
+                >{languages[lang].Recommendations}
+                </li>
+            <li 
+                onClick={()=> setSelected('similar')}
+                className={`${selected === 'similar' && 'active'} nav-btn`}
+                >{languages[lang].similar}
+                </li>
+        </ul>
         <div className="recom-content">
             {
+             isPending ? <Loading width='100%' height='240px'/> 
+             : recomData?.results.length === 0 ?  
+             <img src={noDataFound} alt="no data found" className="no-data-img"/>
+            :  recomData?.results.length > 0 ?
                 recomData?.results?.map((media)=>(
-                    <div className="recomm-media-card scale">
-                        <div className="recomm-image">
-                            <img 
-                                className="image-hover"
-                                onClick={()=> handleNavigate(media?.media_type,media?.id)}
-                                src={process.env.REACT_APP_BASE_URL + "w300" + media?.backdrop_path} 
-                                alt="" />
-                            <OnHoherOverlay media={media}/>
-                        </div>
-                        <div className="media-content">
-                            <p className="name" onClick={()=> handleNavigate(media?.media_type,media?.id)}>
-                                {fitLongString(media?.name,38) || fitLongString(media?.title,38) }
-                            </p>
-                            <h4>
-                                {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}%
-                            </h4>
-                        </div>
-                    </div>
+                      <RecommendationCard key={media.id} media={media}/>
                 ))
+                : error && <Error error={error} height='240px' onClick={fetch}/>
             }
         </div>
     </section>
-   : error && <Error error={error} height='240px' onClick={fetch}/>
+
   )
 }
 

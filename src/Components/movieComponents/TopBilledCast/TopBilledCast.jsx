@@ -36,7 +36,7 @@ const TopBilledCast = ({mediaType,id,title})=> {
     useEffect(fetch,[id,lang]);
 
   return (
-    <section className="top-billed">
+    <section className="top-billed b-b">
         <h4 className="title">{title}</h4>
 
         <div className="persons">

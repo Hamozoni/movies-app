@@ -15,6 +15,8 @@ const Trending = ({type})=> {
     const [filter,setFilter] = useState('day');
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
+    
+   const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
 
     const fetch = ()=> {
         setIsPending(true);
@@ -39,8 +41,8 @@ const Trending = ({type})=> {
             <div className="trending-container">
                 <header className="trend-header">
                     <h3 className="trend-title">
-                        {languages[lang].trending + " "}  
-                        {type === 'movie' ? languages[lang].movies : type === 'tv'  ? languages[lang].tvShows :languages[lang].people }
+                        {languages[langCode].trending + " "}  
+                        {type === 'movie' ? languages[langCode].movies : type === 'tv'  ? languages[langCode].tvShows :languages[langCode].people }
                     </h3>
                     <nav className="trend-nav">
                         <ul>
@@ -48,13 +50,13 @@ const Trending = ({type})=> {
                                 className={filter === 'day' && 'active'}
                                 onClick={()=> setFilter('day')}
                                 >
-                                {languages[lang].today}
+                                {languages[langCode].today}
                            </li>
                             <li 
                                 className={filter === 'week' && 'active'}
                                 onClick={()=> setFilter('week')}
                                 >
-                                {languages[lang].thisWeek}
+                                {languages[langCode].thisWeek}
                             </li>
                         </ul>
                     </nav>

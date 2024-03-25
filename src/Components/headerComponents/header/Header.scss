@@ -3,7 +3,7 @@
 
 .main-header {
     max-width: 100vw;
-    background-image:linear-gradient(to right,$text-dark-color,$header-b-ground-c, $logo-color);
+    background:$header-b-ground-c;
     .header-container {
         width: 100%;
         max-width: 100%;
@@ -32,6 +32,30 @@
             @include flex-box(center,space-between);
             .lang {
                 position: relative;
+                cursor: pointer;
+                span {
+                    text-transform: uppercase;
+                    font-size: $f-size-5;
+                    font-weight: 500;
+                    padding: $padding-5 ;
+                    border: 1px solid $logo-color;
+                    border-radius: $border-r;
+                    color: $text-light-color;
+                }
+                &:hover {
+                    .lang-container {
+                        display: block;
+                    }
+                }
+                .lang-container {
+                    display: none;
+                    @include postion(absolute,150px,fit-content,150%,-20px,999999);
+                    background-color: #d8e0e7;
+                    padding: $padding 0;
+                    p {
+                        cursor: pointer;
+                    }
+                }
             }
             .part-one {
 

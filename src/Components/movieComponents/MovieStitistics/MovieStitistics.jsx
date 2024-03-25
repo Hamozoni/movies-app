@@ -1,5 +1,5 @@
 // import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 
 import "./MovieStitistics.scss"
@@ -12,6 +12,10 @@ import instagram_id from '../../../assets/insta.png';
 import twitter_id from '../../../assets/twiter.png';
 import Error from '../../error/Error';
 import Loading from '../../loading/Loading';
+import {languages as languagesList} from '../../../utilities/languages';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
+
+
 
 const images = {
   facebook_id,
@@ -30,22 +34,23 @@ const MovieStitistics = ({id,details,type}) => {
   const [isPending,setIsPending] = useState(true);
   const [error,setError] = useState(null);
 
+  const {lang,languages} = useContext(globalContext);
+
   const fetch = ()=> {
     setIsPending(true);
     setError(null);
     setIsPending2(true);
     setError2(null);
+
     fetchData(`${type}/${id}/keywords`)
     .then((data)=>{
       setKeywords(data?.keywords || data?.results );
-      setIsPending(false);
-
-      console.log(details);
     })
     .catch(error=> {
       setError(error);
+    }).finally(()=> {
       setIsPending(false);
-    });
+    })
 
 
     fetchData(`${type}/${id}/external_ids`)
@@ -68,7 +73,7 @@ const MovieStitistics = ({id,details,type}) => {
   const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id'];
 
   return (
-    <section className="movie-stits">
+    <section className="movie-stits b-b">
         <div className="stits-container">
             <nav className="stits-nav">
             {
@@ -104,26 +109,26 @@ const MovieStitistics = ({id,details,type}) => {
             </nav>
             <div className="status">
               <div className="stat">
-                  <h4>status</h4>
+                  <h4>{languagesList[lang]?.status}</h4>
                   <h5>{details?.status}</h5>
               </div>
               <div className="stat">
-                  <h4>original language</h4>
-                  <h5>{details?.original_language}</h5>
+                  <h4>{languagesList[lang].originalLanguage}</h4>
+                  <h5>{languages.find(e=> e.iso_639_1 === details?.original_language).english_name }</h5>
               </div>
               {
                 type === 'movie' ? 
                   (<><div className="stat">
-                      <h4>budget</h4>
+                      <h4>{languagesList[lang].budget}</h4>
                       <h5>${ new Intl.NumberFormat().format(details?.budget)}</h5>
                   </div>
                   <div className="stat">
-                      <h4>revenue</h4>
+                      <h4>{languagesList[lang].revenue}</h4>
                       <h5>${new Intl.NumberFormat().format(details?.revenue)}</h5>
                   </div></>)
                   :
                   (<div className="network">
-                    <h3 className='net-t'>network</h3>
+                    <h3 className='net-t'>{languagesList[lang].network}</h3>
                     <div className="net-images">
                         {
                            details?.networks?.map((network)=> (
@@ -142,7 +147,7 @@ const MovieStitistics = ({id,details,type}) => {
 
             </div>
             <section className="keywords">
-                <h4 className='key-t'>keywords</h4>
+                <h4 className='key-t'>{languagesList[lang].keywords}</h4>
                 {
                   isPending ? <Loading width='100%' height='300px' /> : 
                   keywords?.length ? 
@@ -152,7 +157,7 @@ const MovieStitistics = ({id,details,type}) => {
                         <li 
                           onClick={()=> navigate(`/keywords/${key?.id}`)}
                           key={key?.id} 
-                          className="key"
+                          className="key nav-btn scale"
                           >
                             {key?.name}
                         </li>
@@ -164,19 +169,6 @@ const MovieStitistics = ({id,details,type}) => {
             
 
             </section>
-            <section className="score">
-               <h5 className='sc-t'>content score</h5>
-               <div className="sc-box">
-                   <h5 className='sc-per'>100</h5>
-                   <p>Yes! Looking good!</p>
-               </div>
-            </section>
-            <section className="top-contrib"></section>
-
-            <footer className="stitis-footer">
-
-            </footer>
-
         </div>
     </section>
   )

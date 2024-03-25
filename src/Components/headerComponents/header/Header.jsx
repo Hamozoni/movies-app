@@ -14,20 +14,21 @@ import { useContext, useState } from "react";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { SearchForm } from "../../homeComponents/homeSearchBar/SearchBar";
-import Languages from "../languages/Languages";
 
 const Header = ()=> {
 
-    const {theme,lang,innerWidth} = useContext(globalContext);
+    const {theme,lang,setLang,innerWidth} = useContext(globalContext);
     const navigate = useNavigate();
 
     const [isSearch,setisSearch] = useState(false);
     const [isMenu,setIsMenu] = useState(false);
-    const [isShowLang,setIsShowLang] = useState(false);
 
     const handleNavigate = (filter,mediaType)=>{
         navigate(`list/${mediaType}/${filter}`);
+
     };
+
+    const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
 
     const SittingIcons = ({isMobile = false})=> {
 
@@ -47,15 +48,22 @@ const Header = ()=> {
                     }
                 </div>
                 <div className="lang icons" >
-                    <span onClick={()=> setIsShowLang(!isShowLang)}>
-                         <TranslateOutlinedIcon />
+                    <span >
+                        {lang}
                     </span>
                     {
                         isMobile && <h5>Languages</h5>
                     }
-                    {
-                        isShowLang && <Languages />
-                    }
+                    <div className="lang-container card">
+                        <p 
+                            className={`${lang === 'ar' && 'active'} nav-btn`}
+                             onClick={()=> setLang('ar')}
+                             >العربية</p>
+                        <p 
+                            className={`${lang === 'en' && 'active'} nav-btn`}
+                            onClick={()=> setLang('en')}
+                            >english</p>
+                    </div>
                 </div>
                 <div className="notfication icons">
                     <span>
@@ -100,62 +108,62 @@ const Header = ()=> {
                                 <SittingIcons isMobile={innerWidth < 667} />
                             }
                             <div className="filter-box">
-                                <h4> {languages[lang].movies} </h4>
+                                <h4> {languages[langCode].movies} </h4>
                                 <ul className="fiter">
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('popular','movie')}>
-                                            {languages[lang].popular}
+                                            {languages[langCode].popular}
                                     </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('now_playing','movie')}>
-                                            {languages[lang].nowPlaying}
+                                            {languages[langCode].nowPlaying}
                                         </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('upcoming','movie')}>
-                                            {languages[lang].upComing}
+                                            {languages[langCode].upComing}
                                         </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('top_rated','movie')}>
-                                            {languages[lang].topRated}
+                                            {languages[langCode].topRated}
                                     </li>
                                 </ul>
                             </div>
                             <div className="filter-box">
-                                <h4>{languages[lang].tvShows}</h4>
+                                <h4>{languages[langCode].tvShows}</h4>
                                 <ul className="fiter">
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('popular','tv')}>
-                                            {languages[lang].popular}
+                                            {languages[langCode].popular}
                                         </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('airing_today','tv')}>
-                                            {languages[lang].airingToday}
+                                            {languages[langCode].airingToday}
                                     </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('on_the_air','tv')}>
-                                            {languages[lang].onTv}
+                                            {languages[langCode].onTv}
                                     </li>
                                     <li 
                                     className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('top_rated','tv')}>
-                                        {languages[lang].topRated}
+                                        {languages[langCode].topRated}
                                     </li>
                                 </ul>
                             </div>
                             <div className="filter-box">
-                                <h4> {languages[lang].people}</h4>
+                                <h4> {languages[langCode].people}</h4>
                                 <ul className="fiter">
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('popular','person')}>
-                                            {languages[lang].popular} people
+                                            {languages[langCode].popular} people
                                     </li>
                                 </ul>
                             </div>

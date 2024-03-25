@@ -4,10 +4,11 @@ import './MovieLayout.scss';
 import MainMediaNav from '../../Components/sharedComponents/mainMediaNav/MainMediaNav';
 import MediaHeader from '../../Components/sharedComponents/mediaHeader/MediaHeader';
 import MediaColorContext from '../../GlobalStateContext/MediaColorContext';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import fetchData from '../../utilities/fetchData';
 import Loading from '../../Components/loading/Loading';
 import Error from '../../Components/error/Error';
+import { globalContext } from '../../GlobalStateContext/GlobalContext';
 
 export const MovieDetailsContext = createContext()
 
@@ -15,15 +16,19 @@ const MovieLayout = () => {
 
     const {id} = useParams();
 
+    const {lang} = useContext(globalContext);
+
     const [details,setDetails] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
+
+    const lankUrl = `movie/${id}`;
 
     const fetchDetails = ()=> {
       setIsPending(true);
       setError(null);
 
-      fetchData(`movie/${id}?language=en-US`)
+      fetchData(`${lankUrl}?language=${lang}`)
       .then((data)=> {
         setDetails(data);
         console.log(data);
@@ -36,7 +41,7 @@ const MovieLayout = () => {
       });
     }
 
-    useEffect(fetchDetails,[id]);
+    useEffect(fetchDetails,[id,lang]);
 
     const pathName = useLocation().pathname
 
@@ -48,7 +53,7 @@ const MovieLayout = () => {
           details ?
          <MediaColorContext>
            <MovieDetailsContext.Provider value={{details}} >
-            <MainMediaNav mediaType='movie' />
+            <MainMediaNav mediaType='movie' linkUrl={lankUrl} />
                 {
                   !pathName.endsWith(id) &&
                   <MediaHeader 

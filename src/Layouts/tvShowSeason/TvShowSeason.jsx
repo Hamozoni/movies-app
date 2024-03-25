@@ -1,5 +1,4 @@
 import { Outlet, useParams } from "react-router-dom"
-import SeasonMainNav from "../../Components/tvComponents/seasonMainNav/SeasonMainNav"
 import MediaColorContext from "../../GlobalStateContext/MediaColorContext"
 import { createContext, useContext, useEffect, useState } from "react";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
@@ -7,6 +6,7 @@ import fetchData from "../../utilities/fetchData";
 import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
 import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader";
+import MainMediaNav from "../../Components/sharedComponents/mainMediaNav/MainMediaNav";
 
 export const episodesContext = createContext()
 
@@ -47,14 +47,16 @@ const TvShowSeasonLayout = () => {
         return (
             <Error error={error}  height='100vh' onClick={fetchEpisodes}/>
         )
-    }
+    };
+
+    const lankUrl = `tv/${id}/season/${seasonNumber}`;
 
 
   return (
     <div className="TvShows-layout">
         <MediaColorContext>
             <episodesContext.Provider value={{episodes}}>
-                <SeasonMainNav />
+            <MainMediaNav mediaType='tvSeason' linkUrl={lankUrl} />
                 <MediaHeader 
                       imageUrl={episodes?.poster_path} 
                       title={episodes?.name}

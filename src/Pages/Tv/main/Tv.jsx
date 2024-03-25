@@ -12,10 +12,13 @@ import MovieStitistics from '../../../Components/movieComponents/movieStitistics
 
 import Recommendations from "../../../Components/sharedComponents/recommendations/Recommendations";
 import { tvShowDetailsContext } from '../../../Layouts/tvShowsLayout/TvShowsLayout';
+import { languages } from '../../../utilities/languages';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const Tv = () => {
 
 const{details} = useContext(tvShowDetailsContext);
+const {lang} = useContext(globalContext);
 const {id} = useParams()
 
 
@@ -26,13 +29,13 @@ const {id} = useParams()
             <section className='tv-content'>
                  <section className='cast'>
                     <TopBilledCast mediaType='tv' id={id} title='Series Cast'/>
-                    <section className='tv-season'>
+                    <section className='tv-season b-b'>
                         <h4 className="sea-name">
-                               Current Season
+                               {languages[lang].currentSeason}
                         </h4>
                             <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.length - 1]} id={id}/>
                         <Link className='to-seasons' to={`/tv/${id}/seasons`}>
-                            view all seasons
+                            {languages[lang].viewAll} {languages[lang].seasons}
                         </Link>
                     </section>
                     <MovieSocial section='reviews' mediaType='tv'/>

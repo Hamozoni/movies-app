@@ -2,11 +2,13 @@
 @import "../../../GlobalStyle/mixin";
 
 .recommendations {
-    .recom-t {
-        font-size: $f-size-2;
-        color: $text-dark-color;
+    .select-ul {
+        @include flex-box(center,flex-start,0);
         @media  (max-width:991px){
             padding: 0 $padding;
+        }
+        li {
+            font-size: $f-size-4;
         }
     }
     .recom-content {
@@ -16,6 +18,9 @@
           @media  (max-width:991px){
             padding: $padding-10 $padding;
         }
+         .no-data-img {
+            max-height: 350px;
+         }
           .recomm-media-card {
             min-width: 250px;
             .recomm-image {
@@ -52,8 +57,9 @@
             }
             .media-content {
                 @include flex-box(center,space-between);
-                font-size: $f-size-xs;
+                font-size: $f-size-5;
                 color: $text-dark-color;
+                padding: $padding-5 0;
             }
           }
     }

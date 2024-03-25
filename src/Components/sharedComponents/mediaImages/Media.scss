@@ -130,6 +130,10 @@
         font-size: $f-size-5;
         color: $logo-color;
         font-weight: 600;
-        padding: 0 $padding;
+        margin-top: $margin;
+        display: block;
+        @media (max-width: 991px) {
+            padding: 0 $padding;
+        }
     }
 }

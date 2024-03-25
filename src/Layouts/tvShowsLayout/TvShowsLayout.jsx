@@ -3,27 +3,31 @@ import { Outlet, useLocation, useParams } from "react-router-dom"
 import MainMediaNav from '../../Components/sharedComponents/mainMediaNav/MainMediaNav';
 import MediaHeader from '../../Components/sharedComponents/mediaHeader/MediaHeader';
 import MediaColorContext from "../../GlobalStateContext/MediaColorContext";
-import { createContext, useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
 import fetchData from "../../utilities/fetchData";
 import { useState } from "react";
+import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 export const tvShowDetailsContext = createContext()
 
 const TvShowsLayout = () => {
 
   const {id} = useParams();
+  const {lang} = useContext(globalContext)
 
   const [details,setDetails] = useState(null);
   const [isPending,setIsPending] = useState(true);
   const [error,setError] = useState(null);
 
+  const lankUrl = `tv/${id}`;
+
   const fetchDetails = ()=> {
     setIsPending(true);
     setError(null);
 
-    fetchData(`tv/${id}?language=en-US`)
+    fetchData(`${lankUrl}?language=${lang}`)
     .then((data)=> {
       setDetails(data);
       console.log(data);
@@ -36,7 +40,7 @@ const TvShowsLayout = () => {
     });
   };
 
-  useEffect(fetchDetails,[id]);
+  useEffect(fetchDetails,[id,lang]);
 
   const pathName = useLocation().pathname
   return (
@@ -47,7 +51,7 @@ const TvShowsLayout = () => {
               isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> 
               : details ?
               <div className="tv-container">
-                  <MainMediaNav mediaType='tv' />
+                  <MainMediaNav mediaType='tv' linkUrl={lankUrl} />
                   {
                     !pathName.endsWith(id) && 
                     <MediaHeader 
