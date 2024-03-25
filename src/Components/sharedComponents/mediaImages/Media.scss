@@ -4,7 +4,6 @@
 .movie-media {
     margin: $margin 0;
     .movie-media-header {
-        // @include flex-box(center,space-between);
         .media-nav {
             padding: $padding-10 0;
             @media (min-width: 630px) {
@@ -13,7 +12,9 @@
              .title {
                 font-size: $f-size-3;
                 color: $text-dark-color;
-                padding: 0 $padding;
+                @media (max-width: 991px) {
+                    padding: 0 $padding;  
+                }
              }
              .links {
                 padding: 0 $padding-10;
@@ -22,7 +23,8 @@
                 overflow-y: auto;
                 li {
                     padding: 0 $padding-10;
-                    font-size: $f-size-5;
+                    font-size: $f-size-4;
+                    color: $logo-color;
                 }
              }
         }
@@ -32,10 +34,13 @@
         max-width: 100%;
         overflow-x:  auto;
         overflow-y: hidden;
-        // border-radius: $border-r-l;
+        @media (max-width:720px) {
+            padding: 0 $padding;
+        }
         .media-content-container {
             min-width: fit-content;
-            @include flex-box(flex-start,center,0);
+
+            @include flex-box(flex-start,flex-start,0);
             .img-container {
                 height: 200px;
                 min-width: 150px; 
