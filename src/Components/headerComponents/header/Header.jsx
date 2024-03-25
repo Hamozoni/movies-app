@@ -14,6 +14,7 @@ import { useContext, useState } from "react";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { SearchForm } from "../../homeComponents/homeSearchBar/SearchBar";
+import Languages from "../languages/Languages";
 
 const Header = ()=> {
 
@@ -22,6 +23,7 @@ const Header = ()=> {
 
     const [isSearch,setisSearch] = useState(false);
     const [isMenu,setIsMenu] = useState(false);
+    const [isShowLang,setIsShowLang] = useState(false);
 
     const handleNavigate = (filter,mediaType)=>{
         navigate(`list/${mediaType}/${filter}`);
@@ -44,12 +46,15 @@ const Header = ()=> {
                         isMobile && <h5>theme mode</h5>
                     }
                 </div>
-                <div className="lang icons">
-                    <span>
+                <div className="lang icons" >
+                    <span onClick={()=> setIsShowLang(!isShowLang)}>
                          <TranslateOutlinedIcon />
                     </span>
                     {
                         isMobile && <h5>Languages</h5>
+                    }
+                    {
+                        isShowLang && <Languages />
                     }
                 </div>
                 <div className="notfication icons">

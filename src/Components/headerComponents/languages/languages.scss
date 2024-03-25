@@ -1,0 +1,9 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.lang-box {
+    @media (min-width: 667px) {
+        left: unset;
+        right: 0;
+    }
+}

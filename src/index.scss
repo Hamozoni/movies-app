@@ -50,6 +50,9 @@ img, picture {
 
 
 .alt-content {
+  @media (min-width: 720px) {
+    @include flex-box(flex-start,flex-start);
+  }
   @media (min-width: 992px) {
     @include flex-box(flex-start,flex-start);
      padding: $padding $padding-40;
@@ -66,7 +69,7 @@ img, picture {
       max-height: calc(100vh - 130px);
       overflow-y: auto;
     }
-    @media (max-width:767px) {
+    @media (max-width:719px) {
       .cout-list {
         @include flex-box(center,center,0);
         overflow-x: auto;
@@ -153,7 +156,7 @@ img, picture {
   font-size: $f-size-xs;
   font-weight: 500;
   color: $text-dark-color;
-  padding: $padding-10 $padding;
+  padding: $padding-5 $padding;
   min-width: fit-content;
   @include flex-box(center,space-between,5px);
     a {

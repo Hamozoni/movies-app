@@ -30,7 +30,11 @@
         }
         .nav-links {
             @include flex-box(center,space-between);
+            .lang {
+                position: relative;
+            }
             .part-one {
+
                 &.mobile {
                     @include postion(fixed,100%,100vh,0,-100%,999999999999999999999);
                     background-color: #0000008f;

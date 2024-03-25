@@ -3,47 +3,41 @@
 
 .lang-container {
      position: relative;
-    .lang-box {
-        position: absolute;
-        top: 110%;
-        left: 0;
-        width: 100%;
-        padding: $padding-10 0;
-        z-index: 9999999;
-        background-color: #ffffff;
-        .lang-header {
-            padding: $padding-10;
-            .search-input {
-                @include flex-box(center,space-between,0);
-                 border-radius: $border-r;
-                 border: 1px solid #9b9898cc;
-                 padding: $padding-5;
-                 width: 100%;
-                 svg {
-                        font-size: $f-size-3;
-                 }
+}
+.lang-box {
+    @include postion(absolute,100%,fit-content,110%,0,99999999);
+    padding: $padding-10 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    .lang-header {
+        padding: $padding-10;
+        .search-input {
+            @include flex-box(center,space-between,0);
+             border-radius: $border-r;
+             border: 1px solid #9b9898cc;
+             padding: $padding-5;
+             width: 100%;
+             svg {
+                    font-size: $f-size-3;
+             }
 
-            }
         }
-        .lang {
-            max-height: 250px;
-            overflow-y: auto;
-            .lang-ul {
-                .lang-li {
-                    padding: $padding-5 $padding-10;
-                    cursor: pointer;
-                    font-size: $f-size-5;
-                    color: lighten($color: $text-dark-color, $amount: 5);
-                    &:hover, &.active {
-                        background-color: #e0dede;
-                    }
-                    @include flex-box(center,flex-start,4px);
+    }
+    .lang {
+        max-height: 250px;
+        overflow-y: auto;
+        .lang-ul {
+            .lang-li {
+                justify-content: flex-start;
+                span {
+                    width: 25px;
+                    display: block;
                     img {
                         max-width: 25px;
                     }
                 }
-
             }
+
         }
     }
 }

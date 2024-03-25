@@ -71,7 +71,7 @@ const LanguagesCountries = ({type,data}) => {
                     <ul className="lang-ul">
                         {  type === 'languages' &&
                             <li onClick={()=> selectData('none selected','none selected')}
-                                className={`${selectedLanguage === 'none selected' && "active"} lang-li`}
+                                className={`${selectedLanguage === 'none selected' && "active"} nav-btn`}
                                 >
                                     none selected
                             </li>
@@ -80,7 +80,7 @@ const LanguagesCountries = ({type,data}) => {
                             filterdData?.map((lang)=>(
                                 <li 
                                     onClick={()=> selectData(type === 'languages' ?  lang?.iso_639_1 : lang?.iso_3166_1 ,lang?.english_name)}
-                                    className={`${selectedLanguage === lang.english_name && "active"} lang-li`}
+                                    className={`${selectedLanguage === lang.english_name && "active"} lang-li nav-btn`}
                                     key={lang.english_name}
                                     >
                                         {
