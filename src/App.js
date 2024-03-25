@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { globalContext } from './GlobalStateContext/GlobalContext';
 
-import Header from './Components/header/Header.jsx';
+import Header from './Components/headerComponents/header/Header.jsx';
 import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
 import Home from './Pages/home/Home.jsx';
 import FilteredMediaList from './Pages/filteredMediaList/FilteredMediaList.jsx';

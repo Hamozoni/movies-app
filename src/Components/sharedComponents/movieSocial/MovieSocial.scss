@@ -5,7 +5,10 @@
     margin-bottom: $margin;
     .social-header {
         @include flex-box(center,space-between,50px);
-        padding: 0 $padding;
+        margin-bottom: 5px;
+        @media (max-width:991px) {
+            padding: 0 $padding; 
+        }
         .social-title {
             font-size: $f-size;
         }

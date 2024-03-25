@@ -60,7 +60,7 @@ const FilteredMediaList = ({mediaType}) => {
         })  
     }
 
-    useEffect(fetchMedia,[lang,filter,mediaType,page]);
+    useEffect(fetchMedia,[lang,filter,mediaType]);
 
     useEffect(()=>{
          console.log(mediaFiltering)
@@ -68,8 +68,6 @@ const FilteredMediaList = ({mediaType}) => {
 
     const fetchFilteredMedia = async ()=> {
 
-        setIsFilteredLoading(true);
-        setFilteredError(null);
         setPage(1);
          const filterKeysList = [];
         for (let [key, value] of Object.entries(mediaFiltering)) {
@@ -94,7 +92,6 @@ const FilteredMediaList = ({mediaType}) => {
 
     const loadMore = (is)=> {
         if(page + 1 < totalPage && isLoadingMore === false) {
-            setIsLoadingMore(true)
             if(is === true){
                 fetchData(`${mediaType}/${filter}?language=${lang}&page=${page + 1}`)
                 .then((data)=> {

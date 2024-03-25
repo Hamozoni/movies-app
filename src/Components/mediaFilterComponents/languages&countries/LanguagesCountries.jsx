@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';

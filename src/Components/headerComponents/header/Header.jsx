@@ -1,4 +1,4 @@
-import {languages }from "../../utilities/languages";
+import {languages }from "../../../utilities/languages";
 
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
@@ -11,9 +11,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import "./Header.scss";
 import { useContext, useState } from "react";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { SearchForm } from "../homeComponents/homeSearchBar/SearchBar";
+import { SearchForm } from "../../homeComponents/homeSearchBar/SearchBar";
 
 const Header = ()=> {
 
