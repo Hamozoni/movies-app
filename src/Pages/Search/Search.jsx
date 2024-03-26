@@ -10,6 +10,7 @@ import Loading from "../../Components/loading/Loading";
 import Error from "../../Components/error/Error";
 import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 import CrewCard from "../../Components/sharedComponents/crewCard/CrewCard";
+import { languages } from "../../utilities/languages";
 
 
 const Search = ()=> {
@@ -55,16 +56,16 @@ const Search = ()=> {
     return (
         <main className="search alt-titles">
             <div className="search-container alt-content">
-                <section className="search-flters alt-cout-list card">
+                <section className="search-flters alt-cout-list">
                     <header className="filter-header cout-header">
-                        <h4 className="fil-t">Search filter</h4>
+                        <h4 className="fil-t">{languages[lang].searchFilter}</h4>
                     </header>
                     <ul className="fliters-ul cout-list">
                         <li 
                             onClick={()=> handleFilter('movie')}
                             className={`${type === 'movie' && 'active'} nav-btn`}
                             >
-                                movie 
+                                {languages[lang].movies}
                                 {
                                     type === 'movie' &&
                                     <span>
@@ -76,7 +77,7 @@ const Search = ()=> {
                            onClick={()=> handleFilter('tv')}
                            className={`${type === 'tv' && 'active'} nav-btn`}
                            >
-                              tv shows
+                              {languages[lang].tvShows}
                               {
                                     type === 'tv' &&
                                     <span>
@@ -88,7 +89,7 @@ const Search = ()=> {
                            onClick={()=> handleFilter('person')}
                            className={`${type === 'person' && 'active'} nav-btn`}
                            >
-                            people
+                            {languages[lang].people}
                             {
                                 type === 'person' &&
                                 <span>
@@ -100,7 +101,7 @@ const Search = ()=> {
                            onClick={()=> handleFilter('collection')}
                            className={`${type === 'collection' && 'active'} nav-btn`}
                            >
-                            collections
+                            {languages[lang].collections}
                             {
                                 type === 'collection' &&
                                 <span>
@@ -112,7 +113,7 @@ const Search = ()=> {
                             onClick={()=> handleFilter('keyword')}
                             className={`${type === 'keyword' && 'active'} nav-btn`} 
                             >
-                            keywords
+                           {languages[lang].keywords}
                             {
                                 type === 'keyword' &&
                                 <span>

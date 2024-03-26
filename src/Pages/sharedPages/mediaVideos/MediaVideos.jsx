@@ -69,7 +69,7 @@ const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
   return (
     <div className="media-videos alt-titles">
         <div className="vid-container alt-content">
-            <nav className="vid-nav alt-cout-list card">
+            <nav className="vid-nav alt-cout-list">
                 <header 
                     style={{backgroundColor: color.backColor}}
                     className="vid-head cout-header">

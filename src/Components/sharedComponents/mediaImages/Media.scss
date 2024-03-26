@@ -21,11 +21,6 @@
                 padding-bottom: $padding-5;
                 @include flex-box(center,flex-start,0);
                 overflow-y: auto;
-                li {
-                    padding: 0 $padding-10;
-                    font-size: $f-size-5;
-                    color: $logo-color;
-                }
              }
         }
 

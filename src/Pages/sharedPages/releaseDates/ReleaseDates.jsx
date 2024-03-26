@@ -41,7 +41,7 @@ const ReleaseDates = ({mediaType}) => {
             isPending ? <Loading width='100%' height='calc(100vh - 100px)'/> 
             : dates ?
             <div className="alt-content">
-                <section className='alt-cout-list card'>
+                <section className='alt-cout-list'>
                     <header 
                         className="cout-header" 
                         style={{backgroundColor:color.backColor}}

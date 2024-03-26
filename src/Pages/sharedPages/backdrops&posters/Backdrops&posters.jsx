@@ -85,7 +85,7 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
             isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
             : data ?
             <div className="backdrop-container alt-content">
-                <nav className="back-nav alt-cout-list card">
+                <nav className="back-nav alt-cout-list">
                     <header 
                         style={{backgroundColor: color.backColor}}
                         className="b-header cout-header">

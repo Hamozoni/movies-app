@@ -70,7 +70,9 @@ export  const languages = {
         all: "all",
         department: "department",
         profiles: "profile",
-        userScore: 'user score'
+        userScore: 'user score',
+        searchFilter: 'Search filter',
+        collections: 'collections',
     },
     ar: {
         movies: 'أفلام',
@@ -141,6 +143,8 @@ export  const languages = {
         all: "الكل",
         department: "القسم",
         profiles: "الملفات الشخصية",
-        userScore: 'تقييم المستخدمين'
+        userScore: 'تقييم المستخدمين',
+        searchFilter: 'نتائج البحث',
+        collections: 'مجموعات'
        }
 }

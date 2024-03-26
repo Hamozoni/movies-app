@@ -17,12 +17,11 @@
                 font-size: $f-size-5;
             }
             .links-list , li.videos .videos-ul {
-                @include postion(absolute,150px,fit-content,45px);
+                @include postion(absolute,150px,fit-content,45px,999999999);
                 display: none;
                 background-color: aliceblue;
                 border-radius: 5px;
                 box-shadow: 0 0 10px 0px #8d8b8bb0;
-                z-index: 9999999;
                 li {
                     &.videos {
                         position: relative;

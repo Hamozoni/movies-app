@@ -50,7 +50,7 @@ const AlternativeTitles = ({mediaType}) => {
             isPending ? <Loading width='100%' height='300px' /> : 
             titles ?
             <div className="alt-content">
-                <section className='alt-cout-list card'>
+                <section className='alt-cout-list'>
                     <header className='cout-header' style={{backgroundColor : color.backColor,color: color.textColor}}>
                             <h3 style={{color :color.textColor}}>
                                 {languages[lang].titles}

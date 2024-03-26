@@ -53,13 +53,13 @@ img, picture {
 
 
 .card {
-  border-radius: $border-r;
-  box-shadow: 0px 0px 9px -4px #8b8b8b;
-  overflow: hidden;
+    border-radius: $border-r;
+    box-shadow: 0px 0px 9px -4px #8b8b8b;
+    overflow: hidden;
 }
 .alt-content {
       @media (min-width: 720px) {
-        @include flex-box(flex-start,flex-start,20px);
+         @include flex-box(flex-start,flex-start,20px);
       }
       @media (min-width: 992px) {
         @include flex-box(flex-start,flex-start,40px);
@@ -70,11 +70,14 @@ img, picture {
             position: sticky;
             top: 0;
             background-color: #ffffff;
-            border-radius: 0 !important;
             z-index: 999999;
+            @media (min-width: 720px) {
+                border-radius: $border-r;
+                box-shadow: 0px 0px 9px -4px #8b8b8b;
+                overflow: hidden;
+            }
             @media (min-width: 720px) and (max-width:991px) {
               margin: $margin 0;
-              
             }
             .cout-list {
               margin: $padding-10 0;
@@ -165,11 +168,12 @@ img, picture {
 // active links 
 
 .nav-btn {
-  font-size: $f-size-4;
-  font-weight: 500;
-  color: $text-dark-color;
-  padding: $padding-10 $padding;
-  min-width: fit-content;
+    font-size: $f-size-5;
+    font-weight: 700;
+    color: $text-dark-color;
+    padding: $padding-10 $padding;
+    line-break: loose;
+    min-width: fit-content !important;
   @include flex-box(center,space-between,5px);
     a {
         @include flex-box(center,space-between);
@@ -178,12 +182,12 @@ img, picture {
     }
   cursor: pointer;
   &.active,&:hover,&.active:hover {
-      color: lighten($color: $text-dark-color, $amount: 50);
+      color: $logo-color;
       position: relative;
       transition: color 1s ;
-      // a {
-      //   color: lighten($color: $text-dark-color, $amount: 50);
-      // }
+      a {
+        color: $logo-color;;
+      }
       &::before {
           content: '';
           position: absolute;

@@ -64,7 +64,7 @@ const MovieSocial = ({section,mediaType})=> {
                 {
                      reviews.length > 0 &&
                     <Link to={`/${mediaType}/${id}/reviews`} className="read-all-review link-hover"> 
-                        {languages[lang].readAllreviews}
+                        {languages[lang].readAllReviews}
                     </Link>
                 }
             </>
