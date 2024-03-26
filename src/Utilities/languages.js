@@ -68,6 +68,7 @@ export  const languages = {
         acting: "acting",
         all: "all",
         department: "department",
+        profile: "profile"
     },
     ar: {
         movies: 'أفلام',
@@ -136,5 +137,6 @@ export  const languages = {
         acting: "التمثيل",
         all: "الكل",
         department: "القسم",
+        profile: "الملفات الشخصية"
        }
 }

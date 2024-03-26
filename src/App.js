@@ -117,6 +117,7 @@ function App() {
             <Route path='/person/:id'  element={<PersonLayout />}>
                 <Route index  element={<Person />}/>
                 <Route path='translations'  element={<Translations mediaType='person' />}/>
+                <Route path='profile'  element={<Backdrops_posters mediaType='person' type='profiles'/>}/>
             </Route>
             <Route path='/keywords/:id'  element={<Keywords />}/>
             <Route path='/search/:type'  element={<Search />}/>

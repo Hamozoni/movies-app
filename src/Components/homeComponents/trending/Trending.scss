@@ -39,10 +39,11 @@
         }
         .movies {
            @include flex-box(flex-start,flex-start,10px);
-           padding: $padding;
+           padding: $padding 0;
            overflow-x: auto;
+           border-radius: $border-r-l;
            @media (max-width: 991px) {
-            padding:  $padding 0;
+            padding: $padding;
         }
         }
     }
