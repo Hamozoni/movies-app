@@ -45,7 +45,7 @@ const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
 
   }
 
-  useEffect(fetchTrans,[id]);
+  useEffect(fetchTrans,[seasonNumber,episodeNumber,isEpisode,isSeason,mediaType,id]);
 
   return (
     <main className="mov-transation">

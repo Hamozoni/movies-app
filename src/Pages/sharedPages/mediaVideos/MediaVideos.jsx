@@ -8,39 +8,34 @@ import "./mediaVideos.scss";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 
-const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
+const MediaVideos = () => {
 
     const {color} = useContext(mediaColorContext);
 
-    const type = useLocation()?.search?.split('=')[1]?.replaceAll('%20',' ');
-    const {id,seasonNumber,episodeNumber} = useParams();
-
     const navigate = useNavigate();
 
-    console.log(type);
+    const {lang} = useContext(globalContext);
 
     const [videos,setVideos] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
+    const pathName = useLocation().pathname;
+    const type = useLocation()?.search?.split('=')[1]?.replaceAll('%20',' ');
+
     const fetchVideos = ()=> {
-        let season = '';
-        if(isSeason){
-            season = `/season/${seasonNumber}`
-        }
-        if(isEpisode){
-            season = `/season/${seasonNumber}/episode/${episodeNumber}` 
-        }
+
         setIsPending(true);
         setError(null);
-        fetchData(`${mediaType}/${id}${season}/videos?language=en-US`)
+        fetchData(`${pathName}?language=${lang}`)
         .then((data)=> {
 
-            if(type == undefined && data.results.length > 0) {
-                navigate(`/${mediaType}/${id}/videos?type=${data.results[0].type}`)
+            if(type === undefined && data.results.length > 0) {
+                navigate(`?type=${data.results[0].type}`)
             }
             const videosObject = Object.groupBy(data?.results,e => e.type);
             setVideos(videosObject);
@@ -52,8 +47,7 @@ const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
             setIsPending(false);
         })
     }
-
-    useEffect(fetchVideos,[type,id,mediaType]);
+    useEffect(fetchVideos,[type]);
 
     if(isPending) {
         return (
@@ -81,7 +75,7 @@ const MediaVideos = ({mediaType,isSeason = false,isEpisode = false}) => {
                     {
                       Object.keys(videos)?.map((video)=> (
                         <li 
-                            onClick={()=> navigate(`/${mediaType}/${id}/videos?type=${video}`)}
+                            onClick={()=> navigate(`?type=${video}`)}
                             className={`${type === video && 'active'} nav-btn`}>
                             {video}
                             <span>{videos[video]?.length}</span>

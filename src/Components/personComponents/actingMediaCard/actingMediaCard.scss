@@ -41,7 +41,7 @@
                     font-size: $f-size-5;
                     font-weight: 700;
                     color: $text-light-color-2;
-                    @include text-overflow(31px);
+                    @include text-overflow(25px);
 
                     &:hover {
                         color: lighten($color: $text-light-color, $amount: 10);

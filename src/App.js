@@ -72,10 +72,10 @@ function App() {
                 <Route path='releaseDates'  element={<ReleaseDates mediaType='movie' />}/>
                 <Route path='translations'  element={<Translations mediaType='movie' />}/>
                 <Route path='changes'  element={<Changes mediaType='movie'/>}/>
-                <Route path='backdrops'  element={<Backdrops_posters mediaType='movie' type='backdrops'/>}/>
-                <Route path='posters'  element={<Backdrops_posters mediaType='movie' type='posters'/>}/>
-                <Route path='logos'  element={<Backdrops_posters mediaType='movie' type='logos'/>}/>
-                <Route path='videos'  element={<MediaVideos mediaType='movie' />}/>
+                <Route path='backdrops'  element={<Backdrops_posters type='backdrops'/>}/>
+                <Route path='posters'  element={<Backdrops_posters  type='posters'/>}/>
+                <Route path='logos'  element={<Backdrops_posters type='logos'/>}/>
+                <Route path='videos'  element={<MediaVideos />}/>
             </Route>
             
 
@@ -87,37 +87,37 @@ function App() {
                 <Route path='titles'  element={<AlternativeTitles  mediaType='tv'/>}/>
                 <Route path='translations'  element={<Translations mediaType='tv'/>}/>
                 <Route path='changes'  element={<Changes mediaType='tv'/>}/>
-                <Route path='backdrops'  element={<Backdrops_posters mediaType='tv' type='backdrops'/>}/>
-                <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>}/>
-                <Route path='logos'  element={<Backdrops_posters mediaType='tv' type='logos'/>}/>
-                <Route path='videos'  element={<MediaVideos mediaType='tv' />}/>
+                <Route path='backdrops'  element={<Backdrops_posters  type='backdrops'/>}/>
+                <Route path='posters'  element={<Backdrops_posters  type='posters'/>}/>
+                <Route path='logos'  element={<Backdrops_posters type='logos'/>}/>
+                <Route path='videos'  element={<MediaVideos />}/>
             </Route>
 
             <Route path='/tv/:id/season/:seasonNumber' element={<TvShowSeasonLayout/>} >
                <Route index element={<SeasonEpisodes />}/>
                <Route path='castCrew'  element={<Cast mediaType='tv' isSeason={true}/>}/>
                <Route path='translations'  element={<Translations mediaType='tv' isSeason={true}/>}/>
-               <Route path='posters'  element={<Backdrops_posters mediaType='tv' type='posters'/>} isSeason={true}/>
-               <Route path='videos'  element={<MediaVideos mediaType='tv' isSeason={true}/>}/>
+               <Route path='posters'  element={<Backdrops_posters  type='posters'/>} />
+               <Route path='videos'  element={<MediaVideos  />}/>
             </Route>
 
             <Route path='/tv/:id/season/:seasonNumber/episode/:episodeNumber'element={<EpisodesLayout />}  >
-                <Route path='stills'  element={<Backdrops_posters mediaType='tv' type='stills' isEpisode={true}/>}  />
-                <Route path='videos'  element={<MediaVideos mediaType='tv' isEpisode={true} />}/>
+                <Route path='stills'  element={<Backdrops_posters type='stills' />}  />
+                <Route path='videos'  element={<MediaVideos  />}/>
                 <Route path='castCrew'  element={<Cast mediaType='tv' isEpisode={true}/>}/>
                 <Route path='translations'  element={<Translations mediaType='tv' isEpisode={true}/>}/>
             </Route>
             <Route path='/collection/:id'  element={<CollectionLayout />}> 
                 <Route index element={<Collection />}/>
                 <Route path='translations'  element={<Translations mediaType='collection' />}/>
-                <Route path='posters'  element={<Backdrops_posters mediaType='collection' type='poster'/>}  />
-                <Route path='backdrops'  element={<Backdrops_posters mediaType='collection' type='backdrops'/>}/>
+                <Route path='posters'  element={<Backdrops_posters type='poster'/>}  />
+                <Route path='backdrops'  element={<Backdrops_posters type='backdrops'/>}/>
             </Route>
 
             <Route path='/person/:id'  element={<PersonLayout />}>
                 <Route index  element={<Person />}/>
                 <Route path='translations'  element={<Translations mediaType='person' />}/>
-                <Route path='profiles'  element={<Backdrops_posters mediaType='person' type='profiles'/>}/>
+                <Route path='profiles'  element={<Backdrops_posters type='profiles'/>}/>
             </Route>
             <Route path='/keywords/:id'  element={<Keywords />}/>
             <Route path='/search/:type'  element={<Search />}/>

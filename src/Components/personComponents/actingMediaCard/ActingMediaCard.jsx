@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import fetchData from "../../../utilities/fetchData";
 import Loading from "../../loading/Loading";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 import './actingMediaCard.scss';
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 const ActingMediaCard = ({mediaType,id}) => {
@@ -17,27 +18,28 @@ const ActingMediaCard = ({mediaType,id}) => {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
+    const {lang} = useContext(globalContext);
+
 
     const fetchMedia = () => {
 
         setIsPending(true);
         setError(null);
-        setMediaData(null);
 
-        fetchData(`${mediaType}/${id}?language=en-US`)
+        fetchData(`${mediaType}/${id}?language=${lang}`)
         .then((data)=> {
             setMediaData(data);
-            setIsPending(false);
-            console.log(data);
         })
         .catch(error=> {
             setError(error)
+        })
+        .finally(()=> {
             setIsPending(false);
         })
 
     };
 
-    useEffect(fetchMedia,[mediaType,id])
+    useEffect(fetchMedia,[mediaType,id,lang])
 
     return (
         <div className="media-card open">

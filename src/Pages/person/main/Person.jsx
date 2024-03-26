@@ -81,7 +81,7 @@ const Person = () => {
                                 {
                                     knownFor?.cast?.map((movie,i)=>(
                                         i < 6 &&
-                                        <MovieCard movie={movie}  type='movie'/>
+                                        <MovieCard key={movie.id} movie={movie}  type='movie'/>
                                     ))
                                 }
                             </div>

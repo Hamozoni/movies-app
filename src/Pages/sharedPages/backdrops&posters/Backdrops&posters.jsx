@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import fetchData from "../../../utilities/fetchData";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import CheckIcon from '@mui/icons-material/Check';
@@ -40,7 +40,7 @@ const BackdropsCard = ({drop,language})=> {
     )
 };
 
-const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) => {
+const Backdrops_posters = ({type}) => {
 
     const {color} = useContext(mediaColorContext);
     const {languages: languagesList,lang} = useContext(globalContext);
@@ -50,20 +50,15 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
     const [isPending,setIsPending] = useState(true);
 
     const [selectedLang,setSelectedLang] = useState('null');
-    const {id,seasonNumber,episodeNumber} = useParams();
+
+    const pathName = useLocation().pathname;
 
     const fetchImagesData = ()=> {
 
         setIsPending(true);
         setError(null);
-        let season = '';
-        if(isSeason) {
-            season = `/season/${seasonNumber}`
-        }
-        if(isEpisode){
-            season = `/season/${seasonNumber}/episode/${episodeNumber}` 
-        }
-        fetchData(`${mediaType}/${id}${season}/images`)
+
+        fetchData(`${pathName.replace(type,'images')}`)
         .then((data)=>{
             setData(Object.groupBy(data[type],e=> e.iso_639_1));
             setSelectedLang(data[type][0].iso_639_1)
@@ -76,7 +71,7 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
         })
     };
 
-    useEffect(fetchImagesData,[mediaType,id,type]);
+    useEffect(fetchImagesData,[pathName,type]);
 
 
   return (

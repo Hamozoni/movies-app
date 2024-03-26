@@ -7,9 +7,12 @@ import fitLongString from "../../../utilities/fitLongString";
 
 const PersonCard = ({person})=> {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
-    <div className="person-card scale" onClick={()=> navigate(`/person/${person?.id}`)}>
+    <div 
+        className="person-card scale" 
+        onClick={()=> navigate(`/person/${person?.id}`)}
+        >
         <div className="person-image">
             <img 
                  className="image-hover"

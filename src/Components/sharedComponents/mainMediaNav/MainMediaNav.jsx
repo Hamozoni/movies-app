@@ -8,25 +8,45 @@ import fetchData from '../../../utilities/fetchData';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import { languages } from '../../../utilities/languages';
+import Loading from '../../loading/Loading';
+import Error from '../../error/Error';
 
 const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
     const {id} = useParams();
 
-    const [mediaData,setMediaData] = useState({});
-    const [videos,setVideos] = useState({});
+    const [mediaData,setMediaData] = useState(null);
+    const [videos,setVideos] = useState(null);
+    const [error,setError] = useState(null);
+    const [isPending,setIsPending] = useState(true);
 
     const {innerWidth,lang} = useContext(globalContext);
 
-    useEffect(()=> {
+    const fetchImages = ()=> {
+
+        setIsPending(true);
+        setError(null);
         fetchData(`${linkUrl}/images`)
         .then((data)=>{
             setMediaData(data);
+            if(isVideos){
+                fetchData(`${linkUrl}/videos?language=${lang}`)
+                .then((data)=>{
+                    setVideos(Object.groupBy(data?.results,e=> e.type));
+                })
+                .catch((error)=> {
+                    setError(error);
+                })
+            }
+        })
+        .catch((error)=> {
+            setError(error);
         }) 
-        fetchData(`${linkUrl}/videos?language=${lang}`)
-        .then((data)=>{
-            setVideos(Object.groupBy(data?.results,e=> e.type))
-        }) 
-    },[id,lang]);
+        .finally(()=> {
+            setIsPending(false);
+        });
+
+    }
+    useEffect(fetchImages,[linkUrl,id,lang,isVideos]);
 
 
   const arrowIcon = innerWidth > 460 &&  <span className='icon'><ArrowDropDownIcon /></span>
@@ -40,7 +60,6 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                  <li className='nav-btn'>
                     <Link to={`/${linkUrl}`}>{languages[lang].main}</Link>
                 </li>
-
                 {
                     overview?.map((text)=> (
                         <li key={text} className='nav-btn'>
@@ -66,10 +85,10 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
 
                     {
                         media?.map((text)=> (
-                            <li className='nav-btn'>
+                            <li key={text} className='nav-btn'>
                                 <Link to={`/${linkUrl}/${text}`} >
                                         {languages[lang][text]}
-                                    <span>{mediaData[text]?.length}</span>
+                                    <span>{isPending ?  '0' : mediaData ? mediaData[text]?.length : error && '0'}</span>
                                 </Link>
                             </li>
                         ))
@@ -82,16 +101,19 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                             <span><ArrowRightIcon/></span>
                             <ul className={`${innerWidth < 520 && 'mobile'} videos-ul`}>
                                 {
+                                    isPending ? <Loading width='100%' height='200px'/> :
+                                    videos ?
                                     Object.keys(videos)?.map(video=> (
                                         <li 
                                             className='nav-btn'
                                             key={video}>
                                                 <Link to={`/${linkUrl}/videos?type=${video}`}>
                                                     {video} 
-                                                    <span>{videos[video]?.length}</span>
+                                                    <span> {isPending ? '0'  : videos ? videos[video]?.length : '0'}</span>
                                                 </Link>
                                             </li>
                                     ))
+                                    : error && <Error error={error} height='200px' onClick={fetchImages} />
                                 }
                             </ul>
                         </li>
