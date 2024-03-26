@@ -60,7 +60,7 @@ const MovieLayout = () => {
                       imageUrl={details?.poster_path} 
                       title={details?.title}
                       navigateTo={`/movie/${id}`}
-                      linkTitle='back to main'
+                      linkTitle={lang === 'ar' ?  'الرجوع للرئيسية' :'back to main'}
                       year={details.release_date}
                       /> 
                 }

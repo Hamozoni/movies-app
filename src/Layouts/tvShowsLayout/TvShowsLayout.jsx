@@ -58,7 +58,7 @@ const TvShowsLayout = () => {
                         imageUrl={details?.poster_path} 
                         title={details?.name}
                         navigateTo={`/tv/${id}`}
-                        linkTitle='back to main'
+                        linkTitle={lang === 'ar' ?  'الرجوع للرئيسية' :'back to main'}
                         year={details.first_air_date}
                         /> 
                   }

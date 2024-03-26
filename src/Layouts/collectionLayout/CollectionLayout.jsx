@@ -52,7 +52,7 @@ const CollectionLayout = () => {
                         imageUrl={details?.poster_path} 
                         title={details?.name}
                         navigateTo={collecUrl}
-                        linkTitle='back to main'
+                        linkTitle={lang === 'ar' ?  'الرجوع للرئيسية' :'back to main'}
                         /> 
                     : error && <Error error={error} height='200px' onClick={fetchDetails}/>)
                 }

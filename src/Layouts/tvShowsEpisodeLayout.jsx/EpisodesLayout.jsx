@@ -1,16 +1,17 @@
 import { Outlet, useParams } from "react-router-dom"
 import MediaColorContext from "../../GlobalStateContext/MediaColorContext"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import fetchData from "../../utilities/fetchData"
 import Loading from "../../Components/loading/Loading"
 import Error from "../../Components/error/Error"
 import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader"
 import MainMediaNav from "../../Components/sharedComponents/mainMediaNav/MainMediaNav"
+import { globalContext } from "../../GlobalStateContext/GlobalContext"
 
 
 const EpisodesLayout = () => {
 
-
+  const {lang} = useContext(globalContext);
 
   const {id,seasonNumber,episodeNumber} = useParams();
 
@@ -23,7 +24,7 @@ const EpisodesLayout = () => {
   const fetchDetails = ()=>{
     setIsPending(true);
     setError(null);
-    fetchData(`${lankUrl}?language=en-US`)
+    fetchData(`${lankUrl}?language=${lang}`)
     .then((data)=> {
       setDetails(data);
     })
@@ -37,7 +38,7 @@ const EpisodesLayout = () => {
   }
 
 
-  useEffect(fetchDetails,[id,seasonNumber,episodeNumber]);
+  useEffect(fetchDetails,[id,seasonNumber,episodeNumber,lang]);
 
   return (
     <div>
@@ -50,7 +51,7 @@ const EpisodesLayout = () => {
                       imageUrl={details?.still_path} 
                       title={`${seasonNumber}×${episodeNumber} ${details?.name}`}
                       navigateTo={`/tv/${id}/season/${seasonNumber}`}
-                      linkTitle='back to episode'
+                      linkTitle={lang === 'ar' ? 'الرجوع الي الحلقة' :'back to episode'}
                       year={details.air_date}
                       /> 
                   : error && <Error error={error} height='200px' onClick={fetchDetails}/>

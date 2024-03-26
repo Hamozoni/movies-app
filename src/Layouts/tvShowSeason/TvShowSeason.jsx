@@ -61,7 +61,7 @@ const TvShowSeasonLayout = () => {
                       imageUrl={episodes?.poster_path} 
                       title={episodes?.name}
                       navigateTo={`/tv/${id}/seasons`}
-                      linkTitle='back to seasons list'
+                      linkTitle={lang === 'ar' ? 'الرجوع لقائمة المواسم' : 'back to seasons list'}
                       year={episodes?.air_date}
                       /> 
                 <Outlet />
