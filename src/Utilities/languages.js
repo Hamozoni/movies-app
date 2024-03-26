@@ -64,7 +64,10 @@ export  const languages = {
         gender: "gender",
         birthday: "Birthday",
         placeOfBirth: "Place of Birth",
-        alsoKnownAs: "also known as"
+        alsoKnownAs: "also known as",
+        acting: "acting",
+        all: "all",
+        department: "department",
     },
     ar: {
         movies: 'أفلام',
@@ -129,6 +132,9 @@ export  const languages = {
         gender: "الجنس",
         birthday: "تاريخ الميلاد",
         placeOfBirth: "مكان الميلاد",
-        alsoKnownAs: "معروف ايضا ب"
+        alsoKnownAs: "معروف ايضا ب",
+        acting: "التمثيل",
+        all: "الكل",
+        department: "القسم",
        }
 }

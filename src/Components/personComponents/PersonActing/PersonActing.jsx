@@ -2,13 +2,17 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link } from 'react-router-dom';
 
 import "./PersonActing.scss";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ActingMediaCard from '../actingMediaCard/ActingMediaCard';
+import { languages } from '../../../utilities/languages';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const PersonActing = ({knownFor}) => {
 
     const [mediaCardIndex,setMediaCardIndex] = useState(0);
     const [isMediaOpen,setIsMediaOpen] = useState(false);
+
+    const {lang} = useContext(globalContext);
 
 
     useEffect(()=>{
@@ -31,19 +35,18 @@ console.log(isMediaOpen)
   return (
     <section className="pers-acting">
         <header className="pers-acting-head">
-            <h4>Acting</h4>
+            <h4>{languages[lang]?.acting}</h4>
             <nav className='acting-nav'>
                 <ul className='acting-ul'>
-                    <li> all <ArrowDropDownIcon /></li>
-                    <li> department <ArrowDropDownIcon /></li>
+                    <li> {languages[lang]?.all} <ArrowDropDownIcon /></li>
+                    <li> {languages[lang]?.department} <ArrowDropDownIcon /></li>
                 </ul>
             </nav>
         </header>
         <table className="credits-tabel">
             <tbody className='credits-tabel-body '>
                 {
-                    knownFor?.cast?.map((movie,i)=>(
-    
+                    knownFor?.cast?.map((movie,i)=>(  
                         <tr key={movie?.id} className="part">
                             <td className='year'>
                                 {new Date(movie?.release_date)?.getFullYear()  || new Date(movie?.first_air_date)?.getFullYear() || '___'}

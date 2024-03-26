@@ -55,7 +55,7 @@ const PersonStitistics = ({details}) => {
     const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id','tiktok_id']
 
   return (
-    <section className="person-stitis">
+    <section className="person-stitis b-b">
         <nav className="pers-stit-nav">
 
             {

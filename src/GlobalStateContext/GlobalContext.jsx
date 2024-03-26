@@ -25,8 +25,6 @@ const GlobalContext = ({children})=> {
         fetchData(`configuration/languages`)
         .then(lang=> {
             setLanguages(lang);
-        })
-        .then(()=> {
             fetchData(`configuration/countries?language=en-US`)
             .then((country)=> {
                 setCountries(country);

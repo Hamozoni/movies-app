@@ -73,18 +73,23 @@ const Person = () => {
                     <h4 className="pi-ti">
                         {languages[lang]?.knownFor}
                     </h4>
-                    <div className="kn-for-container">
-                        {
-                            isPending ? <Loading width='100%' height='300px' /> :
-                            knownFor ?
-                            knownFor?.cast?.map((movie,i)=>(
-                                i < 6 &&
-                                <MovieCard movie={movie}  type='movie'/>
-                            ))
-                            : error && <Error error={error}  height='300px' onClick={fetchKnownFor} />
-                        }
-                    </div>
-                    <PersonActing knownFor={knownFor} />
+                    {
+                        isPending ? <Loading width='100%' height='300px' /> :
+                        knownFor ?
+                        <>
+                            <div className="kn-for-container b-b">
+                                {
+                                    knownFor?.cast?.map((movie,i)=>(
+                                        i < 6 &&
+                                        <MovieCard movie={movie}  type='movie'/>
+                                    ))
+                                }
+                            </div>
+                            <PersonActing knownFor={knownFor} />
+                        </>
+                         : error && <Error error={error}  height='300px' onClick={fetchKnownFor} />
+
+                    }
                 </section>
             </div>
         </div>

@@ -6,6 +6,12 @@
     .per-cover-container {
         @media (min-width: 992px) {
             padding: $padding $padding-40;
+            .person-info {
+               width: 25%;
+            }
+            .person-cov-content {
+                width: 75%;
+            }
         }
         padding: $padding;
         .person-img {
