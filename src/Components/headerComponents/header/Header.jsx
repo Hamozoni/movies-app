@@ -163,7 +163,7 @@ const Header = ()=> {
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('popular','person')}>
-                                            {languages[langCode].popular} people
+                                            {lang === 'ar' ?  'مشاهير': 'popular people'}
                                     </li>
                                 </ul>
                             </div>

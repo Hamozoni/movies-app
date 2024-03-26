@@ -32,6 +32,7 @@ import TvShowSeasonLayout from './Layouts/tvShowSeason/TvShowSeason.jsx';
 import EpisodesLayout from './Layouts/tvShowsEpisodeLayout.jsx/EpisodesLayout.jsx';
 import CollectionLayout from './Layouts/collectionLayout/CollectionLayout.jsx';
 import Collection from './Pages/collection/Collection.jsx';
+import PersonLayout from './Layouts/personLayout/PersonLayout.jsx';
 
 
 function App() {
@@ -113,7 +114,9 @@ function App() {
                 <Route path='backdrops'  element={<Backdrops_posters mediaType='collection' type='backdrops'/>}/>
             </Route>
 
-            <Route path='/person/:id'  element={<Person />}/>
+            <Route path='/person/:id'  element={<PersonLayout />}>
+                <Route index  element={<Person />}/>
+            </Route>
             <Route path='/keywords/:id'  element={<Keywords />}/>
             <Route path='/search/:type'  element={<Search />}/>
         </Routes>

@@ -31,7 +31,7 @@ const MovieLayout = () => {
       fetchData(`${lankUrl}?language=${lang}`)
       .then((data)=> {
         setDetails(data);
-        console.log(data);
+        document.title = data.title;
       })
       .catch(error=> {
         setError(error)

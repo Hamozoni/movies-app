@@ -1,52 +1,77 @@
+import "./person.scss";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-
-
-import "./person.scss";
-import fetchData from "../../../utilities/fetchData";
+import { personDetailsContext } from "../../../Layouts/personLayout/PersonLayout";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import PersonCover from "../../../Components/personComponents/PersonCover/PersonCover";
-import Loading from "../../../Components/loading/Loading";
-import Error from "../../../Components/error/Error";
+import fetchData from "../../../utilities/fetchData";
+import PersonStitistics from "../../../Components/personComponents/PersonStitistics/PersonStitistics";
+import MovieCard from "../../../Components/movieComponents/movieCard/MovieCard";
+import fitLongString from "../../../utilities/fitLongString";
+import PersonActing from "../../../Components/personComponents/PersonActing/PersonActing";
 
-const Person = ()=> {
+
+const Person = () => {
 
     const {id} = useParams();
-    const {lang} = useContext(globalContext);
+    const { details} = useContext(personDetailsContext);
 
-    const [details,setDetails] = useState(null);
-    const [isPending,setIsPending] = useState(true);
-    const [error,setError] = useState(null);
+    const {lang,innerWidth} = useContext(globalContext);
+    const [knownFor,setKnownFor] = useState([]);
 
-    const fetchDetails = ()=>{
-
-        setIsPending(true);
-        setError(null);
-        fetchData(`person/${id}?language=${lang}`)
-        .then( data => {
-            setDetails(data);
-            setIsPending(false);
-            console.log(data);
-            document.title = data.name;
+    useEffect(()=>{
+        fetchData(`person/${id}/combined_credits?language=${lang}`)
+        .then(data=> {
+            console.log(details);
+            setKnownFor(data);
         })
-        .catch(error=> {
-            setError(error)
-            setIsPending(false)
-        })
-    }
+    },[id,lang]);
 
-    useEffect(fetchDetails,[id,lang]);
-
-    return (
-        <div className="person">
-            {
-                isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> : 
-                details ?
-                <PersonCover details={details} id={id}/>
-                : error && <Error error={error} height='calc(100vh - 100px)'  onClick={fetchDetails}/>
-            }
+  return (
+    <section className="person-cover">
+        <div className="per-cover-container">
+            <div className="person-info">
+                <div className="person-img">
+                    <img 
+                        className="image-hover"
+                        src={process.env.REACT_APP_BASE_URL + 'w300' + details?.profile_path} 
+                        alt={details?.name} 
+                        />
+                        {
+                            innerWidth < 630 && <h3 className="person-name">{details?.name}</h3>
+                        }
+                </div>
+                <PersonStitistics details={details}/>
+            </div>
+            <div className="person-cov-content">
+                <div className="person-name">
+                    { 
+                        innerWidth > 629 && <h3>{details?.name}</h3>
+                    }
+                </div>
+                <div className="piagrahpy">
+                    <h4 className="pi-ti">
+                         Biography
+                     </h4>
+                    <aside> {fitLongString(details?.biography,1000) } </aside>
+                </div>
+                <section className="known-for">
+                    <h4 className="pi-ti">
+                        Known For
+                    </h4>
+                    <div className="kn-for-container">
+                        {
+                            knownFor?.cast?.map((movie,i)=>(
+                                i < 6 &&
+                                <MovieCard movie={movie}  type='movie'/>
+                            ))
+                        }
+                    </div>
+                    <PersonActing knownFor={knownFor} />
+                </section>
+            </div>
         </div>
-    );
-};
+    </section>
+  )
+}
 
 export default Person;

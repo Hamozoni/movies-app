@@ -26,6 +26,7 @@ const CollectionLayout = () => {
         fetchData(`${collecUrl}?language=${lang}`)
         .then((data)=> {
             setDetails(data);
+            document.title = data.name;
         })
         .catch(error=> {
             setError(error);

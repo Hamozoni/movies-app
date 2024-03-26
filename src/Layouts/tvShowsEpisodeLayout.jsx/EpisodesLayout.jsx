@@ -27,6 +27,7 @@ const EpisodesLayout = () => {
     fetchData(`${lankUrl}?language=${lang}`)
     .then((data)=> {
       setDetails(data);
+      document.title = data.name;
     })
     .catch(error=> {
       setError(error);

@@ -25,13 +25,14 @@ const TvShowSeasonLayout = () => {
         fetchData(`tv/${id}/season/${seasonNumber}?language=${lang}`)
         .then((data)=> {
             setEpisodes(data);
-            setIsPending(false);
-            console.log(data);
+            document.title = data.name;
         })
         .catch(error=> {
             setError(error)
-            setIsPending(false);
         })
+        .finally(()=> {
+            setIsPending(false);
+        });
 
     }
 

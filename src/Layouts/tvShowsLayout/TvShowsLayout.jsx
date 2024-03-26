@@ -30,7 +30,7 @@ const TvShowsLayout = () => {
     fetchData(`${lankUrl}?language=${lang}`)
     .then((data)=> {
       setDetails(data);
-      console.log(data);
+      document.title = data.name;
     })
     .catch(error=> {
       setError(error)
