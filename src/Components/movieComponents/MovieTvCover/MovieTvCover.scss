@@ -61,8 +61,7 @@
                     @include flex-box(center,space-between,5px);
                 }
                 .user-t {
-                    max-width: 50px;
-                    font-size: $f-size-s;
+                    font-size: $f-size-5;
                     color: $text-light-color;
                     display: none;
                     @media (min-width: 867px) {

@@ -57,7 +57,13 @@ const TvShowSeasonLayout = () => {
     <div className="TvShows-layout">
         <MediaColorContext>
             <episodesContext.Provider value={{episodes}}>
-            <MainMediaNav mediaType='tvSeason' linkUrl={lankUrl} />
+                <MainMediaNav 
+                    mediaType='tvSeason' 
+                    linkUrl={lankUrl} 
+                    overview={['castCrew','translations']} 
+                    media={['posters']} 
+                    isVideos={true}
+                    />
                 <MediaHeader 
                       imageUrl={episodes?.poster_path} 
                       title={episodes?.name}

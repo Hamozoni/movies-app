@@ -33,6 +33,7 @@ export  const languages = {
         similar: 'similar',
         media : 'media',
         backdrops: 'backdrops',
+        stills : 'backdrops',
         videos: 'videos',
         posters: 'posters',
         social: 'social',
@@ -47,7 +48,7 @@ export  const languages = {
         currentSeason: 'current season',
         seasons: 'المواسم',
         main: 'main',
-        tiltes : 'alternative tiltes',
+        titles : 'alternative titles',
         castCrew:  'cast & crew',
         episodeGroups : 'episode groups',
         releaseDates : 'release dates',
@@ -68,7 +69,8 @@ export  const languages = {
         acting: "acting",
         all: "all",
         department: "department",
-        profile: "profile"
+        profiles: "profile",
+        userScore: 'user score'
     },
     ar: {
         movies: 'أفلام',
@@ -86,7 +88,7 @@ export  const languages = {
         today: 'اليوم',
         thisWeek: 'هذا الاسبوع',
         trending: 'رائج',
-        playTrailer: 'تشغيل',
+        playTrailer: 'تشغيل المقطع الدعائي',
         overview: 'نظرة عامة',
         freeToWatch: "مجانا للمشاهدة",
         latestTrailer : "احدث المقاطع الدعائية",
@@ -102,6 +104,7 @@ export  const languages = {
         similar: 'المتشابه',
         media : 'الوسائط',
         backdrops: 'الخلفيات',
+        stills: 'الخلفيات',
         videos: 'الفيديوهات',
         posters: 'الملصقات',
         social: 'اجتماعي',
@@ -116,7 +119,7 @@ export  const languages = {
         currentSeason: 'الموسم الأخير',
         seasons: 'المواسم',
         main: 'الرئيسية',
-        tiltes : 'عناوين بديلة',
+        titles : 'عناوين بديلة',
         castCrew:  'الممثلين وطاقم العمل',
         episodeGroups : 'مجموعه الحلقات',
         releaseDates : 'تواريخ الاصدار',
@@ -137,6 +140,7 @@ export  const languages = {
         acting: "التمثيل",
         all: "الكل",
         department: "القسم",
-        profile: "الملفات الشخصية"
+        profiles: "الملفات الشخصية",
+        userScore: 'تقييم المستخدمين'
        }
 }

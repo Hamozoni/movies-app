@@ -40,7 +40,7 @@ const EpisodeInfo = ({episode}) => {
             <nav className="epis-nav">
                 <ul className="epis-nav-ul">
                     <li><Link to={`${routsLink}/videos`}>videos</Link></li>
-                    <li><Link to={`${routsLink}/posters`}>images</Link></li>
+                    <li><Link to={`${routsLink}/stills`}>images</Link></li>
                     <li><Link to={`${routsLink}/changes`}>changes</Link></li>
                     <li><Link to={`${routsLink}`}>report</Link></li>
                     <li><Link to={`${routsLink}`}>edit</Link></li>
@@ -86,7 +86,7 @@ const EpisodeInfo = ({episode}) => {
                 <nav className="ep-img-nav">
                     <h4 className="ep-t" >episode images {images?.length}</h4>
                     <Link 
-                     to={`${routsLink}/posters`}
+                     to={`${routsLink}/stills`}
                         className="ep-link link-hover" >view all episode images</Link>
                 </nav>
                 <div className="ep-images-box">

@@ -7,11 +7,12 @@ import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
 import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
+import { languages } from '../../../utilities/languages';
 
 const AlternativeTitles = ({mediaType}) => {
 
     const {color} = useContext(mediaColorContext);
-    const {countries} = useContext(globalContext);
+    const {countries,lang} = useContext(globalContext);
 
     const {id} = useParams();
     const [isPending,setIsPending] = useState(true);
@@ -51,7 +52,9 @@ const AlternativeTitles = ({mediaType}) => {
             <div className="alt-content">
                 <section className='alt-cout-list card'>
                     <header className='cout-header' style={{backgroundColor : color.backColor,color: color.textColor}}>
-                            <h3 style={{color :color.textColor}}>Alternative Titles</h3>
+                            <h3 style={{color :color.textColor}}>
+                                {languages[lang].titles}
+                            </h3>
                             <p style={{color : color.textColor}}>{titlesCount}</p>
                     </header>
                     <ul className="cout-list">     

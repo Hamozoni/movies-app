@@ -10,6 +10,7 @@ import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { languages } from "../../../utilities/languages";
 
 
 const BackdropsCard = ({drop,language})=> {
@@ -42,7 +43,7 @@ const BackdropsCard = ({drop,language})=> {
 const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) => {
 
     const {color} = useContext(mediaColorContext);
-    const {languages} = useContext(globalContext);
+    const {languages: languagesList,lang} = useContext(globalContext);
 
     const [data,setData] = useState(null);
     const [error,setError] = useState(null);
@@ -88,7 +89,9 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
                     <header 
                         style={{backgroundColor: color.backColor}}
                         className="b-header cout-header">
-                        <h4 style={{color: color.textColor}}>{type}</h4>
+                        <h4 style={{color: color.textColor}}>
+                            {languages[lang][type]}
+                        </h4>
                     </header>
                     <ul className="lang-ul cout-list">
                         {
@@ -96,7 +99,7 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
                                 <li onClick={()=> setSelectedLang(key)} className={`${selectedLang === key && 'active'} nav-btn`}>
                                     { key === 'null' ? 
                                     'no language' :
-                                    languages?.find(e=> e.iso_639_1 === key)?.english_name
+                                    languagesList?.find(e=> e.iso_639_1 === key)?.english_name
                                     }
                                     <span>{data[key]?.length}</span>
                                 </li>
@@ -110,7 +113,7 @@ const Backdrops_posters = ({mediaType,type,isSeason = false,isEpisode = false}) 
                             <BackdropsCard 
                                 key={drop} 
                                 drop={drop} 
-                                language={languages?.find(e=> e.iso_639_1 === drop.iso_639_1)?.english_name || 'no laguage' }
+                                language={languagesList?.find(e=> e.iso_639_1 === drop.iso_639_1)?.english_name || 'no laguage' }
                                 />
                         ))
                     }

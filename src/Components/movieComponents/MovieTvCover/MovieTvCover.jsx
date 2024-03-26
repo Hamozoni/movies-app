@@ -17,13 +17,10 @@ import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext
 const MovieTvCover = ({details,mediaType})=> {
 
     const {color} = useContext(mediaColorContext);
-    const gradientColor = color.backColor.slice(4,color.backColor.length - 1).replaceAll(' ',', ')
-    const {lang,setIsTrailer,setMediaType,setMediaId} = useContext(globalContext);
+    const {lang} = useContext(globalContext);
     const [crews,setCrews] = useState([]);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
-    const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
-    const linearGrad = `linear-gradient(to right, rgba(${gradientColor}, 1) , rgba(32, 32, 32, 0.84), rgba(${gradientColor}, 0.84) )`;
 
     const fetch = ()=> {
         if(mediaType !== 'collection'){
@@ -32,14 +29,13 @@ const MovieTvCover = ({details,mediaType})=> {
             fetchData(`${mediaType}/${details?.id}/credits?language=${lang}`)
             .then((data)=>{
                 setCrews(data?.crew);
-                setIsPending(false);
-                console.log(details)
             })
             .catch(error=> {
-                setIsPending(false);
                 setError(error);
-                console.log(error)
-            });
+            })
+            .finally(()=> {
+                setIsPending(false);
+            })
         }
     }
 
@@ -52,7 +48,10 @@ const MovieTvCover = ({details,mediaType})=> {
         return `${runTime[0]}h ${time % 60}m`
         
     };
+    const gradientColor = color.backColor.slice(4,color.backColor.length - 1).replaceAll(' ',', ');
 
+    const imageUrl = process.env.REACT_APP_BASE_URL + 'original'  + details?.backdrop_path;
+    const linearGrad = `linear-gradient(to right, rgba(${gradientColor}, 1) , rgba(32, 32, 32, 0.84), rgba(${gradientColor}, 0.84) )`;
     const backImage = {
         backgroundImage: `${linearGrad},url(${imageUrl})`
     }
@@ -75,7 +74,8 @@ const MovieTvCover = ({details,mediaType})=> {
                     <div className="cover-content">
                         <div className="titles">
                             <h3 className="name">
-                                {details?.title || details?.name } { mediaType === 'collection' ? "" :`(${ new Date(details?.release_date  || details?.first_air_date)?.getFullYear()})`}
+                                {details?.title || details?.name } 
+                                { mediaType === 'collection' ? "" :`(${ new Date(details?.release_date  || details?.first_air_date)?.getFullYear()})`}
                             </h3>
                             {
                                 mediaType !== 'collection' &&
@@ -100,7 +100,9 @@ const MovieTvCover = ({details,mediaType})=> {
                                         <span>%</span>
                                     </h4>
                                 </div>
-                                <h3 className="user-t">user score</h3>
+                                <h3 className="user-t">
+                                    {languages[lang]?.userScore}
+                                </h3>
                             </div>
                             {
                                 mediaType !== 'collection' &&
@@ -123,11 +125,7 @@ const MovieTvCover = ({details,mediaType})=> {
                                     </nav>
                                     <div className="play-trailer flex-box">
                                         <PlayArrowIcon />
-                                        <button onClick={()=> {
-                                            setMediaId(details?.id);
-                                            setMediaType(details?.title ? 'movie' : 'tv');
-                                            setIsTrailer(true);
-                                        }}>
+                                        <button >
                                             {languages[lang]?.playTrailer}
                                         </button>
                                     </div>

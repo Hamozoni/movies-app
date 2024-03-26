@@ -51,7 +51,13 @@ const TvShowsLayout = () => {
               isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> 
               : details ?
               <div className="tv-container">
-                  <MainMediaNav mediaType='tv' linkUrl={lankUrl} />
+                  <MainMediaNav 
+                        mediaType='tv' 
+                        linkUrl={lankUrl} 
+                        overview={['titles','castCrew','episodeGroups','seasons','translations']} 
+                        media={['backdrops','posters','logos']} 
+                        isVideos={true}
+                      />
                   {
                     !pathName.endsWith(id) && 
                     <MediaHeader 

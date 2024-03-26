@@ -44,20 +44,26 @@ const EpisodesLayout = () => {
   return (
     <div>
         <MediaColorContext>
-              <MainMediaNav mediaType='tvEpisode' linkUrl={lankUrl} />
-                {
-                  isPending ? <Loading  width='100%' height='200px'/> : 
-                  details ? 
-                  <MediaHeader 
-                      imageUrl={details?.still_path} 
-                      title={`${seasonNumber}×${episodeNumber} ${details?.name}`}
-                      navigateTo={`/tv/${id}/season/${seasonNumber}`}
-                      linkTitle={lang === 'ar' ? 'الرجوع الي الحلقة' :'back to episode'}
-                      year={details.air_date}
-                      /> 
-                  : error && <Error error={error} height='200px' onClick={fetchDetails}/>
-                }
-                <Outlet />
+              <MainMediaNav 
+                  mediaType='tvEpisode' 
+                  linkUrl={lankUrl}
+                  overview={['castCrew','translations']} 
+                  media={['stills']} 
+                  isVideos={true}
+                />
+              {
+                isPending ? <Loading  width='100%' height='200px'/> : 
+                details ? 
+                <MediaHeader 
+                    imageUrl={details?.still_path} 
+                    title={`${seasonNumber}×${episodeNumber} ${details?.name}`}
+                    navigateTo={`/tv/${id}/season/${seasonNumber}`}
+                    linkTitle={lang === 'ar' ? 'الرجوع الي الحلقة' :'back to episode'}
+                    year={details.air_date}
+                  /> 
+                : error && <Error error={error} height='200px' onClick={fetchDetails}/>
+            }
+            <Outlet />
         </MediaColorContext>
     </div>
   )

@@ -49,7 +49,12 @@ const PersonLayout = () => {
         details ?
         <MediaColorContext>
           <personDetailsContext.Provider value={{details}} >
-            <MainMediaNav mediaType='person' linkUrl={lankUrl} />
+            <MainMediaNav 
+                mediaType='person' 
+                linkUrl={lankUrl}
+                overview={['translations']} 
+                media={['profiles']} 
+              />
             {
               !pathname.endsWith(id) && 
               <MediaHeader 

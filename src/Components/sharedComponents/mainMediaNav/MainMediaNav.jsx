@@ -9,7 +9,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import { languages } from '../../../utilities/languages';
 
-const MainMediaNav = ({mediaType,linkUrl}) => {
+const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
     const {id} = useParams();
 
     const [mediaData,setMediaData] = useState({});
@@ -26,7 +26,7 @@ const MainMediaNav = ({mediaType,linkUrl}) => {
         .then((data)=>{
             setVideos(Object.groupBy(data?.results,e=> e.type))
         }) 
-    },[mediaType,id,lang]);
+    },[id,lang]);
 
 
   const arrowIcon = innerWidth > 460 &&  <span className='icon'><ArrowDropDownIcon /></span>
@@ -37,48 +37,17 @@ const MainMediaNav = ({mediaType,linkUrl}) => {
             <span className='head'>{languages[lang].overview}</span>
             {arrowIcon}
             <ul className='links-list'>
-                <li className='nav-btn'>
+                 <li className='nav-btn'>
                     <Link to={`/${linkUrl}`}>{languages[lang].main}</Link>
                 </li>
+
                 {
-                    (mediaType !== 'person' && mediaType !== 'collection') && 
-                     <>
-                        <li className='nav-btn' >
-                            <Link to={`/${linkUrl}/titles`}>{languages[lang].tiltes}</Link>
+                    overview?.map((text)=> (
+                        <li key={text} className='nav-btn'>
+                            <Link to={`/${linkUrl}/${text}`}>{languages[lang][text]}</Link>
                         </li>
-                        <li className='nav-btn' >
-                            <Link to={`/${linkUrl}/cast`}>{languages[lang].castCrew}</Link>
-                        </li>
-                     </>
+                    ))
                 }
-                {  mediaType === 'tv' && 
-                    (
-                        <>
-                            <li className='nav-btn'>
-                                <Link to={`/${linkUrl}/episode_groups`}>{languages[lang].episodeGroups}</Link>
-                            </li>
-                            <li className='nav-btn'>
-                                <Link to={`/${linkUrl}/seasons`}>{languages[lang].seasons}</Link>
-                            </li>
-                        </>
-                    )
-                }
-                {  
-                    (mediaType !== 'person' && mediaType !== 'collection') && 
-                        <li className='nav-btn'>
-                            <Link to={`/${linkUrl}/releases`}>{languages[lang].releaseDates}</Link>
-                        </li>
-                }
-                <li className='nav-btn'>
-                    <Link to={`/${linkUrl}/translations`}>
-                        {languages[lang].translations}
-                    </Link>
-                </li>
-                <li className='nav-btn'>
-                    <Link to={`/${linkUrl}/changes`}>
-                        {languages[lang].changes}
-                    </Link>
-                </li>
             </ul>
         </div>
     )
@@ -94,55 +63,39 @@ const MainMediaNav = ({mediaType,linkUrl}) => {
                  <span className='head'>{languages[lang].media}</span>
                  {arrowIcon}
                  <ul className='links-list'>
-                    {  mediaType === 'person' ? 
-                        <li className='nav-btn'>
-                        <Link to={`/${linkUrl}/profile`} >
-                                {languages[lang].profile}
-                            <span>{mediaData?.profiles?.length}</span>
-                            </Link>
-                        </li>
 
-                        :
-                        <>
+                    {
+                        media?.map((text)=> (
                             <li className='nav-btn'>
-                                <Link to={`/${linkUrl}/backdrops`} >
-                                    {languages[lang].backdrops}
-                                    <span>{mediaData?.backdrops?.length}</span>
+                                <Link to={`/${linkUrl}/${text}`} >
+                                        {languages[lang][text]}
+                                    <span>{mediaData[text]?.length}</span>
                                 </Link>
                             </li>
-                            <li className='nav-btn'>
-                                <Link to={`/${linkUrl}/logos`} >
-                                    {languages[lang].logos}
-                                    <span>{mediaData?.logos?.length}</span>
-                                </Link>
-                            </li>
-                            <li className='nav-btn'>
-                                <Link to={`/${linkUrl}/posters`} >
-                                    {languages[lang].posters}
-                                    <span>{mediaData?.posters?.length}</span>
-                            </Link>
-                            </li >
-                            <li className='nav-btn videos'>
-                                <Link>{languages[lang].videos} </Link>
-                                <span><ArrowRightIcon/></span>
-                                <ul className={`${innerWidth < 520 && 'mobile'} videos-ul`}>
-                                    {
-                                        Object.keys(videos)?.map(video=> (
-                                            <li 
-                                                className='nav-btn'
-                                                key={video}>
-                                                    <Link to={`/${linkUrl}/videos?type=${video}`}>
-                                                        {video} 
-                                                        <span>{videos[video]?.length}</span>
-                                                    </Link>
-                                                </li>
-                                        ))
-                                    }
-                                </ul>
-                            </li>
-                        </>
-                    
-                    } 
+                        ))
+                    }
+
+                    {
+                        isVideos &&
+                        <li className='nav-btn videos'>
+                            <Link>{languages[lang].videos} </Link>
+                            <span><ArrowRightIcon/></span>
+                            <ul className={`${innerWidth < 520 && 'mobile'} videos-ul`}>
+                                {
+                                    Object.keys(videos)?.map(video=> (
+                                        <li 
+                                            className='nav-btn'
+                                            key={video}>
+                                                <Link to={`/${linkUrl}/videos?type=${video}`}>
+                                                    {video} 
+                                                    <span>{videos[video]?.length}</span>
+                                                </Link>
+                                            </li>
+                                    ))
+                                }
+                            </ul>
+                        </li>
+                    }
                      
                  </ul>
              </div>

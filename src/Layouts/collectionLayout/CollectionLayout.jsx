@@ -14,7 +14,7 @@ export const collectionContext = createContext()
 const CollectionLayout = () => {
     const {id} = useParams();
     const {lang} = useContext(globalContext)
-    const  collecUrl  = `collection/${id}`;
+    const  collecUrl  = `/collection/${id}`;
 
     const [details,setDetails] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -23,7 +23,7 @@ const CollectionLayout = () => {
     const fetchDetails = ()=> {
         setIsPending(true);
         setError(null);
-        fetchData(`${collecUrl}?language=${lang}`)
+        fetchData(`collection/${id}?language=${lang}`)
         .then((data)=> {
             setDetails(data);
             document.title = data.name;
@@ -45,7 +45,13 @@ const CollectionLayout = () => {
     <MediaColorContext>
         <collectionContext.Provider value={{details}}>
             <div className="collection-Layout">
-                <MainMediaNav mediaType='collection'  linkUrl={collecUrl}/>
+                <MainMediaNav 
+                    mediaType='collection'  
+                    linkUrl={collecUrl} 
+                    overview={['translations']} 
+                    media={['backdrops','posters']} 
+                    />
+
                 {  !pathName?.endsWith(id) &&(
                     isPending ? <Loading width='100%' height='200px' /> :
                     details ? 

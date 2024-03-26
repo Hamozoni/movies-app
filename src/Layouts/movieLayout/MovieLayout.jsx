@@ -53,7 +53,13 @@ const MovieLayout = () => {
           details ?
          <MediaColorContext>
            <MovieDetailsContext.Provider value={{details}} >
-            <MainMediaNav mediaType='movie' linkUrl={lankUrl} />
+                <MainMediaNav 
+                    mediaType='movie' 
+                    linkUrl={lankUrl} 
+                    overview={['titles','castCrew','releaseDates','translations']} 
+                    media={['backdrops','posters','logos']} 
+                    isVideos={true}
+                    />
                 {
                   !pathName.endsWith(id) &&
                   <MediaHeader 
