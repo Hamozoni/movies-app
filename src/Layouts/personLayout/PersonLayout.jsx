@@ -40,7 +40,7 @@ const PersonLayout = () => {
   useEffect(fetchDetails,[id,lang]);
 
   const pathname = useLocation().pathname;
-  const lankUrl = `person${id}`;
+  const lankUrl = `person/${id}`;
 
   return (
      <main>

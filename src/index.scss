@@ -38,6 +38,9 @@ input, button , input:focus, select{
   background-color: transparent;
   cursor: pointer;
 }
+input {
+  font-size: $f-size-5 !important;
+}
 
 img, picture {
   max-width: 100%;

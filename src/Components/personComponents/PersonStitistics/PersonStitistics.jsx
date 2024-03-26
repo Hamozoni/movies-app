@@ -6,8 +6,13 @@ import instagram_id from '../../../assets/insta.png';
 import twitter_id from '../../../assets/twiter.png';
 import tiktok_id from '../../../assets/tiktok.png';
 import youtube_id from '../../../assets/youtube.png';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import fetchData from "../../../utilities/fetchData";
+import { languages } from "../../../utilities/languages";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { useParams } from "react-router-dom";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
 
 
 const images = {
@@ -21,15 +26,31 @@ const images = {
 
 const PersonStitistics = ({details}) => {
 
-    const [externalIds,setExternalIds] = useState();
+    const [externalIds,setExternalIds] = useState(null);
+    const [error,setEror] = useState(null);
+    const [isPending,setIsPending] = useState(true);
 
-    useEffect(()=> {
-        fetchData(`person/${details?.id}/external_ids`)
+    const {lang} = useContext(globalContext);
+    const {id} = useParams();
+
+    const fetchExternalIds = ()=> {
+
+        setIsPending(true);
+        setEror(null);
+
+        fetchData(`person/${id}/external_ids`)
         .then((data)=> {
             setExternalIds(data);
-            console.log(data)
         })
-    },[details]);
+        .catch((error)=> {
+            setEror(error);
+        })
+        .finally(()=> {
+            setIsPending(false);
+        })
+    }
+
+    useEffect(fetchExternalIds,[id]);
 
     const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id','tiktok_id']
 
@@ -38,18 +59,23 @@ const PersonStitistics = ({details}) => {
         <nav className="pers-stit-nav">
 
             {
+                isPending ? <Loading width='100%' height='60px' /> 
+                : externalIds ?
                 alowedSocialMedia?.map((social)=> (
                     (externalIds && externalIds[social] !== null && externalIds[social]) &&
                     <a 
+                        key={social}
                         className='social-links'
                         href={`https://${social?.replace('_id','.com')}/${social === 'tiktok_id' ? '@' : ''}${externalIds[social]}`} 
                         target='_blank'
-                    >
+                        rel="noreferrer"
+                        >
                         <span className="social-image image-hover">
-                          <img src={images[social]} alt="social icon"  />
+                            <img src={images[social]} alt="social icon"  />
                         </span>
-                  </a>
+                </a>
                 ))
+            : error && <Error error={error} height='60px' onClick={fetchExternalIds} />
             }
               {
                 details?.homepage && 
@@ -62,31 +88,31 @@ const PersonStitistics = ({details}) => {
               </a>
               }
         </nav>
-        <h3>personal info</h3>
+        <h3>{languages[lang]?.personalInfo}</h3>
         <ul className="personal-info">
             <li>
-                <h4>Known For</h4>
+                <h4>{languages[lang]?.knownFor}</h4>
                 <h6>{details?.known_for_department}</h6>
             </li>
             <li>
-                <h4>Known Credits</h4>
+                <h4>{languages[lang]?.knownCredits}</h4>
                 <h6> {details?.popularity}</h6>
             </li>
             <li>
-                <h4>Gender</h4>
+                <h4>{languages[lang]?.gender}</h4>
                 <h6>{details?.gender === 1 ? "femal" : "male" }</h6>
             </li>
             <li>
-                <h4>Birthday</h4>
+                <h4>{languages[lang]?.birthday}</h4>
                 <h6> {`${new Date(details?.birthday)?.toDateString()} (${new Date().getFullYear() - new Date(details?.birthday)?.getFullYear()} years old)`}</h6>
             </li>
             <li>
-                <h4>Place of Birth</h4>
+                <h4>{languages[lang]?.placeOfBirth}</h4>
                <h6> {details?.place_of_birth}</h6>
             </li>
         </ul>
         <section className="kn-for">
-            <h4 className="for">also known as</h4>
+            <h4 className="for">{languages[lang]?.alsoKnownAs}</h4>
             <ul className="kn-for-ul">
                 {
                     details?.also_known_as?.map((key)=>(

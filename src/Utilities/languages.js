@@ -57,6 +57,14 @@ export  const languages = {
         fandom: 'fandom',
         share: "share",
         shareLink : "share link",
+        biography : "biography",
+        knownFor: "Known For",
+        personalInfo : "personal info",
+        knownCredits: "Known Credits",
+        gender: "gender",
+        birthday: "Birthday",
+        placeOfBirth: "Place of Birth",
+        alsoKnownAs: "also known as"
     },
     ar: {
         movies: 'أفلام',
@@ -114,5 +122,13 @@ export  const languages = {
         fandom: 'المعجبين',
         share: "مشاركة",
         shareLink : "رابط المشاركة",
+        biography : "السيرة",
+        knownFor: "معروف ب",
+        personalInfo : "المعلومات الشخصية",
+        knownCredits: "الأعمال المعروفة",
+        gender: "الجنس",
+        birthday: "تاريخ الميلاد",
+        placeOfBirth: "مكان الميلاد",
+        alsoKnownAs: "معروف ايضا ب"
        }
 }

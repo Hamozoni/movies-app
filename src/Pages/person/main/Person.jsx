@@ -8,6 +8,9 @@ import PersonStitistics from "../../../Components/personComponents/PersonStitist
 import MovieCard from "../../../Components/movieComponents/movieCard/MovieCard";
 import fitLongString from "../../../utilities/fitLongString";
 import PersonActing from "../../../Components/personComponents/PersonActing/PersonActing";
+import { languages } from "../../../utilities/languages";
+import Loading from "../../../Components/loading/Loading";
+import Error from "../../../Components/error/Error";
 
 
 const Person = () => {
@@ -16,15 +19,27 @@ const Person = () => {
     const { details} = useContext(personDetailsContext);
 
     const {lang,innerWidth} = useContext(globalContext);
-    const [knownFor,setKnownFor] = useState([]);
+    const [knownFor,setKnownFor] = useState(null);
+    const [error,setError] = useState(null);
+    const [isPending,setIsPending] = useState(true);
 
-    useEffect(()=>{
+    const fetchKnownFor = ()=>{
+
+        setIsPending(true);
+        setError(null);
         fetchData(`person/${id}/combined_credits?language=${lang}`)
         .then(data=> {
-            console.log(details);
             setKnownFor(data);
         })
-    },[id,lang]);
+        .catch((error)=> {
+            setError(error);
+        })
+        .finally(()=> {
+            setIsPending(false);
+        })
+    }
+
+    useEffect(fetchKnownFor,[id,lang]);
 
   return (
     <section className="person-cover">
@@ -50,20 +65,23 @@ const Person = () => {
                 </div>
                 <div className="piagrahpy">
                     <h4 className="pi-ti">
-                         Biography
+                         {languages[lang]?.biography}
                      </h4>
                     <aside> {fitLongString(details?.biography,1000) } </aside>
                 </div>
                 <section className="known-for">
                     <h4 className="pi-ti">
-                        Known For
+                        {languages[lang]?.knownFor}
                     </h4>
                     <div className="kn-for-container">
                         {
+                            isPending ? <Loading width='100%' height='300px' /> :
+                            knownFor ?
                             knownFor?.cast?.map((movie,i)=>(
                                 i < 6 &&
                                 <MovieCard movie={movie}  type='movie'/>
                             ))
+                            : error && <Error error={error}  height='300px' onClick={fetchKnownFor} />
                         }
                     </div>
                     <PersonActing knownFor={knownFor} />
