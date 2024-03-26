@@ -3,10 +3,6 @@
 
 main.search {
     .search-container {
-        padding: $padding;
-        @media (min-width: 992px) {
-            padding: $padding $padding-40;
-        }
         .search-results {
             .key-l {
                 padding: $padding-5 0;

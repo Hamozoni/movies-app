@@ -26,7 +26,8 @@ const Search = ()=> {
     const [page,setPage] = useState(1);
 
     const fetchSeachData = ()=>{
-        document.title = query.search.split('=')[1] + ' ' + type;
+
+        document.title = query.search.split('=')[1] + '__' + type;
         setIsPending(true);
         setError(null);
         fetchData(`search/${type}${query.search}&include_adult=false&language=${lang}&page=${page}`)
@@ -80,7 +81,7 @@ const Search = ()=> {
                                     type === 'tv' &&
                                     <span>
                                         {new Intl.NumberFormat().format(searchData?.total_results)}
-                                        </span>
+                                    </span>
                                 }
                             </li>
                         <li 
