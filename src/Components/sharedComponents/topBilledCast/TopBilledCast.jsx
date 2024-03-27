@@ -26,11 +26,12 @@ const TopBilledCast = ({mediaType,id,title})=> {
        fetchData(`${mediaType}/${id}/credits?language=${lang}`)
        .then((data)=>{
             setCast(data?.cast);
-            setIsPending(false);
        })
        .catch(error=> {
           setError(error);
-          setIsPending(false);
+       })
+       .finally(()=> {
+           setIsPending(false);
        })
     }
 
@@ -49,11 +50,11 @@ const TopBilledCast = ({mediaType,id,title})=> {
                 : error && <Error error={error} height='340px' onClick={fetch} />
             }
             <div className="view-more">
-                <Link to={`/movie/${id}/cast`} className="cast-link">{languages[lang].viewMore} <ArrowRightAltRoundedIcon /></Link>
+                <Link to={`/movie/${id}/castCrew`} className="cast-link">{languages[lang].viewMore} <ArrowRightAltRoundedIcon /></Link>
                 
             </div>
         </div>
-        <Link to={`/movie/${id}/cast`} className="cast-link">{languages[lang].allCrew}</Link>
+        <Link to={`/movie/${id}/castCrew`} className="cast-link">{languages[lang].allCrew}</Link>
     </section>
   )
 }

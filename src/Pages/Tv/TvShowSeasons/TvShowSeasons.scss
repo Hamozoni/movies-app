@@ -4,7 +4,10 @@
 main.tv-seasons {
     .tv-s-container {
         .tv-seasons-content {
-            padding: $padding;;
+            padding: $padding;
+            @media (min-width: 992px) {
+                padding: $padding $padding-40;
+            }
         }
     }
 }

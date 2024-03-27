@@ -54,7 +54,9 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
   const Overview = ()=> {
     return (
         <div className='med-title'>
-            <span className='head'>{languages[lang].overview}</span>
+            <span className='head'>
+                {languages[lang].overview}
+            </span>
             {arrowIcon}
             <ul className='links-list'>
                  <li className='nav-btn'>
@@ -121,15 +123,19 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                      
                  </ul>
              </div>
-             <div className='med-title'>
-                 <span className='head'> {languages[lang].fandom}</span>
-                 {arrowIcon}
-                 <ul className='links-list'>
-                    <li className='nav-btn'>
-                         <Link to={`/${linkUrl}/reviews`}>{languages[lang].reviews}</Link>
-                    </li>
-                 </ul>
-             </div>
+             {
+                linkUrl.split('/').includes('person')  ?  ""
+                :
+                <div className='med-title'>
+                    <span className='head'> {languages[lang].fandom}</span>
+                    {arrowIcon}
+                    <ul className='links-list'>
+                        <li className='nav-btn'>
+                            <Link to={`/${linkUrl}/reviews`}>{languages[lang].reviews}</Link>
+                        </li>
+                    </ul>
+                </div>
+             }
              <div className='med-title'>
                  <span className='head'> {languages[lang].share}</span>
                  {arrowIcon}

@@ -1,7 +1,6 @@
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { useContext, useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
-import fetchData from '../../../utilities/fetchData';
+import { useContext} from 'react';
+import ReactPlayer from 'react-player/youtube';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 import "./TrailerPlayer.scss"
@@ -26,9 +25,14 @@ const TrailerPlayer = () => {
                     <CloseRoundedIcon />
                 </span>
             </header>
-                <div className="tr-player">
-                    <ReactPlayer className='media-player'  playing={true} controls url={`https://www.youtube.com/watch?v=${trailer?.youtubeId}`} />
-                </div>
+            <div className="tr-player">
+                <ReactPlayer 
+                    className='media-player'  
+                    playing={true} 
+                    controls 
+                    url={`https://www.youtube.com/watch?v=${trailer?.youtubeId}`}
+                 />
+            </div>
         </div>
 
     </section>

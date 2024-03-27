@@ -27,7 +27,6 @@ const Header = ()=> {
 
     };
 
-    const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
 
     const SittingIcons = ({isMobile = false})=> {
 
@@ -53,16 +52,24 @@ const Header = ()=> {
                     {
                         isMobile && <h5>Languages</h5>
                     }
-                    <div className="lang-container card">
-                        <p 
+                    <ul className="lang-container card">
+                        <li 
                             className={`${lang === 'ar' && 'active'} nav-btn`}
-                             onClick={()=> setLang('ar')}
-                             >العربية</p>
-                        <p 
+                             onClick={()=> {
+                                window.localStorage.setItem('myh-movies-lang','ar');
+                                setLang('ar')
+                             }}
+                             >{languages[lang].arabic}
+                        </li>
+                        <li 
                             className={`${lang === 'en' && 'active'} nav-btn`}
-                            onClick={()=> setLang('en')}
-                            >english</p>
-                    </div>
+                            onClick={()=>{
+                                window.localStorage.setItem('myh-movies-lang','en');
+                                setLang('en')
+                            }}
+                            >{languages[lang].english}
+                        </li>
+                    </ul>
                 </div>
                 <div className="notfication icons">
                     <span>
@@ -107,57 +114,57 @@ const Header = ()=> {
                                 <SittingIcons isMobile={innerWidth < 667} />
                             }
                             <div className="filter-box">
-                                <h4> {languages[langCode].movies} </h4>
+                                <h4> {languages[lang].movies} </h4>
                                 <ul className="fiter">
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('popular','movie')}>
-                                            {languages[langCode].popular}
+                                            {languages[lang].popular}
                                     </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('now_playing','movie')}>
-                                            {languages[langCode].nowPlaying}
+                                            {languages[lang].nowPlaying}
                                         </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('upcoming','movie')}>
-                                            {languages[langCode].upComing}
+                                            {languages[lang].upComing}
                                         </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('top_rated','movie')}>
-                                            {languages[langCode].topRated}
+                                            {languages[lang].topRated}
                                     </li>
                                 </ul>
                             </div>
                             <div className="filter-box">
-                                <h4>{languages[langCode].tvShows}</h4>
+                                <h4>{languages[lang].tvShows}</h4>
                                 <ul className="fiter">
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('popular','tv')}>
-                                            {languages[langCode].popular}
+                                            {languages[lang].popular}
                                         </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('airing_today','tv')}>
-                                            {languages[langCode].airingToday}
+                                            {languages[lang].airingToday}
                                     </li>
                                     <li 
                                         className="nav-btn link-hover"
                                         onClick={()=> handleNavigate('on_the_air','tv')}>
-                                            {languages[langCode].onTv}
+                                            {languages[lang].onTv}
                                     </li>
                                     <li 
                                     className="nav-btn link-hover"
                                     onClick={()=> handleNavigate('top_rated','tv')}>
-                                        {languages[langCode].topRated}
+                                        {languages[lang].topRated}
                                     </li>
                                 </ul>
                             </div>
                             <div className="filter-box">
-                                <h4> {languages[langCode].people}</h4>
+                                <h4> {languages[lang].people}</h4>
                                 <ul className="fiter">
                                     <li 
                                         className="nav-btn link-hover"

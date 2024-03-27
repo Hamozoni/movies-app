@@ -43,6 +43,12 @@ const GlobalContext = ({children})=> {
 
     useEffect(()=> {
 
+        if(window.localStorage.getItem('myh-movies-lang') === null){
+            window.localStorage.setItem('myh-movies-lang',lang);
+        }else {
+            setLang(window.localStorage.getItem('myh-movies-lang'))
+        };
+
         document.getElementsByTagName('html')[0].lang = lang;
         if(lang === 'ar') {
            document.getElementsByTagName('html')[0].dir = 'rtl'

@@ -46,7 +46,7 @@ export  const languages = {
         network: "network",
         keywords: "keywords",
         currentSeason: 'current season',
-        seasons: 'المواسم',
+        seasons: 'seasons',
         main: 'main',
         titles : 'alternative titles',
         castCrew:  'cast & crew',
@@ -73,6 +73,8 @@ export  const languages = {
         userScore: 'user score',
         searchFilter: 'Search filter',
         collections: 'collections',
+        english: 'english',
+        arabic: 'arabic'
     },
     ar: {
         movies: 'أفلام',
@@ -145,6 +147,8 @@ export  const languages = {
         profiles: "الملفات الشخصية",
         userScore: 'تقييم المستخدمين',
         searchFilter: 'نتائج البحث',
-        collections: 'مجموعات'
+        collections: 'مجموعات',
+        english: 'الانجليزية',
+        arabic: 'العربية'
        }
 }
