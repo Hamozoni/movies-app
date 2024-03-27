@@ -47,7 +47,7 @@ const MediaVideos = () => {
             setIsPending(false);
         })
     }
-    useEffect(fetchVideos,[type,pathName]);
+    useEffect(fetchVideos,[type,pathName,lang,navigate]);
 
     if(isPending) {
         return (

@@ -39,7 +39,7 @@ const EpisodesLayout = () => {
   }
 
 
-  useEffect(fetchDetails,[id,seasonNumber,episodeNumber,lang]);
+  useEffect(fetchDetails,[lankUrl,lang]);
 
   return (
     <div>

@@ -83,8 +83,9 @@ const PersonStitistics = ({details}) => {
                     className='social-links'
                     href={details?.homepage} 
                     target='_blank'
+                    rel="noreferrer"
                     >
-                    <img src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-351-link-5f643a86c2515cb06ea08ebc798941824f76bbcea4ed571222a81f271b30c7f3.svg'/>
+                    <img src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-351-link-5f643a86c2515cb06ea08ebc798941824f76bbcea4ed571222a81f271b30c7f3.svg' alt='home'/>
               </a>
               }
         </nav>

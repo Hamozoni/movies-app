@@ -101,7 +101,7 @@ const Transaction = () => {
                              <div className="">
                                 <h5>{trans?.data?.runtime}</h5>
                                 <span><LockOpenIcon /></span>
-                                <a href={trans?.data?.homepage} target="_blank">
+                                <a href={trans?.data?.homepage} target="_blank" rel="noreferrer">
                                    {trans?.data?.homepage}
                                 </a>
                                 <span><LockOpenIcon /></span>

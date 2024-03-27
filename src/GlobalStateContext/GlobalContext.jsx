@@ -8,7 +8,7 @@ export const globalContext = createContext();
 const GlobalContext = ({children})=> {
 
     const [theme,setTheme] = useState('dark');
-    const [lang,setLang] = useState('ar');
+    const [lang,setLang] = useState('en');
     const [trailer,setTrailer] = useState({isTrailer: false,youtubeId : null,type: null});
     const [innerWidth,setInnerWidth] = useState(0);
     const [languages,setLanguages] = useState(null);

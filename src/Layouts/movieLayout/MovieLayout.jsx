@@ -41,7 +41,7 @@ const MovieLayout = () => {
       });
     }
 
-    useEffect(fetchDetails,[id,lang]);
+    useEffect(fetchDetails,[id,lang,lankUrl]);
 
     const pathName = useLocation().pathname
 

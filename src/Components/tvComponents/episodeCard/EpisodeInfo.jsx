@@ -16,13 +16,13 @@ const EpisodeInfo = ({episode}) => {
 
     const{id,seasonNumber} = useParams();
 
-    const routsLink = `/tv/${id}/season/${seasonNumber}/episode/${episode?.episode_number}`
+    const routsLink = `tv/${id}/season/${seasonNumber}/episode/${episode?.episode_number}`
 
     const fetchImages = ()=> {
 
         setError(null);
         setIsPending(true);
-        fetchData(`tv/${episode?.show_id}/season/${episode?.season_number}/episode/${episode?.episode_number}/images`)
+        fetchData(`${routsLink}/images`)
         .then(data=> {
             setImages(data?.stills);
             setIsPending(false);
@@ -33,17 +33,17 @@ const EpisodeInfo = ({episode}) => {
         })
     }
 
-    useEffect(fetchImages,[episode?.episode_number]);
+    useEffect(fetchImages,[routsLink]);
 
   return (
         <div className="epis-more-info">
             <nav className="epis-nav">
                 <ul className="epis-nav-ul">
-                    <li><Link to={`${routsLink}/videos`}>videos</Link></li>
-                    <li><Link to={`${routsLink}/stills`}>images</Link></li>
-                    <li><Link to={`${routsLink}/changes`}>changes</Link></li>
-                    <li><Link to={`${routsLink}`}>report</Link></li>
-                    <li><Link to={`${routsLink}`}>edit</Link></li>
+                    <li><Link to={`/${routsLink}/videos`}>videos</Link></li>
+                    <li><Link to={`/${routsLink}/stills`}>images</Link></li>
+                    <li><Link to={`/${routsLink}/changes`}>changes</Link></li>
+                    <li><Link to={`/${routsLink}`}>report</Link></li>
+                    <li><Link to={`/${routsLink}`}>edit</Link></li>
                 </ul>
             </nav>
             <div className="epis-crew-guest">
@@ -68,7 +68,7 @@ const EpisodeInfo = ({episode}) => {
                     <nav className="ep-g-nav">
                         <h4 className="ep-t">guest starts {episode?.guest_stars?.length}</h4>
                         <Link 
-                            to={`${routsLink}/cast`}
+                            to={`/${routsLink}/cast`}
                             className="ep-link link-hover" >
                                 full cast&crew
                         </Link>
@@ -86,7 +86,7 @@ const EpisodeInfo = ({episode}) => {
                 <nav className="ep-img-nav">
                     <h4 className="ep-t" >episode images {images?.length}</h4>
                     <Link 
-                     to={`${routsLink}/stills`}
+                     to={`/${routsLink}/stills`}
                         className="ep-link link-hover" >view all episode images</Link>
                 </nav>
                 <div className="ep-images-box">

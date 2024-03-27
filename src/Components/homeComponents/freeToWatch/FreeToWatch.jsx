@@ -29,9 +29,7 @@ const FreeToWatch = ()=> {
         })
     }
 
-    useEffect(()=>{
-        fetch()
-    },[mediaType,lang]);
+    useEffect(fetch,[mediaType,lang]);
 
     const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
 

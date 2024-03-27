@@ -37,7 +37,7 @@ const PopularPresons = () => {
         })
     }
 
-    useEffect(fetchPersons,[page]);
+    useEffect(fetchPersons,[page,lang]);
 
   return (
     <section className="popular-people">

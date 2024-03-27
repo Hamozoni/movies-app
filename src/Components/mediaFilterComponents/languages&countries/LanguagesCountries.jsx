@@ -86,7 +86,7 @@ const LanguagesCountries = ({type,data}) => {
                                         {
                                              type === 'countries' && 
                                              <span>
-                                                 <img src={`https://flagsapi.com/${lang?.iso_3166_1 }/shiny/64.png`}></img>
+                                                 <img src={`https://flagsapi.com/${lang?.iso_3166_1 }/shiny/64.png`} alt='flag'/>
                                              </span>
                                         }
                                         {lang?.english_name}

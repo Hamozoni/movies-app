@@ -36,7 +36,7 @@ const TvShowSeasonLayout = () => {
 
     }
 
-    useEffect(fetchEpisodes,[id,seasonNumber]);
+    useEffect(fetchEpisodes,[id,seasonNumber,lang]);
 
     if(isPending) {
         return (

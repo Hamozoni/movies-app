@@ -39,6 +39,8 @@ function Recommendations({id,mediaType}) {
         })
     };
 
+    useEffect(fetch,[id,lang,selected,mediaType]);
+
     const RecommendationCard = ({media}) => {
         return (
             <div className="recomm-media-card scale">
@@ -62,7 +64,6 @@ function Recommendations({id,mediaType}) {
         )
     }
 
-    useEffect(fetch,[id,lang,selected]);
 
     const OnHoherOverlay = ({media})=> {
         return (

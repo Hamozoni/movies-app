@@ -42,7 +42,7 @@ const AlternativeTitles = ({mediaType}) => {
         })
     };
 
-    useEffect(fetchTitles,[id,mediaType]);
+    useEffect(fetchTitles,[id,mediaType,results]);
 
   return (
     <main className="alt-titles">
@@ -101,7 +101,7 @@ const TitlesTabel = ({title,country})=> {
            <tr>
                <div className="count-name">
                     <span className="count-imge">
-                        <img src={`https://flagsapi.com/${title?.iso_3166_1}/shiny/64.png`}></img>
+                        <img src={`https://flagsapi.com/${title?.iso_3166_1}/shiny/64.png`} alt='flag'/>
                     </span>
                     <h3> 
                         {country}

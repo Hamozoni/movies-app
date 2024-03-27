@@ -5,6 +5,8 @@ import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import "./SearchBar.scss";
 import { useNavigate } from "react-router-dom";
 import fetchData from "../../../utilities/fetchData";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
 
 export const SearchForm = ()=> {
 
@@ -44,41 +46,47 @@ const SearchBar = ()=> {
    const [isPending,setIsPending] = useState(true);
    const [error,setError] = useState(null);
 
-
-   const imgIdex= Math.ceil(Math.random() * 20);
-
-   useEffect(()=>{
+   const fetchImages = ()=>{
     setIsPending(true);
     setError(null);
        fetchData(`trending/movie/week?language=${lang}&page=1`)
        .then((data)=>{
            setImages(data?.results);
-           setIsPending(false);
-
-           console.log(data?.results);
        })
        .catch(error=> {
-            setIsPending(false);
             setError(error);
        })
-   },[lang]);
+       .finally(()=>{
+          setIsPending(false);
+       })
+   }
+
+
+   const imgIdex= Math.ceil(Math.random() * 20);
+
+   useEffect(fetchImages,[lang]);
 
 
     return (
         <div 
             style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${images[imgIdex]?.backdrop_path})`}}
             className="search-bar" >
-            <section
-                className={`${theme} search-bar-container`}
-                >
-                 <h3 className="welcome">
-                    {languages[lang].welcome}
-                 </h3>
-                 <h4>
-                    {languages[lang].millionsOf}
-                 </h4>
-                 <SearchForm />
-            </section>
+                {
+                    isPending ? <Loading width='100%' height='400px' /> : 
+                    images ?
+                    <section
+                        className={`${theme} search-bar-container`}
+                        >
+                        <h3 className="welcome">
+                            {languages[lang].welcome}
+                        </h3>
+                        <h4>
+                            {languages[lang].millionsOf}
+                        </h4>
+                        <SearchForm />
+                    </section>
+                    :error && <Error error={error} height='400px' onClick={fetchImages} />
+                }
         </div>
     );
 };

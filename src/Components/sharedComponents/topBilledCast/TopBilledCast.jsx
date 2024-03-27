@@ -34,7 +34,7 @@ const TopBilledCast = ({mediaType,id,title})=> {
        })
     }
 
-    useEffect(fetch,[id,lang]);
+    useEffect(fetch,[id,lang,mediaType]);
 
   return (
     <section className="top-billed b-b">

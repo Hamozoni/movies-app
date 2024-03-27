@@ -2,7 +2,6 @@ import {languages }from "../../../utilities/languages";
 
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';

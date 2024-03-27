@@ -47,7 +47,7 @@ const FilteredMediaList = ({mediaType}) => {
         document.title = `${filter} ${mediaType}`;
         setIsPending(true);
         setError(null);
-        fetchData(`${mediaType}/${filter}?language=${lang}&page=${page}`)
+        fetchData(`${mediaType}/${filter}?language=${lang}&page=1`)
         .then((data)=> {
             setMedia(data);
             setTotalPage(data?.total_pages);
