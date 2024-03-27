@@ -1,0 +1,43 @@
+
+@import "./variables";
+
+@each $key, $val in $background-color {
+    .back-color-#{$key} {
+        background-color: $val;
+    }
+
+     @if($key == 'dark'){
+         @for $i from 1 through 5 {
+             .back-color-#{$key}-#{$i} {
+                 background-color: mix(white,$val ,10 * $i);
+             }
+         }
+
+     } @else {
+         @for $i from 1 through 5 {
+             .back-color-#{$key}-#{$i} {
+                 background-color: mix(black,$val ,10 * $i);
+             }
+         }
+     }
+}
+
+@each $key,$val in $text-color {
+    .t-color-#{key} {
+        color: $val;
+    }
+
+    @if($key == 'light') {
+        @for $i from 1 through 5 {
+            .t-color-#{$key}-#{$i} {
+                color: mix(white, $val,$i * 10);
+            }
+        }
+    } @else {
+        @for $i from 1 through 5 {
+            .t-color-#{$key}-#{$i} {
+                color: mix(black, $val,$i * 10);
+            }
+        }
+    }
+}

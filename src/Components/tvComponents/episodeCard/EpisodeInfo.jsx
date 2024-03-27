@@ -68,7 +68,7 @@ const EpisodeInfo = ({episode}) => {
                     <nav className="ep-g-nav">
                         <h4 className="ep-t">guest starts {episode?.guest_stars?.length}</h4>
                         <Link 
-                            to={`/${routsLink}/cast`}
+                            to={`/${routsLink}/castCrew`}
                             className="ep-link link-hover" >
                                 full cast&crew
                         </Link>

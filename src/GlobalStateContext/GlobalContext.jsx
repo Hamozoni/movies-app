@@ -71,7 +71,9 @@ const GlobalContext = ({children})=> {
         return ()=> window.removeEventListener('resize',handleResize)
     },[]);
 
-    
+    useEffect(()=> {
+
+    },[theme]);
 
     return (
        <globalContext.Provider 

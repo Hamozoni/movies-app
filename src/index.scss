@@ -1,5 +1,6 @@
 @import "./GlobalStyle/variables.scss";
 @import "./GlobalStyle/mixin.scss";
+@import "./GlobalStyle/colors";
 
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica:ital@0;1&family=Iceberg&family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
 
@@ -7,6 +8,7 @@ body {
   font-family: "Kantumruy Pro", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  background-color: #ffffff;
 }
 title {
   text-transform: capitalize !important;
@@ -171,7 +173,7 @@ img, picture {
     font-size: $f-size-5;
     font-weight: 700;
     color: $text-dark-color;
-    padding: $padding-10 $padding;
+    padding: $padding-10 ;
     line-break: loose;
     min-width: fit-content !important;
   @include flex-box(center,space-between,5px);

@@ -27,7 +27,6 @@ const Header = ()=> {
 
     };
 
-
     const SittingIcons = ({isMobile = false})=> {
 
         return (
