@@ -14,6 +14,9 @@
     .movies-container {
         &.web {
             @include flex-box(flex-start,center,20px);
+            @media (min-width:992px) {
+                gap: 60px;
+            }
             .sort {
                  width: 280px;
             }
@@ -22,8 +25,6 @@
             min-width: fit-content;
         }
         .movies-content {
-            // display: grid ;
-            // grid-template-columns: repeat(auto-fill, minmax(225px,1fr));
             @include flex-box(flex-start,flex-start,20px);
             flex-wrap: wrap;
             .not-found {

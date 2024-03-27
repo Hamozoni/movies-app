@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import fetchData from "../../../utilities/fetchData";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import CheckIcon from '@mui/icons-material/Check';

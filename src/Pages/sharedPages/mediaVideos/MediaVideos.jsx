@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate} from "react-router-dom"
 
 import fetchData from "../../../utilities/fetchData";
 import VideosCard from "./VideosCard";
@@ -47,7 +47,7 @@ const MediaVideos = () => {
             setIsPending(false);
         })
     }
-    useEffect(fetchVideos,[type]);
+    useEffect(fetchVideos,[type,pathName]);
 
     if(isPending) {
         return (

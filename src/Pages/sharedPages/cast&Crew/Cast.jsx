@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import "./Cast.scss";
 import fetchData from '../../../utilities/fetchData';
@@ -7,39 +7,33 @@ import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
 import CrewCard from '../../../Components/sharedComponents/crewCard/CrewCard';
 
-const Cast = ({mediaType,isSeason = false,isEpisode = false}) => {
+const Cast = () => {
 
     const [cast,setCast] = useState(null);
     const [crew,setCrew] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {id,seasonNumber,episodeNumber} = useParams();
+    const pathName = useLocation().pathname;
+
 
     const fetchCast = ()=>{
         setIsPending(true);
         setError(null);
-        let season = '';
-        if(isSeason) {
-            season = `/season/${seasonNumber}`
-        }
-        if(isEpisode){
-            season = `/season/${seasonNumber}/episode/${episodeNumber}` 
-        }
-       fetchData(`${mediaType}/${id}${season}/credits?language=en-US`)
+       fetchData(`${pathName.replace('castCrew','credits')}?language=en-US`)
        .then((data)=>{
           setCast(data);
           setCrew(Object.groupBy(data?.crew, ({ department}) => department));
-          setIsPending(false);
        })
        .catch(error=> {
            setError(error);
-           console.log(error);
-           setIsPending(false);
+       })
+       .finally(()=> {
+        setIsPending(false);
        })
     }
 
-    useEffect(fetchCast,[id,seasonNumber,episodeNumber,isEpisode,isSeason,mediaType]);
+    useEffect(fetchCast,[pathName]);
 
   return (
     <div className='cast'>

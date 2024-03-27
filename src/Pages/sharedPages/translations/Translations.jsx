@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
@@ -10,29 +10,22 @@ import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext
 import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
 
-const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
+const Transaction = () => {
 
   const {color} = useContext(mediaColorContext);
-
-  const {id,seasonNumber,episodeNumber} = useParams();
 
   const [translations,setTranslations] = useState(null);
   const [isPending,setIsPending] = useState(true);
   const [error,setError] = useState(null);
+
+  const pathName = useLocation().pathname;
 
   const fetchTrans = ()=>{
 
     setIsPending(true);
     setError(null);
 
-    let season = ''
-    if(isSeason) {
-      season = `/season/${seasonNumber}`
-    }
-    if(isEpisode){
-      season = `/season/${seasonNumber}/episode/${episodeNumber}` 
-     }
-     fetchData(`${mediaType}/${id}${season}/translations`)
+     fetchData(pathName)
      .then((data)=> {
           setTranslations(data?.translations)
      })
@@ -45,7 +38,7 @@ const Transaction = ({mediaType,isSeason = false,isEpisode = false}) => {
 
   }
 
-  useEffect(fetchTrans,[seasonNumber,episodeNumber,isEpisode,isSeason,mediaType,id]);
+  useEffect(fetchTrans,[pathName]);
 
   return (
     <main className="mov-transation">

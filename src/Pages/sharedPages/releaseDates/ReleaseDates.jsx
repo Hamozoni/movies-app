@@ -1,27 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import fetchData from '../../../utilities/fetchData';
 import Loading from '../../../Components/loading/Loading';
 import Error from '../../../Components/error/Error';
 import { mediaColorContext } from '../../../GlobalStateContext/MediaColorContext';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
+import { useLocation } from 'react-router-dom';
 
 
-const ReleaseDates = ({mediaType}) => {
+const ReleaseDates = () => {
 
     const {color} = useContext(mediaColorContext);
     const {countries} = useContext(globalContext);
 
-    const {id} = useParams();
     const [dates,setDates] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
+
+    const pathName = useLocation().pathname;
 
     const fetchDates = ()=>{
         setIsPending(true);
         setError(null);
 
-        fetchData(`${mediaType}/${id}/release_dates`)
+        fetchData(`${pathName.replace('releaseDates','release_dates')}`)
         .then((dates)=>{
             setDates(dates?.results);
         })
@@ -33,7 +34,7 @@ const ReleaseDates = ({mediaType}) => {
 
     }
 
-    useEffect(fetchDates,[id,mediaType]);
+    useEffect(fetchDates,[pathName]);
 
   return (
     <main className="release-date">
