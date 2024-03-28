@@ -19,7 +19,7 @@ import noDataFound from "../../../assets/NewImage.png";
 
 function Recommendations({id,mediaType}) {
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
     const [recomData,setRecomData] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [selected,setSelected] = useState('recommendations')
@@ -53,12 +53,15 @@ function Recommendations({id,mediaType}) {
                     <OnHoherOverlay media={media}/>
                 </div>
                 <div className="media-content">
-                    <p className="name" onClick={()=> handleNavigate(media?.media_type,media?.id)}>
+                    <h4 
+                        className={`name t-color-${theme}`} 
+                        onClick={()=> handleNavigate(media?.media_type,media?.id)}
+                        >
                         {fitLongString(media?.name,25) || fitLongString(media?.title,25) }
-                    </p>
-                    <h4>
-                        {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}%
                     </h4>
+                    <h5  className={`vote-per t-color-${theme}-3`} >
+                        {media?.vote_average?.toFixed(1)?.toString()?.replace(".","")}%
+                    </h5>
                 </div>
             </div>
         )
@@ -67,7 +70,7 @@ function Recommendations({id,mediaType}) {
 
     const OnHoherOverlay = ({media})=> {
         return (
-            <div className="overlay-content">
+            <div className={`overlay-content back-color-${theme} t-color-${theme}`}>
                 <div className="over-date">
                     <EventNoteIcon />
                     <span>{media?.release_date || media?.first_air_date}</span>

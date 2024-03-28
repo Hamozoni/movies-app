@@ -32,7 +32,7 @@ const MediaCard = ({data,type})=>{
 const MovieMedia = ({id,mediaType})=> {
 
     const [mediaImages,setMediaImages] = useState(null);
-    const [selection,setSelecion] = useState('posters');
+    const [selection,setSelecion] = useState('backdrops');
     const [mostPopular,setMostPopular] = useState([]);
     const [videos,setVideos] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -40,7 +40,7 @@ const MovieMedia = ({id,mediaType})=> {
     const [isPending2,setIsPending2] = useState(true);
     const [error2,setError2] = useState(null);
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
     const fetchImages = ()=> {
 
@@ -81,7 +81,7 @@ const MovieMedia = ({id,mediaType})=> {
         <section className='movie-media b-b'>
             <header className="movie-media-header">
                 <nav className="media-nav">
-                    <h4 className="title">
+                    <h4 className={`title t-color-${theme}`}>
                         {languages[lang].media}
                     </h4>
                     <ul className="links">

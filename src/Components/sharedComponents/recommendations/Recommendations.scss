@@ -38,13 +38,11 @@
                     @include postion(absolute,100%,fit-content,unset,0,99);
                     bottom: -100%;
                     padding: $padding-5;
-                    background-color: $text-light-color;
                     display: none;
                     @include flex-box(center,space-between);
                     transition: all .5s;
                     .over-date, .add-to {
                         @include flex-box(center,center,5px);
-                        color: $text-dark-color;
                         svg {
                             font-size: $f-size-s
                         }
@@ -57,8 +55,9 @@
             }
             .media-content {
                 @include flex-box(center,space-between);
-                font-size: $f-size-5;
-                color: $text-dark-color;
+                .name {
+                    font-size: $f-size-6;
+                }
                 padding: $padding-5 0;
             }
           }
