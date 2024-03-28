@@ -45,7 +45,6 @@ const EpisodesLayout = () => {
     <div>
         <MediaColorContext>
               <MainMediaNav 
-                  mediaType='tvEpisode' 
                   linkUrl={lankUrl}
                   overview={['castCrew','translations']} 
                   media={['stills']} 

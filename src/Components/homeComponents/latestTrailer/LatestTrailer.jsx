@@ -18,7 +18,7 @@ const LatestTrailer = () => {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
 
 
@@ -58,7 +58,7 @@ const LatestTrailer = () => {
         >
             <div className="trailer-box-cotainer">
                <header className="trailer-header">
-                <h3>{languages[lang].latestTrailer}</h3>
+                <h3 className={`t-color-${theme}`}>{languages[lang].latestTrailer}</h3>
                     <nav className="trailer-nav">
                         <ul className="trailer-ul">
                             <li 

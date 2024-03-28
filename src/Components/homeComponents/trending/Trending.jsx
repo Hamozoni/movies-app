@@ -9,14 +9,12 @@ import Loading from "../../loading/Loading";
 
 const Trending = ({type})=> {
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
     const [movies,setMovies] = useState([]);
     const [filter,setFilter] = useState('day');
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
-    
-   const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
 
     const fetch = ()=> {
         setIsPending(true);
@@ -40,9 +38,9 @@ const Trending = ({type})=> {
         <section className={`${type} trending`}>
             <div className="trending-container">
                 <header className="trend-header">
-                    <h3 className="trend-title">
-                        {languages[langCode].trending + " "}  
-                        {type === 'movie' ? languages[langCode].movies : type === 'tv'  ? languages[langCode].tvShows :languages[langCode].people }
+                    <h3 className={`trend-title t-color-${theme}`}>
+                        {languages[lang].trending + " "}  
+                        {type === 'movie' ? languages[lang].movies : type === 'tv'  ? languages[lang].tvShows :languages[lang].people }
                     </h3>
                     <nav className="trend-nav">
                         <ul>
@@ -50,13 +48,13 @@ const Trending = ({type})=> {
                                 className={filter === 'day' && 'active'}
                                 onClick={()=> setFilter('day')}
                                 >
-                                {languages[langCode].today}
+                                {languages[lang].today}
                            </li>
                             <li 
                                 className={filter === 'week' && 'active'}
                                 onClick={()=> setFilter('week')}
                                 >
-                                {languages[langCode].thisWeek}
+                                {languages[lang].thisWeek}
                             </li>
                         </ul>
                     </nav>

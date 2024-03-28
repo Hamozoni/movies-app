@@ -8,7 +8,7 @@ import Error from "../../error/Error";
 
 const FreeToWatch = ()=> {
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
     const [mediaType,setMediaType] = useState('movie');
     const [media,setMedia] = useState([]);
     const [isPending,setIsPending] = useState(true);
@@ -20,27 +20,24 @@ const FreeToWatch = ()=> {
         fetchData(`discover/${mediaType}?language=${lang}&page=1&with_watch_monetization_types=free`)
         .then((data)=> {
             setMedia(data?.results);
-            setIsPending(false);
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=> {
             setIsPending(false);
-            console.log(error);
         })
     }
 
     useEffect(fetch,[mediaType,lang]);
-
-    const langCode = lang.toLowerCase() === 'ar' ?  'ar' : 'en';
-
 
     return (
         <div className="free-to-watch">
             <section className={`free-to-watch trending`}>
                 <div className="trending-container">
                     <header className="trend-header">
-                        <h3 className="trend-title">
-                            {languages[langCode].freeToWatch}
+                        <h3 className={`trend-title t-color-${theme}`}>
+                            {languages[lang].freeToWatch}
                         </h3>
                         <nav className="trend-nav">
                             <ul>
@@ -48,13 +45,13 @@ const FreeToWatch = ()=> {
                                     className={mediaType === 'movie' && 'active'}
                                     onClick={()=> setMediaType('movie')}
                                     >
-                                    {languages[langCode].movies}
+                                    {languages[lang].movies}
                             </li>
                                 <li 
                                     className={mediaType === 'tv' && 'active'}
                                     onClick={()=> setMediaType('tv')}
                                     >
-                                    {languages[langCode].tvShows}
+                                    {languages[lang].tvShows}
                                 </li>
                             </ul>
                         </nav>

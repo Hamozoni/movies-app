@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const LatesTrailerVideoCard = ({detail,onMouse}) => {
 
-    const {setTrailer,lang} = useContext(globalContext);
+    const {setTrailer,lang,theme} = useContext(globalContext);
 
     const [video,setVideo] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -64,11 +64,15 @@ const LatesTrailerVideoCard = ({detail,onMouse}) => {
                 </span>
             </div>
             <div className="trailer-titles">
-                <h3 className="name"  onClick={()=> navigate(`/movie/${detail.id}`)}>
-                 
+                <h3 
+                    className={`name t-color-${theme}`}  
+                    onClick={()=> navigate(`/movie/${detail.id}`)}
+                    >
                     {detail?.title}
                 </h3>
-                <p className="tr-type">{video  && video?.name}</p>
+                <p className={`tr-type t-color-${theme}-1`}>
+                    {video  && video?.name}
+                </p>
             </div>
         </div>
   )

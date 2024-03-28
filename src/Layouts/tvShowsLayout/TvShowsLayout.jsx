@@ -52,7 +52,6 @@ const TvShowsLayout = () => {
               : details ?
               <div className="tv-container">
                   <MainMediaNav 
-                        mediaType='tv' 
                         linkUrl={lankUrl} 
                         overview={['titles','castCrew','episodeGroups','seasons','translations']} 
                         media={['backdrops','posters','logos']} 

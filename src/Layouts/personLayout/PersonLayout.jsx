@@ -50,7 +50,6 @@ const PersonLayout = () => {
         <MediaColorContext>
           <personDetailsContext.Provider value={{details}} >
             <MainMediaNav 
-                mediaType='person' 
                 linkUrl={lankUrl}
                 overview={['translations']} 
                 media={['profiles']} 

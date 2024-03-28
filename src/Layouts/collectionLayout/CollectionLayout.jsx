@@ -46,7 +46,6 @@ const CollectionLayout = () => {
         <collectionContext.Provider value={{details}}>
             <div className="collection-Layout">
                 <MainMediaNav 
-                    mediaType='collection'  
                     linkUrl={collecUrl} 
                     overview={['translations']} 
                     media={['backdrops','posters']} 

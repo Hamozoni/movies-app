@@ -39,7 +39,7 @@ const Cast = () => {
     <div className='cast'>
         <div className="cast-container">
             <section className='cast-part'>
-                <h5 className='main-t'>
+                <h5 className='main-t t-color-light'>
                     cast 
                     <span>{cast?.cast?.length}</span>
                 </h5>

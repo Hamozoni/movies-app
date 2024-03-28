@@ -124,7 +124,7 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                  </ul>
              </div>
              {
-                linkUrl.split('/').includes('person')  ?  ""
+                linkUrl.split('/').includes('person') || linkUrl.split('/').includes('episode') ?  ""
                 :
                 <div className='med-title'>
                     <span className='head'> {languages[lang].fandom}</span>

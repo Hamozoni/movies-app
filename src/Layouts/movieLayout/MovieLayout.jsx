@@ -1,6 +1,5 @@
 
 import {Outlet, useLocation, useParams} from 'react-router-dom'
-import './MovieLayout.scss';
 import MainMediaNav from '../../Components/sharedComponents/mainMediaNav/MainMediaNav';
 import MediaHeader from '../../Components/sharedComponents/mediaHeader/MediaHeader';
 import MediaColorContext from '../../GlobalStateContext/MediaColorContext';
@@ -47,14 +46,13 @@ const MovieLayout = () => {
 
 
   return (
-      <main className="movie">
+      <main className="movie ">
         {
           isPending ?<Loading width='100%'  height='calc(100vh - 100px)'/> :
           details ?
          <MediaColorContext>
            <MovieDetailsContext.Provider value={{details}} >
                 <MainMediaNav 
-                    mediaType='movie' 
                     linkUrl={lankUrl} 
                     overview={['titles','castCrew','releaseDates','translations']} 
                     media={['backdrops','posters','logos']} 
