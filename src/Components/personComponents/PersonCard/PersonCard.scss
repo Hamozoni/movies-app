@@ -20,15 +20,10 @@
    .person-content {
     padding: $padding-10 0;
     .name {
-        color: $text-dark-color;
         font-size: $f-size-6;
-        &:hover {
-            color: lighten($color: $text-dark-color, $amount: 20);
-        }
     }
     .char {
         font-size: $f-size-6;
-        color: $text-dark-color-2;
     }
    }
 }

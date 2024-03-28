@@ -12,9 +12,9 @@ import Error from "../../error/Error";
 import { languages } from "../../../utilities/languages";
 
 
-const TopBilledCast = ({mediaType,id,title})=> {
+const TopBilledCast = ({mediaType,id})=> {
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
     const [cast,setCast] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -39,7 +39,9 @@ const TopBilledCast = ({mediaType,id,title})=> {
 
   return (
     <section className="top-billed b-b">
-        <h4 className="title">{languages[lang].seriesCast}</h4>
+        <h4 className={`title t-color-${theme}`}>
+            {languages[lang].seriesCast}
+        </h4>
         <div className="persons">
             {
                 isPending ? <Loading width='100%' height='340px' /> : cast ?
@@ -50,11 +52,21 @@ const TopBilledCast = ({mediaType,id,title})=> {
                 : error && <Error error={error} height='340px' onClick={fetch} />
             }
             <div className="view-more">
-                <Link to={`/movie/${id}/castCrew`} className="cast-link">{languages[lang].viewMore} <ArrowRightAltRoundedIcon /></Link>
+                <Link 
+                    to={`/movie/${id}/castCrew`} 
+                    className="cast-link link-hover"
+                    >
+                        {languages[lang].viewMore} <ArrowRightAltRoundedIcon />
+                </Link>
                 
             </div>
         </div>
-        <Link to={`/movie/${id}/castCrew`} className="cast-link">{languages[lang].allCrew}</Link>
+        <Link 
+            to={`/movie/${id}/castCrew`} 
+            className="cast-link link-hover"
+            >
+                {languages[lang].allCrew}
+        </Link>
     </section>
   )
 }

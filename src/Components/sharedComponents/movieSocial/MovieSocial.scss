@@ -12,12 +12,11 @@
         .social-title {
             font-size: $f-size;
         }
-        .social-nav {
-           @include flex-box(center,flex-start,0);
-           li {
-             padding: $padding-10;
-           }
+        .review {
+            padding: $padding-10;
+            font-size: $f-size-5;
         }
+        
     }
     .no-result {
         padding: $padding;

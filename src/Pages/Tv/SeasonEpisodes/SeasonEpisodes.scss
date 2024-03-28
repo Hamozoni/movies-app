@@ -2,10 +2,9 @@
 
 .season-episode {
     .sea-episode {
-        max-width: 1000px;
-        margin: 0 auto;
-        .episodes {
-            padding: $padding-10;
+        padding: $padding;
+        @media (min-width: 992px) {
+            padding: $padding $padding-40;
         }
     }
 }
