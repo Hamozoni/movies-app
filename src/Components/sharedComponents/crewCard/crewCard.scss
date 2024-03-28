@@ -18,11 +18,8 @@
     }
     .crew-content {
         .name {
-            color: $text-dark-color;
             font-size: $f-size-5;
-            &:hover {
-                color: lighten($color: $text-dark-color, $amount: 20);
-            }
+            cursor: pointer;
         }
        }
 }
