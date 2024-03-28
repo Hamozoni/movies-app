@@ -10,14 +10,12 @@
         position: relative;
         width: 150px;
         height: 225px;
-        background-color: $text-light-color;
         border-radius: $border-r-l;
         .poster {
             border-radius: $border-r-l;
             width: 150px;
         }
         .consensus, .more-btn  {
-
             @include flex-box(center,center);
             border-radius: $circle;
             color: $text-light-color;
@@ -44,14 +42,9 @@
         margin-top: $margin;
         .title {
             font-size: $f-size-6;
-            color: $text-dark-color;
             font-weight: 600;
-            &:hover {
-                color: lighten($color: $text-dark-color, $amount: 20);
-            }
         }
         .time {
-            font-size: $text-dark-color;
             font-size: $f-size-6;
         }
     }

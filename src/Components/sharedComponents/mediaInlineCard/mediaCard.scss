@@ -16,18 +16,15 @@
         padding: $padding-10 $padding;
          .key-title {
             h5 {
-
                 @include text-overflow(19px);
             }
             .name {
-                color: $text-dark-color;
                 font-weight: 600;
                 font-size: $f-size-5;
              }
              .date-re {
                  font-size: $f-size-6;
                  font-weight: 300;
-                 color: $text-dark-color-2;
                  padding-bottom:$padding-5 ;
  
              }
@@ -37,7 +34,6 @@
                  @include text-overflow(81.88px);
                 font-size: $f-size-6;
                 font-weight:500;
-                color: $text-dark-color-2;
              }
          }
      }

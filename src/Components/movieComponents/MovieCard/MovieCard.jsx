@@ -3,9 +3,12 @@ import "./MovieCard.scss";
 import { useNavigate } from 'react-router-dom';
 
 import mediaImage from "../../../assets/media.jpg"
+import { useContext } from 'react';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const MovieCard = ({movie, type})=> {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const {theme} = useContext(globalContext);
 
     const imgUrl =  movie?.poster_path ;
 
@@ -24,34 +27,25 @@ const MovieCard = ({movie, type})=> {
                     src={imgUrl ? process.env.REACT_APP_BASE_URL + 'w200' + imgUrl : mediaImage} 
                     alt={movie?.title}
                      />
-                    {
-                        type !== 'person' && 
-                        <>
-                            <div class="consensus">
-                                <h3>
-                                    {movie?.vote_average?.toFixed(1)?.toString()?.replace('.','')}*
-                                </h3>
-                            </div>
-                            <span className="more-btn">
-                                <MoreHorizIcon />
-                            </span>
-                        </>
-                    }
-                    
+                <div class="consensus">
+                    <h3>
+                        {movie?.vote_average?.toFixed(1)?.toString()?.replace('.','')}*
+                    </h3>
+                </div>
+                <span className="more-btn">
+                    <MoreHorizIcon />
+                </span>
             </div>
             <div className="content">
                 <h3 
-                   className="title" 
+                   className={`title link-hover t-color-${theme}`} 
                    onClick={handleNavigation}
                    >
                     {movie?.title || movie?.name}
                 </h3>
-                {
-                    type === 'movie' && 
-                    <span className="time">
-                        {movie?.release_date}
-                    </span>
-                }
+                <span className={`time t-color-${theme}-3`}>
+                    {movie?.release_date ?? movie?.first_air_date}
+                </span>
             </div>
         </div>
     );

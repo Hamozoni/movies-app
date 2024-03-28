@@ -1,7 +1,12 @@
 
 import { Link } from 'react-router-dom';
 import './mediaCard.scss';
+import { useContext } from 'react';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
+
 const MediaInlineCard = ({movie, type})=> {
+
+  const {theme} = useContext(globalContext)
     return (
       <div className="key-card card">
           <Link 
@@ -17,19 +22,19 @@ const MediaInlineCard = ({movie, type})=> {
         <div className="card-details">
             <div className="key-title">
                <h5>
-                <Link 
-                    className="name" 
-                    to={`/${type}/${movie?.id}`} 
-                    >
-                    {movie?.title || movie?.name}
-                </Link>
+                  <Link 
+                      className={`link-hover name t-color-${theme}`}
+                      to={`/${type}/${movie?.id}`} 
+                      >
+                      {movie?.title || movie?.name}
+                  </Link>
                </h5>
-                <p className="date-re">
+                <p className={`date-re t-color-${theme}-3`}>
                     {movie?.release_date || movie?.first_air_date}
                 </p>
             </div>
             <div className="key-overview">
-                <p>
+                <p className={`t-color-${theme}-2`}>
                   {movie?.overview}
                 </p>
   
