@@ -62,7 +62,7 @@ const SearchBar = ()=> {
    }
 
 
-   const imgIdex= Math.ceil(Math.random() * 20);
+   const imgIdex = Math.ceil(Math.random() * 20);
 
    useEffect(fetchImages,[lang]);
 
