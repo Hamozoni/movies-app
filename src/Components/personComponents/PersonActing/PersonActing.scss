@@ -6,15 +6,13 @@
     .pers-acting-head {
         padding: $padding-10 0;
         @include flex-box(center,space-between);
-        h4 {
-            font-size: $f-size;
-            color: $text-dark-color;
+        .act-t {
+            font-size: $f-size-3;
         }
         .acting-nav {
-
             .acting-ul {
                 @include flex-box(center,space-between);
-                li {
+                .act-li {
                     @include flex-box(center,flex-start,5px);
                 }
             }
@@ -26,7 +24,6 @@
             .part {
                 display: block;
                 padding: $padding-10;
-                border-bottom: 1px solid #bdb7b742;
                 .year {
                     width: 40px;
                 }
@@ -36,7 +33,7 @@
                      width: 15px;
                      height: 15px;
                      display: block;
-                     border: 2px solid gray;
+                     border: 2px solid $logo-color;
                      border-radius: 50%;
                      margin: 0 $margin;
                      position: relative;
@@ -47,7 +44,7 @@
                             position: absolute;
                             width: 7px;
                             height: 7px;
-                            background-color: #032541;
+                            background-color: $logo-color;
                             left: 2px;
                             top: 2px;
                             border-radius: 50%;
@@ -57,11 +54,7 @@
                    }
                 }
                 .movie-title {
-                    a {
-                        color: $text-dark-color;
-                    }
                     span {
-                        color: $text-dark-color;
                         font-weight: 400;
                         font-size: $f-size-6;
                     }

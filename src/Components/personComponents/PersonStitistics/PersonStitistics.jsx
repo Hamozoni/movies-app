@@ -30,7 +30,7 @@ const PersonStitistics = ({details}) => {
     const [error,setEror] = useState(null);
     const [isPending,setIsPending] = useState(true);
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
     const {id} = useParams();
 
     const fetchExternalIds = ()=> {
@@ -52,7 +52,7 @@ const PersonStitistics = ({details}) => {
 
     useEffect(fetchExternalIds,[id]);
 
-    const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id','tiktok_id']
+  const alowedSocialMedia = ['instagram_id' , 'facebook_id', 'twitter_id', 'youtube_id','tiktok_id']
 
   return (
     <section className="person-stitis b-b">
@@ -89,35 +89,61 @@ const PersonStitistics = ({details}) => {
               </a>
               }
         </nav>
-        <h3>{languages[lang]?.personalInfo}</h3>
+        <h3 className={`name t-color-${theme}`}>
+            {languages[lang]?.personalInfo}
+        </h3>
         <ul className="personal-info">
             <li>
-                <h4>{languages[lang]?.knownFor}</h4>
-                <h6>{details?.known_for_department}</h6>
+                <h4 className={`name t-color-${theme}`}>
+                    {languages[lang]?.knownFor}
+                </h4>
+                <h6 className={`name t-color-${theme}-2`}>
+                    {details?.known_for_department}
+                </h6>
             </li>
             <li>
-                <h4>{languages[lang]?.knownCredits}</h4>
-                <h6> {details?.popularity}</h6>
+                <h4 className={`name t-color-${theme}`}>
+                    {languages[lang]?.knownCredits}
+                </h4>
+                <h6 className={`name t-color-${theme}-2`}>
+                     {details?.popularity}
+                </h6>
             </li>
             <li>
-                <h4>{languages[lang]?.gender}</h4>
-                <h6>{details?.gender === 1 ? "femal" : "male" }</h6>
+                <h4 className={`name t-color-${theme}`}>
+                    {languages[lang]?.gender}
+                </h4>
+                <h6 className={`name t-color-${theme}-2`}>
+                    {details?.gender === 1 ? "femal" : "male" }
+                </h6>
             </li>
             <li>
-                <h4>{languages[lang]?.birthday}</h4>
-                <h6> {`${new Date(details?.birthday)?.toDateString()} (${new Date().getFullYear() - new Date(details?.birthday)?.getFullYear()} years old)`}</h6>
+                <h4 className={`name t-color-${theme}`}>
+                    {languages[lang]?.birthday}
+                </h4>
+                <h6 className={`name t-color-${theme}-2`}> 
+                    {`${new Date(details?.birthday)?.toDateString()} (${new Date().getFullYear() - new Date(details?.birthday)?.getFullYear()} years old)`}
+                </h6>
             </li>
             <li>
-                <h4>{languages[lang]?.placeOfBirth}</h4>
-               <h6> {details?.place_of_birth}</h6>
+                <h4 className={`name t-color-${theme}`}>
+                    {languages[lang]?.placeOfBirth}
+                </h4>
+                <h6 className={`name t-color-${theme}-2`}>
+                    {details?.place_of_birth}
+                </h6>
             </li>
         </ul>
-        <section className="kn-for">
-            <h4 className="for">{languages[lang]?.alsoKnownAs}</h4>
+        <section className="kn-for" >
+            <h4 className={`for name t-color-${theme}`}>
+                {languages[lang]?.alsoKnownAs}
+            </h4>
             <ul className="kn-for-ul">
                 {
                     details?.also_known_as?.map((key)=>(
-                        <li key={key}>{key}</li>
+                        <li key={key} className={`t-color-${theme}-3`}>
+                            {key}
+                        </li>
                     ))
                 }
             </ul>

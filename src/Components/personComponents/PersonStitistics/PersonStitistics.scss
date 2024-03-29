@@ -17,7 +17,6 @@
         }
     }
     h3 {
-        color: $text-dark-color;
         margin-top: 20px;
     }
     .personal-info {
@@ -25,25 +24,22 @@
         li {
            margin-bottom: $margin; 
            h4 {
-            color: $text-dark-color;
             font-size: $f-size-s;
            }
            h6 {
             font-size: $f-size-s;
             font-weight: normal;
-            color: lighten($color: $text-dark-color, $amount: 5);
            }
         }
     }
     .kn-for {
         .for {
-            color: $text-dark-color;
+            font-size: $f-size-4;
         }
         .kn-for-ul {
             li {
-                font-size: $f-size-s;
+                font-size: $f-size-6;
                 font-weight: normal;
-                color: lighten($color: $text-dark-color, $amount: 5);
             }
         }
     }

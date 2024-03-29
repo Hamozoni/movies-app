@@ -11,8 +11,7 @@ const PersonActing = ({knownFor}) => {
 
     const [mediaCardIndex,setMediaCardIndex] = useState(0);
     const [isMediaOpen,setIsMediaOpen] = useState(false);
-
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
 
     useEffect(()=>{
@@ -29,17 +28,23 @@ const PersonActing = ({knownFor}) => {
             
             return ()=> root.removeEventListener('click',handleClick)
         };
-    },);
-
-console.log(isMediaOpen)
+    });
   return (
     <section className="pers-acting">
         <header className="pers-acting-head">
-            <h4>{languages[lang]?.acting}</h4>
+            <h4 className={`act-t t-color-${theme}`}>
+                {languages[lang]?.acting}
+            </h4>
             <nav className='acting-nav'>
                 <ul className='acting-ul'>
-                    <li> {languages[lang]?.all} <ArrowDropDownIcon /></li>
-                    <li> {languages[lang]?.department} <ArrowDropDownIcon /></li>
+                    <li className={`act-li t-color-${theme}-3`}> 
+                        {languages[lang]?.all} 
+                        <ArrowDropDownIcon />
+                    </li>
+                    <li className={`act-li t-color-${theme}-3`}> 
+                        {languages[lang]?.department}
+                         <ArrowDropDownIcon />
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -47,8 +52,8 @@ console.log(isMediaOpen)
             <tbody className='credits-tabel-body '>
                 {
                     knownFor?.cast?.map((movie,i)=>(  
-                        <tr key={movie?.id} className="part">
-                            <td className='year'>
+                        <tr key={movie?.id} className="part b-b">
+                            <td className={`t-color-${theme}-1 year`}>
                                 {new Date(movie?.release_date)?.getFullYear()  || new Date(movie?.first_air_date)?.getFullYear() || '___'}
                             </td>
                             <td className='cercle open'>
@@ -68,14 +73,18 @@ console.log(isMediaOpen)
                             </td>
                             <td className='movie-title'> 
                                 <tr>
-                                    <Link to={`/${movie?.media_type}/${movie?.id}`} className='link-hover'>
+                                    <Link 
+                                        to={`/${movie?.media_type}/${movie?.id}`} 
+                                         className={`link-hover t-color-${theme}-1`}>
                                         { movie?.title || movie?.name}
                                     </Link>
                                 </tr> 
                                 {
                                     movie?.character &&
                                     <tr>
-                                        <span>as {movie?.character}</span>
+                                        <span className={`t-color-${theme}-3`}>
+                                            as {movie?.character}
+                                        </span>
                                     </tr>  
                                 }
                             </td>
