@@ -147,31 +147,11 @@ img, picture {
 
 ::-webkit-scrollbar {
   display: none;
-  // height: 10px;
-  // width: 10px;
 }
-// ::-webkit-scrollbar-track {
-//   background-color: $text-light-color;
-//   border-radius: $border-r;
-//   margin-block: 100px;
-//   margin-inline: 100px;
-// }
-// ::-webkit-scrollbar-thumb {
-//   background-color:$text-light-color-2;
-//   border-radius: $border-r;
-//   border: 2px solid $text-light-color;
-// }
-// ::-webkit-scrollbar-thumb:hover{
-//   background-color: darken($color: $text-light-color-2, $amount: 2);;
-// }
-
-
-// active links 
 
 .nav-btn {
     font-size: $f-size-5;
     font-weight: 700;
-    color: $text-dark-color;
     padding: $padding-10 ;
     line-break: loose;
     min-width: fit-content !important;
@@ -179,7 +159,6 @@ img, picture {
     a {
         @include flex-box(center,space-between);
         width: 100%;
-        color: $text-dark-color;
     }
   cursor: pointer;
   &.active,&:hover,&.active:hover {
@@ -191,11 +170,7 @@ img, picture {
       }
       &::before {
           content: '';
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          width: 0;
-          height: 0;
+          @include postion(absolute,0,0,100%,50%);
           border-radius: $circle;
           background-color: $logo-color;
           box-shadow: 0 -10px 16px 2px rgba(36, 35, 35, 0.6);
@@ -230,12 +205,6 @@ img, picture {
     &:hover {
       transform: scale(1.03);
     }
-}
-
-.link-hover {
-  &:hover {
-    filter: opacity(80%);
-  }
 }
 
 .b-b {

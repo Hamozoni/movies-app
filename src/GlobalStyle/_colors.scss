@@ -40,3 +40,17 @@
         };
     };
 };
+
+.link-color {
+    color: $logo-color;
+    &:hover {
+        filter: opacity(80%);
+    }
+}
+
+
+.link-hover {
+    &:hover {
+      filter: opacity(80%);
+    }
+  }

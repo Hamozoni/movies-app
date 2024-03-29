@@ -98,15 +98,16 @@ function Recommendations({id,mediaType}) {
         <ul className="select-ul">
             <li 
                 onClick={()=> setSelected('recommendations')}
-                className={`${selected === 'recommendations' && 'active'} 
-                nav-btn`}
-                >{languages[lang].Recommendations}
-                </li>
+                className={`${selected === 'recommendations' && 'active'} t-color-${theme}-1 nav-btn`}
+                >
+                    {languages[lang].Recommendations}
+            </li>
             <li 
                 onClick={()=> setSelected('similar')}
-                className={`${selected === 'similar' && 'active'} nav-btn`}
-                >{languages[lang].similar}
-                </li>
+                className={`${selected === 'similar' && 'active'} nav-btn t-color-${theme}-1`}
+                >
+                    {languages[lang].similar}
+            </li>
         </ul>
         <div className="recom-content">
             {

@@ -86,25 +86,25 @@ const MovieMedia = ({id,mediaType})=> {
                     </h4>
                     <ul className="links">
                         <li 
-                           className={`${selection === 'most popular' && 'active'} nav-btn`}
+                           className={`${selection === 'most popular' && 'active'} nav-btn t-color-${theme}-1`}
                             onClick={()=> setSelecion('most popular')}
                            >
                                {languages[lang].popular}
                         </li>
                         <li 
-                            className={`${selection === 'videos' && 'active'} nav-btn`}
+                            className={`${selection === 'videos' && 'active'} nav-btn t-color-${theme}-1`}
                             onClick={()=> setSelecion('videos')}
                             >
                                  {languages[lang].videos} {videos?.length}
                         </li>
                         <li 
-                            className={`${selection === 'backdrops' && 'active'} nav-btn`}
+                            className={`${selection === 'backdrops' && 'active'} nav-btn t-color-${theme}-1`}
                             onClick={()=> setSelecion('backdrops')}
                             >
                                {languages[lang].backdrops} {mediaImages?.backdrops?.length}
                         </li>
                         <li 
-                           className={`${selection === 'posters' && 'active'} nav-btn`}
+                           className={`${selection === 'posters' && 'active'} nav-btn t-color-${theme}-1`}
                             onClick={()=> setSelecion('posters')}
                            >
                                 {languages[lang].posters} {mediaImages?.posters?.length}
@@ -141,7 +141,7 @@ const MovieMedia = ({id,mediaType})=> {
                         (selection !== 'most popular' && videos ) &&
                         <div className="view-more">
                             <Link 
-                                className="link-hover"
+                                className="link-color"
                                 to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`}
                                 >
                                 {languages[lang].viewMore}
@@ -156,7 +156,7 @@ const MovieMedia = ({id,mediaType})=> {
                 selection !== 'most popular' &&
                 <Link  
                     to={`/${mediaType}/${id}/${selection === 'videos' ?  "videos?type=" + videos[0]?.type : selection}`} 
-                    className="view-all link-hover" >
+                    className="view-all link-color" >
                     {languages[lang].viewAll} {languages[lang][selection]}
                 </Link> 
 

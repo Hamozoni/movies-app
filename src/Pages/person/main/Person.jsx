@@ -18,7 +18,7 @@ const Person = () => {
     const {id} = useParams();
     const { details} = useContext(personDetailsContext);
 
-    const {lang,innerWidth} = useContext(globalContext);
+    const {lang,innerWidth,theme} = useContext(globalContext);
     const [knownFor,setKnownFor] = useState(null);
     const [error,setError] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -64,13 +64,15 @@ const Person = () => {
                     }
                 </div>
                 <div className="piagrahpy">
-                    <h4 className="pi-ti">
+                    <h4 className={`pi-ti t-color-${theme}`}>
                          {languages[lang]?.biography}
                      </h4>
-                    <aside> {fitLongString(details?.biography,1000) } </aside>
+                    <aside className={`piag-text t-color-${theme}-2`}>
+                         {fitLongString(details?.biography,1000) } 
+                   </aside>
                 </div>
                 <section className="known-for">
-                    <h4 className="pi-ti">
+                    <h4 className={`pi-ti t-color-${theme}`}>
                         {languages[lang]?.knownFor}
                     </h4>
                     {

@@ -74,7 +74,9 @@ export  const languages = {
         searchFilter: 'Search filter',
         collections: 'collections',
         english: 'english',
-        arabic: 'arabic'
+        arabic: 'arabic',
+        aReviewBy: 'a review by',
+        wrettinBy : 'wrettin by',
     },
     ar: {
         movies: 'أفلام',
@@ -149,6 +151,8 @@ export  const languages = {
         searchFilter: 'نتائج البحث',
         collections: 'مجموعات',
         english: 'الانجليزية',
-        arabic: 'العربية'
+        arabic: 'العربية',
+        aReviewBy: 'مراجعة بواسطة',
+        wrettinBy : 'كتابة',
        }
 }
