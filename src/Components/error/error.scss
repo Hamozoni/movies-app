@@ -8,21 +8,16 @@
         width: fit-content;
         text-align: center;
         .er-m {
-            font-size: $f-size-s;
-            color: $text-dark-color;
+            font-size: $f-size-6;
             margin-bottom: $margin;
         }
         .try-btn {
-            font-size: $f-size-xs;
+            font-size: $f-size-5;
             font-weight: bold;
-            color: $text-dark-color;
             padding: $padding-5 $padding;
             background-color: transparent;
-            border: 1px solid #00000023;
+            border: 1px solid $logo-color;
             border-radius: $border-r;
-            &:hover {
-                background-color: #00000023;
-            }
         }
     }
 }
