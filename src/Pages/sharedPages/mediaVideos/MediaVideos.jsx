@@ -4,11 +4,11 @@ import { useLocation, useNavigate} from "react-router-dom"
 import fetchData from "../../../utilities/fetchData";
 import VideosCard from "./VideosCard";
 
-import "./mediaVideos.scss";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
 import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { languages } from "../../../utilities/languages";
 
 
 
@@ -18,7 +18,7 @@ const MediaVideos = () => {
 
     const navigate = useNavigate();
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
     const [videos,setVideos] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -39,11 +39,12 @@ const MediaVideos = () => {
             }
             const videosObject = Object.groupBy(data?.results,e => e.type);
             setVideos(videosObject);
-            setIsPending(false);
 
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=> {
             setIsPending(false);
         })
     }
@@ -63,12 +64,12 @@ const MediaVideos = () => {
   return (
     <div className="media-videos alt-titles">
         <div className="vid-container alt-content">
-            <nav className="vid-nav alt-cout-list">
+            <nav className={`back-color-${theme}-1 vid-nav alt-cout-list`}>
                 <header 
                     style={{backgroundColor: color.backColor}}
                     className="vid-head cout-header">
                     <h3 className="t"  style={{color: color.textColor}}>
-                        vidoes
+                        {languages[lang].vidoes}
                     </h3>
                 </header>
                 <ul className="vid-ul cout-list">
@@ -76,7 +77,7 @@ const MediaVideos = () => {
                       Object.keys(videos)?.map((video)=> (
                         <li 
                             onClick={()=> navigate(`?type=${video}`)}
-                            className={`${type === video && 'active'} nav-btn`}>
+                            className={`${type === video ? 'active' : ''} nav-btn t-color-${theme}-2`}>
                             {video}
                             <span>{videos[video]?.length}</span>
                         </li>

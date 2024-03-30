@@ -12,24 +12,29 @@ import Error from "../../../Components/error/Error";
 
 const VideosCard = ({yId,type,title})=> {
     
-    const {setTrailer} = useContext(globalContext);
+    const {setTrailer,theme} = useContext(globalContext);
 
-    const [videoInfo,setVideoIfo] = useState({});
+    const [videoInfo,setVideoIfo] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    useEffect(()=>{
+    const fetchVideos = ()=>{
+        setIsPending(true);
+        setError(null);
         fetchYoutubeData(`video?id=${yId}`)
         .then((data)=> {
             setVideoIfo(data);
-            setIsPending(false);
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=> {
             setIsPending(false);
         })
 
-    },[yId]);
+    }
+
+    useEffect(fetchVideos,[yId]);
 
     const getLengthSeconds = (s)=> {
         const m = s / 60;
@@ -49,7 +54,11 @@ const VideosCard = ({yId,type,title})=> {
                     <div className="vid-image" onClick={handleTrailer}>
                         {
                             videoInfo?.thumbnail && 
-                        <img loading="lazy" src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } alt={type} />
+                            <img 
+                                loading="lazy" 
+                                src={videoInfo?.thumbnail[3]?.url || videoInfo?.thumbnail[0]?.url } 
+                                alt={type}
+                              />
                         }
                         <div className="play-icon scale">
                             <PlayArrowRoundedIcon />
@@ -57,22 +66,23 @@ const VideosCard = ({yId,type,title})=> {
                     </div>
                     <div className="vid-info">
                         <div className="title-date">
-                            <h3 className="name">{title}</h3>
-                            <p className="d">
+                            <h3 className={`t-color-${theme} name`}>
+                                {title}
+                            </h3>
+                            <p className={`t-color-${theme}-2 d`}>
                                 {type} . {getLengthSeconds(videoInfo?.lengthSeconds)} {new Date(videoInfo?.publishDate)?.toDateString()}
                             </p>
                         </div>
-                        <div className="yout-ch">
-                                <YouTubeIcon />
-
-                            <span className="ch-t">
+                        <div className={`back-color-${theme}-1 yout-ch`}>
+                                <YouTubeIcon className={`t-color-${theme}-3`} />
+                            <span className={`t-color-${theme}-2 ch-t`}>
                                 {videoInfo?.channelTitle}
                             </span>
-                                <VerifiedIcon />
+                                <VerifiedIcon  className={`t-color-${theme}-3`}/>
                         </div>
                     </div>
                 </div>
-                : error && <Error error={error}  height='188px' onClick='' />
+                : error && <Error error={error}  height='188px' onClick={fetchVideos} />
             }
         </div>
     )

@@ -2,21 +2,19 @@
 @import "../../../GlobalStyle/mixin";
 
 .vid-card {
+    margin-bottom: $margin;
     .vid-cont {
         @media (min-width: 570px) {
-            
             @include flex-box(_,_,0);
             max-height: 188px;
         }
         max-height: fit-content;
-        margin-bottom: $margin;
         flex: 1;
         .vid-image {
         max-height: fit-content;
         position: relative;
         min-width: 336px;
         min-height: 188px;
-        background-color: $text-light-color;
         @media (min-width:767px ) and (max-width: 992px){
             max-width: 230px;
             min-width: 230px;
@@ -24,7 +22,7 @@
         }
         cursor: pointer;
         .play-icon {
-            @include postion(absolute,60px,60px,50%,50%,99);
+            @include postion(absolute,60px,60px,50%,50%,9);
             transform: translate(-50%,-50%);
             border-radius: $circle;
             @include flex-box(center,center);
@@ -42,22 +40,19 @@
         .title-date {
             padding: $padding-10;
             .name {
-                font-size: $f-size-5;
-                color: $text-dark-color;
+                font-size: $f-size-4;
                 font-weight: 600;
                 @include text-overflow(62px);
             }
             .d {
-                font-size: $f-size-xs;
+                font-size: $f-size-6;
             }
         }
         .yout-ch {
             padding: $padding-5 $padding-10 ;
-            background-color: $text-light-color-2;
             @include flex-box(center,flex-start,5px);
             span {
                 font-size: $f-size-5;
-                color: darken($color: $text-light-color, $amount: 30);
                 @include text-overflow(20px);
             }
             svg:nth-of-type() {
@@ -65,7 +60,6 @@
             }
             svg:nth-of-type(2) {
                 font-size: 16px;
-                color: darken($color: $text-light-color, $amount: 20);
             }
         }
     }

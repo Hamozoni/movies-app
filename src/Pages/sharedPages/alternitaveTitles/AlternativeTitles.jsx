@@ -82,7 +82,7 @@ const AlternativeTitles = ({mediaType}) => {
             isPending ? <Loading width='100%' height='300px' /> : 
             titles ?
             <div className="alt-content">
-                <section className={`back-color-${theme}-2 alt-cout-list`}>
+                <section className={`back-color-${theme}-1 alt-cout-list`}>
                     <header 
                         className='cout-header' 
                         style={{backgroundColor : color.backColor,color: color.textColor}}

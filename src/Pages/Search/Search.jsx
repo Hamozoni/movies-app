@@ -18,7 +18,7 @@ const Search = ()=> {
     const {type} = useParams();
     const query = useLocation();
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
     const [searchData,setSearchData] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -31,6 +31,7 @@ const Search = ()=> {
         document.title = query.search.split('=')[1] + '__' + type;
         setIsPending(true);
         setError(null);
+        setSearchData(null)
         fetchData(`search/${type}${query.search}&include_adult=false&language=${lang}&page=${page}`)
         .then((data)=> {
             setSearchData(data);
@@ -57,18 +58,20 @@ const Search = ()=> {
     return (
         <main className="search alt-titles">
             <div className="search-container alt-content">
-                <section className="search-flters alt-cout-list">
-                    <header className="filter-header cout-header">
-                        <h4 className="fil-t">{languages[lang].searchFilter}</h4>
+                <section className={`back-color-${theme}-1 search-flters alt-cout-list`}>
+                    <header className={`back-color-${theme}-2 filter-header cout-header`}>
+                        <h4 className={`t-color-${theme} fil-t`}>
+                            {languages[lang].searchFilter}
+                        </h4>
                     </header>
                     <ul className="fliters-ul cout-list">
                         <li 
                             onClick={()=> handleFilter('movie')}
-                            className={`${type === 'movie' && 'active'} nav-btn`}
+                            className={`${type === 'movie' ? 'active' : ''} nav-btn t-color-${theme}-1`}
                             >
                                 {languages[lang].movies}
                                 {
-                                    type === 'movie' &&
+                                    (type === 'movie' && searchData) &&
                                     <span>
                                         {new Intl.NumberFormat().format(searchData?.total_results)}
                                      </span>
@@ -76,11 +79,11 @@ const Search = ()=> {
                             </li>
                         <li 
                            onClick={()=> handleFilter('tv')}
-                           className={`${type === 'tv' && 'active'} nav-btn`}
+                           className={`${type === 'tv' ? 'active' : ''} nav-btn t-color-${theme}-1`}
                            >
                               {languages[lang].tvShows}
                               {
-                                    type === 'tv' &&
+                                    (type === 'tv' && searchData) &&
                                     <span>
                                         {new Intl.NumberFormat().format(searchData?.total_results)}
                                     </span>
@@ -88,23 +91,23 @@ const Search = ()=> {
                             </li>
                         <li 
                            onClick={()=> handleFilter('person')}
-                           className={`${type === 'person' && 'active'} nav-btn`}
+                           className={`${type === 'person' ? 'active' :''} nav-btn t-color-${theme}-1`}
                            >
                             {languages[lang].people}
                             {
-                                type === 'person' &&
+                                (type === 'person' && searchData) &&
                                 <span>
                                     {new Intl.NumberFormat().format(searchData?.total_results)}
-                                    </span>
+                                </span>
                             }
                         </li>
                         <li 
                            onClick={()=> handleFilter('collection')}
-                           className={`${type === 'collection' && 'active'} nav-btn`}
+                           className={`${type === 'collection' ? 'active' : ''} nav-btn t-color-${theme}-1`}
                            >
                             {languages[lang].collections}
                             {
-                                type === 'collection' &&
+                                (type === 'collection' && searchData) &&
                                 <span>
                                     {new Intl.NumberFormat().format(searchData?.total_results)}
                                 </span>
@@ -112,14 +115,14 @@ const Search = ()=> {
                         </li>
                         <li 
                             onClick={()=> handleFilter('keyword')}
-                            className={`${type === 'keyword' && 'active'} nav-btn`} 
+                            className={`${type === 'keyword' ? 'active' : ''} nav-btn t-color-${theme}-1`} 
                             >
                            {languages[lang].keywords}
                             {
-                                type === 'keyword' &&
+                                (type === 'keyword' && searchData ) &&
                                 <span>
                                     {new Intl.NumberFormat().format(searchData?.total_results)}
-                                    </span>
+                                </span>
                             }
                             </li>
                     </ul>

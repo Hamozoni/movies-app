@@ -3,6 +3,7 @@
 export  const languages = {
     en: {
         dark: 'dark',
+        vidoes: 'vidoes',
         light: 'light',
         logo: 'myh movies',
         movies: 'movies',
@@ -94,6 +95,7 @@ export  const languages = {
     ar: {
         dark: 'داكن',
         light: 'فاتح',
+        vidoes: 'فيديوهات',
         logo: 'ماي إتش أفلام',
         movies: 'أفلام',
         tvShows: 'مسلسلات',

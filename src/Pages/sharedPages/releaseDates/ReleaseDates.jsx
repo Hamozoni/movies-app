@@ -79,7 +79,7 @@ const ReleaseDates = () => {
                                 id={date?.iso_3166_1}
                                 key={date?.iso_3166_1} 
                                 className="titles-card card">
-                            <thead className='t-h'>
+                            <thead className={`back-color-${theme}-1 t-h`}>
                                 <tr>
                                     <div className='count-name'> 
                                         <span className='count-imge'>
@@ -97,13 +97,13 @@ const ReleaseDates = () => {
                                 <tr className={`t-color-${theme}-1 tr tr`}>
                                     <td>{isEnglish ? 'Date' : 'التاريخ'}</td>
                                     <td>{isEnglish ? 'Certification' : 'الشهادة'}</td>
-                                    <td>type</td>
-                                    <td>Language</td>
+                                    <td>{isEnglish ?  'type' : 'النوع'}</td>
+                                    <td>{isEnglish ? 'Language' : 'اللغة'}</td>
                                 </tr>
                                 {
                                     date?.release_dates?.map((relDate)=>(
                                         
-                                        <tr key={relDate?.release_date} className='tr'>
+                                        <tr key={relDate?.release_date} className={`t-color-${theme}-3 tr`}>
                                             <td>{new Date(relDate?.release_date)?.toLocaleDateString()}</td>
                                             <td >{relDate?.certification}</td>
                                             <td >{relDate?.type}</td>

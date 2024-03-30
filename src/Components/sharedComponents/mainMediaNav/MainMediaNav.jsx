@@ -119,13 +119,13 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                     {
                         isVideos &&
                         <li className='nav-btn videos'>
-                            <h5 className={`t-color-${theme}-1 link-hover`}>
+                            <h5 className={`t-color-${theme}-1  head link-hover`}>
                                 {languages[lang].videos} 
                             </h5>
                             <span className={`t-color-${theme}-1`}>
                                 <ArrowRightIcon/>
                             </span>
-                            <ul className={`${innerWidth < 520 && 'mobile'} videos-ul`}>
+                            <ul className={`${innerWidth < 520 ? 'mobile' : ''} videos-ul back-color-${theme}-2`}>
                                 {
                                     isPending ? <Loading width='100%' height='200px'/> :
                                     videos ?
@@ -153,7 +153,7 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                  </ul>
              </div>
              {
-                linkUrl.split('/').includes('person') || linkUrl.split('/').includes('episode') ?  ""
+                linkUrl.split('/').includes('person') || linkUrl.split('/').includes('episode')  || linkUrl.split('/').includes('collection')  ?  ""
                 :
                 <div className='med-title'>
                     <h5 className={`t-color-${theme} head`}>
@@ -165,8 +165,8 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                             <Link 
                                 className={`t-color-${theme}-1 link-hover`}
                                 to={`/${linkUrl}/reviews`}>
-                                    {languages[lang].reviews
-                                }</Link>
+                                    {languages[lang].reviews}
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -176,7 +176,7 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                     {languages[lang].share}
                 </h5>
                  {arrowIcon}
-                 <ul className={`${innerWidth < 560 && 'last'} links-list back-color-${theme}-2`}>
+                 <ul className={`${innerWidth < 560 && 'last'} links-list back-color-${theme}-2 card`}>
                     <li className='nav-btn'>
                         <Link className={`t-color-${theme}-1 link-hover`}>
                             {languages[lang].shareLink}
