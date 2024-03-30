@@ -14,24 +14,36 @@ import { languages } from "../../../utilities/languages";
 
 
 const BackdropsCard = ({drop,language})=> {
-    const imageUrl = `${process.env.REACT_APP_BASE_URL}original${drop?.file_path}`
+
+    const imageUrl = `${process.env.REACT_APP_BASE_URL}original${drop?.file_path}`;
+    const {theme,lang} = useContext(globalContext);
+
     return (
-        <div className="b-card scale">
+        <div className="b-card scale card">
             <div className="b-image-cont">
-                <img className="image-hover" src={imageUrl} alt="backdrop" />
+                <img 
+                    className="image-hover" 
+                    src={imageUrl} alt="backdrop"
+                     />
             </div>
             <div className="b-info">
-                <header className="b-header">
-                    <span>info</span>
+                <header className={`back-color-${theme}-1 t-color-${theme} b-header`}>
+                    <span>
+                        {lang === 'en' ? 'info' : 'التفاصيل'}
+                    </span>
                     <LockOpenRoundedIcon />
                 </header>
                 <div className="b-body">
-                    <div className="size">
-                        <span>size</span>
+                    <div className={`t-color-${theme}-1  size`}>
+                        <span>
+                            {lang === 'en' ? 'size' : 'الحجم'}
+                        </span>
                         <p>{drop?.width}×{drop?.height} <CheckIcon /></p>
                     </div>
-                    <div className="b-lang">
-                        <span>language</span>
+                    <div className={`t-color-${theme}-1 b-lang`}>
+                        <span>
+                            {lang === 'en' ? 'language' : 'اللغة'}
+                        </span>
                         <p>{language}</p>
                     </div>
                 </div>
@@ -43,7 +55,7 @@ const BackdropsCard = ({drop,language})=> {
 const BackdropsPosters = ({type}) => {
 
     const {color} = useContext(mediaColorContext);
-    const {languages: languagesList,lang} = useContext(globalContext);
+    const {languages: languagesList,lang,theme} = useContext(globalContext);
 
     const [data,setData] = useState(null);
     const [error,setError] = useState(null);
@@ -80,7 +92,7 @@ const BackdropsPosters = ({type}) => {
             isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
             : data ?
             <div className="backdrop-container alt-content">
-                <nav className="back-nav alt-cout-list">
+                <nav className={`back-color-${theme}-1  back-nav alt-cout-list`}>
                     <header 
                         style={{backgroundColor: color.backColor}}
                         className="b-header cout-header">
@@ -88,10 +100,13 @@ const BackdropsPosters = ({type}) => {
                             {languages[lang][type]}
                         </h4>
                     </header>
-                    <ul className="lang-ul cout-list">
+                    <ul className={`lang-ul cout-list`}>
                         {
                             Object.keys(data)?.map((key)=>(
-                                <li onClick={()=> setSelectedLang(key)} className={`${selectedLang === key && 'active'} nav-btn`}>
+                                <li 
+                                    onClick={()=> setSelectedLang(key)} 
+                                    className={`${selectedLang === key && 'active'} nav-btn t-color-${theme}-1`}
+                                    >
                                     { key === 'null' ? 
                                     'no language' :
                                     languagesList?.find(e=> e.iso_639_1 === key)?.english_name

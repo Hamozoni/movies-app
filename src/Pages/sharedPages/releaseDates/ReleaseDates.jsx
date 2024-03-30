@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 const ReleaseDates = () => {
 
     const {color} = useContext(mediaColorContext);
-    const {countries} = useContext(globalContext);
+    const {countries,theme,lang} = useContext(globalContext);
 
     const [dates,setDates] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -36,13 +36,15 @@ const ReleaseDates = () => {
 
     useEffect(fetchDates,[pathName]);
 
+    const isEnglish = lang === 'en';
+
   return (
     <main className="release-date">
         {
             isPending ? <Loading width='100%' height='calc(100vh - 100px)'/> 
             : dates ?
             <div className="alt-content">
-                <section className='alt-cout-list'>
+                <section className={`back-color-${theme}-1 alt-cout-list`}>
                     <header 
                         className="cout-header" 
                         style={{backgroundColor:color.backColor}}
@@ -57,7 +59,10 @@ const ReleaseDates = () => {
                         {
                             dates?.map((date)=> (
                                 <li key={date?.iso_3166_1} className='nav-btn'>
-                                    <a href={`#${date.iso_3166_1}`}>
+                                    <a 
+                                        href={`#${date.iso_3166_1}`} 
+                                        className={`t-color-${theme}-2`}
+                                        >
                                         <h4>{countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}</h4>
                                         <span>{date?.release_dates?.length}</span>
 
@@ -76,21 +81,22 @@ const ReleaseDates = () => {
                                 className="titles-card card">
                             <thead className='t-h'>
                                 <tr>
-
                                     <div className='count-name'> 
                                         <span className='count-imge'>
                                             < img src={`https://flagsapi.com/${date?.iso_3166_1 }/shiny/64.png`} alt='flag' />
                                         </span>
-                                        <h3>{countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}</h3> 
+                                        <h3 className={`t-color-${theme}`}>
+                                            {countries?.find(el=> el.iso_3166_1 === date.iso_3166_1)?.native_name}
+                                        </h3> 
                                     </div>
 
                                     
                                 </tr>
                             </thead>
                             <tbody className='tbody'>
-                                <tr className='tr tr'>
-                                    <td>Date</td>
-                                    <td>Certification</td>
+                                <tr className={`t-color-${theme}-1 tr tr`}>
+                                    <td>{isEnglish ? 'Date' : 'التاريخ'}</td>
+                                    <td>{isEnglish ? 'Certification' : 'الشهادة'}</td>
                                     <td>type</td>
                                     <td>Language</td>
                                 </tr>
