@@ -170,7 +170,7 @@ export  const languages = {
         arabic: 'العربية',
         aReviewBy: 'مراجعة بواسطة',
         wrettinBy : 'كتابة',
-        filters: 'تصنيف',
+        filters: 'تصفية',
         everything :'كل شي',
         havent: "لم اشاهدها",
         haveSeen: 'شاهدها',

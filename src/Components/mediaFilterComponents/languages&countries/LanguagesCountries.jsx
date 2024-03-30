@@ -53,7 +53,7 @@ const LanguagesCountries = ({type,data}) => {
             {languages[lang][type]}
         </h5>
         <h4 
-             className={`t-color-${theme} selections card`} 
+             className={`t-color-${theme} selections back-color-${theme}-2 card`} 
              onClick={()=> setShowDataList(!showDataList)}>
              {selectedLanguage}
              {showDataList ?<ArrowDropDownIcon /> : <ArrowRightIcon /> } 

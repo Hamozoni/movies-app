@@ -4,11 +4,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "./Sort.scss";
 import { useContext, useState} from 'react';
 import { mediaFilter } from '../../../Pages/filteredMediaList/FilteredMediaList';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const Sort = () => {
 
     const {setMediaFiltering} = useContext(mediaFilter);
     const [isSortOpen,setIsSortOpen] = useState(false);
+    const {lang,theme} = useContext(globalContext);
 
     const handleSelection = (e)=> {
         setMediaFiltering( prev=> {
@@ -20,19 +22,23 @@ const Sort = () => {
     };
 
   return (
-    <section className="sort card">
-        <h4 className="filter-t" onClick={()=> setIsSortOpen(!isSortOpen)}>
-            sort{isSortOpen ? <ExpandMoreIcon />:<ChevronRightIcon />}
+    <section className="sort card b">
+        <h4 
+            className={`t-color-${theme} filter-t b-b`}
+            onClick={()=> setIsSortOpen(!isSortOpen)}
+            >
+            {lang === 'en' ? 'sort' : 'رتب'}
+            {isSortOpen ? <ExpandMoreIcon />:<ChevronRightIcon />}
         </h4>
         {
             isSortOpen &&
             <div className="sort-content">
-                <h5 className="c-ti">
-                    Sort Results By 
+                <h5 className={`t-color-${theme}-1 c-ti`}>
+                    {lang === 'en' ? 'Sort Results By ' : 'رتب النتائج بواسطة'}
                 </h5>
                 <select 
                     onChange={(e)=> handleSelection(e)}
-                    className='selections card'
+                    className={`back-color-${theme}-2 t-color-${theme} selections card`}
                     id='selecteions'
                     >
                     <option value="popularty.desc">popularty descending</option>

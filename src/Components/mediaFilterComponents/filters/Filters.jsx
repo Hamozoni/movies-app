@@ -50,7 +50,7 @@ const Filters = () => {
     useEffect(fetchGenres,[lang,filter]);
 
   return (
-    <section className="sort card">
+    <section className="sort card b">
         <h5 
             className={`t-color-${theme} filter-t b-b`} 
             onClick={()=> setIsOpen(!isOpen)}
@@ -112,7 +112,7 @@ const Filters = () => {
                 </section>
                 <section className="sort-content b-b">
                     <h5 className={`c-ti t-color-${theme}`}>
-                        {languagesList[lang].dates}
+                        {languagesList[lang].releaseDates}
                     </h5>
                     <div className="release-cont">
                         <div className="release-date">

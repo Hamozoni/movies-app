@@ -23,8 +23,9 @@
             @include flex-box(center,space-between);
             width: 100%;
             max-width: 100%;
-            padding: $padding-5 $padding-10;
+            padding: $padding-10;
             font-weight: 400;
+            
         }
         #selections * {
             padding: $padding-5;

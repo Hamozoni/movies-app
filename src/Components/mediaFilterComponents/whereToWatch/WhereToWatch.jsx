@@ -28,7 +28,7 @@ const WhereToWatch = () => {
     const [error,setError] = useState(null);
     const [isOpen,setIsOpen] = useState(true);
 
-    const {lang,countries} = useContext(globalContext);
+    const {lang,countries,theme} = useContext(globalContext);
 
     const {filter} = useParams();
 
@@ -51,9 +51,13 @@ const WhereToWatch = () => {
     useEffect(fetchProviders,[lang,filter,mediaFiltering.watch_region]);
 
   return (
-    <section className="sort card">
-        <h5 className="filter-t" onClick={()=> setIsOpen(!isOpen)}>
-            Where To Watch{ isOpen ?< ExpandMoreIcon /> : <ChevronRightIcon />}
+    <section className="sort card b">
+        <h5 
+            className={`t-color-${theme} filter-t b-b`} 
+            onClick={()=> setIsOpen(!isOpen)}
+            >
+            {lang === 'en' ? "Where To Watch" : "أين تشاهد"} 
+            { isOpen ?< ExpandMoreIcon /> : <ChevronRightIcon />}
         </h5>
         {
             isOpen &&
