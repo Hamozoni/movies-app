@@ -87,7 +87,9 @@ export  const languages = {
         showMe : 'show me',
         from: 'from',
         to: 'to',
-        genres: 'genres'
+        genres: 'genres',
+        country: 'country',
+        language: 'language'
     },
     ar: {
         dark: 'داكن',
@@ -175,6 +177,8 @@ export  const languages = {
         showMe : 'أظهرلي',
         from: 'من',
         to: 'الى',
-        genres: 'الفئيات'
+        genres: 'الفئيات',
+        country: 'الدوله',
+        language: 'اللغة'
        }
 }

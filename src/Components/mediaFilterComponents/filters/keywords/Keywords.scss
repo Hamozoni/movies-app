@@ -5,19 +5,17 @@
     position: relative;
     .key-box {
         padding: $padding-5;
-        border: 1px solid rgb(185, 184, 184);
+        border: 1px solid $logo-color;
         border-radius: $border-r;
         &.true {
-            border-color: #5a3333 ;
+            border-color: #ffffff ;
         }
         .keys {
             @include flex-box(center,flex-start,5px);
             flex-wrap: wrap;
             li {
               @include flex-box(center,space-between,5px);
-              border-radius: $border-r;
-              background-color:rgb(243, 241, 241) ;
-              color: $text-dark-color;
+              border-radius: $border-r;;
               font-size: $f-size-xs;
               padding: $padding-5;
               svg {
@@ -31,20 +29,15 @@
         left: 0;
         top: 100%;
         width: 100%;
-        background-color: rgb(245, 244, 243);
         padding: $padding-10 0;
         .keys-ul {
             max-height: 150px;
             overflow-y: auto;
             li {
                  padding: $padding-5 $padding;
-                 font-size: $f-size-xs;
-                 color: $text-dark-color;
-                 &:hover  {
-                    background-color: rgb(219, 219, 219);
-                 }
+                 font-size: $f-size-6;
                  &.active {
-                    background-color: brown;
+                    background-color: $logo-color;
                     color: #fff;
                  }
             }

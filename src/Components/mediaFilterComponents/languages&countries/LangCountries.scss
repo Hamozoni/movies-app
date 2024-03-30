@@ -7,7 +7,6 @@
 .lang-box {
     @include postion(absolute,100%,fit-content,110%,0,99999999);
     padding: $padding-10 0;
-    background-color: #ffffff;
     min-width: 200px;
     .lang-header {
         padding: $padding-10;
@@ -17,8 +16,15 @@
              border: 1px solid #9b9898cc;
              padding: $padding-5;
              width: 100%;
-             svg {
-                    font-size: $f-size-3;
+             input {
+                width: 90%;
+             }
+             span {
+                min-width: fit-content;
+                display: block;
+                svg {
+                       font-size: $f-size-3;
+                }
              }
 
         }

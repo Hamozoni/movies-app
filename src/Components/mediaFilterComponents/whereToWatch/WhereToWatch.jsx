@@ -59,7 +59,7 @@ const WhereToWatch = () => {
             isOpen &&
             <div className="sort-content">
                     <section className="country">
-                        <LanguagesCountries type='countries' data={countries}/>
+                        <LanguagesCountries type='country' data={countries}/>
                         <div className="movie-providers">
                             {
                                 isPending ? <Loading width='100%'  height='calc(100vh - 100px)'/> 

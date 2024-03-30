@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
 
 import "./SortingGauge.scss";
+import { globalContext } from "../../../../GlobalStateContext/GlobalContext";
 
 
 const SortingGauge = ({title,renderFrom}) => {
@@ -9,6 +10,7 @@ const SortingGauge = ({title,renderFrom}) => {
 
     const [isRatedPanel,setIsRatedPanel] = useState(false);
     const {mediaFiltering,setMediaFiltering} = useContext(mediaFilter);
+    const {theme} = useContext(globalContext);
 
     const handleRatingRang = (e)=> {
 
@@ -114,7 +116,7 @@ const SortingGauge = ({title,renderFrom}) => {
 
   return (
     <section className="user-score">
-        <h5 className="us-score">
+        <h5 className={`t-color-${theme} us-score`}>
            { title}
         </h5>
         <div   

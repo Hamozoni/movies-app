@@ -124,8 +124,10 @@ const Filters = () => {
                             </label>
                             <input 
                                 onBlur={(e)=> setMediaFiltering(prev=> {return {...prev,'release_date.gte': [e.target.value]}})} 
-                                type="date" id="from-date" 
-                                className={`t-color-${theme}-2 back-color-${theme}-2`}
+                                type="date" 
+                                id="from-date"
+                                lang={lang} 
+                                className={`t-color-${theme}-2 back-color-${theme}-1`}
                                 />
 
                         </div>
@@ -138,8 +140,11 @@ const Filters = () => {
                             </label>
                             <input
                                 onBlur={(e)=> setMediaFiltering(prev=> {return {...prev,'release_date.lte': [e.target.value]}})} 
-                                type="date" name="to-date" id="to-date"
-                                className={`t-color-${theme}-2 back-color-${theme}-2`}
+                                type="date" 
+                                name="to-date" 
+                                id="to-date"
+                                lang={lang}
+                                className={`t-color-${theme}-2 back-color-${theme}-1`}
                                 />
                         </div>
                     </div>
@@ -175,16 +180,16 @@ const Filters = () => {
                     </nav>
                 </section>
                 <section className="sort-content">
-                    <LanguagesCountries type='languages' data={languages} />
+                    <LanguagesCountries type='language' data={languages} />
                 </section>
                 <section className="sort-content">
-                <SortingGauge  title="Minimum User Votes" renderFrom='rating'/>
+                <SortingGauge  title={lang === 'en' ?  "Minimum User Votes" : 'تقيم المستخدمين'} renderFrom='rating'/>
                 </section>
                 {/* <section className="sort-content">
                 <SortingGauge />
                 </section> */}
                 <section className="sort-content">
-                <SortingGauge title="runtime" renderFrom='runtime'/>
+                <SortingGauge title={lang === 'en' ? 'runtime' :  'مدة التشغيل'} renderFrom='runtime'/>
                 </section>
                 <section className="sort-content">
                     <Keywords />
