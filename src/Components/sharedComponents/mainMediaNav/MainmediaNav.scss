@@ -2,7 +2,6 @@
 @import '../../../GlobalStyle/mixin';
 
 .media-header {
-    background-color: aliceblue;
     .media-nav {
         @include flex-box(center,center,10px);
         .med-title {
@@ -19,9 +18,6 @@
             .links-list , li.videos .videos-ul {
                 @include postion(absolute,150px,fit-content,45px,999999999);
                 display: none;
-                background-color: aliceblue;
-                border-radius: 5px;
-                box-shadow: 0 0 10px 0px #8d8b8bb0;
                 li {
                     &.videos {
                         position: relative;

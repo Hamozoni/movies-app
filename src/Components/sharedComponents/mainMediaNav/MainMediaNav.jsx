@@ -19,7 +19,7 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
     const [error,setError] = useState(null);
     const [isPending,setIsPending] = useState(true);
 
-    const {innerWidth,lang} = useContext(globalContext);
+    const {innerWidth,lang,theme} = useContext(globalContext);
 
     const fetchImages = ()=> {
 
@@ -49,23 +49,36 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
     useEffect(fetchImages,[linkUrl,id,lang,isVideos]);
 
 
-  const arrowIcon = innerWidth > 460 &&  <span className='icon'><ArrowDropDownIcon /></span>
+  const arrowIcon = innerWidth > 460 &&  
+            <span className='icon'>
+                <ArrowDropDownIcon className={`t-color-${theme} `} />
+            </span>
 
   const Overview = ()=> {
     return (
         <div className='med-title'>
-            <span className='head'>
+            <h5 className={`t-color-${theme} head`}>
                 {languages[lang].overview}
-            </span>
+            </h5>
             {arrowIcon}
-            <ul className='links-list'>
+            <ul className={`back-color-${theme}-2 links-list card`}>
                  <li className='nav-btn'>
-                    <Link to={`/${linkUrl}`}>{languages[lang].main}</Link>
+                    <Link 
+                        to={`/${linkUrl}`} 
+                        className={`t-color-${theme}-1 link-hover`}
+                        >
+                        {languages[lang].main}
+                    </Link>
                 </li>
                 {
                     overview?.map((text)=> (
                         <li key={text} className='nav-btn'>
-                            <Link to={`/${linkUrl}/${text}`}>{languages[lang][text]}</Link>
+                            <Link 
+                                className={`t-color-${theme}-1 link-hover`}
+                                to={`/${linkUrl}/${text}`}
+                                >
+                                    {languages[lang][text]}
+                            </Link>
                         </li>
                     ))
                 }
@@ -77,20 +90,27 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
 
 
   return (
-    <nav className='media-header'>
+    <nav className={`back-color-${theme}-2 media-header`}>
         <div className='media-nav'>
             <Overview />
              <div className='med-title'>
-                 <span className='head'>{languages[lang].media}</span>
+                 <h5 className={`t-color-${theme} head`}>
+                    {languages[lang].media}
+                 </h5>
                  {arrowIcon}
-                 <ul className='links-list'>
+                 <ul className={`back-color-${theme}-2 links-list card`}>
 
                     {
                         media?.map((text)=> (
                             <li key={text} className='nav-btn'>
-                                <Link to={`/${linkUrl}/${text}`} >
+                                <Link  
+                                    className={`t-color-${theme}-1 link-hover`}
+                                    to={`/${linkUrl}/${text}`} 
+                                    >
                                         {languages[lang][text]}
-                                    <span>{isPending ?  '0' : mediaData ? mediaData[text]?.length : error && '0'}</span>
+                                    <span className={`t-color-${theme}-1`}>
+                                          {isPending ?  '0' : mediaData ? mediaData[text]?.length : error && '0'}
+                                    </span>
                                 </Link>
                             </li>
                         ))
@@ -99,19 +119,28 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                     {
                         isVideos &&
                         <li className='nav-btn videos'>
-                            <Link>{languages[lang].videos} </Link>
-                            <span><ArrowRightIcon/></span>
+                            <h5 className={`t-color-${theme}-1 link-hover`}>
+                                {languages[lang].videos} 
+                            </h5>
+                            <span className={`t-color-${theme}-1`}>
+                                <ArrowRightIcon/>
+                            </span>
                             <ul className={`${innerWidth < 520 && 'mobile'} videos-ul`}>
                                 {
                                     isPending ? <Loading width='100%' height='200px'/> :
                                     videos ?
                                     Object.keys(videos)?.map(video=> (
                                         <li 
-                                            className='nav-btn'
+                                            className={`t-color-${theme}-1 van-btn`}
                                             key={video}>
-                                                <Link to={`/${linkUrl}/videos?type=${video}`}>
+                                                <Link 
+                                                    className={`t-color-${theme}-1 link-hover`}
+                                                    to={`/${linkUrl}/videos?type=${video}`}
+                                                    >
                                                     {video} 
-                                                    <span> {isPending ? '0'  : videos ? videos[video]?.length : '0'}</span>
+                                                    <span> 
+                                                        {isPending ? '0'  : videos ? videos[video]?.length : '0'}
+                                                    </span>
                                                 </Link>
                                             </li>
                                     ))
@@ -127,22 +156,38 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
                 linkUrl.split('/').includes('person') || linkUrl.split('/').includes('episode') ?  ""
                 :
                 <div className='med-title'>
-                    <span className='head'> {languages[lang].fandom}</span>
+                    <h5 className={`t-color-${theme} head`}>
+                         {languages[lang].fandom}
+                    </h5>
                     {arrowIcon}
-                    <ul className='links-list'>
+                    <ul className={`back-color-${theme}-2 links-list card`}>
                         <li className='nav-btn'>
-                            <Link to={`/${linkUrl}/reviews`}>{languages[lang].reviews}</Link>
+                            <Link 
+                                className={`t-color-${theme}-1 link-hover`}
+                                to={`/${linkUrl}/reviews`}>
+                                    {languages[lang].reviews
+                                }</Link>
                         </li>
                     </ul>
                 </div>
              }
              <div className='med-title'>
-                 <span className='head'> {languages[lang].share}</span>
+                 <h5 className={`t-color-${theme} head`}> 
+                    {languages[lang].share}
+                </h5>
                  {arrowIcon}
-                 <ul className={`${innerWidth < 560 && 'last'} links-list`}>
-                    <li className='nav-btn'><Link>{languages[lang].shareLink}</Link></li>
-                    <li className='nav-btn'><Link>facebook</Link></li>
-                    <li className='nav-btn'><Link>tweeter</Link></li>
+                 <ul className={`${innerWidth < 560 && 'last'} links-list back-color-${theme}-2`}>
+                    <li className='nav-btn'>
+                        <Link className={`t-color-${theme}-1 link-hover`}>
+                            {languages[lang].shareLink}
+                        </Link>
+                    </li>
+                    <li className='nav-btn'>
+                        <Link className={`t-color-${theme}-1 link-hover`}>facebook</Link>
+                    </li>
+                    <li className='nav-btn'>
+                        <Link className={`t-color-${theme}-1 link-hover`}>tweeter</Link>
+                    </li>
                  </ul>
              </div>
         </div>
