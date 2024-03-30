@@ -24,12 +24,11 @@
                 li {
                     cursor: pointer;
                     font-weight: 500;
-                    padding: 0 $padding-10;
-                    color: $text-dark-color;
+                    padding: 3px $padding;
                     border-radius: $border-r-l;
                     &.active{
-                        background-color: $text-dark-color;
-                        color: $text-light-color;
+                        background-color: $logo-color;
+                        border: 1px solid $text-light-color;
                     }
                 }
                }

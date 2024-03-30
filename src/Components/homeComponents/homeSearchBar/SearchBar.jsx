@@ -10,7 +10,7 @@ import Error from "../../error/Error";
 
 export const SearchForm = ()=> {
 
-    const { lang } = useContext(globalContext);
+    const { lang,theme } = useContext(globalContext);
 
     const [query,setQuery] = useState('');
     const navigate = useNavigate()
@@ -24,15 +24,17 @@ export const SearchForm = ()=> {
    };
 
     return (
-        <form className="search-form">
+    <form className={`back-color-${theme} search-form card`}>
         <input 
+            className={`t-color-${theme}-2`}
             value={query}
             onChange={(e)=> setQuery(e.target.value)}
             type="search" 
             placeholder={languages[lang].searchPlaceholder}/>
         <button 
+            className={`t-color-${theme}-2 scale back-color-${theme}-3 link-hover  search-btn`}
             onClick={(e)=> handleSearch(e)}
-            className="search-btn">
+            >
             {languages[lang].search}
         </button>
      </form>

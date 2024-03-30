@@ -1,0 +1,72 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.nav-links {
+    .nav-container{
+        @media (max-width: 666px) {
+            @include postion(fixed,100%,100vh,0,-100%,999999999999999999999);
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.651);
+            &.active {
+                left: 0;
+            }
+            .close-icon-logo {
+                @include flex-box(center,flex-start,10px);
+                padding: $padding;
+                max-width: 380px;
+                .l {
+                    color: $logo-color;
+                    text-transform: uppercase;
+                }
+                .close-icon {
+                    cursor: pointer;
+                    font-size: $f-size-1;
+    
+                }
+            }
+            .filters-container {
+                max-width: 380px;
+                padding: $padding;
+                height: 100%;
+                .filter-box {
+                    padding-bottom: $padding;
+                    .icons {
+                        @include flex-box(center,flex-start,5px);
+                        padding: $padding-5 0;
+                        font-size: $f-size-5;
+                        cursor: pointer;
+                        color: $text-dark-color
+                    }
+                }
+            }
+        }
+        @media (min-width: 667px){
+            .filters-container {
+                @include flex-box(center,center,20px);
+                    flex: 1;
+                    max-width: fit-content;
+                    .filter-box {
+                        position: relative;
+                        h4 {              
+                            cursor: pointer;
+                        }
+                        .fiter {
+                            display: none;
+                            @include postion(absolute,150px,fit-content,100%,0,9999999);
+                            padding: $padding-5;
+                            border-radius: $border-r;
+                        }
+                        &:hover {
+                            .fiter {
+                                display: block;
+                            }
+                        }
+    
+                    }
+            }
+            
+        }
+        
+    }
+}

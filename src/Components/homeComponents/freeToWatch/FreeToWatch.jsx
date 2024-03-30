@@ -42,13 +42,13 @@ const FreeToWatch = ()=> {
                         <nav className="trend-nav">
                             <ul>
                                 <li 
-                                    className={mediaType === 'movie' && 'active'}
+                                    className={`${mediaType === 'movie' && 'active'} t-color-${theme}`}
                                     onClick={()=> setMediaType('movie')}
                                     >
                                     {languages[lang].movies}
                             </li>
                                 <li 
-                                    className={mediaType === 'tv' && 'active'}
+                                    className={`${mediaType === 'tv' && 'active'} t-color-${theme}`}
                                     onClick={()=> setMediaType('tv')}
                                     >
                                     {languages[lang].tvShows}

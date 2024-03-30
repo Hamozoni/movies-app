@@ -16,7 +16,6 @@
                 border: 1px solid #dddadaab;
                 padding: $padding-5;
                 border-radius: $border-r;
-                color: lighten($color: $text-dark-color, $amount: 10);
             }
         }
     }
@@ -25,17 +24,11 @@
             @include flex-box(center,flex-start,5px);
             flex-wrap: wrap;
             li {
-                padding: 0 $padding-10;
+                padding: 3px $padding-10;
                 cursor: pointer;
                 font-size: $f-size-5;
-                color: $text-dark-color-2;
                 border-radius: $border-r;
                 border: 1px solid #e0dbdb;
-                &:hover {
-                    background-color: lighten($color: $text-dark-color, $amount: 10);
-                    border-color: $text-dark-color; 
-                    color: $text-light-color;
-                }
                 &.active {
                     background-color: $text-dark-color;
                     color: $text-light-color;

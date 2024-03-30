@@ -33,15 +33,17 @@ li {
   cursor: pointer;
 }
 
-input, button , input:focus, select{
-  outline-color: transparent;
-  border-color: transparent;
-  background-color: transparent;
+input, input:focus, select{
+  outline-color: transparent !important;
+  border-color: transparent !important;
+  outline: none;
+  background-color: transparent ;
   cursor: pointer;
 }
 input {
   font-size: $f-size-5 !important;
 }
+
 
 img, picture {
   max-width: 100%;

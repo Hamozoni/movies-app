@@ -2,6 +2,9 @@
 
 export  const languages = {
     en: {
+        dark: 'dark',
+        light: 'light',
+        logo: 'myh movies',
         movies: 'movies',
         tvShows: 'tv shows',
         people: 'people',
@@ -77,8 +80,19 @@ export  const languages = {
         arabic: 'arabic',
         aReviewBy: 'a review by',
         wrettinBy : 'wrettin by',
+        filters: 'filters',
+        everything :'everything',
+        havent: "I Haven't Seen",
+        haveSeen: 'Have Seen',
+        showMe : 'show me',
+        from: 'from',
+        to: 'to',
+        genres: 'genres'
     },
     ar: {
+        dark: 'داكن',
+        light: 'فاتح',
+        logo: 'ماي إتش أفلام',
         movies: 'أفلام',
         tvShows: 'مسلسلات',
         people: 'أشخاص',
@@ -154,5 +168,13 @@ export  const languages = {
         arabic: 'العربية',
         aReviewBy: 'مراجعة بواسطة',
         wrettinBy : 'كتابة',
+        filters: 'تصنيف',
+        everything :'كل شي',
+        havent: "لم اشاهدها",
+        haveSeen: 'شاهدها',
+        showMe : 'أظهرلي',
+        from: 'من',
+        to: 'الى',
+        genres: 'الفئيات'
        }
 }

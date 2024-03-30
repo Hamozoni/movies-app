@@ -55,9 +55,16 @@ const GlobalContext = ({children})=> {
         }else {
             document.getElementsByTagName('html')[0].dir = 'ltr'
         }
+    },[lang]);
 
-        console.log(document.getElementsByTagName('html')[0].lang)
-    },[lang])
+    useEffect(()=> {
+
+        if(window.localStorage.getItem('myh-movies-theme') === null){
+            window.localStorage.setItem('myh-movies-theme',theme);
+        }else {
+            setTheme(window.localStorage.getItem('myh-movies-theme'))
+        };
+    },[theme])
 
     useEffect(fetchLanguages,[]);
 
@@ -71,9 +78,6 @@ const GlobalContext = ({children})=> {
         return ()=> window.removeEventListener('resize',handleResize)
     },[]);
 
-    useEffect(()=> {
-
-    },[theme]);
 
     return (
        <globalContext.Provider 
@@ -89,12 +93,12 @@ const GlobalContext = ({children})=> {
                 languages
             }}
         >
-           { isPending ? <Loading width='100%' height='calc(100vh - 100px)' /> 
+           { isPending ? <Loading height='100vh' /> 
               : (languages && countries) ?  children 
               : error && 
               <Error
                    error={error} 
-                   height='calc(100vh - 100px)' 
+                   height='100vh' 
                    onClick={fetchLanguages}
                 />
             }

@@ -34,12 +34,13 @@ const Search = ()=> {
         fetchData(`search/${type}${query.search}&include_adult=false&language=${lang}&page=${page}`)
         .then((data)=> {
             setSearchData(data);
-            setIsPending(false);
-            console.log(data)
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=>{
             setIsPending(false);
+
         })
 
     }

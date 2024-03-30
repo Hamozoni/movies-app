@@ -22,15 +22,14 @@ const Trending = ({type})=> {
         fetchData(`trending/${type}/${filter}?language=${lang}&page=1`)
         .then((data)=>{
             setMovies(data?.results);
-            setIsPending(false);
-            console.log(data?.results);
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=>{
             setIsPending(false);
 
-
-        });
+        })
     }
     useEffect(fetch,[lang,filter,type]);
 
@@ -45,13 +44,13 @@ const Trending = ({type})=> {
                     <nav className="trend-nav">
                         <ul>
                             <li 
-                                className={filter === 'day' && 'active'}
+                                className={`${filter === 'day' && 'active'} t-color-${theme}`}
                                 onClick={()=> setFilter('day')}
                                 >
                                 {languages[lang].today}
                            </li>
                             <li 
-                                className={filter === 'week' && 'active'}
+                                  className={`${filter === 'week' && 'active'} t-color-${theme}`}
                                 onClick={()=> setFilter('week')}
                                 >
                                 {languages[lang].thisWeek}

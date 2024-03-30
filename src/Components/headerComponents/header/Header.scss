@@ -3,7 +3,6 @@
 
 .main-header {
     max-width: 100vw;
-    background:$header-b-ground-c;
     .header-container {
         width: 100%;
         max-width: 100%;
@@ -13,142 +12,21 @@
         @media (min-width: 992px) {
             padding: $padding $padding-40;
         }
-        .logo {
-            min-width: fit-content;
-            @include flex-box(center,flex-start,5px);
-            flex: 1;
-            cursor: pointer;
-            h1 {
-                text-transform: uppercase;
-                color: $logo-color;
-                cursor: pointer;
-            }
-            .menu-icon {
-                color: $text-light-color;
-                font-size: $f-size-1;
-            }
-        }
-        .nav-links {
-            @include flex-box(center,space-between,40px);
-            .lang {
-                position: relative;
-                cursor: pointer;
-                span {
-                    text-transform: uppercase;
-                    font-size: $f-size-5;
-                    font-weight: 500;
-                    padding: $padding-5 ;
-                    border: 1px solid $logo-color;
-                    border-radius: $border-r;
-                    color: $text-light-color;
-                }
-                &:hover {
-                    .lang-container {
-                        display: block;
-                    }
-                }
-                .lang-container {
-                    display: none;
-                    @include postion(absolute,150px,fit-content,120%,-20px,999999);
-                    background-color: #d8e0e7;
-                    padding: $padding 0;
-                    p {
-                        cursor: pointer;
-                    }
-                }
-            }
-            .part-one {
-
-                &.mobile {
-                    @include postion(fixed,100%,100vh,0,-100%,999999999999999999999);
-                    background-color: #0000008f;
-                    &.active {
-                        left: 0;
-                    }
-                    .close-icon-logo {
-                        @include flex-box(center,flex-start,10px);
-                        margin-bottom: $margin;
-                        .close-icon {
-                           cursor: pointer;
-                           color: $text-dark-color-2;
-                           font-size: $f-size-1;
-
-                        }
-                    }
-                    .part-one-contaner {
-                        height: 100vh;
-                        overflow-y: auto;
-                        background-color: $text-light-color-2;
-                        padding: $padding;
-                        max-width: 300px;
-                        h4 {
-                            color: $text-dark-color-2;  
-                            border-top: 1px solid #0202020a ; 
-                            margin-top: $margin; 
-                            padding-top: $padding-5
-                        }
-                        .icons {
-                            @include flex-box(center,flex-start,5px);
-                            padding: $padding-5 0;
-                            font-size: $f-size-5;
-                            cursor: pointer;
-                            color: $text-dark-color
-                        }
-                    }
-                }
-                &.web {
-                    .part-one-contaner {
-                        @include flex-box(center,center,20px);
-                        flex: 1;
-                        max-width: fit-content;
-                        .filter-box {
-                            position: relative;
-                            h4 {              
-                                cursor: pointer;
-                                color: $text-light-color;
-                            }
-                            .fiter {
-                                display: none;
-                                @include postion(absolute,150px,fit-content,100%,0,9999999);
-                                background-color: #fff;
-                                border-radius: $border-r;
-                                border: 1px solid #ecebeb;
-        
-                            }
-                            &:hover {
-                                .fiter {
-                                    display: block;
-                                }
-                            }
-
-                        }
-                    }
-                }
-            }
-            .part-two {
-                @include flex-box(center,center, 20px);
+        .logo-nav {
+            @include flex-box(center,flex-start,40px);
+            .logo {
+                min-width: fit-content;
+                @include flex-box(center,flex-start,5px);
                 flex: 1;
-                max-width: fit-content;
-                svg {
-                    color: $text-light-color;
+                cursor: pointer;
+                h1 {
+                    text-transform: uppercase;
+                    color: $logo-color;
                     cursor: pointer;
                 }
-                .search-icon {
-                    .cancel-icon {
-                        position: relative;
-                        &::before {
-                            position: absolute;
-                            content: "";
-                            bottom: -22px;
-                            left: -8px;
-                            border: 21px solid;
-                            border-color: transparent transparent #d8e0e7 transparent;
-                            z-index: 9999;
-                        }
-                    }
-
+                .menu-icon {
+                    font-size: $f-size-1;
                 }
-
             }
         }
         .search-form {

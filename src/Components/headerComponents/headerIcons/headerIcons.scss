@@ -1,0 +1,49 @@
+@import "../../../GlobalStyle/variables";
+@import "../../../GlobalStyle/mixin";
+
+.h-icons-box{
+    @include flex-box(center,center, 20px);
+    svg {
+        cursor: pointer;
+    }
+    .lang-theme  {
+        position: relative;
+        cursor: pointer;
+        .lang-t {
+            text-transform: uppercase;
+            font-size: $f-size-5;
+            font-weight: 500;
+            padding: $padding-5 ;
+            border: 1px solid $logo-color;
+            border-radius: $border-r;
+        }
+        &:hover {
+            .lang-theme-container {
+                display: block;
+            }
+        }
+        .lang-theme-container {
+            display: none;
+            @include postion(absolute,150px,fit-content,110%,-100%,999999);
+            padding: $padding-10 ;
+            border-radius: $border-r;
+            p {
+                cursor: pointer;
+            }
+        }
+    }
+    .search-icon {
+        .cancel-icon {
+            position: relative;
+            &::before {
+                @include postion(absolute,0,0,unset,-8px,9999);
+                content: "";
+                bottom: -22px;
+                border: 21px solid;
+                border-color: transparent transparent #fff transparent;
+            }
+        }
+
+    }
+
+}
