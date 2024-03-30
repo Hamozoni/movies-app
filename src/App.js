@@ -26,13 +26,13 @@ import Keywords from './Pages/keywords/Keywords.jsx';
 import Search from './Pages/search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
-import Backdrops_posters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
 import TvShowSeasonLayout from './Layouts/tvShowSeason/TvShowSeason.jsx';
 import EpisodesLayout from './Layouts/tvShowsEpisodeLayout.jsx/EpisodesLayout.jsx';
 import CollectionLayout from './Layouts/collectionLayout/CollectionLayout.jsx';
 import Collection from './Pages/collection/Collection.jsx';
 import PersonLayout from './Layouts/personLayout/PersonLayout.jsx';
+import BackdropsPosters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
 
 
 function App() {
@@ -73,9 +73,9 @@ function App() {
                   <Route path='releaseDates'  element={<ReleaseDates  />}/>
                   <Route path='translations'  element={<Translations  />}/>
                   <Route path='changes'  element={<Changes />}/>
-                  <Route path='backdrops'  element={<Backdrops_posters type='backdrops'/>}/>
-                  <Route path='posters'  element={<Backdrops_posters  type='posters'/>}/>
-                  <Route path='logos'  element={<Backdrops_posters type='logos'/>}/>
+                  <Route path='backdrops'  element={<BackdropsPosters type='backdrops'/>}/>
+                  <Route path='posters'  element={<BackdropsPosters  type='posters'/>}/>
+                  <Route path='logos'  element={<BackdropsPosters type='logos'/>}/>
                   <Route path='videos'  element={<MediaVideos />}/>
               </Route>
               
@@ -88,9 +88,9 @@ function App() {
                   <Route path='titles'  element={<AlternativeTitles mediaType='tv' />}/>
                   <Route path='translations'  element={<Translations />}/>
                   <Route path='changes'  element={<Changes />}/>
-                  <Route path='backdrops'  element={<Backdrops_posters  type='backdrops'/>}/>
-                  <Route path='posters'  element={<Backdrops_posters  type='posters'/>}/>
-                  <Route path='logos'  element={<Backdrops_posters type='logos'/>}/>
+                  <Route path='backdrops'  element={<BackdropsPosters  type='backdrops'/>}/>
+                  <Route path='posters'  element={<BackdropsPosters  type='posters'/>}/>
+                  <Route path='logos'  element={<BackdropsPosters type='logos'/>}/>
                   <Route path='videos'  element={<MediaVideos />}/>
               </Route>
 
@@ -98,12 +98,12 @@ function App() {
                 <Route index element={<SeasonEpisodes />}/>
                 <Route path='castCrew'  element={<Cast />}/>
                 <Route path='translations'  element={<Translations />}/>
-                <Route path='posters'  element={<Backdrops_posters  type='posters'/>} />
+                <Route path='posters'  element={<BackdropsPosters  type='posters'/>} />
                 <Route path='videos'  element={<MediaVideos  />}/>
               </Route>
 
               <Route path='/tv/:id/season/:seasonNumber/episode/:episodeNumber'element={<EpisodesLayout />}  >
-                  <Route path='stills'  element={<Backdrops_posters type='stills' />}  />
+                  <Route path='stills'  element={<BackdropsPosters type='stills' />}  />
                   <Route path='videos'  element={<MediaVideos  />}/>
                   <Route path='castCrew'  element={<Cast />}/>
                   <Route path='translations'  element={<Translations />}/>
@@ -111,14 +111,14 @@ function App() {
               <Route path='/collection/:id'  element={<CollectionLayout />}> 
                   <Route index element={<Collection />}/>
                   <Route path='translations'  element={<Translations />}/>
-                  <Route path='posters'  element={<Backdrops_posters type='poster'/>}  />
-                  <Route path='backdrops'  element={<Backdrops_posters type='backdrops'/>}/>
+                  <Route path='posters'  element={<BackdropsPosters type='poster'/>}  />
+                  <Route path='backdrops'  element={<BackdropsPosters type='backdrops'/>}/>
               </Route>
 
               <Route path='/person/:id'  element={<PersonLayout />}>
                   <Route index  element={<Person />}/>
                   <Route path='translations'  element={<Translations />}/>
-                  <Route path='profiles'  element={<Backdrops_posters type='profiles'/>}/>
+                  <Route path='profiles'  element={<BackdropsPosters type='profiles'/>}/>
               </Route>
               <Route path='/keywords/:id'  element={<Keywords />}/>
               <Route path='/search/:type'  element={<Search />}/>

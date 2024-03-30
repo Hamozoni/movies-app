@@ -40,7 +40,7 @@ const BackdropsCard = ({drop,language})=> {
     )
 };
 
-const Backdrops_posters = ({type}) => {
+const BackdropsPosters = ({type}) => {
 
     const {color} = useContext(mediaColorContext);
     const {languages: languagesList,lang} = useContext(globalContext);
@@ -120,4 +120,4 @@ const Backdrops_posters = ({type}) => {
   )
 }
 
-export default Backdrops_posters;
+export default BackdropsPosters;

@@ -8,14 +8,14 @@
      @if($key == 'dark'){
          @for $i from 1 through 5 {
              .back-color-#{$key}-#{$i} {
-                 background-color: mix(white,$val ,10 * $i);
+                 background-color: mix(rgb(145, 136, 226),$val ,10 * $i);
              };
          };
 
      } @else {
          @for $i from 1 through 5 {
              .back-color-#{$key}-#{$i} {
-                 background-color: mix(black,$val ,10 * $i);
+                 background-color: mix(rgb(58, 2, 104),$val ,10 * $i);
              };
          };
      }

@@ -60,7 +60,10 @@ const Person = () => {
             <div className="person-cov-content">
                 <div className="person-name">
                     { 
-                        innerWidth > 629 && <h3>{details?.name}</h3>
+                        innerWidth > 629 && 
+                        <h3 className={`t-color-${theme}`}>
+                            {details?.name}
+                        </h3>
                     }
                 </div>
                 <div className="piagrahpy">

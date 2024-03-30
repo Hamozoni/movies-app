@@ -72,8 +72,6 @@ img, picture {
             min-width: 260px;
             position: sticky;
             top: 0;
-            background-color: #ffffff;
-            z-index: 999999;
             @media (min-width: 720px) {
                 border-radius: $border-r;
                 box-shadow: 0px 0px 9px -4px #8b8b8b;
@@ -95,7 +93,6 @@ img, picture {
         }
         .cout-header {
             padding: $padding;
-            background-color: $logo-color;
             @include flex-box(center,space-between);
         }
       }
@@ -111,12 +108,10 @@ img, picture {
               .t-h {
                   display: table;
                   padding: $padding-10;
-                  background-color: $text-light-color-2;
                   min-width: 200%;
                   .count-name {
                     @include flex-box(center,flex-start,10px);
                     h3 {
-                      color: $text-dark-color-2;
                       font-size: $f-size-4;
       
                     }
