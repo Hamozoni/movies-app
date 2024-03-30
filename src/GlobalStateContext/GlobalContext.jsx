@@ -58,7 +58,6 @@ const GlobalContext = ({children})=> {
     },[lang]);
 
     useEffect(()=> {
-
         if(window.localStorage.getItem('myh-movies-theme') === null){
             window.localStorage.setItem('myh-movies-theme',theme);
         }else {
@@ -69,7 +68,7 @@ const GlobalContext = ({children})=> {
     useEffect(fetchLanguages,[]);
 
     useEffect(()=>{
-          setInnerWidth(window.innerWidth)
+        setInnerWidth(window.innerWidth)
        const handleResize = (e)=> {
           setInnerWidth(e.target.innerWidth);
        }

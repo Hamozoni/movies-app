@@ -21,6 +21,25 @@ const Sort = () => {
         })
     };
 
+    const optionList = {
+        en : {
+            popDes: 'popularty descending',
+            popAsc :'popularty ascending',
+            ratDes: 'rating descending',
+            ratAsc: 'rating ascending',
+            relDaDes: 'release date descending',
+            relDaAsc: 'release date ascending',
+        },
+        ar : {
+            popDes: 'الشهرة تصاعديا',
+            popAsc :'الشهرة تنازليا',
+            ratDes: 'التقيم تصاعديا',
+            ratAsc: 'التقيم تنازليا',
+            relDaDes: 'تاريخ الإصدار تصاعديا',
+            relDaAsc: 'تاريخ الإصدار تنازليا',
+        }
+    }
+
   return (
     <section className="sort card b">
         <h4 
@@ -41,12 +60,24 @@ const Sort = () => {
                     className={`back-color-${theme}-2 t-color-${theme} selections card`}
                     id='selecteions'
                     >
-                    <option value="popularty.desc">popularty descending</option>
-                    <option value="popularty.asc">popularty ascending</option>
-                    <option value="vote_average.desc">rating descending</option>
-                    <option value="vote_average.asc">rating ascending</option>
-                    <option value="primary_release_date.desc">release date descending</option>
-                    <option value="primary_release_date.asc">release date ascending</option>
+                    <option value="popularty.desc">
+                        {optionList[lang].popDes}
+                    </option>
+                    <option value="popularty.asc">
+                        {optionList[lang].popAsc}
+                    </option>
+                    <option value="vote_average.desc">
+                        {optionList[lang].ratDes}
+                    </option>
+                    <option value="vote_average.asc">
+                        {optionList[lang].ratAsc}
+                    </option>
+                    <option value="primary_release_date.desc">
+                        {optionList[lang].relDaDes}
+                    </option>
+                    <option value="primary_release_date.asc">
+                        {optionList[lang].relDaAsc}
+                    </option>
                 </select>
             </div>
         }
