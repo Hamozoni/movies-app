@@ -70,8 +70,10 @@ const Transaction = () => {
                                   className={`t-color-${theme}-1`}
                                   href={`#${trans?.iso_3166_1}`}
                                   >
-                                  <h4>{trans?.english_name}</h4>
-                                  <span>{trans?.iso_639_1}-{trans?.iso_3166_1}</span>
+                                  <h4 className="h-t">{trans?.english_name}</h4>
+                                  <span className={`t-color-${theme}-4 h-t-s`}>
+                                      {trans?.iso_639_1}-{trans?.iso_3166_1}
+                                  </span>
                                 </a>
                             </li>
                         ))

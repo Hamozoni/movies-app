@@ -19,7 +19,7 @@ const Header = ()=> {
 
 
     return (
-        <header className={`main-header back-color-${theme}-3`}>
+        <header className={`main-header back-color-${theme}-1`}>
             <div className="header-container">
                 <div className="logo-nav">
                     <section  className="logo">

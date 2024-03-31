@@ -1,50 +1,50 @@
 @import '../../../GlobalStyle/variables';
 @import '../../../GlobalStyle/mixin';
 
-.alt-t-tabels {
-    .trans-content-card {
-        max-width: 100%;
-        .trans-cont-head {
-            .t-name {
-                .t-sp {
-
-                }
-            }
+.alt-content {
+    .alt-cout-list {
+        .h-t-s {
+            font-size: $f-size-6;
         }
-        .tr-ca-body {
+    }
+    .alt-t-tabels {
+        .trans-content-card {
             max-width: 100%;
-            .t-part {
-                padding-bottom: 0;
-                @include flex-box(center,flex-start,0);
-                .title {
-                    width: 100px;
-                    padding: $padding-10 $padding;
-                }
-                .t-info {
-                    @include flex-box(center,space-between,0);
-                    flex: 1;
-                    .desc {
+            .tr-ca-body {
+                max-width: 100%;
+                .t-part {
+                    padding-bottom: 0;
+                    @include flex-box(center,flex-start,0);
+                    .title {
+                        width: 100px;
+                        padding: $padding-10 $padding;
+                    }
+                    .t-info {
+                        @include flex-box(center,space-between,0);
                         flex: 1;
-                        border: 1px solid;
-                        border-color: transparent #3b393977;
-                        padding: $padding-10;
-                        word-break: break-all;
-                    }
-                    span {
-                        padding: $padding-10;
-                        svg {
-                            font-size: $f-size-5;
+                        .desc {
+                            flex: 1;
+                            border: 1px solid;
+                            border-color: transparent #3b393977;
+                            padding: $padding-10;
+                            word-break: break-all;
                         }
+                        span {
+                            padding: $padding-10;
+                            svg {
+                                font-size: $f-size-5;
+                            }
+                        }
+    
                     }
-
-                }
-                .t-titles {
-                    @include flex-box(center,space-between,0);
-                    width: 150px;
-                    span,h5 {
-                        padding: $padding-10;
-                        svg {
-                            font-size: $f-size-5;
+                    .t-titles {
+                        @include flex-box(center,space-between,0);
+                        width: 150px;
+                        span,h5 {
+                            padding: $padding-10;
+                            svg {
+                                font-size: $f-size-5;
+                            }
                         }
                     }
                 }

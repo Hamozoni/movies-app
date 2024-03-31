@@ -47,7 +47,7 @@ function Recommendations({id,mediaType}) {
                 <div className="recomm-image">
                     <img 
                         className="image-hover"
-                        onClick={()=> handleNavigate(media?.media_type,media?.id)}
+                        onClick={()=> handleNavigate(media)}
                         src={process.env.REACT_APP_BASE_URL + "w300" + media?.backdrop_path} 
                         alt="" />
                     <OnHoherOverlay media={media}/>
@@ -55,7 +55,7 @@ function Recommendations({id,mediaType}) {
                 <div className="media-content">
                     <h4 
                         className={`name t-color-${theme}`} 
-                        onClick={()=> handleNavigate(media?.media_type,media?.id)}
+                        onClick={()=> handleNavigate(media)}
                         >
                         {fitLongString(media?.name,25) || fitLongString(media?.title,25) }
                     </h4>
@@ -86,8 +86,8 @@ function Recommendations({id,mediaType}) {
 
     const navigate = useNavigate()
 
-    const handleNavigate = (mediaType,id)=> {
-        navigate(`/${mediaType}/${id}`)
+    const handleNavigate = (media)=> {
+        navigate(`/${media.title ? 'movie' : 'tv' }/${media.id}`)
     }
 
 
