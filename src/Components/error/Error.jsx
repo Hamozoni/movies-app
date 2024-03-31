@@ -7,7 +7,7 @@ const Error = ({error,height,onClick}) => {
   const {lang,theme} = useContext(globalContext);
   return (
     <div 
-        className={`back-color-${theme} error`}
+        className={`error`}
         style={{height}}
         >
         <div className="error-container" >

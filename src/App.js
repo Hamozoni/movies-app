@@ -37,7 +37,7 @@ import BackdropsPosters from './Pages/sharedPages/backdrops&posters/Backdrops&po
 
 function App() {
 
-  const {trailer,theme} = useContext(globalContext);
+  const {trailer} = useContext(globalContext);
   const [isLoaderModel,setIsLoaderModel] = useState(true);
 
   useEffect(()=> {
@@ -50,7 +50,6 @@ function App() {
   },[setIsLoaderModel]);
 
   return (
-    <main className={`myh-app back-color-${theme}`}>
       <BrowserRouter>
         <Header />
         {
@@ -125,7 +124,6 @@ function App() {
           </Routes>
         <Footer />
       </BrowserRouter>
-    </main>
   );
 }
 

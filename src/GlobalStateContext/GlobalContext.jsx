@@ -58,6 +58,8 @@ const GlobalContext = ({children})=> {
     },[lang]);
 
     useEffect(()=> {
+
+        document.body.className = `back-color-${theme}`
         if(window.localStorage.getItem('myh-movies-theme') === null){
             window.localStorage.setItem('myh-movies-theme',theme);
         }else {
@@ -93,7 +95,8 @@ const GlobalContext = ({children})=> {
             }}
         >
            { isPending ? <Loading height='100vh' /> 
-              : (languages && countries) ?  children 
+              : (languages && countries) ?  
+               children 
               : error && 
               <Error
                    error={error} 

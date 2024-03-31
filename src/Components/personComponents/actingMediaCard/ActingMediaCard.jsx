@@ -18,7 +18,7 @@ const ActingMediaCard = ({mediaType,id}) => {
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
 
     const fetchMedia = () => {
@@ -42,7 +42,7 @@ const ActingMediaCard = ({mediaType,id}) => {
     useEffect(fetchMedia,[mediaType,id,lang])
 
     return (
-        <div className="media-card open">
+        <div className={`back-color-${theme}-2 ${lang === 'en' ? 'en' :'ar'} media-card open`}>
             {
                 isPending ? <Loading width='100%' height='100%' /> 
                 : mediaData ?
@@ -59,11 +59,11 @@ const ActingMediaCard = ({mediaType,id}) => {
                         <nav className='act-media'>
                             <Link 
                                 to={`/${mediaType}/${id}`} 
-                                className="name open"
+                                className={`link-hover t-color-${theme} name open`}
                                 >
                                     {mediaData?.title ? fitLongString(mediaData?.title,30) :fitLongString(mediaData?.name,30)}
                             </Link>
-                            <div className='act-vote open'>
+                            <div className={`t-color-${theme}-3 act-vote open`}>
                                 <StarIcon className="open"  />
                                 <p className="open" >
                                     {mediaData?.vote_average?.toFixed(1)}
@@ -71,10 +71,16 @@ const ActingMediaCard = ({mediaType,id}) => {
                             </div>
                         </nav>
                         <p className='overview open'>{fitLongString(mediaData?.overview,150)}</p>
-                        <div className="add-to open">
-                            <div className="add scale image-hover open"><FavoriteIcon className="open" /></div>
-                            <div className="add scale image-hover open"><BookmarkIcon className="open"  /></div>
-                            <div className="add scale image-hover open"> <StarIcon className="open"  /></div>
+                        <div className={`t-color-${theme}-4 add-to open`}>
+                            <div className="add scale image-hover open">
+                                <FavoriteIcon className="open" />
+                            </div>
+                            <div className="add scale image-hover open">
+                                <BookmarkIcon className="open"  />
+                            </div>
+                            <div className="add scale image-hover open"> 
+                                 <StarIcon className="open"  />
+                            </div>
                         </div>
                     </div>
                 </div>
