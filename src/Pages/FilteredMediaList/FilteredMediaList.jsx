@@ -9,6 +9,7 @@ import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/M
 import MediaFilter from "../../Components/mediaFilterComponents/MedidaFilter";
 import Error from "../../Components/error/Error";
 import Loading from "../../Components/loading/Loading";
+import { languages } from "../../utilities/languages";
 
 export const mediaFilter = createContext();
 
@@ -26,7 +27,7 @@ const intialFilter = {
 
 const FilteredMediaList = ({mediaType}) => {
 
-    const {lang,innerWidth} = useContext(globalContext);
+    const {lang,innerWidth,theme} = useContext(globalContext);
 
     const [meida,setMedia] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -42,31 +43,43 @@ const FilteredMediaList = ({mediaType}) => {
 
     const {filter}= useParams();
 
+    const findTilte = ()=> {
+
+        if(filter.indexOf('_') !== -1){
+            const newFilter = filter.split("_")
+            const firstChar = newFilter[1].split('').shift().toUpperCase();
+            const title = `${newFilter[0]}${firstChar}${newFilter[1].slice(1)}`
+            return `${languages[lang][title]} ${languages[lang][mediaType]}`
+        }else {
+            return `${languages[lang][filter]} ${languages[lang][mediaType]}`
+        }
+    };
+
     const fetchMedia = ()=>{
 
-        document.title = `${filter} ${mediaType}`;
+        document.title = findTilte();
         setIsPending(true);
         setError(null);
         fetchData(`${mediaType}/${filter}?language=${lang}&page=1`)
         .then((data)=> {
             setMedia(data);
             setTotalPage(data?.total_pages);
-            setIsPending(false);
-            console.log(data);
         }) 
         .catch((error)=> {
             setError(error);
+        }) 
+        .finally(()=> {
             setIsPending(false);
-        })  
+        }) 
     }
 
     useEffect(fetchMedia,[lang,filter,mediaType]);
 
-    useEffect(()=>{
-         console.log(mediaFiltering)
-    },[mediaFiltering,mediaType])
+    // useEffect(()=>{
+    //      console.log(mediaFiltering)
+    // },[mediaFiltering,mediaType])
 
-    const fetchFilteredMedia = async ()=> {
+    const fetchFilteredMedia = ()=> {
 
         setPage(1);
          const filterKeysList = [];
@@ -76,7 +89,7 @@ const FilteredMediaList = ({mediaType}) => {
             }
         }
         console.log(filterKeysList);
-       await fetchData(`discover/${mediaType}?include_adult=false&page=${page}${filterKeysList.toString().replaceAll(',','')}`)
+       fetchData(`discover/${mediaType}?include_adult=false&page=${page}${filterKeysList.toString().replaceAll(',','')}`)
         .then((data)=> {
             setMedia(data);
             console.log();
@@ -89,6 +102,7 @@ const FilteredMediaList = ({mediaType}) => {
             setIsFilteredLoading(false);
         })
     };
+
 
     const loadMore = (is)=> {
         if(page + 1 < totalPage && isLoadingMore === false) {
@@ -116,14 +130,17 @@ const FilteredMediaList = ({mediaType}) => {
             meida ? 
             <main className="movies">
                 <section className="filterd-media">
-                    <h4 className="filt-title">
-                        {filter?.replaceAll('_',' ')} {mediaType}
+                    <h4 className={`t-color-${theme} filt-title`}>
+                        {findTilte()}
                     </h4>
                     <div className={`${innerWidth > 676 && 'web'} movies-container`}>
                         <div className="filters-box">
                             <MediaFilter mediaType={mediaType === 'movie' ? 'movies' : 'tv shows'} />
-                            <button className="filter-btn card link-hover" onClick={fetchFilteredMedia}>
-                                serach
+                            <button 
+                                className={`back-color-${theme}-2 t-color-${theme} filter-btn card link-hover`} 
+                                onClick={fetchFilteredMedia}
+                                >
+                                {languages[lang].search}
                             </button>
                         </div>
                         <div className="movies-box">
@@ -149,7 +166,7 @@ const FilteredMediaList = ({mediaType}) => {
                                 page + 1 < totalPage && 
                                 <button 
                                     disabled={isLoadingMore}
-                                    className={`${isLoadingMore && 'loading'} filter-btn card link-hover`} 
+                                    className={`${isLoadingMore && 'loading'} back-color-${theme}-2 t-color-${theme} filter-btn card link-hover`} 
                                     onClick={()=> loadMore(true)}
                                     >
                                     { isLoadingMore ? <span>loading... </span>:'laod more'}
