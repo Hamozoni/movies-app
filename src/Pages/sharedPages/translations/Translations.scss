@@ -1,22 +1,53 @@
 @import '../../../GlobalStyle/variables';
 @import '../../../GlobalStyle/mixin';
 
-.mov-transation {
-    .alt-content {
-        .trans-titles {
-            .trans-content-card {
-               border-radius: $border-r; 
-               overflow: hidden;
-               box-shadow: 0 0 20px 0px #5d5b5b3d;
-               margin-bottom: $margin;
-               .trans-cont-head {
-                  padding: $padding-10;
-                  background-color: lightgray;
-                  @include flex-box(center,flex-start,10px)
-               }
-               .tr-ca-body {
-                 @include flex-box(center,flex-start,0px);
-               }
+.alt-t-tabels {
+    .trans-content-card {
+        max-width: 100%;
+        .trans-cont-head {
+            .t-name {
+                .t-sp {
+
+                }
+            }
+        }
+        .tr-ca-body {
+            max-width: 100%;
+            .t-part {
+                padding-bottom: 0;
+                @include flex-box(center,flex-start,0);
+                .title {
+                    width: 100px;
+                    padding: $padding-10 $padding;
+                }
+                .t-info {
+                    @include flex-box(center,space-between,0);
+                    flex: 1;
+                    .desc {
+                        flex: 1;
+                        border: 1px solid;
+                        border-color: transparent #3b393977;
+                        padding: $padding-10;
+                        word-break: break-all;
+                    }
+                    span {
+                        padding: $padding-10;
+                        svg {
+                            font-size: $f-size-5;
+                        }
+                    }
+
+                }
+                .t-titles {
+                    @include flex-box(center,space-between,0);
+                    width: 150px;
+                    span,h5 {
+                        padding: $padding-10;
+                        svg {
+                            font-size: $f-size-5;
+                        }
+                    }
+                }
             }
         }
     }
