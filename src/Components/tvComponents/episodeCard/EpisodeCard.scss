@@ -24,7 +24,6 @@
             .titles {
                 .name {
                     font-size: $f-size-4;
-                    color: $text-dark-color-2;
                     @include text-overflow(30px);
                 }
                @include flex-box(flex-start,center,5px);
@@ -50,7 +49,6 @@
                 }
                 .year {
                     font-size: $f-size-5;
-                    color: $text-dark-color;
                     font-weight: 600;
                     max-height: 25px;
                     overflow: hidden;
@@ -60,21 +58,17 @@
             .overview {
                 font-size: $f-size-6;
                 font-weight: 600;
-                color: $text-dark-color;
                 padding-top: $padding-10;
-                @include text-overflow(55px);
+                @include text-overflow(57px);
             }
         }
     }
     .expand {
         @include flex-box(center,center);
         padding: $padding-5 $padding;
-        border-top: 1px solid   #6360603f ;
+        border-top: 1px solid  #6360603f ;
         .exp-link {
             @include flex-box(center,center,0);
-            font-size: $f-size-6;
-            font-weight: bold;
-            color: $text-dark-color-2;
         }
     }
 }

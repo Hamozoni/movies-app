@@ -18,7 +18,7 @@ import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 const Tv = () => {
 
 const{details} = useContext(tvShowDetailsContext);
-const {lang} = useContext(globalContext);
+const {lang,theme} = useContext(globalContext);
 const {id} = useParams()
 
 
@@ -30,11 +30,14 @@ const {id} = useParams()
                  <section className='cast'>
                     <TopBilledCast mediaType='tv' id={id} title='Series Cast'/>
                     <section className='tv-season b-b'>
-                        <h4 className="sea-name">
+                        <h4 className={`t-color-${theme} sea-name`}>
                                {languages[lang].currentSeason}
                         </h4>
                             <TvSeasonCard  tvShow={details?.seasons[details?.seasons?.length - 1]} id={id}/>
-                        <Link className='to-seasons' to={`/tv/${id}/seasons`}>
+                        <Link 
+                            className='to-seasons link-color' 
+                            to={`/tv/${id}/seasons`}
+                            >
                             {languages[lang].viewAll} {languages[lang].seasons}
                         </Link>
                     </section>

@@ -3,12 +3,14 @@ import "./EpisodeCard.scss";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import imageURL from '../../../assets/smooth-gray-background-with-high-quality_53876-124606.avif'
 import EpisodeInfo from './EpisodeInfo';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 
 const EpisodeCard = ({episode}) => {
 
-    const [episodeIndex,setEpisodeIndex] = useState(null)
+    const [episodeIndex,setEpisodeIndex] = useState(null);
+    const {lang,theme} = useContext(globalContext);
 
   return (
     <div className="episode-card card" id={episode.episode_number}>
@@ -23,11 +25,11 @@ const EpisodeCard = ({episode}) => {
             </div>
             <div className="epis-details">
                 <div className="titles">
-                    <h4 className="name">
+                    <h4 className={`t-color-${theme} name`}>
                         {episode?.episode_number}
                     </h4>
                     <div className="t-content">
-                        <h4 className="name">
+                        <h4 className={`t-color-${theme} name`}>
                             {episode?.name}
                         </h4>
                         <div className="rating-year">
@@ -35,28 +37,30 @@ const EpisodeCard = ({episode}) => {
                                 <StarIcon />
                                 <span>{episode?.vote_average?.toFixed(1)}</span>
                             </div>
-                            <p className="year">
-                            {episode?.air_date}  {episode?.runtime}m
+                            <p className={`t-color-${theme}-3 year`}>
+                                {episode?.air_date}  {episode?.runtime}m
                             </p>
                         </div>
                     </div>
 
                 </div>
-                <p className='overview'>{episode?.overview || "We don't have an overview translated in English. Help us expand our database by adding one."}</p>
+                <p className={`t-color-${theme}-2 overview`}>
+                    {episode?.overview || "We don't have an overview translated in English. Help us expand our database by adding one."}
+                </p>
             </div>
         </div>
         <div className="more-ep-info">
             {
                 episode?.episode_number === episodeIndex ?
-                <EpisodeInfo episode={episode} /> 
+                    <EpisodeInfo episode={episode} /> 
                 : 
                 <div className="expand">
                     <a
-                        className='exp-link link-hover'
+                        className='exp-link link-color'
                         href={`#${episode?.episode_number}`}
                         onClick={()=> setEpisodeIndex(episode.episode_number)}
                         >
-                       <KeyboardArrowDownIcon /> expand
+                       <KeyboardArrowDownIcon /> {lang === 'en' ? 'Expand' : 'توسيع'}
                     </a>
                 </div>
             }

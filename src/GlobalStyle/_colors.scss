@@ -42,7 +42,9 @@
 };
 
 .link-color {
+    font-size: $f-size-5;
     color: $logo-color;
+    font-weight: 600;
     &:hover {
         filter: opacity(80%);
     }

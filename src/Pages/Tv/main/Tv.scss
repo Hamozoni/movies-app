@@ -18,16 +18,7 @@
 .tv-season {
     padding: $padding;
     .sea-name {
-        color: $text-dark-color;
         margin-bottom: $margin;
-        font-size: $f-size;
-    }
-
-    .to-seasons {
-       font-size: $f-size-s;
-        color: $logo-color;
-        &:hover {
-            color: darken($color: $logo-color, $amount: 15);
-        }
+        font-size: $f-size-2;
     }
 }
