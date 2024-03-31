@@ -24,11 +24,15 @@
         }
         .lang-theme-container {
             display: none;
-            @include postion(absolute,150px,fit-content,110%,-100%,999999);
+            @include postion(absolute,150px,fit-content,100%,0,999999);
             padding: $padding-10 ;
             border-radius: $border-r;
             p {
                 cursor: pointer;
+            }
+            &.en {
+                left: unset;
+                right: 0;
             }
         }
     }

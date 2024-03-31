@@ -16,12 +16,8 @@
         padding: $padding-10;
         .s-titles {
             .s-name {
-                color: $text-dark-color;
                 font-size: $f-size-3;
                 cursor: pointer;
-                &:hover {
-                    color: lighten($color: $text-dark-color, $amount: 10)
-                }
             }
             .rating-year  {
                 @include flex-box(center,flex-start,10px);
@@ -42,7 +38,6 @@
                 }
                 .year {
                     font-size: $f-size-5;
-                    color: $text-dark-color;
                     font-weight: 600;
                     @include text-overflow(24px);
                 }
@@ -51,14 +46,12 @@
         .s-overview {
             .date {
                 font-size: $f-size-5;
-                color: $text-dark-color;
                 font-weight: 600;
                 margin: $padding-10 0;
                 @include text-overflow(20px);
             }
             .overview {
                 @include text-overflow(80px);
-                color: $text-dark-color-2;
                 font-size: $f-size-5;
             }
         }

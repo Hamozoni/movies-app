@@ -5,8 +5,8 @@
     .backdrop-container {
         .back-content {
             display: grid;
-            grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
-            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+            grid-gap: 40px;
             .b-card {
                 min-width: 280px;
                 .b-image-cont {

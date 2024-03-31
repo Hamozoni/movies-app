@@ -87,7 +87,7 @@ const BackdropsPosters = ({type}) => {
 
 
   return (
-    <div className="backdrops alt-content">
+    <div className="backdrops">
         {
             isPending ? <Loading width='80%' height='calc(100vh - 100px)' /> 
             : data ?

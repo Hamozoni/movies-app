@@ -59,6 +59,7 @@ export  const languages = {
         titles : 'alternative titles',
         castCrew:  'cast & crew',
         episodeGroups : 'episode groups',
+        episode: 'episode',
         releaseDates : 'release dates',
         translations: 'translations',
         changes: 'changes',
@@ -94,7 +95,8 @@ export  const languages = {
         to: 'to',
         genres: 'genres',
         country: 'country',
-        language: 'language'
+        language: 'language',
+        loadMore: 'load more'
     },
     ar: {
         dark: 'داكن',
@@ -154,6 +156,7 @@ export  const languages = {
         titles : 'عناوين بديلة',
         castCrew:  'الممثلين وطاقم العمل',
         episodeGroups : 'مجموعه الحلقات',
+        episode: 'حلقة',
         releaseDates : 'تواريخ الاصدار',
         translations: 'الترجمات',
         changes: 'التعديلات',
@@ -189,6 +192,7 @@ export  const languages = {
         to: 'الى',
         genres: 'الفئيات',
         country: 'الدوله',
-        language: 'اللغة'
+        language: 'اللغة',
+        loadMore: "حمل المزيد"
        }
 }

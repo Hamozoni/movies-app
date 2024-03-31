@@ -23,7 +23,7 @@ const HeaderIcons = ({setisSearch,isSearch}) => {
                     <LightModeOutlinedIcon className={`t-color-${theme}-1`} />
                 }
             
-            <ul className={`back-color-${theme}-2 lang-theme-container`}>
+            <ul className={`back-color-${theme}-2 lang-theme-container ${lang}`}>
                 <li 
                     className={`${theme === 'dark' && 'active'} t-color-${theme}-2 nav-btn`}
                     onClick={()=> {
@@ -46,7 +46,7 @@ const HeaderIcons = ({setisSearch,isSearch}) => {
             <span className={`lang-t t-color-${theme}-1`} >
                 {lang}
             </span>
-            <ul className={`back-color-${theme}-2 lang-theme-container`}>
+            <ul className={`back-color-${theme}-2 lang-theme-container ${lang}`}>
                 <li 
                     className={`${lang === 'ar' && 'active'} t-color-${theme}-2 nav-btn`}
                     onClick={()=> {

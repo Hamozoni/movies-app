@@ -12,7 +12,7 @@
     }
     .movies-container {
         &.web {
-            @include flex-box(flex-start,center,20px);
+            @include flex-box(flex-start,flex-start,20px);
             @media (min-width:992px) {
                 gap: 60px;
             }
@@ -46,24 +46,33 @@
         font-weight: 700;
         font-size: $f-size-3;
         border: 1px solid $logo-color;
-        &.loading {
-            position: relative;
-            overflow: hidden;
-            z-index: 0;
-            &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-
-            }
-        }
-        span {
-            z-index: 9999;
-        }
         &:disabled{
             cursor:wait;
         }
+        .loading-more {
+            @include flex-box(center,center,5px);
+            height: 35px;
+            span {
+                border-radius: $circle;
+                width: 5px;
+                height: 5px;
+            }
+            .s-1 {
+                animation: loader 0.5s ease-in-out infinite alternate-reverse ;
+            }
+            .s-2 {
+                animation: loader 0.5s  ease-in-out .5s infinite alternate-reverse ;
+            }
+            .s-3 {
+                animation: loader 0.5s 1.5s ease-in-out 1s infinite alternate-reverse ;
+            }
+        }
+    }
+}
+
+@keyframes loader {
+    100% {
+        width: 15px;
+        height: 15px;
     }
 }

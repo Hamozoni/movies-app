@@ -35,10 +35,6 @@ const FilteredMediaList = ({mediaType}) => {
     const [mediaFiltering,setMediaFiltering] = useState(intialFilter);
     const [page,setPage] = useState(1);
     const [totalPage,setTotalPage] = useState(1);
-
-    const [isLoadingMore,setIsLoadingMore] = useState(false);
-
-    const [isFilteredLoading,setIsFilteredLoading] = useState(false);
     const [filteredError,setFilteredError] = useState(null);
 
     const {filter}= useParams();
@@ -75,12 +71,11 @@ const FilteredMediaList = ({mediaType}) => {
 
     useEffect(fetchMedia,[lang,filter,mediaType]);
 
-    // useEffect(()=>{
-    //      console.log(mediaFiltering)
-    // },[mediaFiltering,mediaType])
+    const [isFilteredLoading,setIsFilteredLoading] = useState(false);
 
     const fetchFilteredMedia = ()=> {
-
+        setIsFilteredLoading(true);
+        setFilteredError(null);
         setPage(1);
          const filterKeysList = [];
         for (let [key, value] of Object.entries(mediaFiltering)) {
@@ -89,24 +84,26 @@ const FilteredMediaList = ({mediaType}) => {
             }
         }
         console.log(filterKeysList);
-       fetchData(`discover/${mediaType}?include_adult=false&page=${page}${filterKeysList.toString().replaceAll(',','')}`)
+       fetchData(`discover/${mediaType}?include_adult=false&page=1${filterKeysList.toString().replaceAll(',','')}`)
         .then((data)=> {
             setMedia(data);
-            console.log();
             setTotalPage(data?.total_pages);
-            setIsFilteredLoading(false);
-            setFilteredError(null);
+            console.log(data)
         })
         .catch(error=> {
             setFilteredError(error);
+        })
+        .finally(()=> {
             setIsFilteredLoading(false);
         })
     };
 
+    
+    const [isLoadingMore,setIsLoadingMore] = useState(false);
 
-    const loadMore = (is)=> {
-        if(page + 1 < totalPage && isLoadingMore === false) {
-            if(is === true){
+    const loadMore = ()=> {
+        setIsLoadingMore(true);
+        if(page + 1 < totalPage) {
                 fetchData(`${mediaType}/${filter}?language=${lang}&page=${page + 1}`)
                 .then((data)=> {
                     setMedia(prev=> {
@@ -114,11 +111,15 @@ const FilteredMediaList = ({mediaType}) => {
                             ...prev,
                             results: [...meida.results,...data.results]
                         }
-                    });
-                setIsLoadingMore(false)
-                })   
-            }
-            setPage(prev=> prev + 1);
+                    })
+                    setPage(prev=> prev + 1);
+                })
+                .catch((error)=> {
+                    setError(error)
+                })
+                .finally(()=> {
+                    setIsLoadingMore(false)
+                })  
 
         }
     }
@@ -140,7 +141,16 @@ const FilteredMediaList = ({mediaType}) => {
                                 className={`back-color-${theme}-2 t-color-${theme} filter-btn card link-hover`} 
                                 onClick={fetchFilteredMedia}
                                 >
-                                {languages[lang].search}
+                                    {
+                                        isFilteredLoading ? 
+                                        <span className="loading-more">
+                                            <span className={`back-color-${theme}-3 s-1`}></span>
+                                            <span className={`back-color-${theme}-4 s-2`}></span>
+                                            <span className={`back-color-${theme}-5 s-2`}></span>
+                                        </span> 
+                                      : languages[lang].search
+                                    }
+                            
                             </button>
                         </div>
                         <div className="movies-box">
@@ -149,7 +159,9 @@ const FilteredMediaList = ({mediaType}) => {
                                     isFilteredLoading ? <Loading width='100%' height='calc(100vh - 100px)' /> :
                                     meida?.results?.length === 0 ?
                                     <div className="not-found">
-                                        <h4 className="text">no media found</h4>
+                                        <h4 className={`t-colot-${theme} text`}>
+                                            {lang === 'en' ? 'no media found' : 'لا يوجد نتائج'}
+                                        </h4>
                                     </div>  :
                                     meida?.results?.length  > 0 ?
                                     meida?.results?.map((movie)=> (
@@ -166,10 +178,16 @@ const FilteredMediaList = ({mediaType}) => {
                                 page + 1 < totalPage && 
                                 <button 
                                     disabled={isLoadingMore}
-                                    className={`${isLoadingMore && 'loading'} back-color-${theme}-2 t-color-${theme} filter-btn card link-hover`} 
+                                    className={`back-color-${theme}-2 t-color-${theme} filter-btn card link-hover`} 
                                     onClick={()=> loadMore(true)}
                                     >
-                                    { isLoadingMore ? <span>loading... </span>:'laod more'}
+                                    { isLoadingMore ? 
+                                       <span className="loading-more">
+                                           <span className={`back-color-${theme}-3 s-1`}></span>
+                                           <span className={`back-color-${theme}-4 s-2`}></span>
+                                           <span className={`back-color-${theme}-5 s-2`}></span>
+                                       </span> 
+                                       : languages[lang].loadMore}
                                 </button>
                             }
                         </div>
