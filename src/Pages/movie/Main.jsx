@@ -8,7 +8,7 @@ import Media from "../../Components/sharedComponents/mediaImages/Media";
 import Recommendations from "../../Components/sharedComponents/recommendations/Recommendations";
 import MovieStitistics from "../../Components/movieComponents/movieStitistics/MovieStitistics";
 import TopBilledCast from "../../Components/sharedComponents/topBilledCast/TopBilledCast";
-import { MovieDetailsContext } from "../../Layouts/movieLayout/MovieLayout";
+import { MovieDetailsContext } from "../../Layouts/MovieLayout";
 
 
 

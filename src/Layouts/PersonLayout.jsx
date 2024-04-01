@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import MediaColorContext from "../../GlobalStateContext/MediaColorContext";
+import MediaColorContext from "../GlobalStateContext/MediaColorContext";
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import fetchData from "../../utilities/fetchData";
-import Loading from "../../Components/loading/Loading";
-import Error from "../../Components/error/Error";
-import MainMediaNav from "../../Components/sharedComponents/mainMediaNav/MainMediaNav";
-import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader";
+import { globalContext } from "../GlobalStateContext/GlobalContext";
+import fetchData from "../utilities/fetchData";
+import Loading from "../Components/loading/Loading";
+import Error from "../Components/error/Error";
+import MainMediaNav from "../Components/sharedComponents/mainMediaNav/MainMediaNav";
+import MediaHeader from "../Components/sharedComponents/mediaHeader/MediaHeader";
 
 export const personDetailsContext = createContext();
 

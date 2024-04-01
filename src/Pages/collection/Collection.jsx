@@ -4,7 +4,7 @@ import { useContext} from "react";
 import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 
 import "./collection.scss";
-import { collectionContext } from "../../Layouts/collectionLayout/CollectionLayout";
+import { collectionContext } from "../../Layouts/CollectionLayout";
 
 const Collection = () => {
 

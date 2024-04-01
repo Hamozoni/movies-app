@@ -8,7 +8,7 @@ import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPl
 import Home from './Pages/home/Home.jsx';
 import FilteredMediaList from './Pages/filteredMediaList/FilteredMediaList.jsx';
 import PopularPresons from './Pages/person/popularPersons/PopularPresons.jsx';
-import MovieLayout from './Layouts/movieLayout/MovieLayout.jsx';
+import MovieLayout from './Layouts/MovieLayout.jsx';
 import Main from './Pages/movie/Main.jsx';
 import Reviews from './Pages/sharedPages/reviews/Reviews.jsx';
 import Cast from './Pages/sharedPages/cast&Crew/Cast.jsx';
@@ -17,7 +17,7 @@ import ReleaseDates from './Pages/sharedPages/releaseDates/ReleaseDates.jsx';
 import Translations from './Pages/sharedPages/translations/Translations.jsx';
 import Changes from './Pages/sharedPages/changes/Changes.jsx';
 
-import TvShowsLayout from './Layouts/tvShowsLayout/TvShowsLayout.jsx';
+import TvShowsLayout from './Layouts/TvShowsLayout.jsx';
 import Tv from './Pages/tv/main/Tv.jsx';
 import TvShowSeasons from './Pages/tv/TvShowSeasons/TvShowSeasons.jsx';
 import SeasonEpisodes from './Pages/tv/SeasonEpisodes/SeasonEpisodes.jsx';
@@ -27,11 +27,11 @@ import Search from './Pages/search/Search.jsx';
 import Footer from './Components/footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
-import TvShowSeasonLayout from './Layouts/tvShowSeason/TvShowSeason.jsx';
-import EpisodesLayout from './Layouts/tvShowsEpisodeLayout.jsx/EpisodesLayout.jsx';
-import CollectionLayout from './Layouts/collectionLayout/CollectionLayout.jsx';
+import TvShowSeasonLayout from './Layouts/TvShowSeason.jsx';
+import EpisodesLayout from './Layouts/EpisodesLayout.jsx';
+import CollectionLayout from './Layouts/CollectionLayout.jsx';
 import Collection from './Pages/collection/Collection.jsx';
-import PersonLayout from './Layouts/personLayout/PersonLayout.jsx';
+import PersonLayout from './Layouts/PersonLayout.jsx';
 import BackdropsPosters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
 
 

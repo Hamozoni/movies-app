@@ -3,7 +3,7 @@ import "./SeasonEpisodes.scss";
 
 import EpisodeCard from "../../../Components/tvComponents/episodeCard/EpisodeCard";
 import { useContext } from "react";
-import { episodesContext } from "../../../Layouts/tvShowSeason/TvShowSeason";
+import { episodesContext } from "../../../Layouts/TvShowSeason";
 
 const SeasonEpisodes = () => {
 

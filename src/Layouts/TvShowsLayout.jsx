@@ -1,14 +1,14 @@
 import { Outlet, useLocation, useParams } from "react-router-dom"
 
-import MainMediaNav from '../../Components/sharedComponents/mainMediaNav/MainMediaNav';
-import MediaHeader from '../../Components/sharedComponents/mediaHeader/MediaHeader';
-import MediaColorContext from "../../GlobalStateContext/MediaColorContext";
+import MainMediaNav from '../Components/sharedComponents/mainMediaNav/MainMediaNav';
+import MediaHeader from '../Components/sharedComponents/mediaHeader/MediaHeader';
+import MediaColorContext from "../GlobalStateContext/MediaColorContext";
 import { createContext, useContext, useEffect } from "react";
-import Loading from "../../Components/loading/Loading";
-import Error from "../../Components/error/Error";
-import fetchData from "../../utilities/fetchData";
+import Loading from "../Components/loading/Loading";
+import Error from "../Components/error/Error";
+import fetchData from "../utilities/fetchData";
 import { useState } from "react";
-import { globalContext } from "../../GlobalStateContext/GlobalContext";
+import { globalContext } from "../GlobalStateContext/GlobalContext";
 
 export const tvShowDetailsContext = createContext()
 

@@ -1,12 +1,12 @@
-
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./TvSeasonCard.scss";
 
 import StarIcon from '@mui/icons-material/Star';
 
 import imageUrl from "../../../assets/smooth-gray-background-with-high-quality_53876-124606.avif"
 import { languages } from "../../../utilities/languages";
-import { useContext } from "react";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 const TvSeasonCard = ({tvShow,id}) => {

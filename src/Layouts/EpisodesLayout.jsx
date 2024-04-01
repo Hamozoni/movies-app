@@ -1,12 +1,12 @@
 import { Outlet, useParams } from "react-router-dom"
-import MediaColorContext from "../../GlobalStateContext/MediaColorContext"
+import MediaColorContext from "../GlobalStateContext/MediaColorContext"
 import { useContext, useEffect, useState } from "react"
-import fetchData from "../../utilities/fetchData"
-import Loading from "../../Components/loading/Loading"
-import Error from "../../Components/error/Error"
-import MediaHeader from "../../Components/sharedComponents/mediaHeader/MediaHeader"
-import MainMediaNav from "../../Components/sharedComponents/mainMediaNav/MainMediaNav"
-import { globalContext } from "../../GlobalStateContext/GlobalContext"
+import fetchData from "../utilities/fetchData"
+import Loading from "../Components/loading/Loading"
+import Error from "../Components/error/Error"
+import MediaHeader from "../Components/sharedComponents/mediaHeader/MediaHeader"
+import MainMediaNav from "../Components/sharedComponents/mainMediaNav/MainMediaNav"
+import { globalContext } from "../GlobalStateContext/GlobalContext"
 
 
 const EpisodesLayout = () => {

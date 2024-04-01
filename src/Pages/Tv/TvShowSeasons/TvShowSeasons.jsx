@@ -2,7 +2,7 @@ import { useContext} from "react";
 import {  useParams } from "react-router-dom"
 import "./TvShowSeasons.scss";
 import TvSeasonCard from "../../../Components/tvComponents/tvSeasonCard/TvSeasonCard";
-import { tvShowDetailsContext } from "../../../Layouts/tvShowsLayout/TvShowsLayout";
+import { tvShowDetailsContext } from "../../../Layouts/TvShowsLayout";
 
 
 const TvShowSeasons = () => {

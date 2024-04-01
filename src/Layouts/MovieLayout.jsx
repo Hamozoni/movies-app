@@ -1,13 +1,13 @@
 
 import {Outlet, useLocation, useParams} from 'react-router-dom'
-import MainMediaNav from '../../Components/sharedComponents/mainMediaNav/MainMediaNav';
-import MediaHeader from '../../Components/sharedComponents/mediaHeader/MediaHeader';
-import MediaColorContext from '../../GlobalStateContext/MediaColorContext';
+import MainMediaNav from '../Components/sharedComponents/mainMediaNav/MainMediaNav';
+import MediaHeader from '../Components/sharedComponents/mediaHeader/MediaHeader';
+import MediaColorContext from '../GlobalStateContext/MediaColorContext';
 import { createContext, useContext, useEffect, useState } from 'react';
-import fetchData from '../../utilities/fetchData';
-import Loading from '../../Components/loading/Loading';
-import Error from '../../Components/error/Error';
-import { globalContext } from '../../GlobalStateContext/GlobalContext';
+import fetchData from '../utilities/fetchData';
+import Loading from '../Components/loading/Loading';
+import Error from '../Components/error/Error';
+import { globalContext } from '../GlobalStateContext/GlobalContext';
 
 export const MovieDetailsContext = createContext()
 

@@ -1,7 +1,7 @@
 import "./person.scss";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { personDetailsContext } from "../../../Layouts/personLayout/PersonLayout";
+import { personDetailsContext } from "../../../Layouts/PersonLayout";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
 import PersonStitistics from "../../../Components/personComponents/PersonStitistics/PersonStitistics";

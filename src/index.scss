@@ -167,7 +167,7 @@ img, picture {
           content: '';
           @include postion(absolute,0,0,100%,50%);
           border-radius: $circle;
-          box-shadow: 0 -10px 16px 2px $logo-color;
+          box-shadow: 0px -10px 36px 4px $logo-color;
           animation: animateActiveBTN .5s  ease-out forwards ;
       }
   }

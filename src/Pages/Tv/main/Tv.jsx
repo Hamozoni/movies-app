@@ -11,7 +11,7 @@ import "./Tv.scss";
 import MovieStitistics from '../../../Components/movieComponents/movieStitistics/MovieStitistics';
 
 import Recommendations from "../../../Components/sharedComponents/recommendations/Recommendations";
-import { tvShowDetailsContext } from '../../../Layouts/tvShowsLayout/TvShowsLayout';
+import { tvShowDetailsContext } from '../../../Layouts/TvShowsLayout';
 import { languages } from '../../../utilities/languages';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
