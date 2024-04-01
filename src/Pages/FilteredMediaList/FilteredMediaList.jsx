@@ -82,14 +82,8 @@ const FilteredMediaList = ({mediaType}) => {
         setIsFilteredLoading(true);
         setFilteredError(null);
         setPage(1);
-         const filterKeysList = [];
-        for (let [key, value] of Object.entries(mediaFiltering)) {
-            if(value.length || typeof value === 'number') {
-                filterKeysList.push(`&${key}=${typeof value === "object" ? value?.toString().replaceAll(',','|') : value}`)   
-            }
-        }
-        console.log(filterKeysList);
-       fetchData(`discover/${mediaType}?include_adult=false&page=1${filterKeysList.toString().replaceAll(',','')}`)
+         const filterKeysList = new URLSearchParams(mediaFiltering).toString();
+       fetchData(`discover/${mediaType}?include_adult=false&page=1${filterKeysList}`)
         .then((data)=> {
             setMedia(data);
             setTotalPage(data?.total_pages);
