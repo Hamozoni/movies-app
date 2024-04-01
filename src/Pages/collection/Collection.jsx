@@ -1,6 +1,7 @@
 
-import MovieTvCover from "../../Components/movieComponents/movieTvCover/MovieTvCover"
 import { useContext} from "react";
+
+import MovieTvCover from "../../Components/movieComponents/movieTvCover/MovieTvCover"
 import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 
 import "./collection.scss";

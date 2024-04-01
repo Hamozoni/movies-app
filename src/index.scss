@@ -166,6 +166,7 @@ img, picture {
   &.active,&:hover,&.active:hover {
       position: relative;
       transition: color 1s ;
+      filter: brightness(60%);
       &::before {
           content: '';
           @include postion(absolute,0,0,100%,50%);
@@ -175,11 +176,6 @@ img, picture {
       }
   }
   
-  &:hover {
-      &::before {
-          background-color: $text-light-color;
-      }
-  }
 }
 
 @keyframes animateActiveBTN {

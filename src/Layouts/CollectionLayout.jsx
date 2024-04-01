@@ -14,7 +14,8 @@ import MainMediaNav from "../Components/sharedComponents/mainMediaNav/MainMediaN
 export const collectionContext = createContext()
 
 const CollectionLayout = () => {
-    const {lang} = useContext(globalContext)
+
+    const {lang} = useContext(globalContext);
     const {id} = useParams();
     const  collecUrl  = `collection/${id}`;
 
@@ -38,9 +39,9 @@ const CollectionLayout = () => {
         });
     }
 
-    useEffect(fetchDetails,[id,lang])
+    useEffect(fetchDetails,[collecUrl,lang]);
 
-    const pathName = useLocation().pathname
+    const pathName = useLocation().pathname;
 
 
   return (

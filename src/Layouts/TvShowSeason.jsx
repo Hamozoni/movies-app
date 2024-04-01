@@ -1,8 +1,10 @@
-import { Outlet, useParams } from "react-router-dom"
-import MediaColorContext from "../GlobalStateContext/MediaColorContext"
 import { createContext, useContext, useEffect, useState } from "react";
+import { Outlet, useParams } from "react-router-dom";
+
+import MediaColorContext from "../GlobalStateContext/MediaColorContext"
 import { globalContext } from "../GlobalStateContext/GlobalContext";
 import fetchData from "../utilities/fetchData";
+
 import Loading from "../Components/loading/Loading";
 import Error from "../Components/error/Error";
 import MediaHeader from "../Components/sharedComponents/mediaHeader/MediaHeader";

@@ -1,15 +1,18 @@
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import "./FilteredMediaList.scss";
+
 import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
-import { useParams } from "react-router-dom";
+import { languages } from "../../utilities/languages";
+
 import MovieCard from "../../Components/movieComponents/movieCard/MovieCard";
 import MediaInlineCard from "../../Components/sharedComponents/mediaInlineCard/MediaInlineCard";
 import MediaFilter from "../../Components/mediaFilterComponents/MedidaFilter";
 import Error from "../../Components/error/Error";
 import Loading from "../../Components/loading/Loading";
-import { languages } from "../../utilities/languages";
 
 export const mediaFilter = createContext();
 
@@ -28,6 +31,7 @@ const intialFilter = {
 const FilteredMediaList = ({mediaType}) => {
 
     const {lang,innerWidth,theme} = useContext(globalContext);
+    const {filter}= useParams();
 
     const [meida,setMedia] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -37,7 +41,6 @@ const FilteredMediaList = ({mediaType}) => {
     const [totalPage,setTotalPage] = useState(1);
     const [filteredError,setFilteredError] = useState(null);
 
-    const {filter}= useParams();
 
     const findTilte = ()=> {
 
@@ -51,9 +54,11 @@ const FilteredMediaList = ({mediaType}) => {
         }
     };
 
+    const title = useMemo(findTilte,[filter,lang,mediaType]);
+
     const fetchMedia = ()=>{
 
-        document.title = findTilte();
+        document.title = title;
         setIsPending(true);
         setError(null);
         fetchData(`${mediaType}/${filter}?language=${lang}&page=1`)
@@ -69,7 +74,7 @@ const FilteredMediaList = ({mediaType}) => {
         }) 
     }
 
-    useEffect(fetchMedia,[lang,filter,mediaType]);
+    useEffect(fetchMedia,[lang,filter,mediaType,title]);
 
     const [isFilteredLoading,setIsFilteredLoading] = useState(false);
 
@@ -132,7 +137,7 @@ const FilteredMediaList = ({mediaType}) => {
             <main className="movies">
                 <section className="filterd-media">
                     <h4 className={`t-color-${theme} filt-title`}>
-                        {findTilte()}
+                        {title}
                     </h4>
                     <div className={`${innerWidth > 676 && 'web'} movies-container`}>
                         <div className="filters-box">

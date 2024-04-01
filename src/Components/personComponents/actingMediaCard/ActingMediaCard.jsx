@@ -70,8 +70,10 @@ const ActingMediaCard = ({mediaType,id}) => {
                                 </p>  
                             </div>
                         </nav>
-                        <p className='overview open'>{fitLongString(mediaData?.overview,150)}</p>
-                        <div className={`t-color-${theme}-4 add-to open`}>
+                        <p className={`t-color-${theme}-2 overview open`}>
+                            {fitLongString(mediaData?.overview,150)}
+                        </p>
+                        <div className={`t-color-${theme}-1 add-to open`}>
                             <div className="add scale image-hover open">
                                 <FavoriteIcon className="open" />
                             </div>

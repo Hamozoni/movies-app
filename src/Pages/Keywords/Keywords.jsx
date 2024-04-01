@@ -1,9 +1,11 @@
-import { useContext, useEffect, useState } from "react"
-import fetchData from "../../utilities/fetchData"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import fetchData from "../../utilities/fetchData";
 import { globalContext } from "../../GlobalStateContext/GlobalContext";
 
 import "./Keywords.scss";
+
 import PageNumber from "../../Components/sharedComponents/pageNumber/PageNumber";
 import Error from "../../Components/error/Error";
 import Loading from "../../Components/loading/Loading";
@@ -26,12 +28,12 @@ const Keywords = () => {
     fetchData(`keyword/${id}/movies?include_adult=false&language=${lang}&page=${page}`)
     .then((data)=>{
       setKeywords(data);
-      setIsPending(false);
-      console.log(data);
     })
     .then(error=> {
        setError(error);
-       setIsPending(false);
+    })
+    .finally(()=> {
+      setIsPending(false);
     })
   }
 

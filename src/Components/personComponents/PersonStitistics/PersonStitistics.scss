@@ -4,6 +4,8 @@
 .person-stitis {
     .pers-stit-nav {
         @include flex-box(center,flex-start,10px);
+        width: fit-content;
+        margin: 0 auto;
         padding-top: $padding-10;
         .social-links {
             .social-image {

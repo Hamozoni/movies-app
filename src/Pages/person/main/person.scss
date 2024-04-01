@@ -3,8 +3,8 @@
 
 .person-cover {
     max-width: 100%;
-    padding: $padding;
     .per-cover-container {
+        padding: $padding;
         @media (min-width:720px) {
             @include flex-box(flex-start,flex-start,20px);
             max-width: 100%;
@@ -23,12 +23,14 @@
         .person-img {
             max-width: 300px;
             margin: 0 auto;
+            text-align: center;
             img {
                 border-radius: $border-r;
             }
         }
         .person-name {
             font-size: $f-size-1;
+            padding: $padding-5 0;
         }
         .person-cov-content {
             .piagrahpy {
