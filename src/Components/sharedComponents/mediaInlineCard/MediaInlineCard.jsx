@@ -1,7 +1,7 @@
 
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './mediaCard.scss';
-import { useContext } from 'react';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const MediaInlineCard = ({movie, type})=> {

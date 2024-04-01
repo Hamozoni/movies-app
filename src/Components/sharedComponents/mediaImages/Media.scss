@@ -80,10 +80,6 @@
                 @include flex-box(center,center);
                 width: 150px;
                 height: 200px;
-                a {
-                    font-size: $f-size-5;
-                    font-weight: 600;
-                }
             }
 
         }
@@ -120,8 +116,6 @@
     }
     }
     .view-all {
-        font-size: $f-size-5;
-        font-weight: 600;
         margin-top: $margin;
         display: block;
         @media (max-width: 991px) {

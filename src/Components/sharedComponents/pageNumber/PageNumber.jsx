@@ -38,4 +38,4 @@ const PageNumber = ({page,setPage,totalPages}) => {
   )
 }
 
-export default PageNumber
+export default PageNumber;

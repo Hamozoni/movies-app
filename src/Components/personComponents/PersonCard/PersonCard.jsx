@@ -1,10 +1,11 @@
 
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./PersonCard.scss";
 
 import persinImg from '../../../assets/person.jpg'
-import { useNavigate } from "react-router-dom";
 import fitLongString from "../../../utilities/fitLongString";
-import { useContext } from "react";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 const PersonCard = ({person})=> {
@@ -12,6 +13,7 @@ const PersonCard = ({person})=> {
   const {theme} = useContext(globalContext)
 
   const navigate = useNavigate();
+  
   return (
     <div 
         className="person-card scale" 

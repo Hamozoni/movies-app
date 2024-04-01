@@ -1,14 +1,18 @@
 
-import "./ReviewCard.scss";
-import autherImg from "../../../assets/person.jpg";
-import fitLongString from "../../../utilities/fitLongString";
 import { useContext } from "react";
+
+import "./ReviewCard.scss";
+
+import autherImg from "../../../assets/person.jpg";
+
+import fitLongString from "../../../utilities/fitLongString";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { languages } from "../../../utilities/languages";
 
 const ReviewCard = ({review})=> {
 
   const {theme,lang} = useContext(globalContext);
+  
   return (
     <div className="review-card card">
         <header className="review-header">

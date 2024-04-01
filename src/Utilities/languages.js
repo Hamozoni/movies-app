@@ -96,7 +96,9 @@ export  const languages = {
         genres: 'genres',
         country: 'country',
         language: 'language',
-        loadMore: 'load more'
+        loadMore: 'load more',
+        report: 'report',
+        edit: 'edit'
     },
     ar: {
         dark: 'داكن',
@@ -159,7 +161,7 @@ export  const languages = {
         episode: 'حلقة',
         releaseDates : 'تواريخ الاصدار',
         translations: 'الترجمات',
-        changes: 'التعديلات',
+        changes: 'التغيرات',
         logos: 'الشعارات',
         fandom: 'المعجبين',
         share: "مشاركة",
@@ -193,6 +195,8 @@ export  const languages = {
         genres: 'الفئيات',
         country: 'الدوله',
         language: 'اللغة',
-        loadMore: "حمل المزيد"
+        loadMore: "حمل المزيد",
+        report: 'تبليغ',
+        edit: 'تعديل'
        }
 }

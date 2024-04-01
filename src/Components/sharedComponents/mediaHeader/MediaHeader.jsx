@@ -27,8 +27,9 @@ const MediaHeader = ({imageUrl,title,navigateTo,linkTitle,year=null}) => {
                 <div className="media-back-to">
                     <h3
                         style={{color:color.textColor}}
-                         className="name" >
-                               { title}{year ? `(${new Date(year)?.getFullYear()})` : ''}
+                         className="name" 
+                         >
+                            { title}{year ? `(${new Date(year)?.getFullYear()})` : ''}
                     </h3>
                     <Link 
                         style={{color:color.textColor}}

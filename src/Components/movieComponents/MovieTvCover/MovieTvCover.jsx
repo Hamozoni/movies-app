@@ -1,15 +1,19 @@
 
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./MovieTvCover.scss";
+
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import StarIcon from '@mui/icons-material/Star';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+
 import { languages } from "../../../utilities/languages";
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 import { mediaColorContext } from "../../../GlobalStateContext/MediaColorContext";
@@ -18,6 +22,7 @@ const MovieTvCover = ({details,mediaType})=> {
 
     const {color} = useContext(mediaColorContext);
     const {lang} = useContext(globalContext);
+    
     const [crews,setCrews] = useState([]);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);

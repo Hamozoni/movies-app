@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Recommendations.scss";
 
@@ -7,19 +8,20 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import StarRateIcon from '@mui/icons-material/StarRate';
 
-import { useNavigate } from "react-router-dom";
 import fetchData from "../../../utilities/fetchData";
 import fitLongString from "../../../utilities/fitLongString";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { languages } from "../../../utilities/languages";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
-import { languages } from "../../../utilities/languages";
 
 import noDataFound from "../../../assets/NewImage.png";
 
 function Recommendations({id,mediaType}) {
 
     const {lang,theme} = useContext(globalContext);
+    
     const [recomData,setRecomData] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [selected,setSelected] = useState('recommendations')

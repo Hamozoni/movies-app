@@ -20,15 +20,9 @@
         }  
     }
     .cast-link {
-        color: $logo-color;
-        font-size: $f-size-s;
-        font-weight: bold;
         @media (max-width: 991px) {
             padding: 0 $padding;
         }  
-        &:hover {
-            color: darken($color: $logo-color, $amount: 10);
-        }
     }
     .view-more {
         min-width: 220px;

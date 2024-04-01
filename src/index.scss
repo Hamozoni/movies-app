@@ -161,25 +161,18 @@ img, picture {
     }
   cursor: pointer;
   &.active,&:hover,&.active:hover {
-      color: $logo-color;
       position: relative;
       transition: color 1s ;
-      a {
-        color: $logo-color;;
-      }
       &::before {
           content: '';
           @include postion(absolute,0,0,100%,50%);
           border-radius: $circle;
-          background-color: $logo-color;
-          box-shadow: 0 -10px 16px 2px rgba(36, 35, 35, 0.6);
+          box-shadow: 0 -10px 16px 2px $logo-color;
           animation: animateActiveBTN .5s  ease-out forwards ;
       }
   }
   
   &:hover {
-      color: $text-dark-color;
-
       &::before {
           background-color: $text-light-color;
       }

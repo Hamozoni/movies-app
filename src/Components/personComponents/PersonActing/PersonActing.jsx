@@ -1,18 +1,20 @@
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 import "./PersonActing.scss";
-import { useContext, useEffect, useState } from 'react';
+
 import ActingMediaCard from '../actingMediaCard/ActingMediaCard';
 import { languages } from '../../../utilities/languages';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 const PersonActing = ({knownFor}) => {
 
-    const [mediaCardIndex,setMediaCardIndex] = useState(0);
-    const [isMediaOpen,setIsMediaOpen] = useState(false);
     const {lang,theme} = useContext(globalContext);
 
+    const [mediaCardIndex,setMediaCardIndex] = useState(0);
+    const [isMediaOpen,setIsMediaOpen] = useState(false);
 
     useEffect(()=>{
         if(isMediaOpen === true){
@@ -29,6 +31,7 @@ const PersonActing = ({knownFor}) => {
             return ()=> root.removeEventListener('click',handleClick)
         };
     });
+
   return (
     <section className="pers-acting">
         <header className="pers-acting-head">
@@ -52,7 +55,7 @@ const PersonActing = ({knownFor}) => {
             <tbody className='credits-tabel-body '>
                 {
                     knownFor?.cast?.map((movie,i)=>(  
-                        <tr key={movie?.id} className="part b-b">
+                        <tr key={i + movie.id} className="part b-b">
                             <td className={`t-color-${theme}-1 year`}>
                                 {new Date(movie?.release_date)?.getFullYear()  || new Date(movie?.first_air_date)?.getFullYear() || '___'}
                             </td>

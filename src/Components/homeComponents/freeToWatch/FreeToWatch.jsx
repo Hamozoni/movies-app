@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from "react";
+
 import fetchData from "../../../utilities/fetchData";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import MovieCard from "../../movieComponents/movieCard/MovieCard";
 import { languages } from "../../../utilities/languages";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
+import MovieCard from "../../movieComponents/movieCard/MovieCard";
 
 const FreeToWatch = ()=> {
 
     const {lang,theme} = useContext(globalContext);
+    
     const [mediaType,setMediaType] = useState('movie');
     const [media,setMedia] = useState([]);
     const [isPending,setIsPending] = useState(true);

@@ -2,12 +2,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import "./Header.scss";
 import { useContext, useState } from "react";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
+
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { SearchForm } from "../../homeComponents/homeSearchBar/SearchBar";
+import { languages } from '../../../utilities/languages';
+
 import HeaderNav from '../headerNav/HeaderNav';
 import HeaderIcons from '../headerIcons/HeaderIcons';
-import { languages } from '../../../utilities/languages';
 
 const Header = ()=> {
 

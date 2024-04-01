@@ -1,26 +1,23 @@
 import { useContext, useState } from "react";
-import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
 
 import "./SortingGauge.scss";
 import { globalContext } from "../../../../GlobalStateContext/GlobalContext";
 
+import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
 
 const SortingGauge = ({title,renderFrom}) => {
 
 
-    const [isRatedPanel,setIsRatedPanel] = useState(false);
     const {mediaFiltering,setMediaFiltering} = useContext(mediaFilter);
     const {theme} = useContext(globalContext);
+    
+    const [isRatedPanel,setIsRatedPanel] = useState(false);
 
     const handleRatingRang = (e)=> {
 
-        console.log(e)
-
         setIsRatedPanel(true);
          setMediaFiltering(prev=> {
-
             const isFalidArea =  e.clientX !== 0 && e.clientX < 230 &&  e.clientX > 27;
-
                 if(e.clientX < 119 ) {
                     if(renderFrom === 'rating'){
                         return {

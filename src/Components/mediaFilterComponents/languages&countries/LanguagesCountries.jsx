@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
-import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-
 import SearchIcon from '@mui/icons-material/Search';
+
 import "./LangCountries.scss"
+
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { languages } from "../../../utilities/languages";
+import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 
 const LanguagesCountries = ({type,data}) => {
 

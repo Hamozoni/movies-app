@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from "react";
+
 import fetchData from "../../../utilities/fetchData";
+
 import { languages } from "../../../utilities/languages";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import MovieCard from "../../movieComponents/movieCard/MovieCard";
+
 import "./Trending.scss";
+
+import MovieCard from "../../movieComponents/movieCard/MovieCard";
 import Error from "../../error/Error";
 import Loading from "../../loading/Loading";
 

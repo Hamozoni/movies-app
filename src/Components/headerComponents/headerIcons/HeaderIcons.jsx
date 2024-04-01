@@ -1,12 +1,13 @@
-import {languages } from "../../../utilities/languages";
+import { useContext} from "react";
 
 import NightlightOutlinedIcon from '@mui/icons-material/NightlightOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CloseIcon from '@mui/icons-material/Close';
+
 import "./headerIcons.scss";
 
-import { useContext} from "react";
+import {languages } from "../../../utilities/languages";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 const HeaderIcons = ({setisSearch,isSearch}) => {

@@ -1,5 +1,6 @@
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useContext} from 'react';
+
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ReactPlayer from 'react-player/youtube';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
@@ -20,7 +21,9 @@ const TrailerPlayer = () => {
     <section className='trailer-player'>
         <div className="trialer-container">
             <header className="tr-header">
-                <h4 className="off-tr">{trailer?.type}</h4>
+                <h4 className="off-tr">
+                    {trailer?.type}
+                </h4>
                 <span className="cancel" onClick={handleTrailer}>
                     <CloseRoundedIcon />
                 </span>

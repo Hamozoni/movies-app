@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 
 import "./Media.scss";
-import { Link } from "react-router-dom";
-// import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+
 import fetchData from "../../../utilities/fetchData";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { languages } from "../../../utilities/languages";
+
 import VideosCard from "../../../Pages/sharedPages/mediaVideos/VideosCard";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import { languages } from "../../../utilities/languages";
 
 const MediaCard = ({data,type})=>{
     return (
@@ -17,11 +17,12 @@ const MediaCard = ({data,type})=>{
 
             i < 9 &&
             <div className={`${type} img-container`}key={media?.file_path}>
-                    <img 
-                        loading="lazy"
-                        src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
-                        alt={media?.file_path}
-                       />
+                <img 
+                    className="image-hover"
+                    loading="lazy"
+                    src={process.env.REACT_APP_BASE_URL + 'original' + media?.file_path} 
+                    alt={media?.file_path}
+                    />
             </div>
           ))
 
@@ -31,6 +32,8 @@ const MediaCard = ({data,type})=>{
 
 const MovieMedia = ({id,mediaType})=> {
 
+    const {lang,theme} = useContext(globalContext);
+
     const [mediaImages,setMediaImages] = useState(null);
     const [selection,setSelecion] = useState('backdrops');
     const [mostPopular,setMostPopular] = useState([]);
@@ -39,8 +42,6 @@ const MovieMedia = ({id,mediaType})=> {
     const [error,setError] = useState(null);
     const [isPending2,setIsPending2] = useState(true);
     const [error2,setError2] = useState(null);
-
-    const {lang,theme} = useContext(globalContext);
 
     const fetchImages = ()=> {
 
@@ -52,12 +53,13 @@ const MovieMedia = ({id,mediaType})=> {
             const allData = data.backdrops.concat(data.posters)
                 const popular = allData.filter((el)=> el.vote_average < 5.6);
                 setMostPopular([...popular]);
-                setIsPending(false);
         })
         .catch(error=> {
             setError(error);
+        })
+        .finally(()=> {
             setIsPending(false)
-        });
+        })
     }
      useEffect(fetchImages,[id,mediaType])
 
@@ -115,7 +117,7 @@ const MovieMedia = ({id,mediaType})=> {
             <div className="media-content">
                 <div className="media-content-container">
                     {
-                         isPending ? <Loading width='100%' height='300px' /> :
+                        isPending ? <Loading width='100%' height='300px' /> :
                         mediaImages ?
                             ( 
                                 selection === 'most popular' ?

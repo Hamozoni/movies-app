@@ -5,6 +5,7 @@ import './error.scss';
 const Error = ({error,height,onClick}) => {
 
   const {lang,theme} = useContext(globalContext);
+  
   return (
     <div 
         className={`error`}

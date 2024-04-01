@@ -1,12 +1,14 @@
 import { useContext, useState } from "react"
-import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
-import fetchData from "../../../../utilities/fetchData";
 
 import ClearIcon from '@mui/icons-material/Clear';
 
 import "./Keywords.scss";
+
+import fetchData from "../../../../utilities/fetchData";
 import { languages } from "../../../../utilities/languages";
 import { globalContext } from "../../../../GlobalStateContext/GlobalContext";
+
+import { mediaFilter } from "../../../../Pages/filteredMediaList/FilteredMediaList";
 import Loading from "../../../loading/Loading";
 import Error from "../../../error/Error";
 

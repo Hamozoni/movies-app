@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import SortingGauge from "./sortingGauge/SortingGauge"
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import { useParams } from "react-router-dom";
+
 import fetchData from "../../../utilities/fetchData";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { languages as languagesList } from "../../../utilities/languages";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 import "./Filters.scss";
+
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
+import SortingGauge from "./sortingGauge/SortingGauge"
 import Keywords from "./keywords/Keywords";
 import LanguagesCountries from "../languages&countries/LanguagesCountries";
 import Loading from "../../loading/Loading";
@@ -19,16 +21,13 @@ import Error from "../../error/Error";
 const Filters = () => {
 
     const {mediaFiltering,setMediaFiltering} = useContext(mediaFilter);
+    const {lang,languages,theme} = useContext(globalContext);
+    const {filter} = useParams();
 
     const [genres,setGenres] = useState(null);
     const [isOpen,setIsOpen] = useState(false);
     const [isPending,setIsPending] = useState(false);
     const [error,setError] = useState(null);
-
-
-    const {lang,languages,theme} = useContext(globalContext);
-
-    const {filter} = useParams();
 
     const fetchGenres = ()=> {
 

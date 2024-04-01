@@ -1,3 +1,5 @@
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import "./PersonStitistics.scss";
 
@@ -6,14 +8,13 @@ import instagram_id from '../../../assets/insta.png';
 import twitter_id from '../../../assets/twiter.png';
 import tiktok_id from '../../../assets/tiktok.png';
 import youtube_id from '../../../assets/youtube.png';
-import { useContext, useEffect, useState } from "react";
+
 import fetchData from "../../../utilities/fetchData";
 import { languages } from "../../../utilities/languages";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import { useParams } from "react-router-dom";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
-
 
 const images = {
     facebook_id,
@@ -25,13 +26,13 @@ const images = {
 
 
 const PersonStitistics = ({details}) => {
+    const {lang,theme} = useContext(globalContext);
+    const {id} = useParams();
 
     const [externalIds,setExternalIds] = useState(null);
     const [error,setEror] = useState(null);
     const [isPending,setIsPending] = useState(true);
 
-    const {lang,theme} = useContext(globalContext);
-    const {id} = useParams();
 
     const fetchExternalIds = ()=> {
 

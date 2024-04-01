@@ -1,25 +1,25 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../utilities/fetchData";
-import Loading from "../../loading/Loading";
 import { Link } from "react-router-dom";
-import Error from "../../error/Error";
+
 import StarIcon from '@mui/icons-material/Star';
-import fitLongString from "../../../utilities/fitLongString";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
-import './actingMediaCard.scss';
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import fetchData from "../../../utilities/fetchData";
+import Loading from "../../loading/Loading";
+import Error from "../../error/Error";
+import fitLongString from "../../../utilities/fitLongString";
 
+import './actingMediaCard.scss';
 
 const ActingMediaCard = ({mediaType,id}) => {
+
+    const {lang,theme} = useContext(globalContext);
 
     const [mediaData,setMediaData] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
-
-    const {lang,theme} = useContext(globalContext);
-
 
     const fetchMedia = () => {
 

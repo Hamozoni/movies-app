@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import fetchData from "../../../utilities/fetchData"
+import { useNavigate } from "react-router-dom";
+
+import fetchData from "../../../utilities/fetchData";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
+
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import { useNavigate } from "react-router-dom";
 
 
 const LatesTrailerVideoCard = ({detail,onMouse}) => {

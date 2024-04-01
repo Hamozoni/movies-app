@@ -1,19 +1,19 @@
+import { useContext } from 'react';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import "./MovieCard.scss";
 import { useNavigate } from 'react-router-dom';
-
-import mediaImage from "../../../assets/media.jpg"
-import { useContext } from 'react';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
+import mediaImage from "../../../assets/media.jpg"
+
 const MovieCard = ({movie, type})=> {
+
     const navigate = useNavigate();
     const {theme} = useContext(globalContext);
 
     const imgUrl =  movie?.poster_path ;
 
     const handleNavigation = ()=> {
-
         navigate(`/${type}/${movie?.id}`);
     }
 

@@ -2,13 +2,10 @@
 import Sort from "./sort/Sort";
 import WhereToWatch from "./whereToWatch/WhereToWatch";
 import Filters from "./filters/Filters";
-import { useParams } from "react-router-dom";
 
 
-const MediaFilter = ({mediaType}) => {
 
-    const {filter} = useParams();
-
+const MediaFilter = () => {
 
   return (
     <section className="filters">

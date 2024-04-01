@@ -1,16 +1,19 @@
+import { useContext, useState } from 'react';
+
 import StarIcon from '@mui/icons-material/Star';
-import "./EpisodeCard.scss";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+import "./EpisodeCard.scss";
+
+import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import imageURL from '../../../assets/smooth-gray-background-with-high-quality_53876-124606.avif'
 import EpisodeInfo from './EpisodeInfo';
-import { useContext, useState } from 'react';
-import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
 
 const EpisodeCard = ({episode}) => {
-
-    const [episodeIndex,setEpisodeIndex] = useState(null);
+    
     const {lang,theme} = useContext(globalContext);
+    const [episodeIndex,setEpisodeIndex] = useState(null);
 
   return (
     <div className="episode-card card" id={episode.episode_number}>

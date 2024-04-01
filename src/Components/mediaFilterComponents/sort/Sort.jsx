@@ -1,16 +1,39 @@
+import { useContext, useState} from 'react';
+
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import "./Sort.scss";
-import { useContext, useState} from 'react';
+
 import { mediaFilter } from '../../../Pages/filteredMediaList/FilteredMediaList';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
+
+
+const optionList = {
+    en : {
+        popDes: 'popularty descending',
+        popAsc :'popularty ascending',
+        ratDes: 'rating descending',
+        ratAsc: 'rating ascending',
+        relDaDes: 'release date descending',
+        relDaAsc: 'release date ascending',
+    },
+    ar : {
+        popDes: 'الشهرة تصاعديا',
+        popAsc :'الشهرة تنازليا',
+        ratDes: 'التقيم تصاعديا',
+        ratAsc: 'التقيم تنازليا',
+        relDaDes: 'تاريخ الإصدار تصاعديا',
+        relDaAsc: 'تاريخ الإصدار تنازليا',
+    }
+}
 
 const Sort = () => {
 
     const {setMediaFiltering} = useContext(mediaFilter);
-    const [isSortOpen,setIsSortOpen] = useState(false);
     const {lang,theme} = useContext(globalContext);
+
+    const [isSortOpen,setIsSortOpen] = useState(false);
 
     const handleSelection = (e)=> {
         setMediaFiltering( prev=> {
@@ -20,25 +43,6 @@ const Sort = () => {
             }
         })
     };
-
-    const optionList = {
-        en : {
-            popDes: 'popularty descending',
-            popAsc :'popularty ascending',
-            ratDes: 'rating descending',
-            ratAsc: 'rating ascending',
-            relDaDes: 'release date descending',
-            relDaAsc: 'release date ascending',
-        },
-        ar : {
-            popDes: 'الشهرة تصاعديا',
-            popAsc :'الشهرة تنازليا',
-            ratDes: 'التقيم تصاعديا',
-            ratAsc: 'التقيم تنازليا',
-            relDaDes: 'تاريخ الإصدار تصاعديا',
-            relDaAsc: 'تاريخ الإصدار تنازليا',
-        }
-    }
 
   return (
     <section className="sort card b">

@@ -1,17 +1,18 @@
-// import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 import "./MovieStitistics.scss"
-import { useNavigate } from 'react-router-dom';
-import fetchData from '../../../utilities/fetchData';
 
 import facebook_id from '../../../assets/facebook.png';
 import imdb_id from '../../../assets/imdb.png';
 import instagram_id from '../../../assets/insta.png';
 import twitter_id from '../../../assets/twiter.png';
+
 import Error from '../../error/Error';
 import Loading from '../../loading/Loading';
+
+import fetchData from '../../../utilities/fetchData';
 import {languages as languagesList} from '../../../utilities/languages';
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 
@@ -26,6 +27,8 @@ const images = {
 
 
 const MovieStitistics = ({id,details,type}) => {
+
+  const {lang,languages,theme} = useContext(globalContext);
      
   const [keywords,setKeywords] = useState();
   const [externalIds,setExternalIds] = useState();
@@ -34,36 +37,35 @@ const MovieStitistics = ({id,details,type}) => {
   const [isPending,setIsPending] = useState(true);
   const [error,setError] = useState(null);
 
-  const {lang,languages,theme} = useContext(globalContext);
 
   const fetch = ()=> {
-    setIsPending(true);
-    setError(null);
-    setIsPending2(true);
-    setError2(null);
+      setIsPending(true);
+      setError(null);
+      setIsPending2(true);
+      setError2(null);
 
-    fetchData(`${type}/${id}/keywords`)
-    .then((data)=>{
-      setKeywords(data?.keywords || data?.results );
-    })
-    .catch(error=> {
-      setError(error);
-    }).finally(()=> {
-      setIsPending(false);
-    })
+      fetchData(`${type}/${id}/keywords`)
+      .then((data)=>{
+        setKeywords(data?.keywords || data?.results );
+      })
+      .catch(error=> {
+        setError(error);
+      }).finally(()=> {
+        setIsPending(false);
+      })
 
 
-    fetchData(`${type}/${id}/external_ids`)
-    .then((data)=>{
-      setExternalIds(data);
-      setIsPending2(false);
+      fetchData(`${type}/${id}/external_ids`)
+      .then((data)=>{
+        setExternalIds(data);
+      })
+      .catch(error=>{
+        setError2(error);
+      })
+      .finally(()=> {
+        setIsPending2(false);
 
-      console.log(data)
-    })
-    .catch(error=>{
-      setIsPending2(false);
-      setError2(error);
-    });
+      })
   }
 
   useEffect(fetch,[id,type,details]);
@@ -95,7 +97,7 @@ const MovieStitistics = ({id,details,type}) => {
                 {
                 details?.homepage && 
                   <a 
-                      className='social-links'
+                      className='social-links image-hover'
                       href={details?.homepage} 
                       target='_blank'
                       rel="noreferrer"
@@ -133,7 +135,7 @@ const MovieStitistics = ({id,details,type}) => {
                             {languagesList[lang].budget}
                           </h4>
                           <h5 className={`t-color-${theme}-3`}>
-                            ${ new Intl.NumberFormat().format(details?.budget)}
+                            ${ new Intl.NumberFormat().format(details?.budget) || '__'}
                           </h5>
                       </div>
                       <div className="stat">
@@ -141,7 +143,7 @@ const MovieStitistics = ({id,details,type}) => {
                             {languagesList[lang].revenue}
                           </h4>
                           <h5 className={`t-color-${theme}-3`}>
-                            ${new Intl.NumberFormat().format(details?.revenue)}
+                            ${new Intl.NumberFormat().format(details?.revenue) || '__'}
                           </h5>
                       </div>
                     </>

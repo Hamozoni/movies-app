@@ -1,10 +1,10 @@
-import {languages } from "../../../utilities/languages";
+import { useContext} from "react";
+import { useNavigate } from "react-router-dom";
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import { useContext} from "react";
+import {languages } from "../../../utilities/languages";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import { useNavigate } from "react-router-dom";
 
 import "./headerNav.scss";
 
@@ -15,7 +15,6 @@ const HeaderNav = ({isMenu,setIsMenu}) => {
 
   const handleNavigate = (filter,mediaType)=>{
       navigate(`list/${mediaType}/${filter}`);
-
   };
 
   return (

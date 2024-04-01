@@ -1,11 +1,14 @@
 import {useContext, useEffect, useState } from "react";
+
 import fetchData from "../../../utilities/fetchData";
 
 
 import "./LatestTrailer.scss";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 import LatesTrailerVideoCard from "./LatesTrailerVideoCard";
+
 import { languages } from "../../../utilities/languages";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
@@ -20,9 +23,6 @@ const LatestTrailer = () => {
 
     const {lang,theme} = useContext(globalContext);
 
-
-
-    // const navigate = useNavigate();
 
     const fecth = ()=> {
         setIsPending(true);
@@ -87,7 +87,10 @@ const LatestTrailer = () => {
                             isPending ? <Loading width='100%' height='330px'/> : 
                             trailerData.length > 0 ?
                             trailerData?.map((detail,i)=> (
-                            <LatesTrailerVideoCard detail={detail} onMouse={()=> setBackgroundImageIndex(i)}/>
+                            <LatesTrailerVideoCard 
+                                detail={detail} 
+                                onMouse={()=> setBackgroundImageIndex(i)}
+                                />
                             ))
                             :
                             error && <Error error={error} height='330px' onClick={fecth} /> 

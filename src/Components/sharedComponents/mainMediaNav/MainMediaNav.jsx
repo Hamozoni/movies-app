@@ -1,25 +1,28 @@
+import { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 import "./MainmediaNav.scss";
-import { Link, useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import fetchData from '../../../utilities/fetchData';
 
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+
 import { globalContext } from '../../../GlobalStateContext/GlobalContext';
 import { languages } from '../../../utilities/languages';
+import fetchData from '../../../utilities/fetchData';
+
 import Loading from '../../loading/Loading';
 import Error from '../../error/Error';
 
 const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
+
+    const {innerWidth,lang,theme} = useContext(globalContext);
     const {id} = useParams();
 
     const [mediaData,setMediaData] = useState(null);
     const [videos,setVideos] = useState(null);
     const [error,setError] = useState(null);
     const [isPending,setIsPending] = useState(true);
-
-    const {innerWidth,lang,theme} = useContext(globalContext);
 
     const fetchImages = ()=> {
 
@@ -195,4 +198,4 @@ const MainMediaNav = ({linkUrl,overview,media,isVideos = false}) => {
   )
 }
 
-export default MainMediaNav
+export default MainMediaNav;

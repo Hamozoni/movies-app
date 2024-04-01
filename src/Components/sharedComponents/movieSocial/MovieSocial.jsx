@@ -1,26 +1,27 @@
-import { Link, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
-
+import { Link, useParams } from "react-router-dom"
 
 import "./MovieSocial.scss";
+
 import fetchData from "../../../utilities/fetchData";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
+import { languages } from "../../../utilities/languages";
+
 import ReviewCard from "../../sharedComponents/reviewCard/ReviewCard";
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
-import { languages } from "../../../utilities/languages";
 
 const MovieSocial = ({mediaType})=> {
 
+    const {lang,theme} = useContext(globalContext);
     const {id} = useParams();
 
     const [reviews,setReviews] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
 
-    const {lang,theme} = useContext(globalContext);
+    const fetch = ()=> {
 
-    const fetch = ()=>{
         setIsPending(true);
         setError(null);
         fetchData(`${mediaType}/${id}/reviews?language=${lang}&page=1`)
@@ -61,7 +62,10 @@ const MovieSocial = ({mediaType})=> {
                 </div>
                 {
                      reviews.length > 0 &&
-                    <Link to={`/${mediaType}/${id}/reviews`} className="read-all-review link-hover"> 
+                    <Link 
+                        to={`/${mediaType}/${id}/reviews`} 
+                        className="read-all-review link-color"
+                        > 
                         {languages[lang].readAllReviews}
                     </Link>
                 }

@@ -54,7 +54,7 @@ const TopBilledCast = ({mediaType,id})=> {
             <div className="view-more">
                 <Link 
                     to={`/movie/${id}/castCrew`} 
-                    className="cast-link link-hover"
+                    className="cast-link link-color"
                     >
                         {languages[lang].viewMore} <ArrowRightAltRoundedIcon />
                 </Link>
@@ -63,7 +63,7 @@ const TopBilledCast = ({mediaType,id})=> {
         </div>
         <Link 
             to={`/movie/${id}/castCrew`} 
-            className="cast-link link-hover"
+            className="cast-link link-color"
             >
                 {languages[lang].allCrew}
         </Link>

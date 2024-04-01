@@ -1,15 +1,18 @@
 
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import "./WhereToWatch.scss";
+
 import fetchData from "../../../utilities/fetchData";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
-import { useParams } from "react-router-dom";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import "../sort/Sort.scss";
+
 import { mediaFilter } from "../../../Pages/filteredMediaList/FilteredMediaList";
 import LanguagesCountries from "../languages&countries/LanguagesCountries";
 import Loading from "../../loading/Loading";
@@ -21,16 +24,16 @@ import Error from "../../error/Error";
 const WhereToWatch = () => {
 
     const{mediaFiltering,setMediaFiltering} = useContext(mediaFilter);
+    const {lang,countries,theme} = useContext(globalContext);
 
+    const {filter} = useParams();
 
     const [providers,setProviders] = useState(null);
     const [isPending,setIsPending] = useState(true);
     const [error,setError] = useState(null);
     const [isOpen,setIsOpen] = useState(true);
 
-    const {lang,countries,theme} = useContext(globalContext);
 
-    const {filter} = useParams();
 
     const fetchProviders = ()=>{
         setIsPending(true);

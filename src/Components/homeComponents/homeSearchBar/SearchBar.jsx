@@ -1,26 +1,27 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import fetchData from "../../../utilities/fetchData";
+
 import { languages } from "../../../utilities/languages"
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 import "./SearchBar.scss";
-import { useNavigate } from "react-router-dom";
-import fetchData from "../../../utilities/fetchData";
+
 import Loading from "../../loading/Loading";
 import Error from "../../error/Error";
 
 export const SearchForm = ()=> {
 
     const { lang,theme } = useContext(globalContext);
-
     const [query,setQuery] = useState('');
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSearch = (e)=> {
         e.preventDefault();
         if(query?.length > 1){
             navigate(`/search/movie?query=${query}`);
         }
-
    };
 
     return (
@@ -32,7 +33,7 @@ export const SearchForm = ()=> {
             type="search" 
             placeholder={languages[lang].searchPlaceholder}/>
         <button 
-            className={`t-color-${theme}-2 scale back-color-${theme}-3 link-hover  search-btn`}
+            className={`t-color-${theme} scale back-color-${theme}-2 link-hover  search-btn`}
             onClick={(e)=> handleSearch(e)}
             >
             {languages[lang].search}

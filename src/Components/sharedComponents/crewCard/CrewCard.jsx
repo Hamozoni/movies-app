@@ -1,12 +1,11 @@
 import { Link, useNavigate } from "react-router-dom"
-import fitLongString from "../../../utilities/fitLongString"
-
-import persinImg from "../../../assets/person.jpg";
+import { useContext } from "react";
 
 import "./crewCard.scss";
-import { useContext } from "react";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
+import fitLongString from "../../../utilities/fitLongString"
+import persinImg from "../../../assets/person.jpg";
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 const CrewCard = ({person}) => {
 
