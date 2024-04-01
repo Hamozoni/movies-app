@@ -156,7 +156,7 @@ const MovieStitistics = ({id,details,type}) => {
                       <div className="net-images">
                           {
                             details?.networks?.map((network)=> (
-                              <div className='network-image'>
+                              <div className='network-image' key={network.id}>
                                 <img 
                                     className='image-hover'
                                     src={process.env.REACT_APP_BASE_URL + 'original' + network?.logo_path} 

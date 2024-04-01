@@ -2,17 +2,18 @@ import { useContext, useEffect, useState } from "react"
 
 
 import './PopularPersons.scss';
+import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
+
 import PersonCard from "../../../Components/personComponents/PersonCard/PersonCard";
 import PageNumber from "../../../Components/sharedComponents/pageNumber/PageNumber";
 import Loading from "../../../Components/loading/Loading";
 import Error from "../../../Components/error/Error";
-import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 
 
 const PopularPresons = () => {
 
-    const {lang} = useContext(globalContext);
+    const {lang,theme} = useContext(globalContext);
 
     const [page,setPage] = useState(1);
     const [persons,setPersons] = useState(null);
@@ -41,7 +42,9 @@ const PopularPresons = () => {
 
   return (
     <section className="popular-people">
-        <h4 className="p-title">{lang === 'ar' ?  'مشاهير': 'popular people'}</h4>
+        <h4 className={`t-color-${theme} p-title`}>
+            {lang === 'ar' ?  'مشاهير': 'popular people'}
+        </h4>
         <div className="persons-cards">
 
             {

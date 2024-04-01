@@ -1,24 +1,26 @@
-import "./person.scss";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+
+import "./person.scss";
 import { personDetailsContext } from "../../../Layouts/PersonLayout";
 import { globalContext } from "../../../GlobalStateContext/GlobalContext";
 import fetchData from "../../../utilities/fetchData";
-import PersonStitistics from "../../../Components/personComponents/PersonStitistics/PersonStitistics";
-import MovieCard from "../../../Components/movieComponents/movieCard/MovieCard";
 import fitLongString from "../../../utilities/fitLongString";
-import PersonActing from "../../../Components/personComponents/PersonActing/PersonActing";
 import { languages } from "../../../utilities/languages";
+
+import PersonStitistics from "../../../Components/personComponents/PersonStitistics/PersonStitistics";
 import Loading from "../../../Components/loading/Loading";
+import MovieCard from "../../../Components/movieComponents/movieCard/MovieCard";
 import Error from "../../../Components/error/Error";
+import PersonActing from "../../../Components/personComponents/PersonActing/PersonActing";
 
 
 const Person = () => {
 
     const {id} = useParams();
     const { details} = useContext(personDetailsContext);
-
     const {lang,innerWidth,theme} = useContext(globalContext);
+
     const [knownFor,setKnownFor] = useState(null);
     const [error,setError] = useState(null);
     const [isPending,setIsPending] = useState(true);
@@ -52,7 +54,10 @@ const Person = () => {
                         alt={details?.name} 
                         />
                         {
-                            innerWidth < 630 && <h3 className="person-name">{details?.name}</h3>
+                            innerWidth < 720 && 
+                            <h3 className={`t-color-${theme} person-name`}>
+                                {details?.name}
+                            </h3>
                         }
                 </div>
                 <PersonStitistics details={details}/>

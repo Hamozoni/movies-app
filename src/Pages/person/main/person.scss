@@ -3,22 +3,27 @@
 
 .person-cover {
     max-width: 100%;
+    padding: $padding;
     .per-cover-container {
-        @media (min-width: 992px) {
-            padding: $padding $padding-40;
+        @media (min-width:720px) {
+            @include flex-box(flex-start,flex-start,20px);
+            max-width: 100%;
             .person-info {
-               width: 25%;
+                min-width: 300px;
             }
             .person-cov-content {
-                width: 75%;
+              max-width: calc(100% - 300px);
             }
+            
         }
-        padding: $padding;
+        @media (min-width: 992px) {
+           padding: $padding $padding-40;
+           gap: 40px;
+        }
         .person-img {
-            text-align: center;
+            max-width: 300px;
+            margin: 0 auto;
             img {
-                width: 300px;
-                max-width: 100%;
                 border-radius: $border-r;
             }
         }
@@ -40,23 +45,6 @@
                     @include flex-box(flex-start);
                 }
             }
-        }
-        @media (min-width:630px) {
-            @include flex-box(flex-start,flex-start,20px);
-            .person-info {
-                width: 30%;
-                .person-img {
-                    img {
-                        max-width: 100%;
-                        border-radius: $border-r;
-                    }
-                }
-
-            }
-            .person-cov-content {
-                width: 70%;
-            }
-            
         }
     } 
 }

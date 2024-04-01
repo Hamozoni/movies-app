@@ -32,6 +32,9 @@ li {
   list-style: none;
   cursor: pointer;
 }
+button {
+  background-color: transparent;
+}
 
 input, input:focus, select{
   outline-color: transparent !important;
