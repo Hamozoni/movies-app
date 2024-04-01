@@ -72,4 +72,4 @@ const CollectionLayout = () => {
   )
 }
 
-export default CollectionLayout
+export default CollectionLayout;
