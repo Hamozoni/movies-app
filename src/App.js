@@ -5,7 +5,7 @@ import { globalContext } from './GlobalStateContext/GlobalContext';
 
 import Header from './Components/headerComponents/header/Header.jsx';
 import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
-import Home from './Pages/home/Home.jsx';
+import Home from './Pages/Home/Home.jsx';
 import FilteredMediaList from './Pages/filteredMediaList/FilteredMediaList.jsx';
 import PopularPresons from './Pages/person/popularPersons/PopularPresons.jsx';
 import MovieLayout from './Layouts/MovieLayout.jsx';
