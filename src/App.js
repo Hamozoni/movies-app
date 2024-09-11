@@ -5,7 +5,7 @@ import { globalContext } from './GlobalStateContext/GlobalContext';
 
 // pages
 import Home from './Pages/Home/Home.jsx';
-import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList.jsx';
+import FilteredMediaList from './Pages/filteredMediaList/FilteredMediaList.jsx';
 import PopularPresons from './Pages/person/popularPersons/PopularPresons.jsx';
 import Main from './Pages/Movie/Main.jsx';
 import Reviews from './Pages/sharedPages/reviews/Reviews.jsx';
