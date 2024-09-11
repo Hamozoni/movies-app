@@ -39,8 +39,6 @@ import Footer from './Components/Footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 
 
-
-
 function App() {
 
   const {trailer} = useContext(globalContext);
