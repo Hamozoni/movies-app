@@ -18,8 +18,8 @@ import Tv from './Pages/Tv/main/Tv.jsx';
 import TvShowSeasons from './Pages/Tv/TvShowSeasons/TvShowSeasons.jsx';
 import SeasonEpisodes from './Pages/Tv/SeasonEpisodes/SeasonEpisodes.jsx';
 import Person from './Pages/person/main/Person.jsx';
-import Keywords from './Pages/keywords/Keywords.jsx';
-import Search from './Pages/search/Search.jsx';
+import Keywords from './Pages/Keywords/Keywords.jsx';
+import Search from './Pages/Search/Search.jsx';
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
 import Collection from './Pages/Collection/Collection.jsx';
 import BackdropsPosters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
@@ -35,7 +35,7 @@ import PersonLayout from './Layouts/PersonLayout.jsx';
 // components
 import Header from './Components/headerComponents/header/Header.jsx';
 import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
-import Footer from './Components/footer/Footer.jsx';
+import Footer from './Components/Footer/Footer.jsx';
 import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 
 
