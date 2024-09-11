@@ -18,7 +18,7 @@ import Translations from './Pages/sharedPages/translations/Translations.jsx';
 import Changes from './Pages/sharedPages/changes/Changes.jsx';
 
 import TvShowsLayout from './Layouts/TvShowsLayout.jsx';
-import Tv from './Pages/tv/main/Tv.jsx';
+import Tv from './Pages/Tv/main/Tv.jsx';
 import TvShowSeasons from './Pages/tv/TvShowSeasons/TvShowSeasons.jsx';
 import SeasonEpisodes from './Pages/tv/SeasonEpisodes/SeasonEpisodes.jsx';
 import Person from './Pages/person/main/Person.jsx';
