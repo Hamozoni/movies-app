@@ -3,36 +3,42 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { globalContext } from './GlobalStateContext/GlobalContext';
 
-import Header from './Components/headerComponents/header/Header.jsx';
-import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
+// pages
 import Home from './Pages/Home/Home.jsx';
 import FilteredMediaList from './Pages/FilteredMediaList/FilteredMediaList.jsx';
 import PopularPresons from './Pages/person/popularPersons/PopularPresons.jsx';
-import MovieLayout from './Layouts/MovieLayout.jsx';
-import Main from './Pages/movie/Main.jsx';
+import Main from './Pages/Movie/Main.jsx';
 import Reviews from './Pages/sharedPages/reviews/Reviews.jsx';
 import Cast from './Pages/sharedPages/cast&Crew/Cast.jsx';
 import AlternativeTitles from './Pages/sharedPages/alternitaveTitles/AlternativeTitles.jsx';
 import ReleaseDates from './Pages/sharedPages/releaseDates/ReleaseDates.jsx';
 import Translations from './Pages/sharedPages/translations/Translations.jsx';
 import Changes from './Pages/sharedPages/changes/Changes.jsx';
-
-import TvShowsLayout from './Layouts/TvShowsLayout.jsx';
 import Tv from './Pages/Tv/main/Tv.jsx';
-import TvShowSeasons from './Pages/tv/TvShowSeasons/TvShowSeasons.jsx';
-import SeasonEpisodes from './Pages/tv/SeasonEpisodes/SeasonEpisodes.jsx';
+import TvShowSeasons from './Pages/Tv/TvShowSeasons/TvShowSeasons.jsx';
+import SeasonEpisodes from './Pages/Tv/SeasonEpisodes/SeasonEpisodes.jsx';
 import Person from './Pages/person/main/Person.jsx';
 import Keywords from './Pages/keywords/Keywords.jsx';
 import Search from './Pages/search/Search.jsx';
-import Footer from './Components/footer/Footer.jsx';
-import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
 import MediaVideos from './Pages/sharedPages/mediaVideos/MediaVideos.jsx';
+import Collection from './Pages/Collection/Collection.jsx';
+import BackdropsPosters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
+
+// layouts
+import MovieLayout from './Layouts/MovieLayout.jsx';
+import TvShowsLayout from './Layouts/TvShowsLayout.jsx';
 import TvShowSeasonLayout from './Layouts/TvShowSeason.jsx';
 import EpisodesLayout from './Layouts/EpisodesLayout.jsx';
 import CollectionLayout from './Layouts/CollectionLayout.jsx';
-import Collection from './Pages/collection/Collection.jsx';
 import PersonLayout from './Layouts/PersonLayout.jsx';
-import BackdropsPosters from './Pages/sharedPages/backdrops&posters/Backdrops&posters.jsx';
+
+// components
+import Header from './Components/headerComponents/header/Header.jsx';
+import TrailerPlayer from './Components/sharedComponents/trailerPlayer/TrailerPlayer.jsx';
+import Footer from './Components/footer/Footer.jsx';
+import MainLoaing from './Components/mainLoding/MainLoaing.jsx';
+
+
 
 
 function App() {
